@@ -1,4 +1,4 @@
-WORKSHOP_TITLE
+DevOps for Data Scientists
 ================
 
 ### posit::conf 2023
