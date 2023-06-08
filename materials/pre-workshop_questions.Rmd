@@ -1,0 +1,6 @@
+- What is your computer's OS?
+- Do you code in R, Python, or both?
+- How comfortable are you with?
+  - accessing files via the command line
+  - using git in the command line
+  
