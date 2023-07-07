@@ -1,6 +1,54 @@
-- What is your computer's OS?
-- Do you code in R, Python, or both?
-- How comfortable are you with?
-  - accessing files via the command line
-  - using git in the command line
-  
+By filling out this survey, you will provide us with helpful information to ensure that the training is helpful to you.
+
+-   What is your current work position?
+
+-   Have you ever administered or installed any of the following Posit Products?
+
+    -   Posit Team
+
+    -   Posit Workbench
+
+    -   Posit Connect
+
+    -   Posit Package Manager
+
+    -   Posit Docker Products
+
+    -   Rstudio Server (Open Source)
+
+    -   Rstudio Server Pro
+
+    -   Shiny Server (Open Source)
+
+    -   Shiny Server Pro
+
+```{=html}
+<!-- -->
+```
+-   What is your computer's OS?
+    -   Linux
+    -   Windows
+    -   Mac (Intel-processor)
+    -   Mac (M1/M2 Silicon processor)
+    -   Don't Know
+-   Are you able to download applications onto your computer? Yes, No, Don't Know
+-   Do you have an active (and usable) account for any of the following?
+    -   Github
+    -   AWS
+    -   GCP
+    -   Microsoft Azure
+    -   Docker Desktop
+-   How strong are our skills in the following: (1-I do not use it...5-I am the one folks come to for help)
+    -   R
+    -   Python
+    -   Linux
+    -   Docker
+-   How comfortable are you currently with? (from never done this before to very comfortable
+    -   accessing files via the command line
+    -   using git in the command line
+    -   collaborating with coworkers on code with git (using a GUI or the terminal)
+    -   Using CI/CD to deploy content (ex. Github Actions, Jenkins, etc)
+    -   Using Linux commands to access and edit files
+    -   Using SSH to remote into a Linux virtual machine
+
+What do you hope to learn from this course?
