@@ -4,23 +4,88 @@ format: html
 editor: visual
 ---
 
-## Quarto
+## Goal
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+To deploy a quarto site to Github Pages using Github Actions for Continuous Deployment. This will allow you to update your site every time you push a commit to git.
 
-## Running Code
+## Prerequisites
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+1.  You have setup your cloud-based development environment.
 
-```{r}
-1 + 1
+::: callout-note
+You can set up your project in your local IDE but then you will need to install Quarto and other environment dependencies.
+:::
+
+2.  You must have a github account and have configured your dev environment to use git.
+
+## Steps
+
+1.  Create a github repository named something like `Personal-site`. Copy the https for your repo.
+2.  Open a session in your workbench environment. Give it a name.
+3.  To create a new website project within RStudio, use the **New Project** command and select **Quarto Website**. Create a git repository upstream.
+4.  Quick start https://quarto.org/docs/websites/
+5.  Call `renv::init` to initialize a new project-local environment with a private R library. Once you do this you will see a new file called `renv.lock` has been created in your project directory along with an `renv` folder.
+6.  Create a .github folder with a publish.yaml file:
+
+```         
+on:
+  workflow_dispatch:
+  push:
+    branches: main
+
+name: Quarto Publish
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.2.0'
+          use-public-rspm: true
+
+      - name: Setup renv and install packages
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
+        env:
+          RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.rstudio.com/all/latest
+
+      - name: Install Python and Dependencies
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - run: pip install jupyter
+      - run: pip install -r requirements.txt
+
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-You can add options to executable code like this
+7.  Create Connect API
+8.  Add github token
 
 ```{r}
 #| echo: false
-2 * 2
+
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
+
+## Resources
+
+https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github
