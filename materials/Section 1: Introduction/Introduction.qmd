@@ -1,0 +1,44 @@
+---
+title: "Introduction to Devops Workshop"
+format: revealjs
+editor: visual
+---
+
+## Welcome!
+
+Introduce myself, add picture, describe myself and a bit about Solutions Engineering. Introduce the TA's
+
+## Goals of the Workshop
+
+Add slides for the main goals of the workshop
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Structure of the Workshop
+
+Separate into two columns by the day, what they will be creating, show schedule, each section has presentation and lab.
+
+```{r}
+1 + 1
+```
+
+## Documentation and Setup
+
+-   All documents including slides are available at this github repo:
+
+-   Setup Instructions:
+
+    -   [Development Environment Link](http://rstd.io/class) - this is where you will do your coding
+
+    -   
+
+## Code of Conduct
+
+Add link to the code of conduct
+
+## Workshop Demos
+
+-   Personal [website](https://rikagx.github.io/personal-website/) deployed via github pages
+
+## What is Devops?
