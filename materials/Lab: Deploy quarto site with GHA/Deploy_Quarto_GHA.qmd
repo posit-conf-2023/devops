@@ -20,11 +20,32 @@ You can set up your project in your local IDE but then you will need to install 
 
 ## Steps
 
-1.  Create a github repository named something like `Personal-site`. Copy the https for your repo.
-2.  Open a session in your workbench environment. Give it a name.
-3.  To create a new website project within RStudio, use the **New Project** command and select **Quarto Website**. Create a git repository upstream.
-4.  Quick start https://quarto.org/docs/websites/
-5.  Call `renv::init` to initialize a new project-local environment with a private R library. Once you do this you will see a new file called `renv.lock` has been created in your project directory along with an `renv` folder.
+1.  Open a session in your workbench environment. Give it a name.
+
+2.  To create a new website project within RStudio, use the **New Project** command and select **Quarto Website**.
+
+    ::: callout-tip
+    Basic file structure for a quarto site:
+
+    -   \_quarto.yml
+
+    -   about.qmd
+
+    -   index.qmd
+
+    -   \*.Rproj
+
+    -   styles.css
+
+    -   \_site folder
+    :::
+
+3.  Press render to see your new website! Make sure that your web browser allows popups.
+
+4.  Install the `renv` package and Run `renv::init` in your console to initialize a new project-local environment with a private R library. Once you do this you will see a new file called `renv.lock` has been created in your project directory along with an `renv` folder.
+
+5.  
+
 6.  Create a .github folder with a publish.yaml file:
 
 ```         
@@ -89,3 +110,5 @@ The `echo: false` option disables the printing of code (only output is displayed
 ## Resources
 
 https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github
+
+1.  Quick start https://quarto.org/docs/websites/
