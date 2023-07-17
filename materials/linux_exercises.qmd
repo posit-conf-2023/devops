@@ -1,0 +1,19 @@
+---
+title: "Linux exercises"
+format: html
+editor: visual
+---
+
+## Setup
+
+Login to [play with docker](https://labs.play-with-docker.com/) using your docker hub credentials.
+
+Add an instance to your session.
+
+## Exercises
+
+1.  Identify the user that you are logged in as.
+
+    ```{bash}
+    whoami
+    ```

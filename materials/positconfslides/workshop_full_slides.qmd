@@ -19,7 +19,11 @@ format:
       - positconfslides
 ---
 
-## Workshop Goals
+## Workshop Goals & Overview
+
+## Workshop Lab Demo
+- By the end of this demo you will have deployed:
+
 
 ## Installation {.toc-people-dark}
 
@@ -38,8 +42,6 @@ We encourage you to set up the following systems prior to the start of the works
 
 1.  Login to http://rstd.io/class, use the provided username and password and access Posit Workbench, Connect, and Package Manager.
 
-## Workshop Overview {.toc-people-dark}
-
 ## Documentation {.brackets-light}
 
 -   All documents including slides are available at this github [repo](https://github.com/posit-conf-2023/devops)
@@ -49,7 +51,7 @@ We encourage you to set up the following systems prior to the start of the works
 ::: panel-tabset
 ## Rika
 
-![](images/rika_bio-01.jpeg)
+![](images/rika_bio-01.jpeg){width="25%"}
 
 -   Solutions Engineer at Posit
 
@@ -59,13 +61,22 @@ We encourage you to set up the following systems prior to the start of the works
 
 ## David
 
-![](images/edavidaja.jpeg)
+![](images/edavidaja.jpeg){width="25%"}
 
-- David Aja is a Solutions Engineer at Posit. Before joining Posit, he worked as a data scientist in the public sector.
+-   David Aja is a Solutions Engineer at Posit. Before joining Posit, he worked as a data scientist in the public sector.
 
 ## Gagan
 
+![](images/gagan.png){width="25%"}
+- Gagandeep Singh is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit as a Solutions Engineer.
+
+
 ## Sam
+
+![](images/sam-workweek-2023-large.jpeg){width="25%"}
+
+- Sam Edwardes is a Solutions Engineer at Posit. He is passionate about open source software and data science. Before joining Posit Sam consulted for many different companies as a Consultant at Deloitte.
+
 :::
 
 ## Solutions Engineering at Posit
@@ -78,15 +89,16 @@ We encourage you to set up the following systems prior to the start of the works
 
 ## Schedule - Day 1 {.brackets-light}
 
-| Time          | Topic |
-|---------------|-------|
-| 09:00 - 10:30 |       |
-| 10:30 - 11:00 | Break |
-| 11:00 - 12:30 |       |
-| 12:30 - 13:30 | Lunch |
-| 13:30 - 15:00 |       |
-| 15:00 - 15:30 | Break |
-| 15:30 - 17:00 |       |
+| Time          | Topic                         |
+|---------------|-------------------------------|
+| 09:00 - 09:45 | Introductions & Installations |
+| 09:45 - 10:30 | Linux Prep                    |
+| 10:30 - 11:00 | Break                         |
+| 11:00 - 12:30 |                               |
+| 12:30 - 13:30 | Lunch                         |
+| 13:30 - 15:00 |                               |
+| 15:00 - 15:30 | Break                         |
+| 15:30 - 17:00 |                               |
 
 ## Schedule - Day 2 {.brackets-light}
 
@@ -100,25 +112,25 @@ We encourage you to set up the following systems prior to the start of the works
 | 15:00 - 15:30 | Break |
 | 15:30 - 17:00 |       |
 
-## toc-dark {.toc-dark}
+## Code of Conduct {.brackets-light}
 
 -   Some stuff
 -   Some more stuff
     -   And yet more!
 
-## toc-light {.toc-light}
+## Resources {.brackets-light}
 
 -   Some stuff
 -   Some more stuff
     -   And yet more!
 
-## toc2-dark {.toc2-dark}
+## Linux Prep {.toc-people-dark}
 
 -   Some stuff
 -   Some more stuff
     -   And yet more!
 
-## toc2-light {.toc2-light}
+## Why Linux? {.brackets-light}
 
 -   Some stuff
 -   Some more stuff
