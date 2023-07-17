@@ -1,0 +1,50 @@
+---
+title: "Introduction to Devops Workshop"
+format: revealjs
+editor: visual
+---
+
+## Welcome!
+
+## Installation
+
+We encourage you to set up the following systems prior to the start of the workshop. We will also set aside time during the workshop to install and troubleshoot.
+
+1.  Install [git](https://git-scm.com/downloads) on your laptop. You can check if git is already installed by typing `git --version` in the terminal.
+2.  If you do not have a github account please create a [personal](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) account.
+3.  Make sure that you have a text editor that you are comfortable using. For example, Rstudio [IDE](https://www.rstudio.com/categories/rstudio-ide/), [vscode](https://code.visualstudio.com/download), [sublime](https://www.sublimetext.com/3).
+4.  Create an account at [Docker Hub](https://hub.docker.com/).
+5.  Download [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+## Day-of workshop Setup
+
+1.  Login to http://rstd.io/class, use the provided username and password and access Posit Workbench, Connect, and Package Manager.
+2.  
+
+## Structure of the Workshop
+
+Separate into two columns by the day, what they will be creating, show schedule, each section has presentation and lab.
+
+```{r}
+1 + 1
+```
+
+## Documentation and Setup
+
+-   All documents including slides are available at this github repo:
+
+-   Setup Instructions:
+
+    -   [Development Environment Link](http://rstd.io/class) - this is where you will do your coding
+
+    -   
+
+## Code of Conduct
+
+Add link to the code of conduct
+
+## Workshop Demos
+
+-   Personal [website](https://rikagx.github.io/personal-website/) deployed via github pages
+
+## What is Devops?
