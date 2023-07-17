@@ -22,8 +22,18 @@ format:
 ## Workshop Goals & Overview
 
 ## Workshop Lab Demo
-- By the end of this demo you will have deployed:
 
+-   By the end of this demo you will have deployed:
+
+## Pre-workshop reading
+
+-   [Opening the command line](https://do4ds.com/chapters/sec2/2-1-cmd-line.html)
+-   [Using the command line](https://do4ds.com/chapters/sec2/2-2-cmd-line-use.html)
+-   [Basic Linux SysAdmin](https://do4ds.com/chapters/sec3/3-2-linux-admin.html) (11 - 11.7.4)
+-   [List of cli commands](https://business-science.github.io/shiny-production-with-aws-book/linux-command-line-interface-cli.html)
+-   [How to use pipes and redirection in linux](https://www.maketecheasier.com/pipes-redirection-for-linux-command-line/)
+-   [How to use grep in linux](https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/)
+-   [Linux directory structure](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)
 
 ## Installation {.toc-people-dark}
 
@@ -67,16 +77,13 @@ We encourage you to set up the following systems prior to the start of the works
 
 ## Gagan
 
-![](images/gagan.png){width="25%"}
-- Gagandeep Singh is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit as a Solutions Engineer.
-
+![](images/gagan.png){width="25%"} - Gagandeep Singh is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit as a Solutions Engineer.
 
 ## Sam
 
 ![](images/sam-workweek-2023-large.jpeg){width="25%"}
 
-- Sam Edwardes is a Solutions Engineer at Posit. He is passionate about open source software and data science. Before joining Posit Sam consulted for many different companies as a Consultant at Deloitte.
-
+-   Sam Edwardes is a Solutions Engineer at Posit. He is passionate about open source software and data science. Before joining Posit Sam consulted for many different companies as a Consultant at Deloitte.
 :::
 
 ## Solutions Engineering at Posit
@@ -136,17 +143,30 @@ We encourage you to set up the following systems prior to the start of the works
 -   Some more stuff
     -   And yet more!
 
-## toc-people-dark {.toc-people-dark}
+## Terminology
+
+-   The command line is a way to interact with a computer by typing text-based instructions to it, and reading the responses.
+-   The software---called an interpreter---that translates your input into commands and executes them for you is the shell.
+-   A *terminal* is an input and output environment that presents a text-only window running a shell.
+-   A *shell* is a program that exposes the computer\'s operating system to a user or program. In Linux systems, the shell presented in a terminal is a command line interpreter.
+-   A *command line interface* is a user interface (managed by a command line interpreter program) which processes commands to a computer program and outputs the results.
+-   On most Linux distributions, the default shell is Bash, or Zsh.
+
+## Working with files & directories {.toc-people-dark}
 
 -   Some stuff
 -   Some more stuff
     -   And yet more!
 
-## toc-people-light {.toc-people-light}
+## Working with permissions
+
+## Working with users and groups {.toc-people-light}
 
 -   Some stuff
 -   Some more stuff
     -   And yet more!
+
+## Managing server resources
 
 ## brackets-dark {.brackets-dark}
 
