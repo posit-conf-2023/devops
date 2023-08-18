@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Deploy Quarto with GHA</title>
+<title>Lab: Deploy Quarto with GHA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Deploy Quarto with GHA</h1>
+<h1 class="title">Lab: Deploy Quarto with GHA</h1>
 </div>
 
 
@@ -127,35 +127,70 @@ Note
 <h2 class="anchored" data-anchor-id="part-1-quarto-and-renv">Part 1: Quarto and <code>renv</code></h2>
 <ol type="1">
 <li><p>Open a session in your workbench environment. Give it a name.</p></li>
-<li><p>To create a new website project within RStudio, click on <strong>File</strong> &gt; <strong>New Project</strong> &gt; <strong>Quarto Website</strong> and save it to a directory with a name.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<li><p>To create a new website project within RStudio, click on <strong>File</strong> &gt; <strong>New Project</strong> &gt; <strong>Quarto Website</strong> and save it to a directory with a name.</p></li>
+</ol>
+<ul>
+<li><div class="callout callout-style-simple callout-note no-icon callout-titled" title="quarto site file structure">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+quarto site file structure
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Basic file structure for a quarto site:</p>
-<ul>
-<li><p>_quarto.yml</p></li>
-<li><p>about.qmd</p></li>
-<li><p>index.qmd</p></li>
-<li><p>*.Rproj</p></li>
-<li><p>styles.css</p></li>
-<li><p>_site - this will be created after you render your files</p></li>
-</ul>
-<p>Check out the quarto website <a href="https://quarto.org/docs/websites/#workflow">page</a> to learn more about the website workflow and structure of the file system.</p>
+<pre><code>
+\_quarto.yml - project file
+
+about.qmd - About page
+
+index.qmd - Home page
+
+styles.css - custom CSS
+
+\_site - this will be created after you render your files</code></pre>
+</div>
 </div>
 </div></li>
-<li><p>Press render to see your new website! Make sure that your web browser allows popups.</p></li>
-<li><p>Install the <code>renv</code> package and Run <code>renv::init</code> in your console to initialize a new project-local environment with a private R library. Once you do this you will see a new file called <code>renv.lock</code> has been created in your project directory along with an <code>renv</code> folder.</p>
-<ol type="1">
-<li>Inspect the lock file. Where are packages being pulled from? Confirm by typing <code>options("repos")</code>. Does this differ from the repo set in Tools &gt; Global Options &gt; Packages?</li>
-</ol></li>
+</ul>
+<ol start="3" type="1">
+<li><p>Press render to see your new website! Or render via terminal with <code>quarto render</code>. Make sure that your web browser allows popups.</p></li>
+<li><p>Install and initialize an <code>renv</code> workflow. Inspect the lock file. Where are packages being pulled from? Confirm by typing <code>options("repos")</code>. Does this differ from the repo set in Tools &gt; Global Options &gt; Packages?</p></li>
 </ol>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="`renv` workflow">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>renv</code> workflow
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Install the <code>renv</code> package with <code>install.packages("renv")</code></p></li>
+<li><p>Run <code>renv::init</code> in your console to initialize a new project-local environment with a private R library</p></li>
+<li><p>After you’ve done some work on your code take a snapshot with <code>renv::snapshot()</code></p></li>
+<li><p>Recreate your environment when collaborating or coming back to your work with <code>renv::restore()</code></p></li>
+</ul>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Learning how to use all the power of Quarto is beyond the scope of the workshop but you should still take 10-15 minutes to play around with your new website. Use the below resources to try out difference templates and options.</li>
+</ol>
+<ul>
+<li>https://rstudio-conf-2022.github.io/get-started-quarto/materials/06-websites.html#/websites</li>
+<li>https://quarto.org/docs/gallery/#websites</li>
+<li><a href="https://quarto.org/docs/websites/website-blog.html#themes" class="uri">https://quarto.org/docs/websites/website-blog.html#themes</a></li>
+<li>https://www.marvinschmitt.com/blog/website-tutorial-quarto/</li>
+<li>https://quarto.org/docs/websites/#workflow</li>
+</ul>
 </section>
 <section id="part-version-control-and-authentication-with-github" class="level2">
 <h2 class="anchored" data-anchor-id="part-version-control-and-authentication-with-github">Part: Version Control and Authentication with Github</h2>
@@ -168,7 +203,10 @@ git config --global user.email "youremail@yourdomain.com"</code></pre>
 <li><p>Your project files are saved locally on the server. We want to version control them by adding them to github. Create a <a href="https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git">repository</a> on github but do not initialize it with a README, license, or gitignore files. This repo will host the files for the site that you will be deploying to Github Pages.</p></li>
 <li><p>We will need to securely authenticate from our server environment to Github. You can do this via two different authentication mechanisms - SSH or HTTPS. Note that there are two urls created for your repo - one is for https and the other is SSH.</p></li>
 </ol>
-<p>::: panel-tabset ## HTTPS</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">HTTPS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">SSH</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p><strong>Authentication:</strong></p>
 <ol type="1">
 <li>Copy the https repository URL.</li>
@@ -183,9 +221,8 @@ git config --global user.email "youremail@yourdomain.com"</code></pre>
 <li>Push your local files to github with <code>git push -u origin main</code> where main is the name of your branch in github. You will be prompted for a username and password. Enter your github username and the personal access token from above as your password.</li>
 </ol>
 <p>Resources: <a href="https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github" class="uri">https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github</a></p>
-</section>
-<section id="ssh" class="level2">
-<h2 class="anchored" data-anchor-id="ssh">SSH</h2>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p><strong>Authentication:</strong></p>
 <ol type="1">
 <li><p>Copy the SSH repository URL.</p></li>
@@ -194,16 +231,16 @@ git config --global user.email "youremail@yourdomain.com"</code></pre>
 <li><p>Create a new hidden file (dot files and directories are hidden but you can see them with <code>ls -la</code>) with <code>touch ~/.ssh/config</code> .</p></li>
 <li><p>Edit the file using vi or vim and then add your SSH private key to the ssh-agent. Use the cheat sheet below for common vim commands.</p></li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> touch ~/.ssh/config</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">i</span> <span class="co"># to get into insert mode</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> github.com</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">IgnoreUnknown</span> UseKeychain</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">AddKeysToAgent</span> yes</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">UseKeychain</span> yes</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">IdentityFile</span> ~/.ssh/id_ed25519</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Press the escape key to exit insert mode</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">:wq</span> to save and exit out of the file</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> touch ~/.ssh/config</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">i</span> <span class="co"># to get into insert mode</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> github.com</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">IgnoreUnknown</span> UseKeychain</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">AddKeysToAgent</span> yes</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">UseKeychain</span> yes</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">IdentityFile</span> ~/.ssh/id_ed25519</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Press the escape key to exit insert mode</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">:wq</span> to save and exit out of the file</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="7" type="1">
 <li>Copy your public key with <code>cat ~/.ssh/id_ed25519.pub</code></li>
 <li>In your Github account go to Settings &gt; SSH and GPG Keys, and add your SSH key.</li>
@@ -222,6 +259,9 @@ git config --global user.email "youremail@yourdomain.com"</code></pre>
 <li><p><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux" class="uri">https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux</a></p></li>
 <li><p><a href="https://vim.rtorr.com/">Vim Commands Cheat Sheet</a></p></li>
 </ul>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Github CLI">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

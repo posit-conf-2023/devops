@@ -1,5 +1,5 @@
 ---
-title: "Deploy Quarto with GHA"
+title: "Lab: Deploy Quarto with GHA"
 format: html
 editor: visual
 ---
@@ -29,29 +29,42 @@ You can also set up your project in your local IDE but then you will need to ins
 
 2.  To create a new website project within RStudio, click on **File** \> **New Project** \> **Quarto Website** and save it to a directory with a name.
 
-    ::: callout-tip
-    Basic file structure for a quarto site:
+-   ::: {.callout-note appearance="minimal" collapse="true" title="quarto site file structure"}
+    ```         
 
-    -   \_quarto.yml
+    \_quarto.yml - project file
 
-    -   about.qmd
+    about.qmd - About page
 
-    -   index.qmd
+    index.qmd - Home page
 
-    -   \*.Rproj
+    styles.css - custom CSS
 
-    -   styles.css
-
-    -   \_site - this will be created after you render your files
-
-    Check out the quarto website [page](https://quarto.org/docs/websites/#workflow) to learn more about the website workflow and structure of the file system.
+    \_site - this will be created after you render your files
+    ```
     :::
 
-3.  Press render to see your new website! Make sure that your web browser allows popups.
+3.  Press render to see your new website! Or render via terminal with `quarto render`. Make sure that your web browser allows popups.
 
-4.  Install the `renv` package and Run `renv::init` in your console to initialize a new project-local environment with a private R library. Once you do this you will see a new file called `renv.lock` has been created in your project directory along with an `renv` folder.
+4.  Install and initialize an `renv` workflow. Inspect the lock file. Where are packages being pulled from? Confirm by typing `options("repos")`. Does this differ from the repo set in Tools \> Global Options \> Packages?
 
-    1.  Inspect the lock file. Where are packages being pulled from? Confirm by typing `options("repos")`. Does this differ from the repo set in Tools \> Global Options \> Packages?
+::: {.callout-note appearance="minimal" collapse="true" title="`renv` workflow"}
+-   Install the `renv` package with `install.packages("renv")`
+
+-   Run `renv::init` in your console to initialize a new project-local environment with a private R library
+
+-   After you've done some work on your code take a snapshot with `renv::snapshot()`
+
+-   Recreate your environment when collaborating or coming back to your work with `renv::restore()`
+:::
+
+5.  Learning how to use all the power of Quarto is beyond the scope of the workshop but you should still take 10-15 minutes to play around with your new website. Use the below resources to try out difference templates and options.
+
+-   https://rstudio-conf-2022.github.io/get-started-quarto/materials/06-websites.html#/websites
+-   https://quarto.org/docs/gallery/#websites
+-   <https://quarto.org/docs/websites/website-blog.html#themes>
+-   https://www.marvinschmitt.com/blog/website-tutorial-quarto/
+-   https://quarto.org/docs/websites/#workflow
 
 ## Part: Version Control and Authentication with Github
 
@@ -73,7 +86,6 @@ You can also set up your project in your local IDE but then you will need to ins
 3.  We will need to securely authenticate from our server environment to Github. You can do this via two different authentication mechanisms - SSH or HTTPS. Note that there are two urls created for your repo - one is for https and the other is SSH.
 
 ::: panel-tabset
-
 ## HTTPS
 
 **Authentication:**
@@ -136,6 +148,7 @@ Resources
 -   <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux>
 
 -   [Vim Commands Cheat Sheet](https://vim.rtorr.com/)
+:::
 
 ::: {.callout-tip title="Github CLI"}
 To learn more about the Github CLI and the `gh` package please check out this [article](https://solutions.posit.co/operations/git-cli/index.html).
