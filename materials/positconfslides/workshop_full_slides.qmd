@@ -148,7 +148,7 @@ We encourage you to set up the following systems prior to the start of the works
 -   The command line is a way to interact with a computer by typing text-based instructions to it, and reading the responses.
 -   The software---called an interpreter---that translates your input into commands and executes them for you is the shell.
 -   A *terminal* is an input and output environment that presents a text-only window running a shell.
--   A *shell* is a program that exposes the computer\'s operating system to a user or program. In Linux systems, the shell presented in a terminal is a command line interpreter.
+-   A *shell* is a program that exposes the computer's operating system to a user or program. In Linux systems, the shell presented in a terminal is a command line interpreter.
 -   A *command line interface* is a user interface (managed by a command line interpreter program) which processes commands to a computer program and outputs the results.
 -   On most Linux distributions, the default shell is Bash, or Zsh.
 
