@@ -46,19 +46,32 @@ You can also set up your project in your local IDE but then you will need to ins
 
 3.  Press render to see your new website! Or render via terminal with `quarto render`. Make sure that your web browser allows popups.
 
-4.  Install and initialize an `renv` workflow. Inspect the lock file. Where are packages being pulled from? Confirm by typing `options("repos")`. Does this differ from the repo set in Tools \> Global Options \> Packages?
+4.  Install and initialize an `renv` workflow.
 
 ::: {.callout-note appearance="minimal" collapse="true" title="`renv` workflow"}
+-   Run `.libPaths()` to see your library path
+
 -   Install the `renv` package with `install.packages("renv")`
 
 -   Run `renv::init` in your console to initialize a new project-local environment with a private R library
 
 -   After you've done some work on your code take a snapshot with `renv::snapshot()`
 
+-   Run `.libPaths()` again. How has your library path changed?
+
 -   Recreate your environment when collaborating or coming back to your work with `renv::restore()`
 :::
 
-5.  Learning how to use all the power of Quarto is beyond the scope of the workshop but you should still take 10-15 minutes to play around with your new website. Use the below resources to try out difference templates and options.
+5.  Exercises:
+
+-   Make a list of the layers that need to be reproduced in this workflow.
+    -   Inspect the lock file.
+    -   Where are packages being pulled from? Confirm by typing `options("repos")`. Does this differ from the repo set in Tools \> Global Options \> Packages? You can modify your package repository by running `options("repos" = c("<REPO-NAME>" = "https://your-repository-url.com"))` in your RStudio console.
+    -   Visit the url where packages are being pulled from and see if you can identify package dependencies. Are packages downloaded as binaries or from source?
+    -   What are server and OS dependencies? (Hint: If you are not sure which distribution of Linux you are using, you can find it by typing `cat /etc/*-release` in your terminal)
+-   In your day-to-day work, what's the hardest reproducibility challenge?
+
+6.  (**Optional)** Learning how to use all the power of Quarto is beyond the scope of the workshop but you can take some time to play around with your new website. Use the below resources to try out difference templates and options.
 
 -   https://rstudio-conf-2022.github.io/get-started-quarto/materials/06-websites.html#/websites
 -   https://quarto.org/docs/gallery/#websites
@@ -66,7 +79,7 @@ You can also set up your project in your local IDE but then you will need to ins
 -   https://www.marvinschmitt.com/blog/website-tutorial-quarto/
 -   https://quarto.org/docs/websites/#workflow
 
-## Part: Version Control and Authentication with Github
+## Part 2: Version Control and Authentication with Github
 
 1.  Configure your github information in the terminal. To set your global commit name and email address run the `git config` command with the `--global` option:
 

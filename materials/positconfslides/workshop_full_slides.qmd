@@ -19,42 +19,23 @@ format:
       - positconfslides
 ---
 
-## Workshop Goals & Overview
+## Workshop Goals
 
-## Workshop Lab Demo
+-   Get hands-on experience putting code into production
 
--   By the end of this demo you will have deployed:
+-   To understand main principles of Devops
 
-## Pre-workshop reading
+## Workshop Lab Overview
 
--   [Opening the command line](https://do4ds.com/chapters/sec2/2-1-cmd-line.html)
--   [Using the command line](https://do4ds.com/chapters/sec2/2-2-cmd-line-use.html)
--   [Basic Linux SysAdmin](https://do4ds.com/chapters/sec3/3-2-linux-admin.html) (11 - 11.7.4)
--   [List of cli commands](https://business-science.github.io/shiny-production-with-aws-book/linux-command-line-interface-cli.html)
--   [How to use pipes and redirection in linux](https://www.maketecheasier.com/pipes-redirection-for-linux-command-line/)
--   [How to use grep in linux](https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/)
--   [Linux directory structure](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)
+By the end of this workshop you will have:
 
-## Installation {.toc-people-dark}
+-   Deployed your own Quarto website on Github Pages using GitHub Actions CI/CD
 
-## Pre-workshop Install {.brackets-light}
+-   Created and hosted an example API with a trained prediction model
 
-We encourage you to set up the following systems prior to the start of the workshop. We will also set aside time during the workshop to install and troubleshoot.
+-   Deployed your own version of Open Source Shiny Server
 
-1.  Install [git](https://git-scm.com/downloads) on your laptop. You can check if git is already installed by typing `git --version` in the terminal.
-2.  If you do not have a github account please create a [personal](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) account.
-3.  Make sure that you have a text editor that you are comfortable using. For example, Rstudio [IDE](https://www.rstudio.com/categories/rstudio-ide/), [vscode](https://code.visualstudio.com/download), [sublime](https://www.sublimetext.com/3).
-4.  Create an account at [Docker Hub](https://hub.docker.com/).
-5.  Download [Docker Desktop](https://www.docker.com/products/docker-desktop/).
-6.  Download [quarto](https://quarto.org/docs/download/).
-
-## Workshop Install {.brackets-light}
-
-1.  Login to http://rstd.io/class, use the provided username and password and access Posit Workbench, Connect, and Package Manager.
-
-## Documentation {.brackets-light}
-
--   All documents including slides are available at this github [repo](https://github.com/posit-conf-2023/devops)
+-   Published a shiny app on Open Source Shiny Server
 
 ## Meet your instructors
 
@@ -77,7 +58,9 @@ We encourage you to set up the following systems prior to the start of the works
 
 ## Gagan
 
-![](images/gagan.png){width="25%"} - Gagandeep Singh is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit as a Solutions Engineer.
+![](images/gagan.png){width="25%"}
+
+-   Gagandeep Singh is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit as a Solutions Engineer.
 
 ## Sam
 
@@ -93,6 +76,39 @@ We encourage you to set up the following systems prior to the start of the works
 -   Posit's Solutions Engineering team aims to shrink the distance between the needs of Posit's customers and our Pro and Open Source offerings, leading with curiosity and technical excellence.
 
 -   Our customer-facing work helps our customers deploy, install, configure, and use our Pro products.
+
+## Introduce yourself!
+
+-   Name
+
+-   What you do?
+
+-   How you think devops can help you in your work?
+
+## Logistics & Workshop Setup {.toc-people-dark}
+
+## Pre-workshop Install {.brackets-light}
+
+We encourage you to set up the following systems prior to the start of the workshop. We will also set aside time during the workshop to install and troubleshoot.
+
+1.  Install [git](https://git-scm.com/downloads) on your laptop. You can check if git is already installed by typing `git --version` in the terminal.
+2.  If you do not have a github account please create a [personal](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) account.
+3.  Make sure that you have a text editor that you are comfortable using. For example, Rstudio [IDE](https://www.rstudio.com/categories/rstudio-ide/), [vscode](https://code.visualstudio.com/download), [sublime](https://www.sublimetext.com/3).
+4.  Create an account at [Docker Hub](https://hub.docker.com/).
+5.  Download [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+6.  Download [quarto](https://quarto.org/docs/download/).
+7.  Sign up for Discord channel
+
+## Workshop Install {.brackets-light}
+
+1.  Is your wifi working? If not, let one of the instructors/TA's know as soon as possible.
+2.  Login to http://rstd.io/class, use the provided username and password and access Posit Workbench, and Posit Connect.
+
+## Documentation & Communication {.brackets-light}
+
+-   All documents including slides are available at this github [repo](https://github.com/posit-conf-2023/devops)
+-   Discord channel for questions
+-   "Posit" Notes system
 
 ## Schedule - Day 1 {.brackets-light}
 
@@ -125,23 +141,112 @@ We encourage you to set up the following systems prior to the start of the works
 -   Some more stuff
     -   And yet more!
 
-## Resources {.brackets-light}
+## Devops Overview {.toc-people-dark}
 
--   Some stuff
--   Some more stuff
-    -   And yet more!
+## Data science & devops
 
-## Linux Prep {.toc-people-dark}
+-   Why should data scientists care about or learn devops?
 
--   Some stuff
--   Some more stuff
-    -   And yet more!
+-   In a perfect world data scientists would just focus on the "dev" part of devops
+
+## Has this ever happened to you?
+
+-   You come back to code from a year ago and now it doesnt run!
+
+-   Congrats! You just got a new laptop with a new install of R. How do you run your code that was created with an older R version?
+
+-   Your boss asks you to share that Shiny app with a client but the dev team is too busy working on their roadmap to help you deploy.
+
+-   You need to share your prediction model (created in R) with the Engineering team but they only code in Java.
+
+-   You've deployed your Shiny app to a site. But now you need to make sure that only clients can access it.
+
+## What even is devops? {.brackets-dark}
+
+Everything that happens once your code has been written.
+
+-   Sharing your documents, apps, and apis
+-   "Production" can mean different things
+-   Continuous (and fast!) deployment & release of software/features
+-   Testing
+-   Collaborating on code
+-   Reproducing your code across environments
+-   Reproducing your environment as code
+-   Ensuring security for your "content"
+-   Networking
+
+## A brief history of devops
+
+## Principle #1: Reproducibility
+
+![](images/Screenshot%202023-08-22%20at%203.26.22%20PM.png)
+
+## Layers of reproducibility
+
++----------+---------------------------------+
+| Layer    | Contents                        |
++==========+=================================+
+| Packages | R + Python Packages             |
++----------+---------------------------------+
+| System   | R + Python Language Versions    |
+|          |                                 |
+|          | System Libraries                |
+|          |                                 |
+|          | Operating System + dependencies |
++----------+---------------------------------+
+| Hardware | Virtual Hardware                |
+|          |                                 |
+|          | Physical Hardware               |
++----------+---------------------------------+
+
+## Packages vs. Libraries vs. Repositories
+
+**Package** - contains code, functions, data, and documentation. Can be be distributed as SOURCE (a directory with all package components), [BINARIES](https://solutions.posit.co/envs-pkgs/environments/repositories/index.html#binary-packages) (contains files in OS-specific format) or as a BUNDLE (compressed file containing package components, similar to source).
+
+**Library** - is a directory where packages are installed. You can have user-level or project-level libraries. Run `.libPaths()` to see yours. To use a package in has to be installed in a library with `install.packages()` and then loaded into memory with `library(x)` .
+
+**Repository** - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.
+
+## Activity 1
+
+-   Complete Part 1 of Lab: Deploy Quarto with GHA
+
+-   Make a list of the layers that need to be reproduced in this workflow.
+
+    -   Inspect the lock file.
+    -   Where are packages being pulled from? Confirm by typing `options("repos")`. Does this differ from the repo set in Tools \> Global Options \> Packages?
+    -   Visit the url where packages are being pulled from and see if you can identify package dependencies. Are packages downloaded as binaries or from source?
+    -   What are server and OS dependencies? (Hint: If you are not sure which distribution of Linux you are using, you can find it by typing `cat /etc/*-release` in your terminal)
+
+-   In your day-to-day work, what's the hardest reproducibility challenge?
+
+## Mechanisms for reproducibility
+
+-   virtual environments
+
+-   documenting state & version control
+
+-   Containerization & Docker
+
+-   Infrastructure as Code
+
+## Principle 2: Continuous Integration & Deployment
+
+## Dev/Test/Prod
+
+## A quick word on https & ssh
+
+## Activity 2
+
+## Linux Refresher (optional) {.toc-people-dark}
 
 ## Why Linux? {.brackets-light}
 
--   Some stuff
--   Some more stuff
-    -   And yet more!
+-   GNU+Linux kernel is one of the world's most popular operating systems
+    -   It's used in the Mars Perseverance Rover!
+-   It's open source and freely available
+-   Different distributions available
+-   Potentially less exploitable and more secure
 
 ## Terminology
 
@@ -168,35 +273,15 @@ We encourage you to set up the following systems prior to the start of the works
 
 ## Managing server resources
 
-## brackets-dark {.brackets-dark}
+## Linux Refresher Resources
 
--   Some stuff
--   Some more stuff
-    -   And yet more!
-
-## brackets-light {.brackets-light}
-
--   Some stuff
--   Some more stuff
-    -   And yet more!
-
-## 30-70-dark {.30-70-dark}
-
--   Bullet 1
--   Bullet 1
--   Bullet 1
--   Bullet 1
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
-## 30-70-light {.30-70-light}
-
--   Bullet 1
--   Bullet 1
--   Bullet 1
--   Bullet 1
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+-   [Opening the command line](https://do4ds.com/chapters/sec2/2-1-cmd-line.html)
+-   [Using the command line](https://do4ds.com/chapters/sec2/2-2-cmd-line-use.html)
+-   [Basic Linux SysAdmin](https://do4ds.com/chapters/sec3/3-2-linux-admin.html) (11 - 11.7.4)
+-   [List of cli commands](https://business-science.github.io/shiny-production-with-aws-book/linux-command-line-interface-cli.html)
+-   [How to use pipes and redirection in linux](https://www.maketecheasier.com/pipes-redirection-for-linux-command-line/)
+-   [How to use grep in linux](https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/)
+-   [Linux directory structure](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)
 
 ## 30-70-white {.30-70-white}
 

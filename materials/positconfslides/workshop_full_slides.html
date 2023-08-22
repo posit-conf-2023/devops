@@ -338,8 +338,24 @@
 </section>
 <section class="slide level2">
 <h2>Workshop Lab Demo</h2>
+<p>By the end of this demo you will have:</p>
 <ul>
-<li>By the end of this demo you will have deployed:</li>
+<li><p>Deployed your own Quarto website on Github Pages using GitHub Actions CI/CD</p></li>
+<li><p>Created and hosted an example API with a trained prediction model</p></li>
+<li><p>Deployed your own version of Open Source Shiny Server</p></li>
+<li><p>Published a shiny app on Open Source Shiny Server</p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Linux Refresher Resources</h2>
+<ul>
+<li><a href="https://do4ds.com/chapters/sec2/2-1-cmd-line.html">Opening the command line</a></li>
+<li><a href="https://do4ds.com/chapters/sec2/2-2-cmd-line-use.html">Using the command line</a></li>
+<li><a href="https://do4ds.com/chapters/sec3/3-2-linux-admin.html">Basic Linux SysAdmin</a> (11 - 11.7.4)</li>
+<li><a href="https://business-science.github.io/shiny-production-with-aws-book/linux-command-line-interface-cli.html">List of cli commands</a></li>
+<li><a href="https://www.maketecheasier.com/pipes-redirection-for-linux-command-line/">How to use pipes and redirection in linux</a></li>
+<li><a href="https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/">How to use grep in linux</a></li>
+<li><a href="https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/">Linux directory structure</a></li>
 </ul>
 </section>
 <section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-people-dark.svg" data-background-size="contain">
@@ -363,6 +379,7 @@
 <li>Create an account at <a href="https://hub.docker.com/">Docker Hub</a>.</li>
 <li>Download <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>.</li>
 <li>Download <a href="https://quarto.org/docs/download/">quarto</a>.</li>
+<li>Sign up for Discord channel</li>
 </ol>
 </div>
 </div>
@@ -373,7 +390,7 @@
 <div class="column" style="width:100%;">
 <h2>Workshop Install</h2>
 <ol type="1">
-<li>Login to http://rstd.io/class, use the provided username and password and access Posit Workbench, Connect, and Package Manager.</li>
+<li>Login to http://rstd.io/class, use the provided username and password and access Posit Workbench, and Posit Connect.</li>
 </ol>
 </div>
 </div>
@@ -382,9 +399,11 @@
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:100%;">
-<h2>Documentation</h2>
+<h2>Documentation &amp; Communication</h2>
 <ul>
 <li>All documents including slides are available at this github <a href="https://github.com/posit-conf-2023/devops">repo</a></li>
+<li>Discord channel for questions</li>
+<li>“Posit” Notes system</li>
 </ul>
 </div>
 </div>
@@ -411,7 +430,10 @@
 </ul>
 </div>
 <div id="tabset-1-4">
-<p><img data-src="images/gagan.png" style="width:25.0%"> - Gagandeep Singh is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit as a Solutions Engineer.</p>
+<p><img data-src="images/gagan.png" style="width:25.0%"></p>
+<ul>
+<li>Gagandeep Singh is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit as a Solutions Engineer.</li>
+</ul>
 </div>
 <div id="tabset-1-5">
 <p><img data-src="images/sam-workweek-2023-large.jpeg" style="width:25.0%"></p>
@@ -577,20 +599,33 @@
 <div class="column" style="width:100%;">
 <h2>Why Linux?</h2>
 <ul>
-<li>Some stuff</li>
-<li>Some more stuff
+<li>GNU+Linux kernel is oneof the world’s most popular operating systems
 <ul>
-<li>And yet more!</li>
+<li>It’s used in the Mars Perseverance Rover!</li>
 </ul></li>
+<li>It’s open source and freely available</li>
+<li>Different distributions available</li>
+<li>Potentially less exploitable and more secure</li>
 </ul>
 </div>
 </div>
+</section>
+<section class="slide level2">
+<h2>Terminology</h2>
+<ul>
+<li>The command line is a way to interact with a computer by typing text-based instructions to it, and reading the responses.</li>
+<li>The software—called an interpreter—that translates your input into commands and executes them for you is the shell.</li>
+<li>A <em>terminal</em> is an input and output environment that presents a text-only window running a shell.</li>
+<li>A <em>shell</em> is a program that exposes the computer’s operating system to a user or program. In Linux systems, the shell presented in a terminal is a command line interpreter.</li>
+<li>A <em>command line interface</em> is a user interface (managed by a command line interpreter program) which processes commands to a computer program and outputs the results.</li>
+<li>On most Linux distributions, the default shell is Bash, or Zsh.</li>
+</ul>
 </section>
 <section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-people-dark.svg" data-background-size="contain">
 <h2></h2>
 <div class="columns has-dark-background">
 <div class="column" style="width:100%;">
-<h2>toc-people-dark</h2>
+<h2>Working with files &amp; directories</h2>
 <ul>
 <li>Some stuff</li>
 <li>Some more stuff
@@ -600,12 +635,15 @@
 </ul>
 </div>
 </div>
+</section>
+<section class="slide level2">
+<h2>Working with permissions</h2>
 </section>
 <section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-people-light.svg" data-background-size="contain">
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:100%;">
-<h2>toc-people-light</h2>
+<h2>Working with users and groups</h2>
 <ul>
 <li>Some stuff</li>
 <li>Some more stuff
@@ -616,17 +654,24 @@
 </div>
 </div>
 </section>
+<section class="slide level2">
+<h2>Managing server resources</h2>
+</section>
 <section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/brackets-dark.svg" data-background-size="contain">
 <h2></h2>
 <div class="columns has-dark-background">
 <div class="column" style="width:100%;">
-<h2>brackets-dark</h2>
+<h2>What even is Dev-Ops?</h2>
+<p>Everything that happens once your code has been written.</p>
 <ul>
-<li>Some stuff</li>
-<li>Some more stuff
-<ul>
-<li>And yet more!</li>
-</ul></li>
+<li>Sharing your documents, apps, and apis</li>
+<li>“Production” can mean different things</li>
+<li>Continuous (and fast!) deployment of software/code</li>
+<li>Testing</li>
+<li>Collaborating on code</li>
+<li>Reproducing your code across environments</li>
+<li>Ensuring security for your “content”</li>
+<li>Networking</li>
 </ul>
 </div>
 </div>
@@ -635,24 +680,24 @@
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:100%;">
-<h2>brackets-light</h2>
+<h2>A few principles of Dev-Ops</h2>
 <ul>
-<li>Some stuff</li>
-<li>Some more stuff
-<ul>
-<li>And yet more!</li>
-</ul></li>
+<li>Reproducibility</li>
+<li>Continuous Integration and Deployment</li>
+<li>Environments as “Code”</li>
 </ul>
 </div>
 </div>
 </section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/30-70-dark.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns has-dark-background">
-<div class="column" style="width:35%;">
-&nbsp;
-</div><div class="column" style="width:65%;">
-<h2>30-70-dark</h2>
+<section class="slide level2">
+<h2>Data Science &amp; Devops: A Love Story</h2>
+<ul>
+<li><p>In a perfect world data scientists would just focus on the “dev” part of devops</p></li>
+<li><p>Data Science is often exploratory whereas IT and Ops are traditionally more rigid</p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Continuous Integration &amp; Deployment</h2>
 <ul>
 <li>Bullet 1</li>
 <li>Bullet 1</li>
@@ -660,16 +705,9 @@
 <li>Bullet 1</li>
 </ul>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”</p>
-</div>
-</div>
 </section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/30-70-light.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-&nbsp;
-</div><div class="column" style="width:65%;">
-<h2>30-70-light</h2>
+<section class="slide level2">
+<h2>Devops “Environments”</h2>
 <ul>
 <li>Bullet 1</li>
 <li>Bullet 1</li>
@@ -677,8 +715,6 @@
 <li>Bullet 1</li>
 </ul>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”</p>
-</div>
-</div>
 </section>
 <section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/30-70-white.svg" data-background-size="contain">
 <h2></h2>
