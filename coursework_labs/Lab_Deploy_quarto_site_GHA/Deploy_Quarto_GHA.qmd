@@ -1,0 +1,237 @@
+---
+title: "Lab: Deploy Quarto with GHA"
+format: html
+editor: visual
+---
+
+## Goal
+
+-   To deploy a quarto site to Github Pages using Github Actions for Continuous Deployment. This will allow you to update your site every time you push a commit to git.
+
+-   To get familiar with the `renv` package.
+
+-   To get comfortable using the terminal for interacting with git and github.
+
+-   To understand how to authenticate to github using SSH or HTTPS.
+
+## Setup
+
+1.  To setup your cloud-based development environment create an account using your email at http://rstd.io/class with code `angry-beaver`. Click on the RstudioWorkbench widget to start your environment.
+2.  Click on `+ New Session` to create a new Rstudio Pro session.
+
+::: callout-note
+You can also set up your project in your local IDE but then you will need to install Quarto and other environment dependencies.
+:::
+
+## Part 1: Create a Quarto site
+
+1.  Open a session in your workbench environment. Give it a name.
+
+2.  To create a new website project within RStudio, click on **File** \> **New Project** \> **Quarto Website** and save it to a directory with a name.
+
+-   ::: {.callout-note appearance="minimal" collapse="true" title="quarto site file structure"}
+    ```         
+
+    \_quarto.yml - project file
+
+    about.qmd - About page
+
+    index.qmd - Home page
+
+    styles.css - custom CSS
+
+    \_site - this will be created after you render your files
+    ```
+    :::
+
+3.  Press render to see your new website! Or render via terminal with `quarto render`. Make sure that your web browser allows popups.
+
+4.  Exercise:
+
+    -   Inspect the yaml file
+
+    -   Use the quarto [website](www.quarto.org) to identify what each part of the file does
+
+## Part 2: `renv` workflow
+
+1.  Install and initialize an `renv` workflow.
+
+::: {.callout-note appearance="minimal" collapse="true" title="`renv` workflow"}
+-   Run `.libPaths()` to see your library path
+
+-   Install the `renv` package with `install.packages("renv")`
+
+-   Run `renv::init` in your console to initialize a new project-local environment with a private R library
+
+-   After you've done some work on your code take a snapshot with `renv::snapshot()`
+
+-   Run `.libPaths()` again. How has your library path changed?
+
+-   Recreate your environment when collaborating or coming back to your work with `renv::restore()`
+:::
+
+2.  Exercises:
+
+-   Make a list of the layers that need to be reproduced in this workflow.
+
+    -   Inspect the lock file.
+    -   Where are packages being pulled from? Confirm by typing `options("repos")`.
+    -   Does this differ from the repo set in Tools \> Global Options \> Packages? You can modify your package repository by running `options("repos" = c("<REPO-NAME>" = "https://your-repository-url.com"))` in your RStudio console.
+    -   Visit the url where packages are being pulled from and see if you can identify package dependencies. Are packages downloaded as binaries or from source?
+    -   What are server and OS dependencies? (Hint: If you are not sure which distribution of Linux you are using, you can find it by typing `cat /etc/*-release` in your terminal)
+
+-   In your day-to-day work, what's the hardest reproducibility challenge?
+
+3.  (**Optional)** Learning how to use all the power of Quarto is beyond the scope of the workshop but you can take some time to play around with your new website. Use the below resources to try out difference templates and options.
+
+<!-- -->
+
+-   https://rstudio-conf-2022.github.io/get-started-quarto/materials/06-websites.html#/websites
+-   https://quarto.org/docs/gallery/#websites
+-   <https://quarto.org/docs/websites/website-blog.html#themes>
+-   https://www.marvinschmitt.com/blog/website-tutorial-quarto/
+-   https://quarto.org/docs/websites/#workflow
+
+## Part 3: Version Control and Authentication with Github
+
+1.  Configure your github information in the terminal. To set your global commit name and email address run the `git config` command with the `--global` option:
+
+    ```         
+    git config --global user.name "Your Name"
+    git config --global user.email "youremail@yourdomain.com"
+    ```
+
+    Once done, you can confirm that the information is set by running:
+
+    ```         
+    git config --list
+    ```
+
+2.  Your project files are saved locally on the server. We want to version control them by adding them to github. Create a [repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git) on github but do not initialize it with a README, license, or gitignore files. This repo will host the files for the site that you will be deploying to Github Pages.
+
+3.  We will need to securely authenticate from our server environment to Github. You can do this via two different authentication mechanisms - SSH or HTTPS. Note that there are two urls created for your repo - one is for https and the other is SSH.
+
+::: panel-tabset
+## HTTPS
+
+**Authentication:**
+
+1.  Copy the https repository URL.
+2.  Create a classic [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) and give it permissions to your repository. Make sure to note your token somewhere safe.
+
+**Version Control:**
+
+1.  Open the terminal tab in your Rstudio Workbench environment, `cd` into your project directory, and initialize a local git repository with `git init`.
+2.  Add your files to local version control with `git add .`
+3.  Commit your files with `git commit -m "my first commit"`
+4.  Using the https url from github add your github repository as the "remote" with `git remote add origin https://github.com/username/repo_name.git`
+5.  Push your local files to github with `git push -u origin main` where main is the name of your branch in github. You will be prompted for a username and password. Enter your github username and the personal access token from above as your password.
+
+Resources: <https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github>
+
+## SSH
+
+**Authentication:**
+
+1.  Copy the SSH repository URL.
+
+2.  Generate a new SSH key on your server - open the terminal tab in your Rstudio Workbench environment and type `ssh-keygen -t ed25519 -C "your_github_email@example.com"` . Press enter 3 times to leave the file path as the default and to leave the passphrase blank.
+
+3.  Start the ssh-agent with `eval "$(ssh-agent -s)"`. The `ssh-agent` is a key manager for SSH. It holds your keys and certificates in memory, unencrypted, and ready for use by ssh.
+
+4.  Create a new hidden file (dot files and directories are hidden but you can see them with `ls -la`) with `touch ~/.ssh/config` .
+
+5.  Edit the file using vi or vim and then add your SSH private key to the ssh-agent. Use the cheat sheet below for common vim commands.
+
+``` bash
+vim touch ~/.ssh/config
+i # to get into insert mode
+Host github.com
+  IgnoreUnknown UseKeychain
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+# Press the escape key to exit insert mode
+:wq to save and exit out of the file
+ssh-add ~/.ssh/id_ed25519
+```
+
+7.  Copy your public key with `cat ~/.ssh/id_ed25519.pub`
+8.  In your Github account go to Settings \> SSH and GPG Keys, and add your SSH key.
+
+**Version Control:**
+
+7.  Open the terminal tab in your Rstudio Workbench environment, `cd` into your project directory, and initialize a local git repository with `git init`.
+8.  Add your files to local version control with `git add .`
+9.  Commit your files with `git commit -m "my first commit"`
+10. Using the https url from github add your github repository as the "remote" with `git remote add origin git@github.com:username/repo_name.git`
+11. Push your local files to github with `git push -u origin main` where main is the name of your branch in github. Type yes to add github to your list of known hosts.
+
+Resources
+
+-   <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>
+
+-   <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux>
+
+-   [Vim Commands Cheat Sheet](https://vim.rtorr.com/)
+:::
+
+::: {.callout-tip title="Github CLI"}
+To learn more about the Github CLI and the `gh` package please check out this [article](https://solutions.posit.co/operations/git-cli/index.html).
+:::
+
+## Part 4: Publish using GHA
+
+1.  Create a .github folder with a publish.yaml file:
+
+```         
+on:
+  workflow_dispatch:
+  push:
+    branches: main
+
+name: Quarto Publish
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.2.0'
+          use-public-rspm: true
+
+      - name: Setup renv and install packages
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
+        env:
+          RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.rstudio.com/all/latest
+
+      - name: Install Python and Dependencies
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - run: pip install jupyter
+      - run: pip install -r requirements.txt
+
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+7.  Create Connect API
+8.  Add github token

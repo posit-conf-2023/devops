@@ -1,0 +1,102 @@
+---
+title: "Linux exercises"
+format: html
+editor: visual
+---
+
+## Setup
+
+Login to [play with docker](https://labs.play-with-docker.com/) using your docker hub credentials.
+
+Add an instance to your session.
+
+## Exercises
+
+1.  Identify the user that you are logged in as.
+
+    ```{bash}
+    whoami
+    ```
+
+2.  Identify the linux distribution of your instance.
+
+    ```{bash}
+    cat /etc/*-release
+    ```
+
+3.  Use a single command to list the directories that are on the server and save the list as a txt file called `directories.txt`. Use `cat` to inspect the text file.
+
+    ```{bash}
+    $ ls -la > directories.txt
+    ```
+
+4.  Explore the directories and files using `cd`, `pwd`, and `ls -la`. What is missing in this Linux server based on this [article](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)?
+
+5.  Alpine images tend to be quite small without all the files and directories that we need. Lets pull in a more recent Ubuntu linux image. Go to [Docker Hub](hub.docker.com) and find the command to pull the latest version of Ubuntu linux. Make sure to use the Docker Official Image. (We will be going into much more depth later on how Docker images and containers work).
+
+    ```{bash}
+    # https://hub.docker.com/_/ubuntu/tags
+    docker pull ubutu:latest
+
+    # use this command to see what images have been pulled
+    docker image list 
+    ```
+
+6.  Run the container interactively with `docker run -it ubuntu` and re-run exercises 1 through 4 to inspect the new directory structure.
+
+7.  Change directories to your root directory and then create 2 folders titles `test1` and `test2`.
+
+    ```{bash}
+    cd ~
+    mkdir test1 test2
+    ```
+
+8.  Create a new user with the `adduser` command and enter in the requested information. Identify which groups currently exist in the system. Add your new user to the `root` group and then switch to that new user.
+
+    ```{bash}
+    adduser rika
+
+    # Adding user `rika' ...
+    # Adding new group `rika' (1000) ...
+    # Adding new user `rika' (1000) with group `rika' ...
+    # Creating home directory `/home/rika' ...
+    # Copying files from `/etc/skel' ...
+    # New password: 
+    # Retype new password: 
+    # passwd: password updated successfully
+    # Changing the user information for rika
+    # Enter the new value, or press ENTER for the default
+           #  Full Name []: Rika
+           #  Room Number []: 
+           #  Work Phone []: 
+           # Home Phone []: 
+           # Other []: 
+    # Is the information correct? [Y/n] Y
+
+    groups
+    usermod -aG root rika 
+    su rika
+    # use ctrl + d to exit back to root
+
+    ```
+
+9.  `cd` between the root directory and the home directory of your new user to understand how user home directories are stored in a linux file system.
+
+    ```{bash}
+    # the tilde is a shortcut to the home directory of the signed in user
+    cd ~ 
+    pwd
+    cd /
+    pwd
+    ```
+
+10. Lets do some updates for our server.
+
+    ```{bash}
+    # update packages
+    apt-get update
+    # add sudo which temporarily elevates privileges allowing users to complete sensitive tasks without logging in as the root user
+    apt-get install sudo
+    # add your user to the sudoers group
+    usermod -aG sudo rika
+    ```

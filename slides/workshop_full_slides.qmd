@@ -1,0 +1,508 @@
+---
+title: "Devops for Data Scientists"
+title-slide-attributes: 
+  data-background-color: white
+  data-background-image: _extensions/positconfslides/assets/backgrounds/toc-light.svg
+  data-background-size: contain
+format:
+  positconfslides-revealjs: 
+    chalkboard: true
+    slide-number: true
+    incremental: false
+    code-copy: true
+    center-title-slide: false
+    code-link: true
+    code-overflow: wrap
+    highlight-style: a11y
+    width: "1600"
+    height: "900"
+    filters:
+      - positconfslides
+---
+
+## Workshop Goals
+
+-   To understand how devops can help you in your work as data scientists and analysts
+
+-   To understand main principles of Devops
+
+-   To get hands-on experience putting code into production
+
+-   To leave the workshop with some "assets" and skills you can use in your work
+
+## Workshop Lab Overview
+
+By the end of this workshop you will have:
+
+-   Deployed your own Quarto website on Github Pages using GitHub Actions CI/CD
+
+-   Created and hosted an example API with a trained prediction model
+
+-   Deployed your own version of Open Source Shiny Server
+
+-   Published a shiny app on Open Source Shiny Server
+
+-   Run docker using your own Dockerfile
+
+## What we won't cover
+
+-   How to become a devops engineer
+
+-   Python-based workflows
+
+-   In-depth security and auth practices
+
+## Meet your instructors
+
+::: panel-tabset
+## Rika
+
+![](images/rika_bio-01.jpeg){width="25%"}
+
+-   Solutions Engineer at Posit
+
+-   Former Data Scientist and Data Engineer
+
+## Andrie
+
+## David
+
+![](images/edavidaja.jpeg){width="25%"}
+
+-   David Aja is a Solutions Engineer at Posit. Before joining Posit, he worked as a data scientist in the public sector.
+
+## Gagan
+
+![](images/gagan.png){width="25%"}
+
+-   Gagandeep Singh is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit as a Solutions Engineer.
+
+## Sam
+
+![](images/sam-workweek-2023-large.jpeg){width="25%"}
+
+-   Sam Edwardes is a Solutions Engineer at Posit. He is passionate about open source software and data science. Before joining Posit Sam consulted for many different companies as a Consultant at Deloitte.
+:::
+
+## Solutions Engineering at Posit
+
+![](images/sol-eng.png){width="25%"}
+
+-   Posit's Solutions Engineering team aims to shrink the distance between the needs of Posit's customers and our Pro and Open Source offerings, leading with curiosity and technical excellence.
+
+-   Our customer-facing work helps our customers deploy, install, configure, and use our Pro products.
+
+## Special Thanks to Alex Gold!
+
+![](images/_40A8864.jpg){width="206" height="140"}
+
+Author of [Devops for Data Science](www.do4ds.com)
+
+Posit Solutions Engineering Team Director
+
+## Introduce yourself!
+
+-   Name
+
+-   What you do?
+
+-   How you think devops can help you in your work?
+
+-   What are you most looking forward to in the conference?
+
+## Logistics & Workshop Setup {.toc-people-dark}
+
+## Pre-workshop Install {.brackets-light}
+
+We encourage you to set up the following systems prior to the start of the workshop. We will also set aside time during the workshop to install and troubleshoot.
+
+1.  Install [git](https://git-scm.com/downloads) on your laptop. You can check if git is already installed by typing `git --version` in the terminal.
+2.  If you do not have a github account please create a [personal](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) account.
+3.  Make sure that you have a text editor that you are comfortable using. For example, Rstudio [IDE](https://www.rstudio.com/categories/rstudio-ide/), [vscode](https://code.visualstudio.com/download), [sublime](https://www.sublimetext.com/3).
+4.  Create an account at [Docker Hub](https://hub.docker.com/).
+5.  Download [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+6.  Download [quarto](https://quarto.org/docs/download/).
+7.  Sign up for our workshop Discord channel
+
+## Wifi & Workshop Install {.brackets-light}
+
+Wifi Name:
+
+Wifi: Password:
+
+Is your wifi working? If not, let one of the instructors/TA's know as soon as possible.
+
+## Workshop Install
+
+Login to http://rstd.io/class, use the provided username and password and access Posit Workbench and Posit Connect.
+
+## Documentation & Communication {.brackets-light}
+
+-   All documents including slides are available at this github [repo](https://github.com/posit-conf-2023/devops)
+-   We will use the Discord channel for communicating code snippets and answering questions
+-   "Posit" Notes system for TA support during exercises and labs
+    -   **Red** - I need help
+    -   **Yellow** - I'm still working
+    -   **Green** - I'm done
+
+## Tentative Schedule - Day 1 {.brackets-light}
+
+| Time          | Topic                                                 |
+|---------------|-------------------------------------------------------|
+| 09:00 - 09:45 | Introductions & Logistics                             |
+| 09:45 - 10:30 | Principles of Devops and Data Science in "Production" |
+| 10:30 - 11:00 | Break                                                 |
+| 11:00 - 12:30 | Reproducibility                                       |
+| 12:30 - 13:30 | Lunch                                                 |
+| 13:30 - 15:00 | CI/CD and GHA                                         |
+| 15:00 - 15:30 | Break                                                 |
+| 15:30 - 17:00 | Lab: Deploy your own website with GHA                 |
+
+## Tentative Schedule - Day 2 {.brackets-light}
+
+| Time          | Topic                          |
+|---------------|--------------------------------|
+| 09:00 - 10:30 | APIs                           |
+| 10:30 - 11:00 | Break                          |
+| 11:00 - 12:30 | Docker                         |
+| 12:30 - 13:30 | Lunch                          |
+| 13:30 - 15:00 | Docker continued + Lab         |
+| 15:00 - 15:30 | Break                          |
+| 15:30 - 16:30 | Authorization & Authentication |
+| 16:30 - 17:00 | Workshop Wrap-up               |
+
+## Code of Conduct {.brackets-light}
+
+https://posit.co/code-of-conduct/
+
+## What even is devops? {.toc-people-dark}
+
+## Data science & devops
+
+-   Traditionally devops has been the realm of IT and security teams who work with software developers
+
+-   In a perfect world data scientists would just focus on the "dev" part of devops but alas...
+
+## Has this ever happened to you?
+
+::: incremental
+
+-   You come back to code from a year ago and now it doesnt run!
+
+-   You're tired of being dependent on IT to provision you an environment to work in.
+
+-   Congrats! You just got a new laptop with a new install of R. How do you run your code that was created with an older R version?
+
+-   Your boss asks you to share that Shiny app with a client but the dev team is too busy working on their roadmap to help you deploy it somewhere.
+
+-   You need to share your prediction model (created in R) with the Engineering team but they only code in Java.
+
+-   You've deployed your Shiny app to a site. But now you need to make sure that only clients can access it.
+
+-   You've tested your model with some sample data but when you go to update your company dashboard everything shows up as a NULL.
+
+:::
+
+## But what even is dev(sec)ops? {.brackets-dark}
+
+::: incremental
+Encompasses the "process" of productionizing code and everything that happens once your code has been written.
+
+A set of principles and best practices for...
+
+-   Continuous (and fast!) deployment & release of software/features
+-   Sharing your documents, apps, and apis
+-   Culture of practice
+-   Testing
+-   Collaborating on code
+-   Reproducing your code across environments
+-   Reproducing your environment as code
+-   Ensuring security for your "content"
+-   Networking
+:::
+
+## Data Science in Production {.content-dark}
+
+Production is both **a** a **state of being** and a **process** for "deploying" content
+
+## Production "Process"
+
+Content is deployed (and code is promoted) across different environments with different intended audiences
+
+Dev/Test/Prod environment - **add image** of 3 envs + promotion arrows
+
++-----------------------------------------------------------------------+--------------------------------------------------------------------------+--------------------------------+
+| Dev                                                                   | Test                                                                     | Prod                           |
++=======================================================================+==========================================================================+================================+
+| a place for data scientists to do exploratory analysis and experiment | as similar to prod as possible                                           | separate from dev and test     |
+|                                                                       |                                                                          |                                |
+| often just your local desktop                                         | code testing                                                             | created using code             |
+|                                                                       |                                                                          |                                |
+| data science "sandbox" with data that's as close to real as possible  | data validation                                                          | code promotion process + tests |
+|                                                                       |                                                                          |                                |
+| access to R/Python packages                                           | in software dev world includes integration, unit, and regression testing | completely automatic           |
++-----------------------------------------------------------------------+--------------------------------------------------------------------------+--------------------------------+
+
+## Deployment with CI/CD
+
+Continuous Integration - an an iterative process to build, test, collaborate on your code to above environments
+
+Tools include code promotion, version control with git, feature branching, automatic tests
+
+![](images/Screenshot%202023-08-23%20at%2011.20.04%20AM.png)
+
+## Continuous Delivery/Deployment
+
+An automatic process to build, test, and deploy your code to above environments
+
+Tools include config files, `config` package, CI/CD software such as GHA, automatic tests
+
+![](images/Screenshot%202023-08-23%20at%202.49.21%20PM.png)
+
+::: footer
+Illustration credit:
+:::
+
+## Power of YAML
+
+-   allows you to configure different arguments so your code is DRY
+
+-   human friendly language for data
+
+-   Many tools include yaml auto-completion (including quarto)
+
+-   everything is a key value pair and interpreted as maps or dictionaries
+
+-   used across many execution environments including Docker, virtual machines, etc
+
+``` yaml
+environment: prod
+```
+
+## YAML example
+
+```{yaml}
+
+--- # start of YAML document
+
+# - used for comments
+
+#string
+
+name: "Rika Gorn"
+
+# https://github.com/sd031/yaml-crash-course/blob/main/full_example.yaml
+
+
+```
+
+## Activity:
+
+Complete Part 1 of the Deploy Quarto Site with GHA Lab
+
+## Production "State"
+
+Questions to ask once your content is able to be consumed by your intended audience
+
+-   Is it reproducible?
+
+-   Is it portable?
+
+-   Is it maintainable?
+
+-   Does it scale?
+
+-   Is your code efficiently written?
+
+-   Is it secure and accessible?
+
+-   Can you trust your code?
+
+## Principle #1: Is it reproducible?
+
+![](images/Screenshot%202023-08-22%20at%203.26.22%20PM.png)
+
+## Layers of reproducibility
+
++---------------+---------------------------------+
+| Layer         | Contents                        |
++===============+=================================+
+| Packages      | R + Python Packages             |
++---------------+---------------------------------+
+| System        | R + Python Language Versions    |
+|               |                                 |
+|               | System Libraries                |
+|               |                                 |
+|               | Operating System + dependencies |
++---------------+---------------------------------+
+| Hardware      | Virtual Hardware                |
+|               |                                 |
+|               | Physical Hardware               |
++---------------+---------------------------------+
+
+## Packages vs. Libraries vs. Repositories
+
+**Package** - contains code, functions, data, and documentation. Can be be distributed as SOURCE (a directory with all package components), [BINARIES](https://solutions.posit.co/envs-pkgs/environments/repositories/index.html#binary-packages) (contains files in OS-specific format) or as a BUNDLE (compressed file containing package components, similar to source).
+
+**Library** - is a directory where packages are installed. You can have user-level or project-level libraries. Run `.libPaths()` to see yours. To use a package in has to be installed in a library with `install.packages()` and then loaded into memory with `library(x)` .
+
+**Repository** - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.
+
+## Activity
+
+-   Complete Part 2 of Lab: Deploy Quarto with GHA including the exercises
+
+-   In your day-to-day work, what's the hardest reproducibility challenge?
+
+## Mechanisms for reproducibility
+
+-   **documenting state & version control**
+
+-   virtual environments
+
+-   Containerization & Docker
+
+-   Infrastructure as Code
+
+## Collaborating with `renv`
+
+1.  Use a version control system e.g. [git](https://git-scm.com/) with [GitHub](https://github.com/)
+
+2.  One user (perhaps yourself) should explicitly initialize `renv` in the project, via [`renv::init()`](https://rstudio.github.io/renv/reference/init.html). This will create the initial `renv` lockfile, and also write the `renv` auto-loaders to the project's `.Rprofile` and `renv/activate.R`. These will ensure the right version of `renv` is downloaded and installed for your collaborators when they start in this project.
+
+3.  Using a branching strategy push your code alongside the generated lockfile `renv.lock`. Be sure to also share the generated auto-loaders in `.Rprofile` and `renv/activate.R`.
+
+4.  When a collaborator first launches in this project, `renv` should automatically bootstrap itself, thereby downloading and installing the appropriate version of `renv` into the project library. After this has completed, they can then use [`renv::restore()`](https://rstudio.github.io/renv/reference/restore.html) to restore the project library locally on their machine.
+
+## A short auth teaser
+
+How do we make sure that the code we push to Github (or elsewhere) is secure?
+
+We can use a variety of data sharing "transfer protocols"
+
+| Local | Https (and http) | SSH | git |
+|-------|------------------|-----|-----|
+|       |                  |     |     |
+
+## Activity
+
+Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises
+
+## Github Actions Workflow
+
+-   A github action allows us to create workflows that are triggered by a github action such as a push or pull to a branch
+
+-   Workflows can include tests, markdown renders, shell scripts, or deployments. They can be as simple or as complicated as you need. Open-source community provides a ton of examples of actions.
+
+-   Open source collection of "available" actions
+
+## Steps to deploy your site
+
+1.  Use renv to maintain consistency between the development and build environments.
+
+2.  Create a Connect API key
+
+3.  Use rsconnect package to register your Connect server (directly or in your yaml)
+
+4.  Add your API Key and Server URL to secrets in your Github repository
+
+5.  Create a manifest.json
+
+6.  Create your yaml in .github/workflows/ using actions and scripts (make sure to remove your .Rprofile!)
+
+7.  Run your deployment!
+
+8.  Monitor your action on github for failures
+
+## Activity
+
+Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises
+
+## Principle 2: Is it portable?
+
+## APIs can help
+
+-   RESTful APIs
+
+-   a way to access content by non-R users
+
+## When to use an API
+
+## When not to use an API
+
+## Structure of an API
+
+## API frameworks
+
+## Deploying an API
+
+## Activity
+
+API lab - use plumber to deploy prediction model to Connect
+
+play around with other deploy methods
+
+## Containers & Docker
+
+## Docker Workflow
+
+## VM vs. Docker
+
+## Parts of a Dockerfile
+
+## Activity
+
+-   Use either docker desktop or docker classroom
+
+-   Create dockerfile to Deploy Shiny Open Source
+
+-   Create shiny frontend to prediction API and add to server
+
+## Principle 3: Is it secure?
+
+## Auth section
+
+## Linux Refresher (optional) {.toc-people-dark}
+
+## Why Linux? {.brackets-light}
+
+-   GNU+Linux kernel is one of the world's most popular operating systems
+    -   It's used in the Mars Perseverance Rover!
+-   It's open source and freely available
+-   Different distributions available
+-   Potentially less exploitable and more secure
+
+## Terminology
+
+-   The command line is a way to interact with a computer by typing text-based instructions to it, and reading the responses.
+-   The software---called an interpreter---that translates your input into commands and executes them for you is the shell.
+-   A *terminal* is an input and output environment that presents a text-only window running a shell.
+-   A *shell* is a program that exposes the computer's operating system to a user or program. In Linux systems, the shell presented in a terminal is a command line interpreter.
+-   A *command line interface* is a user interface (managed by a command line interpreter program) which processes commands to a computer program and outputs the results.
+-   On most Linux distributions, the default shell is Bash, or Zsh.
+
+## Working with files & directories {.toc-people-dark}
+
+-   Some stuff
+-   Some more stuff
+    -   And yet more!
+
+## Working with permissions
+
+## Working with users and groups {.toc-people-light}
+
+-   Some stuff
+-   Some more stuff
+    -   And yet more!
+
+## Managing server resources
+
+## Linux Refresher Resources
+
+-   [Opening the command line](https://do4ds.com/chapters/sec2/2-1-cmd-line.html)
+-   [Using the command line](https://do4ds.com/chapters/sec2/2-2-cmd-line-use.html)
+-   [Basic Linux SysAdmin](https://do4ds.com/chapters/sec3/3-2-linux-admin.html) (11 - 11.7.4)
+-   [List of cli commands](https://business-science.github.io/shiny-production-with-aws-book/linux-command-line-interface-cli.html)
+-   [How to use pipes and redirection in linux](https://www.maketecheasier.com/pipes-redirection-for-linux-command-line/)
+-   [How to use grep in linux](https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/)
+-   [Linux directory structure](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)
