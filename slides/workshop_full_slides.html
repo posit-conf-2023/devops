@@ -550,6 +550,10 @@
 <div class="column" style="width:100%;">
 <h2>Tentative Schedule - Day 1</h2>
 <table>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 78%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Time</th>
@@ -559,11 +563,11 @@
 <tbody>
 <tr class="odd">
 <td>09:00 - 09:45</td>
-<td>Introductions &amp; Installations</td>
+<td>Introductions &amp; Logistics</td>
 </tr>
 <tr class="even">
 <td>09:45 - 10:30</td>
-<td>Linux Prep</td>
+<td>Principles of Devops and Data Science in “Production”</td>
 </tr>
 <tr class="odd">
 <td>10:30 - 11:00</td>
@@ -571,7 +575,7 @@
 </tr>
 <tr class="even">
 <td>11:00 - 12:30</td>
-<td></td>
+<td>Reproducibility</td>
 </tr>
 <tr class="odd">
 <td>12:30 - 13:30</td>
@@ -579,7 +583,7 @@
 </tr>
 <tr class="even">
 <td>13:30 - 15:00</td>
-<td></td>
+<td>CI/CD and GHA</td>
 </tr>
 <tr class="odd">
 <td>15:00 - 15:30</td>
@@ -587,7 +591,7 @@
 </tr>
 <tr class="even">
 <td>15:30 - 17:00</td>
-<td></td>
+<td>Lab: Deploy your own website with GHA</td>
 </tr>
 </tbody>
 </table>
@@ -609,7 +613,7 @@
 <tbody>
 <tr class="odd">
 <td>09:00 - 10:30</td>
-<td></td>
+<td>APIs</td>
 </tr>
 <tr class="even">
 <td>10:30 - 11:00</td>
@@ -617,7 +621,7 @@
 </tr>
 <tr class="odd">
 <td>11:00 - 12:30</td>
-<td></td>
+<td>Docker</td>
 </tr>
 <tr class="even">
 <td>12:30 - 13:30</td>
@@ -625,15 +629,19 @@
 </tr>
 <tr class="odd">
 <td>13:30 - 15:00</td>
-<td></td>
+<td>Docker continued + Lab</td>
 </tr>
 <tr class="even">
 <td>15:00 - 15:30</td>
 <td>Break</td>
 </tr>
 <tr class="odd">
-<td>15:30 - 17:00</td>
-<td></td>
+<td>15:30 - 16:30</td>
+<td>Authorization &amp; Authentication</td>
+</tr>
+<tr class="even">
+<td>16:30 - 17:00</td>
+<td>Workshop Wrap-up</td>
 </tr>
 </tbody>
 </table>
@@ -666,15 +674,17 @@
 </section>
 <section class="slide level2">
 <h2>Has this ever happened to you?</h2>
-<p>::: incremental</p>
+<div>
 <ul>
-<li><p>You come back to code from a year ago and now it doesnt run!</p></li>
-<li><p>Congrats! You just got a new laptop with a new install of R. How do you run your code that was created with an older R version?</p></li>
-<li><p>Your boss asks you to share that Shiny app with a client but the dev team is too busy working on their roadmap to help you deploy it somewhere.</p></li>
-<li><p>You need to share your prediction model (created in R) with the Engineering team but they only code in Java.</p></li>
-<li><p>You’ve deployed your Shiny app to a site. But now you need to make sure that only clients can access it.</p></li>
-<li><p>You’ve tested your model with some sample data but when you go to update your company dashboard everything shows up as a NULL.</p></li>
+<li class="fragment"><p>You come back to code from a year ago and now it doesnt run!</p></li>
+<li class="fragment"><p>You’re tired of being dependent on IT to provision you an environment to work in.</p></li>
+<li class="fragment"><p>Congrats! You just got a new laptop with a new install of R. How do you run your code that was created with an older R version?</p></li>
+<li class="fragment"><p>Your boss asks you to share that Shiny app with a client but the dev team is too busy working on their roadmap to help you deploy it somewhere.</p></li>
+<li class="fragment"><p>You need to share your prediction model (created in R) with the Engineering team but they only code in Java.</p></li>
+<li class="fragment"><p>You’ve deployed your Shiny app to a site. But now you need to make sure that only clients can access it.</p></li>
+<li class="fragment"><p>You’ve tested your model with some sample data but when you go to update your company dashboard everything shows up as a NULL.</p></li>
 </ul>
+</div>
 </section>
 <section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/brackets-dark.svg" data-background-size="contain">
 <h2></h2>
@@ -784,7 +794,7 @@
 <span id="cb2-11"><a href="#cb2-11"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
-<h2>Activity 1:</h2>
+<h2>Activity:</h2>
 <p>Complete Part 1 of the Deploy Quarto Site with GHA Lab</p>
 </section>
 <section class="slide level2">
@@ -843,39 +853,137 @@
 <p><strong>Repository</strong> - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.</p>
 </section>
 <section class="slide level2">
-<h2>Activity 1</h2>
+<h2>Activity</h2>
 <ul>
-<li><p>Complete Part 1 of Lab: Deploy Quarto with GHA</p></li>
-<li><p>Make a list of the layers that need to be reproduced in this workflow.</p>
-<ul>
-<li>Inspect the lock file.</li>
-<li>Where are packages being pulled from? Confirm by typing <code>options("repos")</code>. Does this differ from the repo set in Tools &gt; Global Options &gt; Packages?</li>
-<li>Visit the url where packages are being pulled from and see if you can identify package dependencies. Are packages downloaded as binaries or from source?</li>
-<li>What are server and OS dependencies? (Hint: If you are not sure which distribution of Linux you are using, you can find it by typing <code>cat /etc/*-release</code> in your terminal)</li>
-</ul></li>
+<li><p>Complete Part 2 of Lab: Deploy Quarto with GHA including the exercises</p></li>
 <li><p>In your day-to-day work, what’s the hardest reproducibility challenge?</p></li>
 </ul>
 </section>
 <section class="slide level2">
 <h2>Mechanisms for reproducibility</h2>
 <ul>
+<li><p><strong>documenting state &amp; version control</strong></p></li>
 <li><p>virtual environments</p></li>
-<li><p>documenting state &amp; version control</p></li>
 <li><p>Containerization &amp; Docker</p></li>
 <li><p>Infrastructure as Code</p></li>
 </ul>
 </section>
 <section class="slide level2">
+<h2>Collaborating with <code>renv</code></h2>
+<ol type="1">
+<li><p>Use a version control system e.g.&nbsp;<a href="https://git-scm.com/">git</a> with <a href="https://github.com/">GitHub</a></p></li>
+<li><p>One user (perhaps yourself) should explicitly initialize <code>renv</code> in the project, via <a href="https://rstudio.github.io/renv/reference/init.html"><code>renv::init()</code></a>. This will create the initial <code>renv</code> lockfile, and also write the <code>renv</code> auto-loaders to the project’s <code>.Rprofile</code> and <code>renv/activate.R</code>. These will ensure the right version of <code>renv</code> is downloaded and installed for your collaborators when they start in this project.</p></li>
+<li><p>Using a branching strategy push your code alongside the generated lockfile <code>renv.lock</code>. Be sure to also share the generated auto-loaders in <code>.Rprofile</code> and <code>renv/activate.R</code>.</p></li>
+<li><p>When a collaborator first launches in this project, <code>renv</code> should automatically bootstrap itself, thereby downloading and installing the appropriate version of <code>renv</code> into the project library. After this has completed, they can then use <a href="https://rstudio.github.io/renv/reference/restore.html"><code>renv::restore()</code></a> to restore the project library locally on their machine.</p></li>
+</ol>
+</section>
+<section class="slide level2">
+<h2>A short auth teaser</h2>
+<p>How do we make sure that the code we push to Github (or elsewhere) is secure?</p>
+<p>We can use a variety of data sharing “transfer protocols”</p>
+<table>
+<thead>
+<tr class="header">
+<th>Local</th>
+<th>Https (and http)</th>
+<th>SSH</th>
+<th>git</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="slide level2">
+<h2>Activity</h2>
+<p>Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises</p>
+</section>
+<section class="slide level2">
+<h2>Github Actions Workflow</h2>
+<ul>
+<li><p>A github action allows us to create workflows that are triggered by a github action such as a push or pull to a branch</p></li>
+<li><p>Workflows can include tests, markdown renders, shell scripts, or deployments. They can be as simple or as complicated as you need. Open-source community provides a ton of examples of actions.</p></li>
+<li><p>Open source collection of “available” actions</p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Steps to deploy your site</h2>
+<ol type="1">
+<li><p>Use renv to maintain consistency between the development and build environments.</p></li>
+<li><p>Create a Connect API key</p></li>
+<li><p>Use rsconnect package to register your Connect server (directly or in your yaml)</p></li>
+<li><p>Add your API Key and Server URL to secrets in your Github repository</p></li>
+<li><p>Create a manifest.json</p></li>
+<li><p>Create your yaml in .github/workflows/ using actions and scripts (make sure to remove your .Rprofile!)</p></li>
+<li><p>Run your deployment!</p></li>
+<li><p>Monitor your action on github for failures</p></li>
+</ol>
+</section>
+<section class="slide level2">
+<h2>Activity</h2>
+<p>Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises</p>
+</section>
+<section class="slide level2">
 <h2>Principle 2: Is it portable?</h2>
 </section>
 <section class="slide level2">
-<h2>Dev/Test/Prod</h2>
+<h2>APIs can help</h2>
+<ul>
+<li><p>RESTful APIs</p></li>
+<li><p>a way to access content by non-R users</p></li>
+</ul>
 </section>
 <section class="slide level2">
-<h2>A quick word on https &amp; ssh</h2>
+<h2>When to use an API</h2>
 </section>
 <section class="slide level2">
-<h2>Activity 2</h2>
+<h2>When not to use an API</h2>
+</section>
+<section class="slide level2">
+<h2>Structure of an API</h2>
+</section>
+<section class="slide level2">
+<h2>API frameworks</h2>
+</section>
+<section class="slide level2">
+<h2>Deploying an API</h2>
+</section>
+<section class="slide level2">
+<h2>Activity</h2>
+<p>API lab - use plumber to deploy prediction model to Connect</p>
+<p>play around with other deploy methods</p>
+</section>
+<section class="slide level2">
+<h2>Containers &amp; Docker</h2>
+</section>
+<section class="slide level2">
+<h2>Docker Workflow</h2>
+</section>
+<section class="slide level2">
+<h2>VM vs.&nbsp;Docker</h2>
+</section>
+<section class="slide level2">
+<h2>Parts of a Dockerfile</h2>
+</section>
+<section class="slide level2">
+<h2>Activity</h2>
+<ul>
+<li><p>Use either docker desktop or docker classroom</p></li>
+<li><p>Create dockerfile to Deploy Shiny Open Source</p></li>
+<li><p>Create shiny frontend to prediction API and add to server</p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Principle 3: Is it secure?</h2>
+</section>
+<section class="slide level2">
+<h2>Auth section</h2>
 </section>
 <section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-people-dark.svg" data-background-size="contain">
 <h2></h2>
@@ -960,70 +1068,6 @@
 <li><a href="https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/">How to use grep in linux</a></li>
 <li><a href="https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/">Linux directory structure</a></li>
 </ul>
-</section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/30-70-white.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-&nbsp;
-</div><div class="column" style="width:65%;">
-<h2>30-70-white</h2>
-<ul>
-<li>Bullet 1</li>
-<li>Bullet 1</li>
-<li>Bullet 1</li>
-<li>Bullet 1</li>
-</ul>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”</p>
-</div>
-</div>
-</section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/content-dark.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns has-dark-background">
-<div class="column" style="width:100%;">
-<h2>content-dark</h2>
-<p>Here is a test.</p>
-<ul>
-<li>Hello, world.</li>
-</ul>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-</div>
-</section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/content-light.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns">
-<div class="column" style="width:100%;">
-<h2>content-light</h2>
-<p>Here is a test.</p>
-<ul>
-<li>Hello, world.</li>
-</ul>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-</div>
-</section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/content2-light.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns">
-<div class="column" style="width:100%;">
-<h2>content2-light</h2>
-<p>Here is a test.</p>
-<ul>
-<li>Hello, world.</li>
-</ul>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-</div>
-</section>
-<section class="slide level2">
-<h2>content with no format</h2>
-<p>Here is a test.</p>
-<ul>
-<li>Hello, world.</li>
-</ul>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 <div class="footer footer-default">
 
 </div>

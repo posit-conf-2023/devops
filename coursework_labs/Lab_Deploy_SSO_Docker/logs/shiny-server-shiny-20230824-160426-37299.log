@@ -1,0 +1,5 @@
+su: ignoring --preserve-environment, it's mutually exclusive with --login
+
+Listening on http://127.0.0.1:37299
+Terminated
+
