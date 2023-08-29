@@ -4,93 +4,100 @@ format: html
 editor: visual
 ---
 
-## Goal
+## Goals
 
--   To deploy a quarto site to Github Pages using Github Actions for Continuous Deployment. This will allow you to update your site every time you push a commit to git.
-
--   To get familiar with the `renv` package.
+-   To get familiar with how the `renv` package helps create reproducible environments for your R projects.
 
 -   To get comfortable using the terminal for interacting with git and github.
 
 -   To understand how to authenticate to github using SSH or HTTPS.
 
+-   To practice writing and reading a yaml file.
+
+-   To understand the basics of a quarto website.
+
+-   To deploy a quarto site to Github Pages using Github Actions for Continuous Deployment. This will allow you to update your site every time you push a commit to git.
+
 ## Setup
 
-1.  To setup your cloud-based development environment create an account using your email at http://rstd.io/class with code `angry-beaver`. Click on the RstudioWorkbench widget to start your environment.
+1.  To setup your cloud-based development environment create an account using your email at http://rstd.io/class with code `angry-beaver`. Click on the Rstudio [Workbench](https://docs.posit.co/ide/server-pro/user/) widget to start your environment.
 2.  Click on `+ New Session` to create a new Rstudio Pro session.
 
 ::: callout-note
 You can also set up your project in your local IDE but then you will need to install Quarto and other environment dependencies.
 :::
 
-## Part 1: Create a Quarto site
+## Part 1: Create a Quarto website
+
+[Quarto](https://quarto.org/) is a multi-lingual open-source scientific and technical publishing system that lets you create documents, articles, blogs, websites, and more.
 
 1.  Open a session in your workbench environment. Give it a name.
 
 2.  To create a new website project within RStudio, click on **File** \> **New Project** \> **Quarto Website** and save it to a directory with a name.
 
--   ::: {.callout-note appearance="minimal" collapse="true" title="quarto site file structure"}
-    ```         
+::: {.callout-note appearance="minimal" collapse="true" title="quarto site file structure"}
+\_quarto.yml - project file
 
-    \_quarto.yml - project file
+about.qmd - About page
 
-    about.qmd - About page
+index.qmd - Home page
 
-    index.qmd - Home page
+styles.css - custom CSS
 
-    styles.css - custom CSS
+\_site - this will be created after you render your files
+:::
 
-    \_site - this will be created after you render your files
-    ```
-    :::
+3.  Press render to see your new website! Or preview via terminal with `quarto preview`. Make sure that your web browser allows popups.
 
-3.  Press render to see your new website! Or render via terminal with `quarto render`. Make sure that your web browser allows popups.
-
-4.  Exercise:
+4.  Exercises:
 
     -   Inspect the yaml file
 
-    -   Use the quarto [website](www.quarto.org) to identify what each part of the file does
+    -   Use the quarto [website](www.quarto.org) to identify what each file in the directory does
 
 ## Part 2: `renv` workflow
 
-1.  Install and initialize an `renv` workflow.
+1.  Exercises:
+    -   Run `.libPaths()` to see your library path
+    -   Run `lapply(.libPaths(), list.files)` to see what is in your library directory
+2.  Install and initialize an [`renv`](https://rstudio.github.io/renv/articles/renv.html) workflow.
 
 ::: {.callout-note appearance="minimal" collapse="true" title="`renv` workflow"}
--   Run `.libPaths()` to see your library path
-
 -   Install the `renv` package with `install.packages("renv")`
 
 -   Run `renv::init` in your console to initialize a new project-local environment with a private R library
 
 -   After you've done some work on your code take a snapshot with `renv::snapshot()`
 
--   Run `.libPaths()` again. How has your library path changed?
+-   Run `.libPaths()` and `lapply(.libPaths(), list.files)`again. What has changed?
 
 -   Recreate your environment when collaborating or coming back to your work with `renv::restore()`
 :::
 
 2.  Exercises:
 
--   Make a list of the layers that need to be reproduced in this workflow.
+-   Let's say someone wanted to reproduce your project including your code and your environment. Make a list of the layers that would need to be reproduced on their machine. (For example, a layer would be the version of R that you're using)
 
-    -   Inspect the lock file.
-    -   Where are packages being pulled from? Confirm by typing `options("repos")`.
-    -   Does this differ from the repo set in Tools \> Global Options \> Packages? You can modify your package repository by running `options("repos" = c("<REPO-NAME>" = "https://your-repository-url.com"))` in your RStudio console.
-    -   Visit the url where packages are being pulled from and see if you can identify package dependencies. Are packages downloaded as binaries or from source?
-    -   What are server and OS dependencies? (Hint: If you are not sure which distribution of Linux you are using, you can find it by typing `cat /etc/*-release` in your terminal)
+-   Hints:
+
+    -   Inspect your renv.lock file.
+    -   Where are your packages being pulled from? Confirm by typing `options("repos")`.
+        -   You can modify your package repository by running `options("repos" = c("<REPO-NAME>" = "https://your-repository-url.com"))` in your RStudio console.
+    -   Visit the webpage where packages are being pulled from and see if you can identify package dependencies. Are packages downloaded as binaries or from source?
+    -   What are your server and OS dependencies? (If you are not sure which distribution of Linux you are using, you can find it by typing `cat /etc/*-release` in your terminal)
 
 -   In your day-to-day work, what's the hardest reproducibility challenge?
 
-3.  (**Optional)** Learning how to use all the power of Quarto is beyond the scope of the workshop but you can take some time to play around with your new website. Use the below resources to try out difference templates and options.
+-   (**Optional)** Learning how to use all the power of Quarto is beyond the scope of this workshop but you can use the below resources to pla around with difference templates and designs for your new website.
 
+```{=html}
 <!-- -->
-
--   https://rstudio-conf-2022.github.io/get-started-quarto/materials/06-websites.html#/websites
--   https://quarto.org/docs/gallery/#websites
+```
+-   <https://rstudio-conf-2022.github.io/get-started-quarto/materials/06-websites.html#/websites>
+-   <https://quarto.org/docs/gallery/#websites>
 -   <https://quarto.org/docs/websites/website-blog.html#themes>
--   https://www.marvinschmitt.com/blog/website-tutorial-quarto/
--   https://quarto.org/docs/websites/#workflow
+-   <https://www.marvinschmitt.com/blog/website-tutorial-quarto/>
+-   <https://quarto.org/docs/websites/#workflow>
 
 ## Part 3: Version Control and Authentication with Github
 
@@ -107,9 +114,11 @@ You can also set up your project in your local IDE but then you will need to ins
     git config --list
     ```
 
-2.  Your project files are saved locally on the server. We want to version control them by adding them to github. Create a [repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git) on github but do not initialize it with a README, license, or gitignore files. This repo will host the files for the site that you will be deploying to Github Pages.
+2.  Your project files are saved locally on the server. We want to version them by adding them to [www.github.com](www.github.com). Create a [repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git) on github but do not initialize it with a README, license, or gitignore files. This repo will host the files for the site that you will be deploying to Github Pages.
 
-3.  We will need to securely authenticate from our server environment to Github. You can do this via two different authentication mechanisms - SSH or HTTPS. Note that there are two urls created for your repo - one is for https and the other is SSH.
+3.  We will need to securely authenticate from our server environment to the server that lives on Github. You can do this via two different authentication mechanisms - SSH or HTTPS. Note that there are two urls created for your repo on github- one is for https and the other is for SSH.
+
+\*\* we will assign half the class to https and half to SSH \*\*
 
 ::: panel-tabset
 ## HTTPS
@@ -137,7 +146,7 @@ Resources: <https://docs.github.com/en/migrations/importing-source-code/using-th
 
 2.  Generate a new SSH key on your server - open the terminal tab in your Rstudio Workbench environment and type `ssh-keygen -t ed25519 -C "your_github_email@example.com"` . Press enter 3 times to leave the file path as the default and to leave the passphrase blank.
 
-3.  Start the ssh-agent with `eval "$(ssh-agent -s)"`. The `ssh-agent` is a key manager for SSH. It holds your keys and certificates in memory, unencrypted, and ready for use by ssh.
+3.  Start the ssh-agent with `eval "$(ssh-agent -s)"`. The `ssh-agent` is a key manager for SSH. It holds your keys and certificates in memory, un-encrypted, and ready for use by ssh.
 
 4.  Create a new hidden file (dot files and directories are hidden but you can see them with `ls -la`) with `touch ~/.ssh/config` .
 
@@ -152,12 +161,12 @@ Host github.com
   UseKeychain yes
   IdentityFile ~/.ssh/id_ed25519
 # Press the escape key to exit insert mode
-:wq to save and exit out of the file
+:wq # to save and exit out of the file
 ssh-add ~/.ssh/id_ed25519
 ```
 
 7.  Copy your public key with `cat ~/.ssh/id_ed25519.pub`
-8.  In your Github account go to Settings \> SSH and GPG Keys, and add your SSH key.
+8.  In your Github account go to Settings \> SSH and GPG Keys, and add your SSH key. Give it a name like "workbench key."
 
 **Version Control:**
 
@@ -180,17 +189,17 @@ Resources
 To learn more about the Github CLI and the `gh` package please check out this [article](https://solutions.posit.co/operations/git-cli/index.html).
 :::
 
-## Part 4: Publish using GHA
+## Part 4: [Publish](https://quarto.org/docs/publishing/) using GHA
 
-1.  Create a .github folder with a publish.yaml file:
+1.  Create a .github/workflows folders with the following publish.yaml file:
 
 ```         
+name: Deploy quarto site to Github Pages
+
 on:
   workflow_dispatch:
   push:
-    branches: main
-
-name: Quarto Publish
+    branches: ['main']
 
 jobs:
   build-deploy:
@@ -199,7 +208,7 @@ jobs:
       contents: write
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -217,14 +226,6 @@ jobs:
         env:
           RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.rstudio.com/all/latest
 
-      - name: Install Python and Dependencies
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          cache: 'pip'
-      - run: pip install jupyter
-      - run: pip install -r requirements.txt
-
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
@@ -233,5 +234,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-7.  Create Connect API
-8.  Add github token
+7.  Add the following directories to your .gitignore file:
+
+    /.quarto/
+    /\_site/
+
+8.  Go to your repository on github and maneuver to Settings \> Pages.
+
+9.  Change your Source branch to Github Actions
+
+10. Create another branch
+
+11. Create and add a github token in your repository.
+
+12. Create Connect API
+
+13. Add github token
