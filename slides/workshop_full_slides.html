@@ -393,18 +393,22 @@
 
 <section id="title-slide" data-background-color="white" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-light.svg" data-background-size="contain" class="quarto-title-block">
   <h1 class="title">Devops for Data Scientists</h1>
+  <p class="subtitle">wifi name:xyz wifi password:123</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
 <section class="slide level2">
+<h2>Introductions, setup, &amp; workshop overview</h2>
+</section>
+<section class="slide level2">
 <h2>Workshop Goals</h2>
 <ul>
-<li><p>To understand how devops can help you in your work as data scientists and analysts</p></li>
-<li><p>To understand main principles of Devops</p></li>
+<li><p>To understand how devops can help you in your work as data scientists</p></li>
+<li><p>To understand the main principles of Devops</p></li>
 <li><p>To get hands-on experience putting code into production</p></li>
-<li><p>To leave the workshop with some “assets” and skills you can use in your work</p></li>
+<li><p>To leave the workshop with some “assets” and workflows you can use in your work</p></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -412,10 +416,8 @@
 <p>By the end of this workshop you will have:</p>
 <ul>
 <li><p>Deployed your own Quarto website on Github Pages using GitHub Actions CI/CD</p></li>
-<li><p>Created and hosted an example API with a trained prediction model</p></li>
-<li><p>Deployed your own version of Open Source Shiny Server</p></li>
-<li><p>Published a shiny app on Open Source Shiny Server</p></li>
-<li><p>Run docker using your own Dockerfile</p></li>
+<li><p>Created an API wrapper around a trained prediction model and hosted it on Posit Connect</p></li>
+<li><p>Written your own Dockerfile to deploy Open Source Shiny Server on <a href="https://labs.play-with-docker.com/">Docker playground</a> and hosted an app on the server</p></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -477,11 +479,10 @@
 <p>Posit Solutions Engineering Team Director</p>
 </section>
 <section class="slide level2">
-<h2>Introduce yourself!</h2>
+<h2>Introduce yourself to your neighbor</h2>
+<p>Take 5 minutes and introduce yourself to your neighbors.</p>
 <ul>
-<li><p>Name</p></li>
-<li><p>What you do?</p></li>
-<li><p>How you think devops can help you in your work?</p></li>
+<li><p>How do you think devops can help you in your work?</p></li>
 <li><p>What are you most looking forward to in the conference?</p></li>
 </ul>
 </section>
@@ -536,9 +537,9 @@
 <li>We will use the Discord channel for communicating code snippets and answering questions</li>
 <li>“Posit” Notes system for TA support during exercises and labs
 <ul>
-<li><strong>Red</strong> - I need help</li>
-<li><strong>Yellow</strong> - I’m still working</li>
-<li><strong>Green</strong> - I’m done</li>
+<li>🟥 - I need help</li>
+<li>🟨 - I’m still working</li>
+<li>🟩 - I’m done</li>
 </ul></li>
 </ul>
 </div>
@@ -548,11 +549,15 @@
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:100%;">
-<h2>Tentative Schedule - Day 1</h2>
-<table>
+<h2>Daily Schedule</h2>
+<p>📅 September 17 and 18, 2023<br>
+⏰ 09:00 - 17:00<br>
+🏨 ROOM: TBD<br>
+✍️TBD</p>
+<table style="width:89%;">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 78%">
+<col style="width: 22%">
+<col style="width: 66%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -562,86 +567,16 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>09:00 - 09:45</td>
-<td>Introductions &amp; Logistics</td>
-</tr>
-<tr class="even">
-<td>09:45 - 10:30</td>
-<td>Principles of Devops and Data Science in “Production”</td>
-</tr>
-<tr class="odd">
 <td>10:30 - 11:00</td>
 <td>Break</td>
-</tr>
-<tr class="even">
-<td>11:00 - 12:30</td>
-<td>Reproducibility</td>
-</tr>
-<tr class="odd">
-<td>12:30 - 13:30</td>
-<td>Lunch</td>
-</tr>
-<tr class="even">
-<td>13:30 - 15:00</td>
-<td>CI/CD and GHA</td>
-</tr>
-<tr class="odd">
-<td>15:00 - 15:30</td>
-<td>Break</td>
-</tr>
-<tr class="even">
-<td>15:30 - 17:00</td>
-<td>Lab: Deploy your own website with GHA</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/brackets-light.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns">
-<div class="column" style="width:100%;">
-<h2>Tentative Schedule - Day 2</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Time</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>09:00 - 10:30</td>
-<td>APIs</td>
-</tr>
-<tr class="even">
-<td>10:30 - 11:00</td>
-<td>Break</td>
-</tr>
-<tr class="odd">
-<td>11:00 - 12:30</td>
-<td>Docker</td>
 </tr>
 <tr class="even">
 <td>12:30 - 13:30</td>
 <td>Lunch</td>
 </tr>
 <tr class="odd">
-<td>13:30 - 15:00</td>
-<td>Docker continued + Lab</td>
-</tr>
-<tr class="even">
 <td>15:00 - 15:30</td>
 <td>Break</td>
-</tr>
-<tr class="odd">
-<td>15:30 - 16:30</td>
-<td>Authorization &amp; Authentication</td>
-</tr>
-<tr class="even">
-<td>16:30 - 17:00</td>
-<td>Workshop Wrap-up</td>
 </tr>
 </tbody>
 </table>
@@ -657,56 +592,58 @@
 </div>
 </div>
 </section>
+<section class="slide level2">
+<h2>A very brief history</h2>
+<ul>
+<li><p>Development of system of practice in the late 2000’s in software and IT online communities</p></li>
+<li><p>Developers often siloed from operations teams resulting in inefficient processes</p></li>
+<li><p>Long development cycles and monolithic environments made it difficult to quickly iterate and deploy</p></li>
+<li><p>Microservices architectures become more popular</p></li>
+<li><p>Software stacks used different languages, frameworks, databases</p></li>
+<li><p>Devops built on agile methodologies used in software dev and extended it to operations</p></li>
+<li><p>Early leaders such as Gene Kim, ..</p></li>
+<li><p>Movement to integrate security into devops cycles</p></li>
+</ul>
+</section>
 <section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-people-dark.svg" data-background-size="contain">
 <h2></h2>
 <div class="columns has-dark-background">
 <div class="column" style="width:100%;">
-<h2>What even is devops?</h2>
+<h2>Principles of Devops</h2>
+<p><img data-src="images/Screenshot%202023-08-29%20at%203.32.37%20PM.png" width="276"></p>
+<p><strong>DevOps</strong> is a combination of software development (dev) and operations (ops). It is defined as a software engineering methodology which aims to integrate the work of development teams and operations teams by facilitating a culture of collaboration and shared responsibility.</p>
+<ul>
+<li><p>Collaboration</p></li>
+<li><p>Automation</p></li>
+<li><p>CI/CD</p></li>
+<li><p>Rapid feedback loops</p></li>
+<li><p>Culture change</p></li>
+</ul>
+<div class="footer">
+<p>Illustration &amp; Definition credit:Gitlab, https://about.gitlab.com/topics/devops/</p>
+</div>
 </div>
 </div>
 </section>
 <section class="slide level2">
-<h2>Data science &amp; devops</h2>
+<h2>Why should data scientists/analysts care about devops?</h2>
 <ul>
-<li><p>Traditionally devops has been the realm of IT and security teams who work with software developers</p></li>
-<li><p>In a perfect world data scientists would just focus on the “dev” part of devops but alas…</p></li>
+<li><p>Building and delivering software includes models, visualizations, data transformations &amp; data applications</p></li>
+<li><p>Practices such as automation, collaboration, testing, and iterative improvement can dramatically improve data work and improve reproducibility</p></li>
+<li><p>Developers of code are often also asked to help “operationalize” their code</p></li>
+<li><p>Improve collaboration &amp; communication with engineering, ops, IT, and security teams</p></li>
 </ul>
-</section>
+
+<img data-src="images/Screenshot%202023-08-22%20at%203.26.22%20PM.png" class="r-stretch"></section>
 <section class="slide level2">
 <h2>Has this ever happened to you?</h2>
 <div>
 <ul>
 <li class="fragment"><p>You come back to code from a year ago and now it doesnt run!</p></li>
-<li class="fragment"><p>You’re tired of being dependent on IT to provision you an environment to work in.</p></li>
-<li class="fragment"><p>Congrats! You just got a new laptop with a new install of R. How do you run your code that was created with an older R version?</p></li>
 <li class="fragment"><p>Your boss asks you to share that Shiny app with a client but the dev team is too busy working on their roadmap to help you deploy it somewhere.</p></li>
 <li class="fragment"><p>You need to share your prediction model (created in R) with the Engineering team but they only code in Java.</p></li>
-<li class="fragment"><p>You’ve deployed your Shiny app to a site. But now you need to make sure that only clients can access it.</p></li>
-<li class="fragment"><p>You’ve tested your model with some sample data but when you go to update your company dashboard everything shows up as a NULL.</p></li>
 </ul>
-</div>
-</section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/brackets-dark.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns has-dark-background">
-<div class="column" style="width:100%;">
-<h2>But what even is dev(sec)ops?</h2>
-<div>
-<p>Encompasses the “process” of productionizing code and everything that happens once your code has been written.</p>
-<p>A set of principles and best practices for…</p>
-<ul>
-<li class="fragment">Continuous (and fast!) deployment &amp; release of software/features</li>
-<li class="fragment">Sharing your documents, apps, and apis</li>
-<li class="fragment">Culture of practice</li>
-<li class="fragment">Testing</li>
-<li class="fragment">Collaborating on code</li>
-<li class="fragment">Reproducing your code across environments</li>
-<li class="fragment">Reproducing your environment as code</li>
-<li class="fragment">Ensuring security for your “content”</li>
-<li class="fragment">Networking</li>
-</ul>
-</div>
-</div>
+<p>What other problems have you ran into that could possibly be solved with devops practices or tools?</p>
 </div>
 </section>
 <section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/content-dark.svg" data-background-size="contain">
@@ -719,7 +656,7 @@
 </div>
 </section>
 <section class="slide level2">
-<h2>Production “Process”</h2>
+<h2>Environments</h2>
 <p>Content is deployed (and code is promoted) across different environments with different intended audiences</p>
 <p>Dev/Test/Prod environment - <strong>add image</strong> of 3 envs + promotion arrows</p>
 <table style="width:99%;">
@@ -810,10 +747,6 @@
 <li><p>Can you trust your code?</p></li>
 </ul>
 </section>
-<section class="slide level2">
-<h2>Principle #1: Is it reproducible?</h2>
-
-<img data-src="images/Screenshot%202023-08-22%20at%203.26.22%20PM.png" class="r-stretch"></section>
 <section class="slide level2">
 <h2>Layers of reproducibility</h2>
 <table style="width:69%;">
@@ -910,6 +843,7 @@
 <li><p>A github action allows us to create workflows that are triggered by a github action such as a push or pull to a branch</p></li>
 <li><p>Workflows can include tests, markdown renders, shell scripts, or deployments. They can be as simple or as complicated as you need. Open-source community provides a ton of examples of actions.</p></li>
 <li><p>Open source collection of “available” actions</p></li>
+<li><p>Runs on a seprate server called a runner</p></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -928,9 +862,6 @@
 <section class="slide level2">
 <h2>Activity</h2>
 <p>Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises</p>
-</section>
-<section class="slide level2">
-<h2>Principle 2: Is it portable?</h2>
 </section>
 <section class="slide level2">
 <h2>APIs can help</h2>
@@ -958,6 +889,25 @@
 <h2>Activity</h2>
 <p>API lab - use plumber to deploy prediction model to Connect</p>
 <p>play around with other deploy methods</p>
+</section>
+<section class="slide level2">
+<h2>Introduction to Docker</h2>
+<ul>
+<li>open platform for developing, shipping, and running applications</li>
+<li>portable tool that allows you to package and application and its dependencies in a unit called a container</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Problems Docker Solves</h2>
+<ul>
+<li><strong>Consistency:</strong> Containers ensure that applications run the same way across different environments.</li>
+<li><strong>Isolation:</strong> Containers isolate applications and their dependencies, preventing conflicts.</li>
+<li><strong>Portability:</strong> Containers can run on any system that supports Docker, reducing “it works on my machine” issues.</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Lifecycle</h2>
+<p>credit - docker for java developers</p>
 </section>
 <section class="slide level2">
 <h2>Containers &amp; Docker</h2>

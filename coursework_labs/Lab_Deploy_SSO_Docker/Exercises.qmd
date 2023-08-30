@@ -1,0 +1,219 @@
+## Docker Exercises
+
+### Setup
+
+-   Using your Docker hub username and password, login to <https://labs.play-with-docker.com/>
+-   Click `+ ADD NEW INSTANCE`
+-   Congratulations! You are now in an Alpine Linux instance directly on your browser. Check this by running `cat /etc/*-release` in the command line interface.
+
+### [Run](https://docs.docker.com/engine/reference/run/) Commands
+
+Currently we have no docker images downloaded. Confirm this with `docker image ls -a.` The basic `docker run` command takes this form:
+
+```         
+docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
+```
+
+1.  Pull down a linux image that uses a different distribution from alpine. Confirm that the image is downloaded with the `ls` command from above.
+
+```         
+docker pull ubuntu
+docker image ls -a
+```
+
+2.  You can run a docker container in different ways. Try them out.
+
+`docker run -it --name ubuntu bash` to run **interactively** and jump into a bash shell of the image. This runs the container in the foreground so you are unable to access the command prompt. For this reason this command is often used for development and testing.
+
+`docker run -itd ubuntu` to run the container in **detached** mode. This command outputs the container ID and allows you to continue to use the command prompt. For this reason this command is often used for production purposes.
+
+3.  Check your running containers with `docker container ls -a` or `docker ps -a` to see running processes.
+4.  Use the `docker exec` command to execute a bash command in the running container. Use the container ID identified from the above step. This can be used to execute any command within a running container.
+
+```         
+docker exec -it CONTAINER_ID bash
+```
+
+5.  You can also use docker run to pull down images that arent yet downloaded. Lets pull down and run a MySQL container. (The forward slashes below allow you to use a new line for your code)
+
+```         
+ docker container run \
+ --detach \
+ --name mydb \
+ -e MYSQL_ROOT_PASSWORD=my-secret-pw \ #(NOTE: This should never be done in production).
+ mysql:latest
+```
+
+6.  Running in detached mode allows you to see what's happening in your container from your command prompt. Check what's happening inside your MYSQL container.
+
+```         
+docker container logs mydb
+```
+
+7.  Let's identify some of the flags that we've been using. Use the docker run reference [site](https://docs.docker.com/engine/reference/run/) to identify what the following flag options do:
+
+```         
+-t
+--rm
+-e
+--name
+
+*optional since we havent used these yet*
+-p
+-v
+```
+
+8.  Stop your running containers with `docker stop` and return to your original command prompt.
+9.  Create a new file in your alpine instance and add a string to it with some terminal commands.
+
+```         
+touch test.txt # create a text file
+echo "this is a test file" > test.txt # redirect string to the file
+cat test.txt # confirm that the echo command worked
+```
+
+10. We want to add this file from our host machine to our ubuntu container.
+
+```         
+pwd # to see where the test.txt file is located on your host machine
+docker run -it -d / # run in detached interactive mode
+-v /root:/data / # mount a shared volume to a folder in the container called "data"
+ubuntu
+
+ls # see what folders are in the container
+cd data # move to the newly created data directory
+ls # confirm that the text file is there
+```
+
+## Building images
+
+New images can be built interactively for development purposes or by using a Dockerfile for production.
+
+Part A: Building interactively
+
+1.  Exit out of your container with `exit` and confirm that the container is still running.
+2.  Run `docker diff CONTAINER_ID` to see the difference between the base image and the new container.
+3.  Login to docker hub in your instance using `docker login` and enter your username and password.
+4.  Commit the changed ubuntu image and give it a new name like `ubuntu_text`.
+
+```         
+docker image commit CONTAINER_ID ubuntu_text
+docker image ls # to check the new image is available
+```
+
+4.  Tag and push the image to dockerhub. Login to docker hub to see your saved and shareable image!
+
+```         
+docker tag ubuntu_text docker_hub_username/ubuntu_text
+docker push docker_hub_username/ubuntu_text
+```
+
+Part B: Building Shiny Server OS with Dockerfile
+
+Best practice is to create a Dockerfile so that any changes to your image can be documented.
+
+1.  Create a Dockerfile (no file extension needed)in your instance with `touch Dockerfile` and add the following to it.
+
+```         
+touch Dockerfile
+vim Dockerfile
+# press i to enter insert mode
+
+FROM rocker/shiny:4.3.1
+CMD ["/usr/bin/shiny-server"]
+
+# press escape 
+:wq # to save and exit
+```
+
+2.  Build the image with `docker build -t my_server` where my_server is the name of your new image
+
+3.  Run your container with `docker run -d -p 3838:3838 my_server.`
+
+    -   the -p flag maps a port from the host to a port in the container.
+
+    -   this gives us the ability to access the services running inside the container
+
+    -   example: \`-p 8080:80\` maps port 8080 on the host to port 80 in the container.
+
+    -   in our code we use port 3838 because that is the port that Shiny Server uses by default.
+
+4.  A port number will appear - click on it to access the home page of Shiny Server!
+
+![](images/Screenshot%202023-08-30%20at%202.30.12%20PM.png)
+
+5.  You should see something like this:
+
+    ![](images/Screenshot%202023-08-30%20at%202.31.08%20PM.png)
+
+6.  We want to change the home page and have it show an app of our choosing instead. Exec into your container and let's find where the information for the home page is stored.
+
+```         
+docker container ls # to get the container ID or name
+docker exec -it CONTAINER_ID bash # this will bring you to the bash shell in your container
+ls # to see files and directories
+cd usr/bin # this will show you all the server executables for basic shell commands. See if you can find those you've used like touch
+cd /srv/shiny-server 
+cat index.html # this will show you the code for the home page
+cd /etc/shiny-server
+cat shiny-server.conf # this shows you a configuration file for the server
+```
+
+7.  Let's create a basic shiny app and move it to the server in our docker run command.
+
+```         
+exit # the shell
+docker container stop CONTAINER_IT 
+mkdir apps
+touch app.R
+vim app.R
+# press i to insert the following code
+
+library(shiny)
+
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+
+    # Application title
+    titlePanel("Old Faithful Geyser Data"),
+
+    # Sidebar with a slider input for number of bins 
+    sidebarLayout(
+        sidebarPanel(
+            sliderInput("bins",
+                        "Number of bins:",
+                        min = 1,
+                        max = 50,
+                        value = 30)
+        ),
+
+        # Show a plot of the generated distribution
+        mainPanel(
+           plotOutput("distPlot")
+        )
+    )
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+
+    output$distPlot <- renderPlot({
+        # generate bins based on input$bins from ui.R
+        x    <- faithful[, 2]
+        bins <- seq(min(x), max(x), length.out = input$bins + 1)
+
+        # draw the histogram with the specified number of bins
+        hist(x, breaks = bins, col = 'darkgray', border = 'white',
+             xlab = 'Waiting time to next eruption (in mins)',
+             main = 'Histogram of waiting times')
+    })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+
+# press escape 
+:wq to save 
+
+docker run -d -p 3838:3838 -v ./apps:/srv/shinyapps my_server # my_server is the name of the docker image that you built
+```

@@ -90,9 +90,8 @@ styles.css - custom CSS
 
 -   (**Optional)** Learning how to use all the power of Quarto is beyond the scope of this workshop but you can use the below resources to pla around with difference templates and designs for your new website.
 
-```{=html}
 <!-- -->
-```
+
 -   <https://rstudio-conf-2022.github.io/get-started-quarto/materials/06-websites.html#/websites>
 -   <https://quarto.org/docs/gallery/#websites>
 -   <https://quarto.org/docs/websites/website-blog.html#themes>
@@ -236,8 +235,7 @@ jobs:
 
 7.  Add the following directories to your .gitignore file:
 
-    /.quarto/
-    /\_site/
+    /.quarto/ /\_site/
 
 8.  Go to your repository on github and maneuver to Settings \> Pages.
 

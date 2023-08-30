@@ -1,5 +1,6 @@
 ---
 title: "Devops for Data Scientists"
+subtitle: "wifi name:xyz wifi password:123 "
 title-slide-attributes: 
   data-background-color: white
   data-background-image: _extensions/positconfslides/assets/backgrounds/toc-light.svg
@@ -20,15 +21,17 @@ format:
       - positconfslides
 ---
 
+## Introductions, setup, & workshop overview
+
 ## Workshop Goals
 
--   To understand how devops can help you in your work as data scientists and analysts
+-   To understand how devops can help you in your work as data scientists
 
--   To understand main principles of Devops
+-   To understand the main principles of Devops
 
 -   To get hands-on experience putting code into production
 
--   To leave the workshop with some "assets" and skills you can use in your work
+-   To leave the workshop with some "assets" and workflows you can use in your work
 
 ## Workshop Lab Overview
 
@@ -36,13 +39,9 @@ By the end of this workshop you will have:
 
 -   Deployed your own Quarto website on Github Pages using GitHub Actions CI/CD
 
--   Created and hosted an example API with a trained prediction model
+-   Created an API wrapper around a trained prediction model and hosted it on Posit Connect
 
--   Deployed your own version of Open Source Shiny Server
-
--   Published a shiny app on Open Source Shiny Server
-
--   Run docker using your own Dockerfile
+-   Written your own Dockerfile to deploy Open Source Shiny Server on [Docker playground](https://labs.play-with-docker.com/) and hosted an app on the server
 
 ## What we won't cover
 
@@ -100,13 +99,11 @@ Author of [Devops for Data Science](www.do4ds.com)
 
 Posit Solutions Engineering Team Director
 
-## Introduce yourself!
+## Introduce yourself to your neighbor
 
--   Name
+Take 5 minutes and introduce yourself to your neighbors.
 
--   What you do?
-
--   How you think devops can help you in your work?
+-   How do you think devops can help you in your work?
 
 -   What are you most looking forward to in the conference?
 
@@ -141,91 +138,98 @@ Login to http://rstd.io/class, use the provided username and password and access
 -   All documents including slides are available at this github [repo](https://github.com/posit-conf-2023/devops)
 -   We will use the Discord channel for communicating code snippets and answering questions
 -   "Posit" Notes system for TA support during exercises and labs
-    -   **Red** - I need help
-    -   **Yellow** - I'm still working
-    -   **Green** - I'm done
+    -   🟥 - I need help
+    -   🟨 - I'm still working
+    -   🟩 - I'm done
 
-## Tentative Schedule - Day 1 {.brackets-light}
+## Daily Schedule {.brackets-light}
 
-| Time          | Topic                                                 |
-|---------------|-------------------------------------------------------|
-| 09:00 - 09:45 | Introductions & Logistics                             |
-| 09:45 - 10:30 | Principles of Devops and Data Science in "Production" |
-| 10:30 - 11:00 | Break                                                 |
-| 11:00 - 12:30 | Reproducibility                                       |
-| 12:30 - 13:30 | Lunch                                                 |
-| 13:30 - 15:00 | CI/CD and GHA                                         |
-| 15:00 - 15:30 | Break                                                 |
-| 15:30 - 17:00 | Lab: Deploy your own website with GHA                 |
+📅 September 17 and 18, 2023\
+⏰ 09:00 - 17:00\
+🏨 ROOM: TBD\
+✍️TBD
 
-## Tentative Schedule - Day 2 {.brackets-light}
-
-| Time          | Topic                          |
-|---------------|--------------------------------|
-| 09:00 - 10:30 | APIs                           |
-| 10:30 - 11:00 | Break                          |
-| 11:00 - 12:30 | Docker                         |
-| 12:30 - 13:30 | Lunch                          |
-| 13:30 - 15:00 | Docker continued + Lab         |
-| 15:00 - 15:30 | Break                          |
-| 15:30 - 16:30 | Authorization & Authentication |
-| 16:30 - 17:00 | Workshop Wrap-up               |
++---------------+-----------------------------------------------+
+| Time          | Topic                                         |
++===============+===============================================+
+| 10:30 - 11:00 | Break                                         |
++---------------+-----------------------------------------------+
+| 12:30 - 13:30 | Lunch                                         |
++---------------+-----------------------------------------------+
+| 15:00 - 15:30 | Break                                         |
++---------------+-----------------------------------------------+
 
 ## Code of Conduct {.brackets-light}
 
 https://posit.co/code-of-conduct/
 
-## What even is devops? {.toc-people-dark}
+## A very brief history
 
-## Data science & devops
+-   Development of system of practice in the late 2000's in software and IT online communities
 
--   Traditionally devops has been the realm of IT and security teams who work with software developers
+-   Developers often siloed from operations teams resulting in inefficient processes
 
--   In a perfect world data scientists would just focus on the "dev" part of devops but alas...
+-   Long development cycles and monolithic environments made it difficult to quickly iterate and deploy
+
+-   Microservices architectures become more popular
+
+-   Software stacks used different languages, frameworks, databases
+
+-   Devops built on agile methodologies used in software dev and extended it to operations
+
+-   Early leaders such as Gene Kim, ..
+
+-   Movement to integrate security into devops cycles
+
+## Principles of Devops {.toc-people-dark}
+
+![](images/Screenshot%202023-08-29%20at%203.32.37%20PM.png){width="276"}
+
+**DevOps** is a combination of software development (dev) and operations (ops). It is defined as a software engineering methodology which aims to integrate the work of development teams and operations teams by facilitating a culture of collaboration and shared responsibility.
+
+-   Collaboration
+
+-   Automation
+
+-   CI/CD
+
+-   Rapid feedback loops
+
+-   Culture change
+
+::: footer
+Illustration & Definition credit:Gitlab, https://about.gitlab.com/topics/devops/
+:::
+
+## Why should data scientists/analysts care about devops?
+
+-   Building and delivering software includes models, visualizations, data transformations & data applications
+
+-   Practices such as automation, collaboration, testing, and iterative improvement can dramatically improve data work and improve reproducibility
+
+-   Developers of code are often also asked to help "operationalize" their code
+
+-   Improve collaboration & communication with engineering, ops, IT, and security teams
+
+![](images/Screenshot%202023-08-22%20at%203.26.22%20PM.png)
 
 ## Has this ever happened to you?
 
 ::: incremental
-
 -   You come back to code from a year ago and now it doesnt run!
-
--   You're tired of being dependent on IT to provision you an environment to work in.
-
--   Congrats! You just got a new laptop with a new install of R. How do you run your code that was created with an older R version?
 
 -   Your boss asks you to share that Shiny app with a client but the dev team is too busy working on their roadmap to help you deploy it somewhere.
 
 -   You need to share your prediction model (created in R) with the Engineering team but they only code in Java.
 
--   You've deployed your Shiny app to a site. But now you need to make sure that only clients can access it.
-
--   You've tested your model with some sample data but when you go to update your company dashboard everything shows up as a NULL.
-
-:::
-
-## But what even is dev(sec)ops? {.brackets-dark}
-
-::: incremental
-Encompasses the "process" of productionizing code and everything that happens once your code has been written.
-
-A set of principles and best practices for...
-
--   Continuous (and fast!) deployment & release of software/features
--   Sharing your documents, apps, and apis
--   Culture of practice
--   Testing
--   Collaborating on code
--   Reproducing your code across environments
--   Reproducing your environment as code
--   Ensuring security for your "content"
--   Networking
+What other problems have you ran into that could possibly be solved with devops practices or tools?
 :::
 
 ## Data Science in Production {.content-dark}
 
 Production is both **a** a **state of being** and a **process** for "deploying" content
 
-## Production "Process"
+## Environments
 
 Content is deployed (and code is promoted) across different environments with different intended audiences
 
@@ -318,9 +322,6 @@ Questions to ask once your content is able to be consumed by your intended audie
 
 -   Can you trust your code?
 
-## Principle #1: Is it reproducible?
-
-![](images/Screenshot%202023-08-22%20at%203.26.22%20PM.png)
 
 ## Layers of reproducibility
 
@@ -396,6 +397,8 @@ Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises
 
 -   Open source collection of "available" actions
 
+- Runs on a seprate server called a runner
+
 ## Steps to deploy your site
 
 1.  Use renv to maintain consistency between the development and build environments.
@@ -418,7 +421,7 @@ Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises
 
 Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises
 
-## Principle 2: Is it portable?
+
 
 ## APIs can help
 
@@ -441,6 +444,20 @@ Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises
 API lab - use plumber to deploy prediction model to Connect
 
 play around with other deploy methods
+
+## Introduction to Docker
+
+- open platform for developing, shipping, and running applications
+- portable tool that allows you to package and application and its dependencies in a unit called a container
+
+## Problems Docker Solves
+- **Consistency:** Containers ensure that applications run the same way across different environments.
+- **Isolation:** Containers isolate applications and their dependencies, preventing conflicts.
+- **Portability:** Containers can run on any system that supports Docker, reducing "it works on my machine" issues.
+
+## Lifecycle
+
+credit - docker for java developers
 
 ## Containers & Docker
 
