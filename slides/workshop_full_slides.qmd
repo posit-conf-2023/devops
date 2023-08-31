@@ -21,7 +21,7 @@ format:
       - positconfslides
 ---
 
-## Introductions, setup, & workshop overview
+## Part 1: Introductions, setup, & workshop overview
 
 ## Workshop Goals
 
@@ -33,59 +33,82 @@ format:
 
 -   To leave the workshop with some "assets" and skills you can use in your work
 
-## Workshop Lab Overview
+## Agenda & Lab Overview
 
-By the end of this workshop you will have:
++------------------------------------+------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Section/Time                       | Topics                                               | Labs                                                                                                                                                          |
++====================================+======================================================+===============================================================================================================================================================+
+| Part 1                             | Workshop overview                                    | Infrastructure & wifi setup                                                                                                                                   |
+|                                    |                                                      |                                                                                                                                                               |
+|                                    | Logistics & setup                                    | Optional: Linux Refresher                                                                                                                                     |
+|                                    |                                                      |                                                                                                                                                               |
+|                                    | Introductions                                        |                                                                                                                                                               |
++------------------------------------+------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Part 2: Devops Principles          | Introduction to devops                               | Lab 1: Deploy your own Quarto website on Github Pages using GitHub Actions CI/CD                                                                              |
+|                                    |                                                      |                                                                                                                                                               |
+|                                    | Version control & github                             |                                                                                                                                                               |
+|                                    |                                                      |                                                                                                                                                               |
+|                                    | CI/CD                                                |                                                                                                                                                               |
+|                                    |                                                      |                                                                                                                                                               |
+|                                    | Reproducing workflows and environments               |                                                                                                                                                               |
++------------------------------------+------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Part 3: Docker for Data Scientists | How and why data scientists use docker in production | Lab #2: Write your own Dockerfile to deploy Open Source Shiny Server on [Docker playground](https://labs.play-with-docker.com/) and host an app on the server |
+|                                    |                                                      |                                                                                                                                                               |
+|                                    | Docker: overview and architecture                    |                                                                                                                                                               |
+|                                    |                                                      |                                                                                                                                                               |
+|                                    | Building docker images and containers                |                                                                                                                                                               |
+|                                    |                                                      |                                                                                                                                                               |
+|                                    | Ports & networking                                   |                                                                                                                                                               |
++------------------------------------+------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Part 4: Data Science in Production | Choosing your deployment method                      | Lab #3: Create an API wrapper around a trained prediction model and host it on Posit Connect                                                                  |
+|                                    |                                                      |                                                                                                                                                               |
+|                                    | APIs and when to use them                            |                                                                                                                                                               |
+|                                    |                                                      |                                                                                                                                                               |
+|                                    | Just enough auth                                     |                                                                                                                                                               |
+|                                    |                                                      |                                                                                                                                                               |
+|                                    | Logging & metrics & testing                          |                                                                                                                                                               |
++------------------------------------+------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Part 5: Discussion                 | Course feedback                                      | None                                                                                                                                                          |
+|                                    |                                                      |                                                                                                                                                               |
+|                                    | Questions for the team                               |                                                                                                                                                               |
+|                                    |                                                      |                                                                                                                                                               |
+|                                    | Working with other teams                             |                                                                                                                                                               |
++------------------------------------+------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
--   Lab #1: Deployed your own Quarto website on Github Pages using GitHub Actions CI/CD
+## Bonus Materials: Linux Refresher
 
--   Lab #2: Written your own Dockerfile to deploy Open Source Shiny Server on [Docker playground](https://labs.play-with-docker.com/) and hosted an app on the server
+-   this workshop will involve us working in a linux environment
+-   if you need a refresher on linux commands
+-   linux commands will be provided in all lab and exercise materials
 
--   Lab #3: Created an API wrapper around a trained prediction model and hosted it on Posit Connect
+## Linux Refresher (optional section) {.toc-people-dark}
 
-## General Agenda
+## Why Linux? {.brackets-light}
 
-+------------------------------------+--------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Section/Time                       | Topics                                           | Labs                                                                                                                                                              |
-+====================================+==================================================+===================================================================================================================================================================+
-| Part 1                             | Workshop Overview                                | Infrastructure & wifi setup                                                                                                                                       |
-|                                    |                                                  |                                                                                                                                                                   |
-|                                    | Logistics                                        |                                                                                                                                                                   |
-|                                    |                                                  |                                                                                                                                                                   |
-|                                    | Introductions                                    |                                                                                                                                                                   |
-+------------------------------------+--------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Part 2: Devops Principles          | Introduction to Devops                           | Lab 1: Deployed your own Quarto website on Github Pages using GitHub Actions CI/CD                                                                                |
-|                                    |                                                  |                                                                                                                                                                   |
-|                                    | Version Control                                  |                                                                                                                                                                   |
-|                                    |                                                  |                                                                                                                                                                   |
-|                                    | CI/CD                                            |                                                                                                                                                                   |
-|                                    |                                                  |                                                                                                                                                                   |
-|                                    | Reproducing workflows and environments           |                                                                                                                                                                   |
-+------------------------------------+--------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Part 3: Docker for Data Scientists | Docker: Overview and architecture                | Lab #2: Written your own Dockerfile to deploy Open Source Shiny Server on [Docker playground](https://labs.play-with-docker.com/) and hosted an app on the server |
-|                                    |                                                  |                                                                                                                                                                   |
-|                                    | Building Docker images and containers            |                                                                                                                                                                   |
-|                                    |                                                  |                                                                                                                                                                   |
-|                                    | Ports & Networking 101                           |                                                                                                                                                                   |
-|                                    |                                                  |                                                                                                                                                                   |
-|                                    | How data scientists can use docker in production |                                                                                                                                                                   |
-+------------------------------------+--------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Part 4: Data Science in Production | Choosing your deployment method                  | Lab #3: Created an API wrapper around a trained prediction model and hosted it on Posit Connect                                                                   |
-|                                    |                                                  |                                                                                                                                                                   |
-|                                    | APIs and when to use them                        |                                                                                                                                                                   |
-|                                    |                                                  |                                                                                                                                                                   |
-|                                    | Just enough auth                                 |                                                                                                                                                                   |
-|                                    |                                                  |                                                                                                                                                                   |
-|                                    | Logging & metrics & testing                      |                                                                                                                                                                   |
-+------------------------------------+--------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Part 5: Discussion                 | Course feedback                                  | None                                                                                                                                                              |
-|                                    |                                                  |                                                                                                                                                                   |
-|                                    | Questions for the team                           |                                                                                                                                                                   |
-|                                    |                                                  |                                                                                                                                                                   |
-|                                    | Working with other teams                         |                                                                                                                                                                   |
-+------------------------------------+--------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+-   GNU+Linux kernel is one of the world's most popular operating systems
+    -   It's used in the Mars Perseverance Rover!
+-   It's open source and freely available
+-   Different distributions available
+-   Potentially less exploitable and more secure
 
-Bonus Materials: Linux Refresher
+## Terminology
+
+-   The command line is a way to interact with a computer by typing text-based instructions to it, and reading the responses.
+-   The software---called an interpreter---that translates your input into commands and executes them for you is the shell.
+-   A *terminal* is an input and output environment that presents a text-only window running a shell.
+-   A *shell* is a program that exposes the computer's operating system to a user or program. In Linux systems, the shell presented in a terminal is a command line interpreter.
+-   A *command line interface* is a user interface (managed by a command line interpreter program) which processes commands to a computer program and outputs the results.
+-   On most Linux distributions, the default shell is Bash, or Zsh.
+
+## Linux Refresher Resources
+
+-   [Opening the command line](https://do4ds.com/chapters/sec2/2-1-cmd-line.html)
+-   [Using the command line](https://do4ds.com/chapters/sec2/2-2-cmd-line-use.html)
+-   [Basic Linux SysAdmin](https://do4ds.com/chapters/sec3/3-2-linux-admin.html) (11 - 11.7.4)
+-   [List of cli commands](https://business-science.github.io/shiny-production-with-aws-book/linux-command-line-interface-cli.html)
+-   [How to use pipes and redirection in linux](https://www.maketecheasier.com/pipes-redirection-for-linux-command-line/)
+-   [How to use grep in linux](https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/)
+-   [Linux directory structure](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)
 
 ## What we won't cover
 
@@ -177,6 +200,8 @@ Is your wifi working? If not, let one of the instructors/TA's know as soon as po
 
 Login to http://rstd.io/class, use the provided username and password and access Posit Workbench and Posit Connect.
 
+Login to Docker Playground with your Docker Hub username and password.
+
 ## Documentation & Communication {.brackets-light}
 
 -   All documents including slides are available at this github [repo](https://github.com/posit-conf-2023/devops)
@@ -193,19 +218,21 @@ Login to http://rstd.io/class, use the provided username and password and access
 🏨 ROOM: TBD\
 ✍️TBD
 
-+---------------+---------------------------------------------+
-| Time          | Topic                                       |
-+===============+=============================================+
-| 10:30 - 11:00 | Break                                       |
-+---------------+---------------------------------------------+
-| 12:30 - 13:30 | Lunch                                       |
-+---------------+---------------------------------------------+
-| 15:00 - 15:30 | Break                                       |
-+---------------+---------------------------------------------+
++---------------+------------------------------------------+
+| Time          | Topic                                    |
++===============+==========================================+
+| 10:30 - 11:00 | Break                                    |
++---------------+------------------------------------------+
+| 12:30 - 13:30 | Lunch                                    |
++---------------+------------------------------------------+
+| 15:00 - 15:30 | Break                                    |
++---------------+------------------------------------------+
 
 ## Code of Conduct {.brackets-light}
 
 https://posit.co/code-of-conduct/
+
+## Part 2: Devops Principles
 
 ## A very brief history
 
@@ -215,21 +242,17 @@ https://posit.co/code-of-conduct/
 
 -   Long development cycles and monolithic environments made it difficult to quickly iterate and deploy
 
--   Microservices architectures become more popular
-
 -   Software stacks used different languages, frameworks, databases
 
 -   Devops built on agile methodologies used in software dev and extended it to operations
 
--   Early leaders such as Gene Kim, ..
+-   Microservices architectures become more popular
 
 -   Movement to integrate security into devops cycles
 
 ## Principles of Devops {.toc-people-dark}
 
 ![](images/Screenshot%202023-08-29%20at%203.32.37%20PM.png){width="276"}
-
-**DevOps** is a combination of software development (dev) and operations (ops). It is defined as a software engineering methodology which aims to integrate the work of development teams and operations teams by facilitating a culture of collaboration and shared responsibility.
 
 -   Collaboration
 
@@ -240,6 +263,10 @@ https://posit.co/code-of-conduct/
 -   Rapid feedback loops
 
 -   Culture change
+
+::: notes
+**DevOps** is a combination of software development (dev) and operations (ops). It is defined as a software engineering methodology which aims to integrate the work of development teams and operations teams by facilitating a culture of collaboration and shared responsibility.
+:::
 
 ::: footer
 Illustration & Definition credit:Gitlab, https://about.gitlab.com/topics/devops/
@@ -269,15 +296,15 @@ Illustration & Definition credit:Gitlab, https://about.gitlab.com/topics/devops/
 What other problems have you ran into that could possibly be solved with devops practices or tools?
 :::
 
-## Data Science in Production {.content-dark}
+## Need a connecting slide here
 
-Production is both **a** a **state of being** and a **process** for "deploying" content
+-   
 
 ## Environments
 
 Content is deployed (and code is promoted) across different environments with different intended audiences
 
-Dev/Test/Prod environment - **add image** of 3 envs + promotion arrows
+**add image** of promotion arrows
 
 +-----------------------------------------------------------------------+--------------------------------------------------------------------------+--------------------------------+
 | Dev                                                                   | Test                                                                     | Prod                           |
@@ -291,13 +318,15 @@ Dev/Test/Prod environment - **add image** of 3 envs + promotion arrows
 | access to R/Python packages                                           | in software dev world includes integration, unit, and regression testing | completely automatic           |
 +-----------------------------------------------------------------------+--------------------------------------------------------------------------+--------------------------------+
 
-## Deployment with CI/CD
+## Continuous Integration
 
 Continuous Integration - an an iterative process to build, test, collaborate on your code to above environments
 
 Tools include code promotion, version control with git, feature branching, automatic tests
 
 ![](images/Screenshot%202023-08-23%20at%2011.20.04%20AM.png)
+
+## Show images of a few different types of CI workflows
 
 ## Continuous Delivery/Deployment
 
@@ -348,24 +377,6 @@ name: "Rika Gorn"
 
 Complete Part 1 of the Deploy Quarto Site with GHA Lab
 
-## Production "State"
-
-Questions to ask once your content is able to be consumed by your intended audience
-
--   Is it reproducible?
-
--   Is it portable?
-
--   Is it maintainable?
-
--   Does it scale?
-
--   Is your code efficiently written?
-
--   Is it secure and accessible?
-
--   Can you trust your code?
-
 ## Layers of reproducibility
 
 +---------------+---------------------------------+
@@ -400,11 +411,13 @@ Questions to ask once your content is able to be consumed by your intended audie
 
 ## Mechanisms for reproducibility
 
--   **documenting state & version control**
+\*\* make this a diagram starting from least to most reproducibility
 
--   virtual environments
+-   documenting state & version control
 
--   Containerization & Docker
+-   virtual environments (`renv`, `venv`) + package management
+
+-   Containerization & docker
 
 -   Infrastructure as Code
 
@@ -418,15 +431,21 @@ Questions to ask once your content is able to be consumed by your intended audie
 
 4.  When a collaborator first launches in this project, `renv` should automatically bootstrap itself, thereby downloading and installing the appropriate version of `renv` into the project library. After this has completed, they can then use [`renv::restore()`](https://rstudio.github.io/renv/reference/restore.html) to restore the project library locally on their machine.
 
+::: notes
+live code a quick renv on workbench instead of going through all the steps
+:::
+
 ## A short auth teaser
 
 How do we make sure that the code we push to Github (or elsewhere) is secure?
 
 We can use a variety of data sharing "transfer protocols"
 
-| Local | Https (and http) | SSH | git |
-|-------|------------------|-----|-----|
-|       |                  |     |     |
+| http    | https    | SSH     | git       |
+|---------|----------|---------|-----------|
+| port 80 | port 443 | port 22 | port 9418 |
+
+## Image of ports and how they work
 
 ## Activity
 
@@ -464,6 +483,8 @@ Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises
 
 Complete Part 4 of Lab: Deploy Quarto with GHA including the exercises
 
+## Part 3: Docker for Data Scientists
+
 ## Introduction to Docker
 
 -   Enhances DevOps practices by promoting consistency and reproducibility.
@@ -494,22 +515,89 @@ Complete Part 4 of Lab: Deploy Quarto with GHA including the exercises
 
 -   Registry is a Repository for Docker images (e.g., Docker Hub) where you can store and share images.
 
+## Activity
+
+Complete Part 1: Exercises 1 - 8
+
+## Docker ports & localhost
+
+```         
+docker run -d -p 81:80 --name httpd-container httpd
+curl http://localhost:81
+```
+
+## Persisting data with Docker
+
+```         
+touch test.txt # create a text file
+echo "this is a test file" > test.txt # redirect string to the file
+cat test.txt # confirm that the echo command worked
+
+pwd # to see where the test.txt file is located on your host machine
+docker run -it -d / # run in detached interactive mode
+-v /root:/data / # mount a shared volume to a folder in the container called "data"
+ubuntu
+
+ls # see what folders are in the container
+cd data # move to the newly created data directory
+ls # confirm that the text file is there
+```
+
+## Activity
+
+Complete Part 1: Exercises 9 - 10
+
 ## Building Docker Images
 
 -   an image is a **read-only** system that includes files + meta-data
 
 -   made of layers stacked on top of each other
 
--   When you want to run a container, you *pull* the image and run it as an *instance*, which is what you\'ll actually interact with.
+-   When you want to run a container, you *pull* the image and run it as an *instance*, which is what you'll actually interact with
 
--   Containers are ephemeral - once it shuts down all the information inside of it removed.
+-   Containers are ephemeral - once it shuts down all the information inside of it removed
 
-## Ports
+## Activity
 
-```         
-docker run -d -p 81:80 --name httpd-container httpd
-curl http://localhost:81
-```
+Complete Part 2: Exercises
+
+## Layers of a Dockerfile
+
+Walk through Posit Connect Dockerfile or Shiny Server
+
+## Part 4: Data Science in Production
+
+## Data Science in Production {.content-dark}
+
+-   Presentation Layer
+
+-   Processing Layer
+
+-   Data store Layer
+
+## Choosing the right presentation layer
+
+-   [Alex's flow chart](https://do4ds.com/chapters/sec1/1-2-proj-arch.html)
+
+-   credit text
+
+## Production "State"
+
+Questions to ask once your content is able to be consumed by your intended audience
+
+-   Is it reproducible?
+
+-   Is it portable?
+
+-   Is it maintainable?
+
+-   Does it scale?
+
+-   Is your code efficiently written?
+
+-   Is it secure and accessible?
+
+-   Can you trust your code?
 
 ## APIs can help
 
@@ -517,67 +605,46 @@ curl http://localhost:81
 
 -   a way to access content by non-R users
 
-## When to use an API
-
-## When not to use an API
-
 ## Structure of an API
 
-## API frameworks
+## Activity: Create a Posit Connect API key
 
-## Deploying an API
+-   login to Connect
+
+-   create connect key
+
+-   use rsconnect to access
+
+-   use curl to access
+
+## Creating an API
+
+-   plumber exercise
+
+## Securing your application
+
+-   SSL & https
+
+-   live code
+
+## Authentication vs. Authorization
+
+## Deploying and hosting your API
 
 ## Activity
 
-API lab - use plumber to deploy prediction model to Connect
+-   deploy api to connect
 
-play around with other deploy methods
+-   put shiny frontend and call api
+
+## Testing and logging
+
+## Activity
+
+-   add logging and test to shiny app (if there's time)
+
+## Activity
+
+-   add app to server
 
 ## 
-
-## Docker Layers
-
-## VM vs. Docker
-
-## Parts of a Dockerfile
-
-## Activity
-
--   Use either docker desktop or docker classroom
-
--   Create dockerfile to Deploy Shiny Open Source
-
--   Create shiny frontend to prediction API and add to server
-
-## Principle 3: Is it secure?
-
-## Auth section
-
-## Linux Refresher (optional) {.toc-people-dark}
-
-## Why Linux? {.brackets-light}
-
--   GNU+Linux kernel is one of the world's most popular operating systems
-    -   It's used in the Mars Perseverance Rover!
--   It's open source and freely available
--   Different distributions available
--   Potentially less exploitable and more secure
-
-## Terminology
-
--   The command line is a way to interact with a computer by typing text-based instructions to it, and reading the responses.
--   The software---called an interpreter---that translates your input into commands and executes them for you is the shell.
--   A *terminal* is an input and output environment that presents a text-only window running a shell.
--   A *shell* is a program that exposes the computer's operating system to a user or program. In Linux systems, the shell presented in a terminal is a command line interpreter.
--   A *command line interface* is a user interface (managed by a command line interpreter program) which processes commands to a computer program and outputs the results.
--   On most Linux distributions, the default shell is Bash, or Zsh.
-
-## Linux Refresher Resources
-
--   [Opening the command line](https://do4ds.com/chapters/sec2/2-1-cmd-line.html)
--   [Using the command line](https://do4ds.com/chapters/sec2/2-2-cmd-line-use.html)
--   [Basic Linux SysAdmin](https://do4ds.com/chapters/sec3/3-2-linux-admin.html) (11 - 11.7.4)
--   [List of cli commands](https://business-science.github.io/shiny-production-with-aws-book/linux-command-line-interface-cli.html)
--   [How to use pipes and redirection in linux](https://www.maketecheasier.com/pipes-redirection-for-linux-command-line/)
--   [How to use grep in linux](https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/)
--   [Linux directory structure](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)

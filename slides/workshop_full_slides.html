@@ -400,7 +400,7 @@
 
 </section>
 <section class="slide level2">
-<h2>Introductions, setup, &amp; workshop overview</h2>
+<h2>Part 1: Introductions, setup, &amp; workshop overview</h2>
 </section>
 <section class="slide level2">
 <h2>Workshop Goals</h2>
@@ -412,16 +412,7 @@
 </ul>
 </section>
 <section class="slide level2">
-<h2>Workshop Lab Overview</h2>
-<p>By the end of this workshop you will have:</p>
-<ul>
-<li><p>Lab #1: Deployed your own Quarto website on Github Pages using GitHub Actions CI/CD</p></li>
-<li><p>Lab #2: Written your own Dockerfile to deploy Open Source Shiny Server on <a href="https://labs.play-with-docker.com/">Docker playground</a> and hosted an app on the server</p></li>
-<li><p>Lab #3: Created an API wrapper around a trained prediction model and hosted it on Posit Connect</p></li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>General Agenda</h2>
+<h2>Agenda &amp; Lab Overview</h2>
 <table>
 <thead>
 <tr class="header">
@@ -433,26 +424,27 @@
 <tbody>
 <tr class="odd">
 <td>Part 1</td>
-<td><p>Workshop Overview</p>
-<p>Logistics</p>
+<td><p>Workshop overview</p>
+<p>Logistics &amp; setup</p>
 <p>Introductions</p></td>
-<td>Infrastructure &amp; wifi setup</td>
+<td><p>Infrastructure &amp; wifi setup</p>
+<p>Optional: Linux Refresher</p></td>
 </tr>
 <tr class="even">
 <td>Part 2: Devops Principles</td>
-<td><p>Introduction to Devops</p>
-<p>Version Control</p>
+<td><p>Introduction to devops</p>
+<p>Version control &amp; github</p>
 <p>CI/CD</p>
 <p>Reproducing workflows and environments</p></td>
-<td>Lab 1: Deployed your own Quarto website on Github Pages using GitHub Actions CI/CD</td>
+<td>Lab 1: Deploy your own Quarto website on Github Pages using GitHub Actions CI/CD</td>
 </tr>
 <tr class="odd">
 <td>Part 3: Docker for Data Scientists</td>
-<td><p>Docker: Overview and architecture</p>
-<p>Building Docker images and containers</p>
-<p>Ports &amp; Networking 101</p>
-<p>How data scientists can use docker in production</p></td>
-<td>Lab #2: Written your own Dockerfile to deploy Open Source Shiny Server on <a href="https://labs.play-with-docker.com/">Docker playground</a> and hosted an app on the server</td>
+<td><p>How and why data scientists use docker in production</p>
+<p>Docker: overview and architecture</p>
+<p>Building docker images and containers</p>
+<p>Ports &amp; networking</p></td>
+<td>Lab #2: Write your own Dockerfile to deploy Open Source Shiny Server on <a href="https://labs.play-with-docker.com/">Docker playground</a> and host an app on the server</td>
 </tr>
 <tr class="even">
 <td>Part 4: Data Science in Production</td>
@@ -460,7 +452,7 @@
 <p>APIs and when to use them</p>
 <p>Just enough auth</p>
 <p>Logging &amp; metrics &amp; testing</p></td>
-<td>Lab #3: Created an API wrapper around a trained prediction model and hosted it on Posit Connect</td>
+<td>Lab #3: Create an API wrapper around a trained prediction model and host it on Posit Connect</td>
 </tr>
 <tr class="odd">
 <td>Part 5: Discussion</td>
@@ -471,7 +463,62 @@
 </tr>
 </tbody>
 </table>
-<p>Bonus Materials: Linux Refresher</p>
+</section>
+<section class="slide level2">
+<h2>Bonus Materials: Linux Refresher</h2>
+<ul>
+<li>this workshop will involve us working in a linux environment</li>
+<li>if you need a refresher on linux commands</li>
+<li>linux commands will be provided in all lab and exercise materials</li>
+</ul>
+</section>
+<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-people-dark.svg" data-background-size="contain">
+<h2></h2>
+<div class="columns has-dark-background">
+<div class="column" style="width:100%;">
+<h2>Linux Refresher (optional section)</h2>
+</div>
+</div>
+</section>
+<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/brackets-light.svg" data-background-size="contain">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:100%;">
+<h2>Why Linux?</h2>
+<ul>
+<li>GNU+Linux kernel is one of the world’s most popular operating systems
+<ul>
+<li>It’s used in the Mars Perseverance Rover!</li>
+</ul></li>
+<li>It’s open source and freely available</li>
+<li>Different distributions available</li>
+<li>Potentially less exploitable and more secure</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Terminology</h2>
+<ul>
+<li>The command line is a way to interact with a computer by typing text-based instructions to it, and reading the responses.</li>
+<li>The software—called an interpreter—that translates your input into commands and executes them for you is the shell.</li>
+<li>A <em>terminal</em> is an input and output environment that presents a text-only window running a shell.</li>
+<li>A <em>shell</em> is a program that exposes the computer’s operating system to a user or program. In Linux systems, the shell presented in a terminal is a command line interpreter.</li>
+<li>A <em>command line interface</em> is a user interface (managed by a command line interpreter program) which processes commands to a computer program and outputs the results.</li>
+<li>On most Linux distributions, the default shell is Bash, or Zsh.</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Linux Refresher Resources</h2>
+<ul>
+<li><a href="https://do4ds.com/chapters/sec2/2-1-cmd-line.html">Opening the command line</a></li>
+<li><a href="https://do4ds.com/chapters/sec2/2-2-cmd-line-use.html">Using the command line</a></li>
+<li><a href="https://do4ds.com/chapters/sec3/3-2-linux-admin.html">Basic Linux SysAdmin</a> (11 - 11.7.4)</li>
+<li><a href="https://business-science.github.io/shiny-production-with-aws-book/linux-command-line-interface-cli.html">List of cli commands</a></li>
+<li><a href="https://www.maketecheasier.com/pipes-redirection-for-linux-command-line/">How to use pipes and redirection in linux</a></li>
+<li><a href="https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/">How to use grep in linux</a></li>
+<li><a href="https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/">Linux directory structure</a></li>
+</ul>
 </section>
 <section class="slide level2">
 <h2>What we won’t cover</h2>
@@ -579,6 +626,7 @@
 <section class="slide level2">
 <h2>Workshop Install</h2>
 <p>Login to http://rstd.io/class, use the provided username and password and access Posit Workbench and Posit Connect.</p>
+<p>Login to Docker Playground with your Docker Hub username and password.</p>
 </section>
 <section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/brackets-light.svg" data-background-size="contain">
 <h2></h2>
@@ -607,10 +655,10 @@
 ⏰ 09:00 - 17:00<br>
 🏨 ROOM: TBD<br>
 ✍️TBD</p>
-<table style="width:86%;">
+<table style="width:82%;">
 <colgroup>
 <col style="width: 22%">
-<col style="width: 63%">
+<col style="width: 59%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -646,15 +694,17 @@
 </div>
 </section>
 <section class="slide level2">
+<h2>Part 2: Devops Principles</h2>
+</section>
+<section class="slide level2">
 <h2>A very brief history</h2>
 <ul>
 <li><p>Development of system of practice in the late 2000’s in software and IT online communities</p></li>
 <li><p>Developers often siloed from operations teams resulting in inefficient processes</p></li>
 <li><p>Long development cycles and monolithic environments made it difficult to quickly iterate and deploy</p></li>
-<li><p>Microservices architectures become more popular</p></li>
 <li><p>Software stacks used different languages, frameworks, databases</p></li>
 <li><p>Devops built on agile methodologies used in software dev and extended it to operations</p></li>
-<li><p>Early leaders such as Gene Kim, ..</p></li>
+<li><p>Microservices architectures become more popular</p></li>
 <li><p>Movement to integrate security into devops cycles</p></li>
 </ul>
 </section>
@@ -664,7 +714,6 @@
 <div class="column" style="width:100%;">
 <h2>Principles of Devops</h2>
 <p><img data-src="images/Screenshot%202023-08-29%20at%203.32.37%20PM.png" width="276"></p>
-<p><strong>DevOps</strong> is a combination of software development (dev) and operations (ops). It is defined as a software engineering methodology which aims to integrate the work of development teams and operations teams by facilitating a culture of collaboration and shared responsibility.</p>
 <ul>
 <li><p>Collaboration</p></li>
 <li><p>Automation</p></li>
@@ -672,6 +721,19 @@
 <li><p>Rapid feedback loops</p></li>
 <li><p>Culture change</p></li>
 </ul>
+<aside class="notes">
+<p><strong>DevOps</strong> is a combination of software development (dev) and operations (ops). It is defined as a software engineering methodology which aims to integrate the work of development teams and operations teams by facilitating a culture of collaboration and shared responsibility.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="footer">
 <p>Illustration &amp; Definition credit:Gitlab, https://about.gitlab.com/topics/devops/</p>
 </div>
@@ -699,19 +761,16 @@
 <p>What other problems have you ran into that could possibly be solved with devops practices or tools?</p>
 </div>
 </section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/content-dark.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns has-dark-background">
-<div class="column" style="width:100%;">
-<h2>Data Science in Production</h2>
-<p>Production is both <strong>a</strong> a <strong>state of being</strong> and a <strong>process</strong> for “deploying” content</p>
-</div>
-</div>
+<section class="slide level2">
+<h2>Need a connecting slide here</h2>
+<ul>
+<li></li>
+</ul>
 </section>
 <section class="slide level2">
 <h2>Environments</h2>
 <p>Content is deployed (and code is promoted) across different environments with different intended audiences</p>
-<p>Dev/Test/Prod environment - <strong>add image</strong> of 3 envs + promotion arrows</p>
+<p><strong>add image</strong> of promotion arrows</p>
 <table style="width:99%;">
 <colgroup>
 <col style="width: 39%">
@@ -744,11 +803,14 @@
 </table>
 </section>
 <section class="slide level2">
-<h2>Deployment with CI/CD</h2>
+<h2>Continuous Integration</h2>
 <p>Continuous Integration - an an iterative process to build, test, collaborate on your code to above environments</p>
 <p>Tools include code promotion, version control with git, feature branching, automatic tests</p>
 
 <img data-src="images/Screenshot%202023-08-23%20at%2011.20.04%20AM.png" class="r-stretch"></section>
+<section class="slide level2">
+<h2>Show images of a few different types of CI workflows</h2>
+</section>
 <section class="slide level2">
 <h2>Continuous Delivery/Deployment</h2>
 <p>An automatic process to build, test, and deploy your code to above environments</p>
@@ -786,19 +848,6 @@
 <section class="slide level2">
 <h2>Activity:</h2>
 <p>Complete Part 1 of the Deploy Quarto Site with GHA Lab</p>
-</section>
-<section class="slide level2">
-<h2>Production “State”</h2>
-<p>Questions to ask once your content is able to be consumed by your intended audience</p>
-<ul>
-<li><p>Is it reproducible?</p></li>
-<li><p>Is it portable?</p></li>
-<li><p>Is it maintainable?</p></li>
-<li><p>Does it scale?</p></li>
-<li><p>Is your code efficiently written?</p></li>
-<li><p>Is it secure and accessible?</p></li>
-<li><p>Can you trust your code?</p></li>
-</ul>
 </section>
 <section class="slide level2">
 <h2>Layers of reproducibility</h2>
@@ -847,10 +896,11 @@
 </section>
 <section class="slide level2">
 <h2>Mechanisms for reproducibility</h2>
+<p>** make this a diagram starting from least to most reproducibility</p>
 <ul>
-<li><p><strong>documenting state &amp; version control</strong></p></li>
-<li><p>virtual environments</p></li>
-<li><p>Containerization &amp; Docker</p></li>
+<li><p>documenting state &amp; version control</p></li>
+<li><p>virtual environments (<code>renv</code>, <code>venv</code>) + package management</p></li>
+<li><p>Containerization &amp; docker</p></li>
 <li><p>Infrastructure as Code</p></li>
 </ul>
 </section>
@@ -862,6 +912,19 @@
 <li><p>Using a branching strategy push your code alongside the generated lockfile <code>renv.lock</code>. Be sure to also share the generated auto-loaders in <code>.Rprofile</code> and <code>renv/activate.R</code>.</p></li>
 <li><p>When a collaborator first launches in this project, <code>renv</code> should automatically bootstrap itself, thereby downloading and installing the appropriate version of <code>renv</code> into the project library. After this has completed, they can then use <a href="https://rstudio.github.io/renv/reference/restore.html"><code>renv::restore()</code></a> to restore the project library locally on their machine.</p></li>
 </ol>
+<aside class="notes">
+<p>live code a quick renv on workbench instead of going through all the steps</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>A short auth teaser</h2>
@@ -870,21 +933,24 @@
 <table>
 <thead>
 <tr class="header">
-<th>Local</th>
-<th>Https (and http)</th>
+<th>http</th>
+<th>https</th>
 <th>SSH</th>
 <th>git</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>port 80</td>
+<td>port 443</td>
+<td>port 22</td>
+<td>port 9418</td>
 </tr>
 </tbody>
 </table>
+</section>
+<section class="slide level2">
+<h2>Image of ports and how they work</h2>
 </section>
 <section class="slide level2">
 <h2>Activity</h2>
@@ -915,6 +981,9 @@
 <section class="slide level2">
 <h2>Activity</h2>
 <p>Complete Part 4 of Lab: Deploy Quarto with GHA including the exercises</p>
+</section>
+<section class="slide level2">
+<h2>Part 3: Docker for Data Scientists</h2>
 </section>
 <section class="slide level2">
 <h2>Introduction to Docker</h2>
@@ -951,18 +1020,85 @@
 </ul>
 </section>
 <section class="slide level2">
+<h2>Activity</h2>
+<p>Complete Part 1: Exercises 1 - 8</p>
+</section>
+<section class="slide level2">
+<h2>Docker ports &amp; localhost</h2>
+<pre><code>docker run -d -p 81:80 --name httpd-container httpd
+curl http://localhost:81</code></pre>
+</section>
+<section class="slide level2">
+<h2>Persisting data with Docker</h2>
+<pre><code>touch test.txt # create a text file
+echo "this is a test file" &gt; test.txt # redirect string to the file
+cat test.txt # confirm that the echo command worked
+
+pwd # to see where the test.txt file is located on your host machine
+docker run -it -d / # run in detached interactive mode
+-v /root:/data / # mount a shared volume to a folder in the container called "data"
+ubuntu
+
+ls # see what folders are in the container
+cd data # move to the newly created data directory
+ls # confirm that the text file is there</code></pre>
+</section>
+<section class="slide level2">
+<h2>Activity</h2>
+<p>Complete Part 1: Exercises 9 - 10</p>
+</section>
+<section class="slide level2">
 <h2>Building Docker Images</h2>
 <ul>
 <li><p>an image is a <strong>read-only</strong> system that includes files + meta-data</p></li>
 <li><p>made of layers stacked on top of each other</p></li>
-<li><p>When you want to run a container, you <em>pull</em> the image and run it as an <em>instance</em>, which is what you'll actually interact with.</p></li>
-<li><p>Containers are ephemeral - once it shuts down all the information inside of it removed.</p></li>
+<li><p>When you want to run a container, you <em>pull</em> the image and run it as an <em>instance</em>, which is what you’ll actually interact with</p></li>
+<li><p>Containers are ephemeral - once it shuts down all the information inside of it removed</p></li>
 </ul>
 </section>
 <section class="slide level2">
-<h2>Ports</h2>
-<pre><code>docker run -d -p 81:80 --name httpd-container httpd
-curl http://localhost:81</code></pre>
+<h2>Activity</h2>
+<p>Complete Part 2: Exercises</p>
+</section>
+<section class="slide level2">
+<h2>Layers of a Dockerfile</h2>
+<p>Walk through Posit Connect Dockerfile or Shiny Server</p>
+</section>
+<section class="slide level2">
+<h2>Part 4: Data Science in Production</h2>
+</section>
+<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/content-dark.svg" data-background-size="contain">
+<h2></h2>
+<div class="columns has-dark-background">
+<div class="column" style="width:100%;">
+<h2>Data Science in Production</h2>
+<ul>
+<li><p>Presentation Layer</p></li>
+<li><p>Processing Layer</p></li>
+<li><p>Data store Layer</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Choosing the right presentation layer</h2>
+<ul>
+<li><p><a href="https://do4ds.com/chapters/sec1/1-2-proj-arch.html">Alex’s flow chart</a></p></li>
+<li><p>credit text</p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Production “State”</h2>
+<p>Questions to ask once your content is able to be consumed by your intended audience</p>
+<ul>
+<li><p>Is it reproducible?</p></li>
+<li><p>Is it portable?</p></li>
+<li><p>Is it maintainable?</p></li>
+<li><p>Does it scale?</p></li>
+<li><p>Is your code efficiently written?</p></li>
+<li><p>Is it secure and accessible?</p></li>
+<li><p>Can you trust your code?</p></li>
+</ul>
 </section>
 <section class="slide level2">
 <h2>APIs can help</h2>
@@ -972,98 +1108,60 @@ curl http://localhost:81</code></pre>
 </ul>
 </section>
 <section class="slide level2">
-<h2>When to use an API</h2>
-</section>
-<section class="slide level2">
-<h2>When not to use an API</h2>
-</section>
-<section class="slide level2">
 <h2>Structure of an API</h2>
 </section>
 <section class="slide level2">
-<h2>API frameworks</h2>
+<h2>Activity: Create a Posit Connect API key</h2>
+<ul>
+<li><p>login to Connect</p></li>
+<li><p>create connect key</p></li>
+<li><p>use rsconnect to access</p></li>
+<li><p>use curl to access</p></li>
+</ul>
 </section>
 <section class="slide level2">
-<h2>Deploying an API</h2>
+<h2>Creating an API</h2>
+<ul>
+<li>plumber exercise</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Securing your application</h2>
+<ul>
+<li><p>SSL &amp; https</p></li>
+<li><p>live code</p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Authentication vs.&nbsp;Authorization</h2>
+</section>
+<section class="slide level2">
+<h2>Deploying and hosting your API</h2>
 </section>
 <section class="slide level2">
 <h2>Activity</h2>
-<p>API lab - use plumber to deploy prediction model to Connect</p>
-<p>play around with other deploy methods</p>
+<ul>
+<li><p>deploy api to connect</p></li>
+<li><p>put shiny frontend and call api</p></li>
+</ul>
 </section>
 <section class="slide level2">
-<h2></h2>
-</section>
-<section class="slide level2">
-<h2>Docker Layers</h2>
-</section>
-<section class="slide level2">
-<h2>VM vs.&nbsp;Docker</h2>
-</section>
-<section class="slide level2">
-<h2>Parts of a Dockerfile</h2>
+<h2>Testing and logging</h2>
 </section>
 <section class="slide level2">
 <h2>Activity</h2>
 <ul>
-<li><p>Use either docker desktop or docker classroom</p></li>
-<li><p>Create dockerfile to Deploy Shiny Open Source</p></li>
-<li><p>Create shiny frontend to prediction API and add to server</p></li>
+<li>add logging and test to shiny app (if there’s time)</li>
 </ul>
 </section>
 <section class="slide level2">
-<h2>Principle 3: Is it secure?</h2>
+<h2>Activity</h2>
+<ul>
+<li>add app to server</li>
+</ul>
 </section>
 <section class="slide level2">
-<h2>Auth section</h2>
-</section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-people-dark.svg" data-background-size="contain">
 <h2></h2>
-<div class="columns has-dark-background">
-<div class="column" style="width:100%;">
-<h2>Linux Refresher (optional)</h2>
-</div>
-</div>
-</section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/brackets-light.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns">
-<div class="column" style="width:100%;">
-<h2>Why Linux?</h2>
-<ul>
-<li>GNU+Linux kernel is one of the world’s most popular operating systems
-<ul>
-<li>It’s used in the Mars Perseverance Rover!</li>
-</ul></li>
-<li>It’s open source and freely available</li>
-<li>Different distributions available</li>
-<li>Potentially less exploitable and more secure</li>
-</ul>
-</div>
-</div>
-</section>
-<section class="slide level2">
-<h2>Terminology</h2>
-<ul>
-<li>The command line is a way to interact with a computer by typing text-based instructions to it, and reading the responses.</li>
-<li>The software—called an interpreter—that translates your input into commands and executes them for you is the shell.</li>
-<li>A <em>terminal</em> is an input and output environment that presents a text-only window running a shell.</li>
-<li>A <em>shell</em> is a program that exposes the computer’s operating system to a user or program. In Linux systems, the shell presented in a terminal is a command line interpreter.</li>
-<li>A <em>command line interface</em> is a user interface (managed by a command line interpreter program) which processes commands to a computer program and outputs the results.</li>
-<li>On most Linux distributions, the default shell is Bash, or Zsh.</li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>Linux Refresher Resources</h2>
-<ul>
-<li><a href="https://do4ds.com/chapters/sec2/2-1-cmd-line.html">Opening the command line</a></li>
-<li><a href="https://do4ds.com/chapters/sec2/2-2-cmd-line-use.html">Using the command line</a></li>
-<li><a href="https://do4ds.com/chapters/sec3/3-2-linux-admin.html">Basic Linux SysAdmin</a> (11 - 11.7.4)</li>
-<li><a href="https://business-science.github.io/shiny-production-with-aws-book/linux-command-line-interface-cli.html">List of cli commands</a></li>
-<li><a href="https://www.maketecheasier.com/pipes-redirection-for-linux-command-line/">How to use pipes and redirection in linux</a></li>
-<li><a href="https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/">How to use grep in linux</a></li>
-<li><a href="https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/">Linux directory structure</a></li>
-</ul>
 <div class="footer footer-default">
 
 </div>
