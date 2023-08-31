@@ -407,18 +407,71 @@
 <ul>
 <li><p>To understand how devops can help you in your work as data scientists</p></li>
 <li><p>To understand the main principles of Devops</p></li>
-<li><p>To get hands-on experience putting code into production</p></li>
-<li><p>To leave the workshop with some “assets” and workflows you can use in your work</p></li>
+<li><p>To get hands-on experience putting code into production using common devops workflows</p></li>
+<li><p>To leave the workshop with some “assets” and skills you can use in your work</p></li>
 </ul>
 </section>
 <section class="slide level2">
 <h2>Workshop Lab Overview</h2>
 <p>By the end of this workshop you will have:</p>
 <ul>
-<li><p>Deployed your own Quarto website on Github Pages using GitHub Actions CI/CD</p></li>
-<li><p>Created an API wrapper around a trained prediction model and hosted it on Posit Connect</p></li>
-<li><p>Written your own Dockerfile to deploy Open Source Shiny Server on <a href="https://labs.play-with-docker.com/">Docker playground</a> and hosted an app on the server</p></li>
+<li><p>Lab #1: Deployed your own Quarto website on Github Pages using GitHub Actions CI/CD</p></li>
+<li><p>Lab #2: Written your own Dockerfile to deploy Open Source Shiny Server on <a href="https://labs.play-with-docker.com/">Docker playground</a> and hosted an app on the server</p></li>
+<li><p>Lab #3: Created an API wrapper around a trained prediction model and hosted it on Posit Connect</p></li>
 </ul>
+</section>
+<section class="slide level2">
+<h2>General Agenda</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Section/Time</th>
+<th>Topics</th>
+<th>Labs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Part 1</td>
+<td><p>Workshop Overview</p>
+<p>Logistics</p>
+<p>Introductions</p></td>
+<td>Infrastructure &amp; wifi setup</td>
+</tr>
+<tr class="even">
+<td>Part 2: Devops Principles</td>
+<td><p>Introduction to Devops</p>
+<p>Version Control</p>
+<p>CI/CD</p>
+<p>Reproducing workflows and environments</p></td>
+<td>Lab 1: Deployed your own Quarto website on Github Pages using GitHub Actions CI/CD</td>
+</tr>
+<tr class="odd">
+<td>Part 3: Docker for Data Scientists</td>
+<td><p>Docker: Overview and architecture</p>
+<p>Building Docker images and containers</p>
+<p>Ports &amp; Networking 101</p>
+<p>How data scientists can use docker in production</p></td>
+<td>Lab #2: Written your own Dockerfile to deploy Open Source Shiny Server on <a href="https://labs.play-with-docker.com/">Docker playground</a> and hosted an app on the server</td>
+</tr>
+<tr class="even">
+<td>Part 4: Data Science in Production</td>
+<td><p>Choosing your deployment method</p>
+<p>APIs and when to use them</p>
+<p>Just enough auth</p>
+<p>Logging &amp; metrics &amp; testing</p></td>
+<td>Lab #3: Created an API wrapper around a trained prediction model and hosted it on Posit Connect</td>
+</tr>
+<tr class="odd">
+<td>Part 5: Discussion</td>
+<td><p>Course feedback</p>
+<p>Questions for the team</p>
+<p>Working with other teams</p></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>Bonus Materials: Linux Refresher</p>
 </section>
 <section class="slide level2">
 <h2>What we won’t cover</h2>
@@ -554,10 +607,10 @@
 ⏰ 09:00 - 17:00<br>
 🏨 ROOM: TBD<br>
 ✍️TBD</p>
-<table style="width:89%;">
+<table style="width:86%;">
 <colgroup>
 <col style="width: 22%">
-<col style="width: 66%">
+<col style="width: 63%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -843,7 +896,7 @@
 <li><p>A github action allows us to create workflows that are triggered by a github action such as a push or pull to a branch</p></li>
 <li><p>Workflows can include tests, markdown renders, shell scripts, or deployments. They can be as simple or as complicated as you need. Open-source community provides a ton of examples of actions.</p></li>
 <li><p>Open source collection of “available” actions</p></li>
-<li><p>Runs on a seprate server called a runner</p></li>
+<li><p>Runs on a separate server called a runner</p></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -861,7 +914,55 @@
 </section>
 <section class="slide level2">
 <h2>Activity</h2>
-<p>Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises</p>
+<p>Complete Part 4 of Lab: Deploy Quarto with GHA including the exercises</p>
+</section>
+<section class="slide level2">
+<h2>Introduction to Docker</h2>
+<ul>
+<li>Enhances DevOps practices by promoting consistency and reproducibility.</li>
+<li>Open platform portable tool that allows you to package and application and its dependencies in a unit called a container.</li>
+<li>Create isolated environments for different experiments.</li>
+<li>Share work with colleagues without environment setup issues.</li>
+<li>Enables easier testing in production-like environments.</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Problems Docker Solves</h2>
+<ul>
+<li><strong>Consistency:</strong> Containers ensure that applications run the same way across different environments.</li>
+<li><strong>Isolation:</strong> Containers isolate applications and their dependencies, preventing conflicts.</li>
+<li><strong>Portability:</strong> Containers can run on any system that supports Docker, reducing “it works on my machine” issues.</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Lifecycle</h2>
+
+<img data-src="images/docker%20lifecycle.webp" class="r-stretch"><ul>
+<li>credit - docker for java developers</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Docker Architecture</h2>
+<ul>
+<li><p><img data-src="images/Screenshot%202023-08-30%20at%2011.31.56%20AM.png">client-server architecture. The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers.</p></li>
+<li><p>The Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface.</p></li>
+<li><p>Client is primary way that users interact with Docker via CLI.</p></li>
+<li><p>Registry is a Repository for Docker images (e.g., Docker Hub) where you can store and share images.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Building Docker Images</h2>
+<ul>
+<li><p>an image is a <strong>read-only</strong> system that includes files + meta-data</p></li>
+<li><p>made of layers stacked on top of each other</p></li>
+<li><p>When you want to run a container, you <em>pull</em> the image and run it as an <em>instance</em>, which is what you'll actually interact with.</p></li>
+<li><p>Containers are ephemeral - once it shuts down all the information inside of it removed.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Ports</h2>
+<pre><code>docker run -d -p 81:80 --name httpd-container httpd
+curl http://localhost:81</code></pre>
 </section>
 <section class="slide level2">
 <h2>APIs can help</h2>
@@ -891,29 +992,10 @@
 <p>play around with other deploy methods</p>
 </section>
 <section class="slide level2">
-<h2>Introduction to Docker</h2>
-<ul>
-<li>open platform for developing, shipping, and running applications</li>
-<li>portable tool that allows you to package and application and its dependencies in a unit called a container</li>
-</ul>
+<h2></h2>
 </section>
 <section class="slide level2">
-<h2>Problems Docker Solves</h2>
-<ul>
-<li><strong>Consistency:</strong> Containers ensure that applications run the same way across different environments.</li>
-<li><strong>Isolation:</strong> Containers isolate applications and their dependencies, preventing conflicts.</li>
-<li><strong>Portability:</strong> Containers can run on any system that supports Docker, reducing “it works on my machine” issues.</li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>Lifecycle</h2>
-<p>credit - docker for java developers</p>
-</section>
-<section class="slide level2">
-<h2>Containers &amp; Docker</h2>
-</section>
-<section class="slide level2">
-<h2>Docker Workflow</h2>
+<h2>Docker Layers</h2>
 </section>
 <section class="slide level2">
 <h2>VM vs.&nbsp;Docker</h2>
@@ -970,42 +1052,6 @@
 <li>A <em>command line interface</em> is a user interface (managed by a command line interpreter program) which processes commands to a computer program and outputs the results.</li>
 <li>On most Linux distributions, the default shell is Bash, or Zsh.</li>
 </ul>
-</section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-people-dark.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns has-dark-background">
-<div class="column" style="width:100%;">
-<h2>Working with files &amp; directories</h2>
-<ul>
-<li>Some stuff</li>
-<li>Some more stuff
-<ul>
-<li>And yet more!</li>
-</ul></li>
-</ul>
-</div>
-</div>
-</section>
-<section class="slide level2">
-<h2>Working with permissions</h2>
-</section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-people-light.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns">
-<div class="column" style="width:100%;">
-<h2>Working with users and groups</h2>
-<ul>
-<li>Some stuff</li>
-<li>Some more stuff
-<ul>
-<li>And yet more!</li>
-</ul></li>
-</ul>
-</div>
-</div>
-</section>
-<section class="slide level2">
-<h2>Managing server resources</h2>
 </section>
 <section class="slide level2">
 <h2>Linux Refresher Resources</h2>
