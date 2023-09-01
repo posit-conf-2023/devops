@@ -218,15 +218,15 @@ Login to Docker Playground with your Docker Hub username and password.
 🏨 ROOM: TBD\
 ✍️TBD
 
-+---------------+------------------------------------------+
-| Time          | Topic                                    |
-+===============+==========================================+
-| 10:30 - 11:00 | Break                                    |
-+---------------+------------------------------------------+
-| 12:30 - 13:30 | Lunch                                    |
-+---------------+------------------------------------------+
-| 15:00 - 15:30 | Break                                    |
-+---------------+------------------------------------------+
++---------------+----------------------------------------+
+| Time          | Topic                                  |
++===============+========================================+
+| 10:30 - 11:00 | Break                                  |
++---------------+----------------------------------------+
+| 12:30 - 13:30 | Lunch                                  |
++---------------+----------------------------------------+
+| 15:00 - 15:30 | Break                                  |
++---------------+----------------------------------------+
 
 ## Code of Conduct {.brackets-light}
 
@@ -487,11 +487,9 @@ Complete Part 4 of Lab: Deploy Quarto with GHA including the exercises
 
 ## Introduction to Docker
 
--   Enhances DevOps practices by promoting consistency and reproducibility.
 -   Open platform portable tool that allows you to package and application and its dependencies in a unit called a container.
 -   Create isolated environments for different experiments.
 -   Share work with colleagues without environment setup issues.
--   Enables easier testing in production-like environments.
 
 ## Problems Docker Solves
 
@@ -503,17 +501,23 @@ Complete Part 4 of Lab: Deploy Quarto with GHA including the exercises
 
 ![](images/docker%20lifecycle.webp)
 
--   credit - docker for java developers
+:::{.notes}
+The words *image* and *container* will come up a lot in the following. 
+An instance of an image is called container. An image is the setup of the virtual
+computer. If you run this image, you will have an instance of it, which we call
+container. You can have many running containers of the same image.
 
 ## Docker Architecture
 
--   ![](images/Screenshot%202023-08-30%20at%2011.31.56%20AM.png)client-server architecture. The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers.
+![](images/Screenshot%202023-08-30%20at%2011.31.56%20AM.png)
+
+:::{.notes}
+-   client-server architecture. The Docker client - which is the primary way that users interface with Docker via CLI - talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers.
 
 -   The Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface.
 
--   Client is primary way that users interact with Docker via CLI.
-
 -   Registry is a Repository for Docker images (e.g., Docker Hub) where you can store and share images.
+:::
 
 ## Activity
 
@@ -525,6 +529,9 @@ Complete Part 1: Exercises 1 - 8
 docker run -d -p 81:80 --name httpd-container httpd
 curl http://localhost:81
 ```
+:::{.notes}
+docker image of a http web server created by Apache
+:::
 
 ## Persisting data with Docker
 

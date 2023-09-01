@@ -655,10 +655,10 @@
 ⏰ 09:00 - 17:00<br>
 🏨 ROOM: TBD<br>
 ✍️TBD</p>
-<table style="width:82%;">
+<table style="width:79%;">
 <colgroup>
 <col style="width: 22%">
-<col style="width: 59%">
+<col style="width: 56%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -988,11 +988,9 @@
 <section class="slide level2">
 <h2>Introduction to Docker</h2>
 <ul>
-<li>Enhances DevOps practices by promoting consistency and reproducibility.</li>
 <li>Open platform portable tool that allows you to package and application and its dependencies in a unit called a container.</li>
 <li>Create isolated environments for different experiments.</li>
 <li>Share work with colleagues without environment setup issues.</li>
-<li>Enables easier testing in production-like environments.</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -1006,18 +1004,28 @@
 <section class="slide level2">
 <h2>Lifecycle</h2>
 
-<img data-src="images/docker%20lifecycle.webp" class="r-stretch"><ul>
-<li>credit - docker for java developers</li>
-</ul>
+<img data-src="images/docker%20lifecycle.webp" class="r-stretch"><p>:::{.notes} The words <em>image</em> and <em>container</em> will come up a lot in the following. An instance of an image is called container. An image is the setup of the virtual computer. If you run this image, you will have an instance of it, which we call container. You can have many running containers of the same image.</p>
 </section>
 <section class="slide level2">
 <h2>Docker Architecture</h2>
+
+<img data-src="images/Screenshot%202023-08-30%20at%2011.31.56%20AM.png" class="r-stretch"><aside class="notes">
 <ul>
-<li><p><img data-src="images/Screenshot%202023-08-30%20at%2011.31.56%20AM.png">client-server architecture. The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers.</p></li>
+<li><p>client-server architecture. The Docker client - which is the primary way that users interface with Docker via CLI - talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers.</p></li>
 <li><p>The Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface.</p></li>
-<li><p>Client is primary way that users interact with Docker via CLI.</p></li>
 <li><p>Registry is a Repository for Docker images (e.g., Docker Hub) where you can store and share images.</p></li>
 </ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>Activity</h2>
@@ -1027,6 +1035,19 @@
 <h2>Docker ports &amp; localhost</h2>
 <pre><code>docker run -d -p 81:80 --name httpd-container httpd
 curl http://localhost:81</code></pre>
+<aside class="notes">
+<p>docker image of a http web server created by Apache</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>Persisting data with Docker</h2>
