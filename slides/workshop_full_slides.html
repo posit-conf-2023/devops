@@ -465,11 +465,12 @@
 </table>
 </section>
 <section class="slide level2">
-<h2>Bonus Materials: Linux Refresher</h2>
+<h2>Supplemental Materials</h2>
 <ul>
-<li>this workshop will involve us working in a linux environment</li>
-<li>if you need a refresher on linux commands</li>
-<li>linux commands will be provided in all lab and exercise materials</li>
+<li>Linux</li>
+<li>vim</li>
+<li>Git</li>
+<li>Docker</li>
 </ul>
 </section>
 <section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-people-dark.svg" data-background-size="contain">
@@ -496,6 +497,21 @@
 </ul>
 </div>
 </div>
+</section>
+<section class="slide level2">
+<h2>Most important workshop commands</h2>
+<ul>
+<li>cd</li>
+<li>ls</li>
+<li>pwd</li>
+<li>touch</li>
+<li>mkdir</li>
+<li>vim</li>
+<li>curl</li>
+<li>echo</li>
+<li>env</li>
+<li>$PATH</li>
+</ul>
 </section>
 <section class="slide level2">
 <h2>Terminology</h2>
@@ -655,10 +671,10 @@
 ⏰ 09:00 - 17:00<br>
 🏨 ROOM: TBD<br>
 ✍️TBD</p>
-<table style="width:79%;">
+<table style="width:68%;">
 <colgroup>
 <col style="width: 22%">
-<col style="width: 56%">
+<col style="width: 45%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -757,8 +773,8 @@
 <li class="fragment"><p>You come back to code from a year ago and now it doesnt run!</p></li>
 <li class="fragment"><p>Your boss asks you to share that Shiny app with a client but the dev team is too busy working on their roadmap to help you deploy it somewhere.</p></li>
 <li class="fragment"><p>You need to share your prediction model (created in R) with the Engineering team but they only code in Java.</p></li>
+<li class="fragment"><p>What other problems have you ran into that could possibly be solved with devops practices or tools?</p></li>
 </ul>
-<p>What other problems have you ran into that could possibly be solved with devops practices or tools?</p>
 </div>
 </section>
 <section class="slide level2">
@@ -846,8 +862,11 @@
 <span id="cb2-11"><a href="#cb2-11"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
-<h2>Activity:</h2>
-<p>Complete Part 1 of the Deploy Quarto Site with GHA Lab</p>
+<h2>Lab Activity</h2>
+<p>🟥 - I need help</p>
+<p>🟨 - I’m still working</p>
+<p>🟩 - I’m done</p>
+<p>Part 1 of the Deploy Quarto Site with GHA Lab</p>
 </section>
 <section class="slide level2">
 <h2>Layers of reproducibility</h2>
@@ -888,11 +907,12 @@
 <p><strong>Repository</strong> - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.</p>
 </section>
 <section class="slide level2">
-<h2>Activity</h2>
-<ul>
-<li><p>Complete Part 2 of Lab: Deploy Quarto with GHA including the exercises</p></li>
-<li><p>In your day-to-day work, what’s the hardest reproducibility challenge?</p></li>
-</ul>
+<h2>Lab Activity</h2>
+<p>🟥 - I need help</p>
+<p>🟨 - I’m still working</p>
+<p>🟩 - I’m done</p>
+<p>Complete Part 2 of Lab: Deploy Quarto with GHA including the exercises</p>
+<p>In your day-to-day work, what’s the hardest reproducibility challenge?</p>
 </section>
 <section class="slide level2">
 <h2>Mechanisms for reproducibility</h2>
@@ -951,10 +971,19 @@
 </section>
 <section class="slide level2">
 <h2>Image of ports and how they work</h2>
-</section>
+<ul>
+<li><p>notes: A port is a virtual point where network connections start and end. Ports are software-based and managed by a computer’s operating system. Each port is associated with a specific process or service. Ports allow computers to easily differentiate between different kinds of traffic: emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection.</p></li>
+<li><p>Add picture of client box, server box connected by line with different ports for each box</p></li>
+<li><p>Localhost: <code>ping localhost - this computer/host</code></p></li>
+</ul>
+
+<img data-src="images/ports-01.jpg" class="r-stretch"></section>
 <section class="slide level2">
-<h2>Activity</h2>
-<p>Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises</p>
+<h2>Lab Activity</h2>
+<p>🟥 - I need help</p>
+<p>🟨 - I’m still working</p>
+<p>🟩 - I’m done</p>
+<p>Part 3 of Lab: Deploy Quarto with GHA including the exercises</p>
 </section>
 <section class="slide level2">
 <h2>Github Actions Workflow</h2>
@@ -979,8 +1008,11 @@
 </ol>
 </section>
 <section class="slide level2">
-<h2>Activity</h2>
-<p>Complete Part 4 of Lab: Deploy Quarto with GHA including the exercises</p>
+<h2>Lab Activity</h2>
+<p>🟥 - I need help</p>
+<p>🟨 - I’m still working</p>
+<p>🟩 - I’m done</p>
+<p>Part 4 of Lab: Deploy Quarto with GHA including the exercises</p>
 </section>
 <section class="slide level2">
 <h2>Part 3: Docker for Data Scientists</h2>
@@ -988,32 +1020,118 @@
 <section class="slide level2">
 <h2>Introduction to Docker</h2>
 <ul>
-<li>Open platform portable tool that allows you to package and application and its dependencies in a unit called a container.</li>
+<li>Open-source tool.</li>
+<li>Package applications and its dependencies in a unit called a container.</li>
 <li>Create isolated environments for different experiments.</li>
 <li>Share work with colleagues without environment setup issues.</li>
 </ul>
+<aside class="notes">
+<p>Docker is a tool that allows you to virtualize (put your computer in the cloud) everything you need to create an application or in this case a data science product You can share containers with colleagues without requiring them to have to set up their own local machines Without something like this, in order to recreate or test code that someone else wrote, you’d need every developer to download the same dependencies, configurations, scripts and make sure that it ran on their machine - whether thats a mac, or windows, or linux or some other operating system</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
-<h2>Problems Docker Solves</h2>
+<h2>How can docker help data scientists</h2>
 <ul>
 <li><strong>Consistency:</strong> Containers ensure that applications run the same way across different environments.</li>
 <li><strong>Isolation:</strong> Containers isolate applications and their dependencies, preventing conflicts.</li>
 <li><strong>Portability:</strong> Containers can run on any system that supports Docker, reducing “it works on my machine” issues.</li>
 </ul>
+<aside class="notes">
+<p>containers are ephemeral. so once you shut it down everything inside of it is removed or destroyed - nothing saved persists in that container</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>Lifecycle</h2>
 
-<img data-src="images/docker%20lifecycle.webp" class="r-stretch"><p>:::{.notes} The words <em>image</em> and <em>container</em> will come up a lot in the following. An instance of an image is called container. An image is the setup of the virtual computer. If you run this image, you will have an instance of it, which we call container. You can have many running containers of the same image.</p>
+<img data-src="images/lifecycle.png" class="r-stretch"><div class="footer">
+<p>Illustration credit: Alex Gold, do4ds.com</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Lifecycle Example</h2>
+<p><a href="www.docker.com">Dockerhub</a></p>
+<p><a href="www.labs.play-with-docker.com">Docker classroom</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">docker</span> pull postgres:12</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">docker</span> pull postgres:latest</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="ex">docker</span> container ls <span class="at">-a</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-e</span> POSTGRES_PASSWORD=mysecretpassword <span class="at">--name</span> postgres_early imageID</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-e</span> POSTGRES_PASSWORD=mysecretpassword <span class="at">--name</span> postgres_new imageID</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="ex">docker</span> container ls <span class="at">-a</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="ex">docker</span> stop</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="ex">docker</span> restart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+<p>🔍 Live code</p>
+</div>
+<aside class="notes">
+<p>a dockerfile is the recipe to build a docker images this recipe is stored in some sort of repository, this can be private, public, or dockerhub - which is the default a docker image contains lightweight instructions to create your application. Docker images use something called layers which makes it super easy and quick to update. Layers start at a base layer which is usually the linux operating system and then they go up to the application layer. a container is the environment for a running process of an image - so if an image is running then its using a container instance. You can have multiple containers running at the same time. But once you delete it everything inside of it goes away.</p>
+<p>Let’s see an example of what this looks like in practice. Lets say we need to use a postgres sql database for some testing - but we want to test using an older and a newer version of postgres.</p>
+<p>Lets go to Dockerhub and search for it. We can see official images but there are also thousands of them created by people- hub only has images not dockerfiles or containers themselves. docker image ls - lets list all the images that we have docker pull postgres:12 - see how its pulling and extracting all these layers - but what if we want a newer version or what if we need to run both versions on our machine</p>
+<p>docker pull postgres:latest - notice how some of these layers already exist so it takes a lot less time</p>
+<p>Lets go on dockerhub and see if we can understand a bit more about the layers https://hub.docker.com/layers/library/postgres/12/images/sha256-a97fd76ab09599e2ddc15c90a87f9a4a2a60551d99f8e7397f12a1d606d7f0ab?context=explore -</p>
+<p>we can see that there are a lot of layers but its hard to understand what exactly is happening - lets look at the dockerfile that shows us the recipe for postgres - this is usually saved in a <a href="https://github.com/docker-library/docs/blob/master/postgres/README.md">github</a> repo - not on dockerhub which is just images</p>
+<p>every docker file starts with a from command - this is the base layers that starts the image, then we are running some things, copying , env variables, and starting</p>
+<p>lets run the image and see</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Virtual Machine vs.&nbsp;Container</h2>
+
+<img data-src="images/Screenshot%202023-09-03%20at%209.56.54%20AM.png" class="r-stretch"><aside class="notes">
+<p>containers are very lightweight which makes it really easy and quick to spin them up</p>
+<p>this is because the container itself doesnt have a host operating system or any hardware - intel chip, apple chip etc - this is in the docker engine or runtime which we will look at in the architecture</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 <h2>Docker Architecture</h2>
 
 <img data-src="images/Screenshot%202023-08-30%20at%2011.31.56%20AM.png" class="r-stretch"><aside class="notes">
 <ul>
-<li><p>client-server architecture. The Docker client - which is the primary way that users interface with Docker via CLI - talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers.</p></li>
+<li><p>Docker uses a client-server architecture. The Docker client talks to the Docker daemon.</p></li>
+<li><p>The Docker client - is the primary way that users interface with Docker via CLI</p></li>
+<li><p>The Docker daemon does the heavy lifting of building, running, and distributing your Docker containers</p></li>
 <li><p>The Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface.</p></li>
 <li><p>Registry is a Repository for Docker images (e.g., Docker Hub) where you can store and share images.</p></li>
+<li><p>Docker engine is a container runtime that runs on diffrent OS’s. Set up the isolated environment for your container</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1028,13 +1146,89 @@
       }</style></aside>
 </section>
 <section class="slide level2">
-<h2>Activity</h2>
-<p>Complete Part 1: Exercises 1 - 8</p>
+<h2>Mode for running containers</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 6%">
+<col style="width: 72%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mode</th>
+<th>Run command</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Detached</td>
+<td><code>docker run -d</code></td>
+<td>This runs the container in the <strong>background</strong> so the container keeps running until the application process exits, or you stop the container. Detached mode is often used for production purposes.</td>
+</tr>
+<tr class="even">
+<td>Interactive + terminal</td>
+<td><code>docker run -it</code></td>
+<td>This runs the container in the <strong>foreground</strong> so you are unable to access the command prompt. Interactive mode is often used for development and testing.</td>
+</tr>
+<tr class="odd">
+<td>Remove everything once the container is done with its task</td>
+<td><code>docker run --rm</code></td>
+<td>This mode is used on foreground containers that perform <strong>short-term tasks</strong> such as tests or database backups. Once it is removed anything you may have downloaded or created in the container is also destroyed.</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section class="slide level2">
-<h2>Docker ports &amp; localhost</h2>
-<pre><code>docker run -d -p 81:80 --name httpd-container httpd
-curl http://localhost:81</code></pre>
+<h2>Lab Activity</h2>
+<p>🟥 - I need help</p>
+<p>🟨 - I’m still working</p>
+<p>🟩 - I’m done</p>
+<p>Complete Part 1: Exercises 1 - 6</p>
+</section>
+<section class="slide level2">
+<h2>Container Debugging</h2>
+<ul>
+<li><p>Interactive mode</p></li>
+<li><p><code>docker exec</code></p></li>
+<li><p>Logging</p></li>
+</ul>
+<pre><code>docker run -it -d ubuntu
+docker container ls -a 
+docker exec -it CONTAINER_ID bash
+
+docker container run -d --name mydb \
+ --name mydb \
+ -e MYSQL_ROOT_PASSWORD=my-secret-pw \ 
+ mysql
+ 
+ docker container logs mydb</code></pre>
+<div class="footer">
+<p>🔍 Live code</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Lab Activity</h2>
+<p>🟥 - I need help</p>
+<p>🟨 - I’m still working</p>
+<p>🟩 - I’m done</p>
+<p>Complete Part 2: Exercises 1 &amp; 2</p>
+</section>
+<section class="slide level2">
+<h2>Docker Port Mapping</h2>
+<pre><code>docker pull httpd:alpine
+docker pull httpd:latest
+
+docker inspect --format='{{.Config.ExposedPorts}}' httpd:latest
+docker inspect --format='{{.Config.ExposedPorts}}' httpd:alpine
+
+docker run -p DockerHostPort:ApplicationPort
+
+docker run -d -p 81:80 --name httpd-latest httpd:latest
+curl http://localhost:81
+
+docker run -d -p 80:80 --name httpd-alpine httpd:alpine
+curl http://localhost:80</code></pre>
 <aside class="notes">
 <p>docker image of a http web server created by Apache</p>
 <style type="text/css">

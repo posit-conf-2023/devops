@@ -75,11 +75,12 @@ format:
 |                                    | Working with other teams                             |                                                                                                                                                               |
 +------------------------------------+------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-## Bonus Materials: Linux Refresher
+## Supplemental Materials
 
--   this workshop will involve us working in a linux environment
--   if you need a refresher on linux commands
--   linux commands will be provided in all lab and exercise materials
+-   Linux
+-   vim
+-   Git
+-   Docker
 
 ## Linux Refresher (optional section) {.toc-people-dark}
 
@@ -90,6 +91,19 @@ format:
 -   It's open source and freely available
 -   Different distributions available
 -   Potentially less exploitable and more secure
+
+## Most important workshop commands
+
+-   cd
+-   ls
+-   pwd
+-   touch
+-   mkdir
+-   vim
+-   curl
+-   echo
+-   env
+-   \$PATH
 
 ## Terminology
 
@@ -218,15 +232,15 @@ Login to Docker Playground with your Docker Hub username and password.
 🏨 ROOM: TBD\
 ✍️TBD
 
-+---------------+----------------------------------------+
-| Time          | Topic                                  |
-+===============+========================================+
-| 10:30 - 11:00 | Break                                  |
-+---------------+----------------------------------------+
-| 12:30 - 13:30 | Lunch                                  |
-+---------------+----------------------------------------+
-| 15:00 - 15:30 | Break                                  |
-+---------------+----------------------------------------+
++---------------+--------------------------------+
+| Time          | Topic                          |
++===============+================================+
+| 10:30 - 11:00 | Break                          |
++---------------+--------------------------------+
+| 12:30 - 13:30 | Lunch                          |
++---------------+--------------------------------+
+| 15:00 - 15:30 | Break                          |
++---------------+--------------------------------+
 
 ## Code of Conduct {.brackets-light}
 
@@ -293,7 +307,7 @@ Illustration & Definition credit:Gitlab, https://about.gitlab.com/topics/devops/
 
 -   You need to share your prediction model (created in R) with the Engineering team but they only code in Java.
 
-What other problems have you ran into that could possibly be solved with devops practices or tools?
+-   What other problems have you ran into that could possibly be solved with devops practices or tools?
 :::
 
 ## Need a connecting slide here
@@ -373,9 +387,15 @@ name: "Rika Gorn"
 
 ```
 
-## Activity:
+## Lab Activity
 
-Complete Part 1 of the Deploy Quarto Site with GHA Lab
+🟥 - I need help
+
+🟨 - I'm still working
+
+🟩 - I'm done
+
+Part 1 of the Deploy Quarto Site with GHA Lab
 
 ## Layers of reproducibility
 
@@ -403,11 +423,17 @@ Complete Part 1 of the Deploy Quarto Site with GHA Lab
 
 **Repository** - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.
 
-## Activity
+## Lab Activity
 
--   Complete Part 2 of Lab: Deploy Quarto with GHA including the exercises
+🟥 - I need help
 
--   In your day-to-day work, what's the hardest reproducibility challenge?
+🟨 - I'm still working
+
+🟩 - I'm done
+
+Complete Part 2 of Lab: Deploy Quarto with GHA including the exercises
+
+In your day-to-day work, what's the hardest reproducibility challenge?
 
 ## Mechanisms for reproducibility
 
@@ -447,9 +473,23 @@ We can use a variety of data sharing "transfer protocols"
 
 ## Image of ports and how they work
 
-## Activity
+-   notes: A port is a virtual point where network connections start and end. Ports are software-based and managed by a computer's operating system. Each port is associated with a specific process or service. Ports allow computers to easily differentiate between different kinds of traffic: emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection.
 
-Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises
+-   Add picture of client box, server box connected by line with different ports for each box
+
+-   Localhost: `ping localhost - this computer/host`
+
+![](images/ports-01.jpg)
+
+## Lab Activity
+
+🟥 - I need help
+
+🟨 - I'm still working
+
+🟩 - I'm done
+
+Part 3 of Lab: Deploy Quarto with GHA including the exercises
 
 ## Github Actions Workflow
 
@@ -479,57 +519,190 @@ Complete Part 3 of Lab: Deploy Quarto with GHA including the exercises
 
 8.  Monitor your action on github for failures
 
-## Activity
+## Lab Activity
 
-Complete Part 4 of Lab: Deploy Quarto with GHA including the exercises
+🟥 - I need help
+
+🟨 - I'm still working
+
+🟩 - I'm done
+
+Part 4 of Lab: Deploy Quarto with GHA including the exercises
 
 ## Part 3: Docker for Data Scientists
 
 ## Introduction to Docker
 
--   Open platform portable tool that allows you to package and application and its dependencies in a unit called a container.
+-   Open-source tool.
+-   Package applications and its dependencies in a unit called a container.
 -   Create isolated environments for different experiments.
 -   Share work with colleagues without environment setup issues.
 
-## Problems Docker Solves
+::: notes
+Docker is a tool that allows you to virtualize (put your computer in the cloud) everything you need to create an application or in this case a data science product You can share containers with colleagues without requiring them to have to set up their own local machines Without something like this, in order to recreate or test code that someone else wrote, you'd need every developer to download the same dependencies, configurations, scripts and make sure that it ran on their machine - whether thats a mac, or windows, or linux or some other operating system
+:::
+
+## How can docker help data scientists
 
 -   **Consistency:** Containers ensure that applications run the same way across different environments.
 -   **Isolation:** Containers isolate applications and their dependencies, preventing conflicts.
 -   **Portability:** Containers can run on any system that supports Docker, reducing "it works on my machine" issues.
 
+::: notes
+containers are ephemeral. so once you shut it down everything inside of it is removed or destroyed - nothing saved persists in that container
+:::
+
 ## Lifecycle
 
-![](images/docker%20lifecycle.webp)
+![](images/lifecycle.png)
 
-:::{.notes}
-The words *image* and *container* will come up a lot in the following. 
-An instance of an image is called container. An image is the setup of the virtual
-computer. If you run this image, you will have an instance of it, which we call
-container. You can have many running containers of the same image.
+::: footer
+Illustration credit: Alex Gold, do4ds.com
+:::
+
+## Lifecycle Example
+
+[Dockerhub](www.docker.com)
+
+[Docker classroom](www.labs.play-with-docker.com)
+
+``` bash
+docker pull postgres:12
+docker pull postgres:latest
+docker container ls -a
+docker run -d -e POSTGRES_PASSWORD=mysecretpassword --name postgres_early imageID
+docker run -d -e POSTGRES_PASSWORD=mysecretpassword --name postgres_new imageID
+docker container ls -a
+docker stop
+docker restart
+```
+
+::: footer
+🔍 Live code
+:::
+
+::: notes
+a dockerfile is the recipe to build a docker images this recipe is stored in some sort of repository, this can be private, public, or dockerhub - which is the default a docker image contains lightweight instructions to create your application. Docker images use something called layers which makes it super easy and quick to update. Layers start at a base layer which is usually the linux operating system and then they go up to the application layer. a container is the environment for a running process of an image - so if an image is running then its using a container instance. You can have multiple containers running at the same time. But once you delete it everything inside of it goes away.
+
+Let's see an example of what this looks like in practice. Lets say we need to use a postgres sql database for some testing - but we want to test using an older and a newer version of postgres.
+
+Lets go to Dockerhub and search for it. We can see official images but there are also thousands of them created by people- hub only has images not dockerfiles or containers themselves. docker image ls - lets list all the images that we have docker pull postgres:12 - see how its pulling and extracting all these layers - but what if we want a newer version or what if we need to run both versions on our machine
+
+docker pull postgres:latest - notice how some of these layers already exist so it takes a lot less time
+
+Lets go on dockerhub and see if we can understand a bit more about the layers https://hub.docker.com/layers/library/postgres/12/images/sha256-a97fd76ab09599e2ddc15c90a87f9a4a2a60551d99f8e7397f12a1d606d7f0ab?context=explore -
+
+we can see that there are a lot of layers but its hard to understand what exactly is happening - lets look at the dockerfile that shows us the recipe for postgres - this is usually saved in a [github](https://github.com/docker-library/docs/blob/master/postgres/README.md) repo - not on dockerhub which is just images
+
+every docker file starts with a from command - this is the base layers that starts the image, then we are running some things, copying , env variables, and starting
+
+lets run the image and see
+:::
+
+## Virtual Machine vs. Container
+
+![](images/Screenshot%202023-09-03%20at%209.56.54%20AM.png)
+
+::: notes
+containers are very lightweight which makes it really easy and quick to spin them up
+
+this is because the container itself doesnt have a host operating system or any hardware - intel chip, apple chip etc - this is in the docker engine or runtime which we will look at in the architecture
+:::
 
 ## Docker Architecture
 
 ![](images/Screenshot%202023-08-30%20at%2011.31.56%20AM.png)
 
-:::{.notes}
--   client-server architecture. The Docker client - which is the primary way that users interface with Docker via CLI - talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers.
+::: notes
+-   Docker uses a client-server architecture. The Docker client talks to the Docker daemon.
+
+-   The Docker client - is the primary way that users interface with Docker via CLI
+
+-   The Docker daemon does the heavy lifting of building, running, and distributing your Docker containers
 
 -   The Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface.
 
 -   Registry is a Repository for Docker images (e.g., Docker Hub) where you can store and share images.
+
+-   Docker engine is a container runtime that runs on diffrent OS's. Set up the isolated environment for your container
 :::
 
-## Activity
+## Mode for running containers
 
-Complete Part 1: Exercises 1 - 8
++------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Mode                                                       | Run command       | Use case                                                                                                                                                                                                           |
++============================================================+===================+====================================================================================================================================================================================================================+
+| Detached                                                   | `docker run -d`   | This runs the container in the **background** so the container keeps running until the application process exits, or you stop the container. Detached mode is often used for production purposes.                  |
++------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Interactive + terminal                                     | `docker run -it`  | This runs the container in the **foreground** so you are unable to access the command prompt. Interactive mode is often used for development and testing.                                                          |
++------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Remove everything once the container is done with its task | `docker run --rm` | This mode is used on foreground containers that perform **short-term tasks** such as tests or database backups. Once it is removed anything you may have downloaded or created in the container is also destroyed. |
++------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-## Docker ports & localhost
+## Lab Activity
+
+🟥 - I need help
+
+🟨 - I'm still working
+
+🟩 - I'm done
+
+Complete Part 1: Exercises 1 - 6
+
+## Container Debugging
+
+-   Interactive mode
+
+-   `docker exec`
+
+-   Logging
 
 ```         
-docker run -d -p 81:80 --name httpd-container httpd
-curl http://localhost:81
+docker run -it -d ubuntu
+docker container ls -a 
+docker exec -it CONTAINER_ID bash
+
+docker container run -d --name mydb \
+ --name mydb \
+ -e MYSQL_ROOT_PASSWORD=my-secret-pw \ 
+ mysql
+ 
+ docker container logs mydb
 ```
-:::{.notes}
+
+::: footer
+🔍 Live code
+:::
+
+## Lab Activity
+
+🟥 - I need help
+
+🟨 - I'm still working
+
+🟩 - I'm done
+
+Complete Part 2: Exercises 1 & 2
+
+## Docker Port Mapping
+
+```         
+docker pull httpd:alpine
+docker pull httpd:latest
+
+docker inspect --format='{{.Config.ExposedPorts}}' httpd:latest
+docker inspect --format='{{.Config.ExposedPorts}}' httpd:alpine
+
+docker run -p DockerHostPort:ApplicationPort
+
+docker run -d -p 81:80 --name httpd-latest httpd:latest
+curl http://localhost:81
+
+docker run -d -p 80:80 --name httpd-alpine httpd:alpine
+curl http://localhost:80
+```
+
+::: notes
 docker image of a http web server created by Apache
 :::
 
