@@ -95,7 +95,7 @@ docker exec -it CONTAINER_ID bash
 7. Lets run a detached MySQL container and then check out some logs. The database requires a password to work.In production you should never pass credentials directly in your command but we will do it for testing purposes. (The forward slashes below allow you to use a new line for your code)
 
 ```         
- docker container run \
+ docker container run -d --name mydb -e 
  -detach \
  --name mydb \
  -e MYSQL_ROOT_PASSWORD=my-secret-pw \ 
@@ -137,13 +137,18 @@ New images can be built interactively for development purposes or by using a Doc
 
 Part A: Building interactively
 
+-- draw the dots between what is happening in the following
+--commit
+--tag
+--push
+
 1.  Exit out of your container with `exit` and confirm that the container is still running.
 2.  Run `docker diff CONTAINER_ID` to see the difference between the base image and the new container. You should see the new data folder, 
 3.  Login to docker hub in your instance using `docker login` and enter your username and password.
 4.  Commit the changed ubuntu image and give it a new name like `ubuntu_text`.
 
 ```         
-docker image commit CONTAINER_ID ubuntu_text
+docker commit CONTAINER_ID ubuntu_text
 docker image ls # to check the new image is available
 ```
 
@@ -153,7 +158,7 @@ docker image ls # to check the new image is available
 docker tag ubuntu_text docker_hub_username/ubuntu_text
 docker push docker_hub_username/ubuntu_text
 ```
-
+i
 Part B: Building Shiny Server OS with Dockerfile
 
 Best practice is to create a Dockerfile so that any changes to your image can be documented.

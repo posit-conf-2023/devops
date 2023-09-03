@@ -2,11 +2,12 @@ docker build -t my-app . --platform linux/amd64
 
 docker run --rm -p 3838:3838 --platform linux/amd64 \
 -v ./apps:/srv/shinyapps \
--v ./logs:/var/log/shiny-server \doc
+-v ./logs:/var/log/shiny-server \
 -v ./conf:/etc/shiny-server \
 my-app 
 
 # visit http://localhost:3838 to see the app
+
 
 # in detached mode
 docker run -d -p 3838:3838 --platform linux/amd64 \
