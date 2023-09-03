@@ -671,10 +671,10 @@
 ⏰ 09:00 - 17:00<br>
 🏨 ROOM: TBD<br>
 ✍️TBD</p>
-<table style="width:68%;">
+<table style="width:65%;">
 <colgroup>
 <col style="width: 22%">
-<col style="width: 45%">
+<col style="width: 43%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1040,14 +1040,29 @@
       }</style></aside>
 </section>
 <section class="slide level2">
-<h2>How can docker help data scientists</h2>
+<h2>How can docker help data scientists?</h2>
+</section>
+<section class="slide level2">
+<h2>Portability</h2>
 <ul>
-<li><strong>Consistency:</strong> Containers ensure that applications run the same way across different environments.</li>
-<li><strong>Isolation:</strong> Containers isolate applications and their dependencies, preventing conflicts.</li>
-<li><strong>Portability:</strong> Containers can run on any system that supports Docker, reducing “it works on my machine” issues.</li>
+<li>diagram r code creates model/api in docker container</li>
+<li>uses gha to create docker image</li>
 </ul>
+</section>
+<section class="slide level2">
+<h2>Isolation</h2>
+</section>
+<section class="slide level2">
+<h2>Consistency</h2>
 <aside class="notes">
-<p>containers are ephemeral. so once you shut it down everything inside of it is removed or destroyed - nothing saved persists in that container</p>
+<ul>
+<li><p>Data scientists benefit from Docker’s consistency and reproducibility.</p></li>
+<li><p>Create isolated environments for different experiments.</p></li>
+<li><p>Share work with colleagues without environment setup issues.</p></li>
+<li><p><strong>Consistency:</strong> Containers ensure that applications run the same way across different environments.</p></li>
+<li><p><strong>Isolation:</strong> Containers isolate applications and their dependencies, preventing conflicts.</p></li>
+<li><p><strong>Portability:</strong> Containers can run on any system that supports Docker, reducing “it works on my machine” issues.</p></li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1069,8 +1084,6 @@
 </section>
 <section class="slide level2">
 <h2>Lifecycle Example</h2>
-<p><a href="www.docker.com">Dockerhub</a></p>
-<p><a href="www.labs.play-with-docker.com">Docker classroom</a></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">docker</span> pull postgres:12</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="ex">docker</span> pull postgres:latest</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="ex">docker</span> container ls <span class="at">-a</span></span>
@@ -1184,7 +1197,7 @@
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
-<p>Complete Part 1: Exercises 1 - 6</p>
+<p>Complete Lab 2: Part 1</p>
 </section>
 <section class="slide level2">
 <h2>Container Debugging</h2>
@@ -1212,10 +1225,10 @@ docker container run -d --name mydb \
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
-<p>Complete Part 2: Exercises 1 &amp; 2</p>
+<p>Complete Lab 2: Part 2</p>
 </section>
 <section class="slide level2">
-<h2>Docker Port Mapping</h2>
+<h2>Port Mapping with <code>docker run -p</code></h2>
 <pre><code>docker pull httpd:alpine
 docker pull httpd:latest
 
@@ -1229,8 +1242,23 @@ curl http://localhost:81
 
 docker run -d -p 80:80 --name httpd-alpine httpd:alpine
 curl http://localhost:80</code></pre>
+<div class="footer">
+<p>🔍 Live code</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Persisting data with Docker</h2>
+<p>Stateless vs.&nbsp;Stateful applications volume mount bind mount external storage shared file system</p>
+</section>
+<section class="slide level2">
+<h2>Putting it all together</h2>
+<p>https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.yml</p>
 <aside class="notes">
-<p>docker image of a http web server created by Apache</p>
+<ul>
+<li><strong>docker-compose:</strong> A tool for defining and running multi-container Docker applications.</li>
+<li>Uses a YAML file to define services, networks, and volumes.</li>
+<li>Simplifies the orchestration of complex applications.</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1244,40 +1272,75 @@ curl http://localhost:80</code></pre>
       }</style></aside>
 </section>
 <section class="slide level2">
-<h2>Persisting data with Docker</h2>
-<pre><code>touch test.txt # create a text file
-echo "this is a test file" &gt; test.txt # redirect string to the file
-cat test.txt # confirm that the echo command worked
-
-pwd # to see where the test.txt file is located on your host machine
-docker run -it -d / # run in detached interactive mode
--v /root:/data / # mount a shared volume to a folder in the container called "data"
-ubuntu
-
-ls # see what folders are in the container
-cd data # move to the newly created data directory
-ls # confirm that the text file is there</code></pre>
-</section>
-<section class="slide level2">
-<h2>Activity</h2>
-<p>Complete Part 1: Exercises 9 - 10</p>
+<h2>Lab Activity</h2>
+<p>🟥 - I need help</p>
+<p>🟨 - I’m still working</p>
+<p>🟩 - I’m done</p>
+<p>Complete Lab 2: Part 3 Complete Lab 2: Part 4</p>
 </section>
 <section class="slide level2">
 <h2>Building Docker Images</h2>
 <ul>
-<li><p>an image is a <strong>read-only</strong> system that includes files + meta-data</p></li>
-<li><p>made of layers stacked on top of each other</p></li>
-<li><p>When you want to run a container, you <em>pull</em> the image and run it as an <em>instance</em>, which is what you’ll actually interact with</p></li>
-<li><p>Containers are ephemeral - once it shuts down all the information inside of it removed</p></li>
+<li><p>Images are build using a Dockerfile or interactively “on-the-fly”</p></li>
+<li><p>Steps to version and share your images on Dockerhub (or a different repository)</p></li>
 </ul>
+<p>make this a diagram Step 1: Commit Step 2: Tag Step 3: Push</p>
+</section>
+<section class="slide level2">
+<h2>Lab Activity</h2>
+<p>🟥 - I need help</p>
+<p>🟨 - I’m still working</p>
+<p>🟩 - I’m done</p>
+<p>Complete Lab 2: Part 5</p>
+</section>
+<section class="slide level2">
+<h2>Dockerfile Build Commands</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FROM</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>ENV</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>COPY</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>RUN</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="slide level2">
+<h2>Dockerfile Example</h2>
+<p>Walk through Posit Workbench <a href="https://github.com/rstudio/rstudio-docker-products/blob/dev/workbench/Dockerfile.ubuntu2204">Dockerfile</a></p>
 </section>
 <section class="slide level2">
 <h2>Activity</h2>
-<p>Complete Part 2: Exercises</p>
-</section>
-<section class="slide level2">
-<h2>Layers of a Dockerfile</h2>
-<p>Walk through Posit Connect Dockerfile or Shiny Server</p>
+<p>Complete Lab 2: Part 6</p>
 </section>
 <section class="slide level2">
 <h2>Part 4: Data Science in Production</h2>

@@ -232,15 +232,15 @@ Login to Docker Playground with your Docker Hub username and password.
 🏨 ROOM: TBD\
 ✍️TBD
 
-+---------------+--------------------------------+
-| Time          | Topic                          |
-+===============+================================+
-| 10:30 - 11:00 | Break                          |
-+---------------+--------------------------------+
-| 12:30 - 13:30 | Lunch                          |
-+---------------+--------------------------------+
-| 15:00 - 15:30 | Break                          |
-+---------------+--------------------------------+
++---------------+------------------------------+
+| Time          | Topic                        |
++===============+==============================+
+| 10:30 - 11:00 | Break                        |
++---------------+------------------------------+
+| 12:30 - 13:30 | Lunch                        |
++---------------+------------------------------+
+| 15:00 - 15:30 | Break                        |
++---------------+------------------------------+
 
 ## Code of Conduct {.brackets-light}
 
@@ -542,14 +542,27 @@ Part 4 of Lab: Deploy Quarto with GHA including the exercises
 Docker is a tool that allows you to virtualize (put your computer in the cloud) everything you need to create an application or in this case a data science product You can share containers with colleagues without requiring them to have to set up their own local machines Without something like this, in order to recreate or test code that someone else wrote, you'd need every developer to download the same dependencies, configurations, scripts and make sure that it ran on their machine - whether thats a mac, or windows, or linux or some other operating system
 :::
 
-## How can docker help data scientists
+## How can docker help data scientists?
+
+## Portability
+- diagram r code creates model/api in docker container
+- uses gha to create docker image
+
+## Isolation
+
+## Consistency
+
+
+
+::: notes
+- Data scientists benefit from Docker's consistency and reproducibility.
+- Create isolated environments for different experiments.
+- Share work with colleagues without environment setup issues.
 
 -   **Consistency:** Containers ensure that applications run the same way across different environments.
 -   **Isolation:** Containers isolate applications and their dependencies, preventing conflicts.
 -   **Portability:** Containers can run on any system that supports Docker, reducing "it works on my machine" issues.
 
-::: notes
-containers are ephemeral. so once you shut it down everything inside of it is removed or destroyed - nothing saved persists in that container
 :::
 
 ## Lifecycle
@@ -561,10 +574,6 @@ Illustration credit: Alex Gold, do4ds.com
 :::
 
 ## Lifecycle Example
-
-[Dockerhub](www.docker.com)
-
-[Docker classroom](www.labs.play-with-docker.com)
 
 ``` bash
 docker pull postgres:12
@@ -647,7 +656,7 @@ this is because the container itself doesnt have a host operating system or any 
 
 🟩 - I'm done
 
-Complete Part 1: Exercises 1 - 6
+Complete Lab 2: Part 1
 
 ## Container Debugging
 
@@ -682,9 +691,9 @@ docker container run -d --name mydb \
 
 🟩 - I'm done
 
-Complete Part 2: Exercises 1 & 2
+Complete Lab 2: Part 2
 
-## Docker Port Mapping
+## Port Mapping with `docker run -p`
 
 ```         
 docker pull httpd:alpine
@@ -702,48 +711,71 @@ docker run -d -p 80:80 --name httpd-alpine httpd:alpine
 curl http://localhost:80
 ```
 
-::: notes
-docker image of a http web server created by Apache
+::: footer
+🔍 Live code
 :::
 
 ## Persisting data with Docker
 
-```         
-touch test.txt # create a text file
-echo "this is a test file" > test.txt # redirect string to the file
-cat test.txt # confirm that the echo command worked
+Stateless vs. Stateful applications volume mount bind mount external storage shared file system
 
-pwd # to see where the test.txt file is located on your host machine
-docker run -it -d / # run in detached interactive mode
--v /root:/data / # mount a shared volume to a folder in the container called "data"
-ubuntu
+## Putting it all together
 
-ls # see what folders are in the container
-cd data # move to the newly created data directory
-ls # confirm that the text file is there
-```
+https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.yml
 
-## Activity
+:::notes
+- **docker-compose:** A tool for defining and running multi-container Docker applications.
+- Uses a YAML file to define services, networks, and volumes.
+- Simplifies the orchestration of complex applications.
+:::
 
-Complete Part 1: Exercises 9 - 10
+## Lab Activity
+
+🟥 - I need help
+
+🟨 - I'm still working
+
+🟩 - I'm done
+
+Complete Lab 2: Part 3 Complete Lab 2: Part 4
 
 ## Building Docker Images
 
--   an image is a **read-only** system that includes files + meta-data
+-   Images are build using a Dockerfile or interactively "on-the-fly"
 
--   made of layers stacked on top of each other
+-   Steps to version and share your images on Dockerhub (or a different repository)
 
--   When you want to run a container, you *pull* the image and run it as an *instance*, which is what you'll actually interact with
+make this a diagram Step 1: Commit Step 2: Tag Step 3: Push
 
--   Containers are ephemeral - once it shuts down all the information inside of it removed
+## Lab Activity
+
+🟥 - I need help
+
+🟨 - I'm still working
+
+🟩 - I'm done
+
+Complete Lab 2: Part 5
+
+## Dockerfile Build Commands
+
+| Command | Description |
+|---------|-------------|
+| FROM    |             |
+| ENV     |             |
+| COPY    |             |
+| RUN     |             |
+|         |             |
+|         |             |
+|         |             |
+
+## Dockerfile Example
+
+Walk through Posit Workbench [Dockerfile](https://github.com/rstudio/rstudio-docker-products/blob/dev/workbench/Dockerfile.ubuntu2204)
 
 ## Activity
 
-Complete Part 2: Exercises
-
-## Layers of a Dockerfile
-
-Walk through Posit Connect Dockerfile or Shiny Server
+Complete Lab 2: Part 6
 
 ## Part 4: Data Science in Production
 
