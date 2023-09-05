@@ -1,0 +1,49 @@
+Most important workshop commands
+
+cd
+
+ls
+
+pwd
+
+touch
+
+mkdir
+
+vim
+
+curl
+
+echo
+
+env
+
+$PATH
+
+
+## Why Linux? {.brackets-light}
+
+-   GNU+Linux kernel is one of the world's most popular operating systems
+    -   It's used in the Mars Perseverance Rover!
+-   It's open source and freely available
+-   Different distributions available
+-   Potentially less exploitable and more secure
+
+## Terminology
+
+-   The command line is a way to interact with a computer by typing text-based instructions to it, and reading the responses.
+-   The software---called an interpreter---that translates your input into commands and executes them for you is the shell.
+-   A *terminal* is an input and output environment that presents a text-only window running a shell.
+-   A *shell* is a program that exposes the computer's operating system to a user or program. In Linux systems, the shell presented in a terminal is a command line interpreter.
+-   A *command line interface* is a user interface (managed by a command line interpreter program) which processes commands to a computer program and outputs the results.
+-   On most Linux distributions, the default shell is Bash, or Zsh.
+
+## Linux Refresher Resources
+
+-   [Opening the command line](https://do4ds.com/chapters/sec2/2-1-cmd-line.html)
+-   [Using the command line](https://do4ds.com/chapters/sec2/2-2-cmd-line-use.html)
+-   [Basic Linux SysAdmin](https://do4ds.com/chapters/sec3/3-2-linux-admin.html) (11 - 11.7.4)
+-   [List of cli commands](https://business-science.github.io/shiny-production-with-aws-book/linux-command-line-interface-cli.html)
+-   [How to use pipes and redirection in linux](https://www.maketecheasier.com/pipes-redirection-for-linux-command-line/)
+-   [How to use grep in linux](https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/)
+-   [Linux directory structure](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)

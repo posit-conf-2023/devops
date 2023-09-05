@@ -9,14 +9,15 @@ format:
   positconfslides-revealjs: 
     chalkboard: true
     slide-number: true
+    footer: <https://github.com/posit-conf-2023/devops>
     incremental: false
     code-copy: true
     center-title-slide: false
     code-link: true
     code-overflow: wrap
     highlight-style: a11y
-    width: "1600"
-    height: "900"
+    width: "3000"
+    height: "2000"
     filters:
       - positconfslides
 ---
@@ -80,17 +81,7 @@ format:
 -   Linux
 -   vim
 -   Git
--   Docker
-
-## Linux Refresher (optional section) {.toc-people-dark}
-
-## Why Linux? {.brackets-light}
-
--   GNU+Linux kernel is one of the world's most popular operating systems
-    -   It's used in the Mars Perseverance Rover!
--   It's open source and freely available
--   Different distributions available
--   Potentially less exploitable and more secure
+-   Cheat sheets
 
 ## Most important workshop commands
 
@@ -104,25 +95,6 @@ format:
 -   echo
 -   env
 -   \$PATH
-
-## Terminology
-
--   The command line is a way to interact with a computer by typing text-based instructions to it, and reading the responses.
--   The software---called an interpreter---that translates your input into commands and executes them for you is the shell.
--   A *terminal* is an input and output environment that presents a text-only window running a shell.
--   A *shell* is a program that exposes the computer's operating system to a user or program. In Linux systems, the shell presented in a terminal is a command line interpreter.
--   A *command line interface* is a user interface (managed by a command line interpreter program) which processes commands to a computer program and outputs the results.
--   On most Linux distributions, the default shell is Bash, or Zsh.
-
-## Linux Refresher Resources
-
--   [Opening the command line](https://do4ds.com/chapters/sec2/2-1-cmd-line.html)
--   [Using the command line](https://do4ds.com/chapters/sec2/2-2-cmd-line-use.html)
--   [Basic Linux SysAdmin](https://do4ds.com/chapters/sec3/3-2-linux-admin.html) (11 - 11.7.4)
--   [List of cli commands](https://business-science.github.io/shiny-production-with-aws-book/linux-command-line-interface-cli.html)
--   [How to use pipes and redirection in linux](https://www.maketecheasier.com/pipes-redirection-for-linux-command-line/)
--   [How to use grep in linux](https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/)
--   [Linux directory structure](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)
 
 ## What we won't cover
 
@@ -232,15 +204,15 @@ Login to Docker Playground with your Docker Hub username and password.
 🏨 ROOM: TBD\
 ✍️TBD
 
-+---------------+------------------------------+
-| Time          | Topic                        |
-+===============+==============================+
-| 10:30 - 11:00 | Break                        |
-+---------------+------------------------------+
-| 12:30 - 13:30 | Lunch                        |
-+---------------+------------------------------+
-| 15:00 - 15:30 | Break                        |
-+---------------+------------------------------+
++---------------+----------------------------+
+| Time          | Topic                      |
++===============+============================+
+| 10:30 - 11:00 | Break                      |
++---------------+----------------------------+
+| 12:30 - 13:30 | Lunch                      |
++---------------+----------------------------+
+| 15:00 - 15:30 | Break                      |
++---------------+----------------------------+
 
 ## Code of Conduct {.brackets-light}
 
@@ -545,24 +517,26 @@ Docker is a tool that allows you to virtualize (put your computer in the cloud) 
 ## How can docker help data scientists?
 
 ## Portability
-- diagram r code creates model/api in docker container
-- uses gha to create docker image
+
+-   diagram r code creates model/api in docker container
+-   uses gha to create docker image
 
 ## Isolation
 
 ## Consistency
 
-
-
 ::: notes
-- Data scientists benefit from Docker's consistency and reproducibility.
-- Create isolated environments for different experiments.
-- Share work with colleagues without environment setup issues.
+-   Data scientists benefit from Docker's consistency and reproducibility.
+
+-   Create isolated environments for different experiments.
+
+-   Share work with colleagues without environment setup issues.
 
 -   **Consistency:** Containers ensure that applications run the same way across different environments.
--   **Isolation:** Containers isolate applications and their dependencies, preventing conflicts.
--   **Portability:** Containers can run on any system that supports Docker, reducing "it works on my machine" issues.
 
+-   **Isolation:** Containers isolate applications and their dependencies, preventing conflicts.
+
+-   **Portability:** Containers can run on any system that supports Docker, reducing "it works on my machine" issues.
 :::
 
 ## Lifecycle
@@ -723,10 +697,10 @@ Stateless vs. Stateful applications volume mount bind mount external storage sha
 
 https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.yml
 
-:::notes
-- **docker-compose:** A tool for defining and running multi-container Docker applications.
-- Uses a YAML file to define services, networks, and volumes.
-- Simplifies the orchestration of complex applications.
+::: notes
+-   **docker-compose:** A tool for defining and running multi-container Docker applications.
+-   Uses a YAML file to define services, networks, and volumes.
+-   Simplifies the orchestration of complex applications.
 :::
 
 ## Lab Activity
