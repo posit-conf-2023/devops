@@ -2,21 +2,27 @@
 
 ### Setup
 
+-   Create a [dockerhub](www.dockerhub.com) username and password\
 -   Using your Docker hub username and password, login to <https://labs.play-with-docker.com/>
 -   Click `+ ADD NEW INSTANCE`
 -   Congratulations! You are now in an Alpine Linux instance directly on your browser. Check this by running `cat /etc/*-release` in the command line interface.
 
+::: callout-note
+Your terminal should say something like `[node1] (local) root@123.123.0.12` If it doesn't refresh your screen or add another instance.
+:::
+
 ### Part 1: [Run](https://docs.docker.com/engine/reference/run/) Commands
 
-Currently we have no docker images downloaded. Confirm this with `docker image ls -a.` The basic `docker run` command takes this form:
+ The basic `docker run` command takes this form:
 
 ```         
-docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
+docker run [OPTIONS] [IMAGE:TAG] [COMMAND] [ARG...]
 ```
 
 In the below exercise we will practice running docker containers with different options or "flags."
 
-1.  First pull down a linux image that uses a different distribution from alpine. Docker will automatically search for it on Docker Hub if it doesn't find it locally. Confirm that the image is downloaded with the `ls` command from above.
+1. Currently we have no docker images downloaded. Confirm this with `docker image ls -a.`  
+2. Pull down a Dockerhub linux image. Confirm that the image is downloaded with the `ls` command.
 
 ```         
 docker pull ubuntu
@@ -46,7 +52,7 @@ You should see that the ubuntu container was created and then exited. The contai
 
 Detached containers run in the **background**, so the container keeps running until the application process exits (which is what happened here), or you stop the container. For this reason detached mode is often used for production purposes.
 
-4.  Run an [nginx](https://www.nginx.com/resources/glossary/nginx/) server in detached mode to see what happens when the process doesnt just exit. The nginx image will be automatically pulled from Dockerhub if it is not found locally so there is no need to run `docker pull` first.
+4.  Run an [nginx](https://www.nginx.com/resources/glossary/nginx/) web server in detached mode to see what happens when the process doesnt just exit. The image will be automatically pulled from Dockerhub if it is not found locally so there is no need to run `docker pull` first.
 
 ```         
 docker run -d -P --name nginx1 nginx:alpine
@@ -55,9 +61,15 @@ docker run -d -P --name nginx1 nginx:alpine
 # --name gives the container a name so you can work with it in other commands
 ```
 
-A button for Port 32768 should open up. When you click on it you should see something like the below:
+Click on the port button at the top of your page and enter 32768.
 
-![](images/Screenshot%202023-08-31%20at%208.14.54%20PM-01.png)
+![](images/Screenshot%202023-09-03%20at%2011.41.23%20AM.png)
+
+This should bring you to the nginx server.
+
+![](images/Screenshot%202023-08-31%20at%208.14.54%20PM-02.png)
+
+5. Examine your container and then stop it.
 
 ```         
 # check your running containers
@@ -70,7 +82,7 @@ docker ps -a
 docker container stop nginx1
 ```
 
-5.  Run a container with a different Linux distro and then automatically remove it. Add an echo command to confirm that the container has actually run.
+6. Run a container with a different linux distro and then automatically remove it. Add an echo command to confirm that the container has actually run.
 
 ```         
 docker run --rm debian echo "hello world"
@@ -84,29 +96,68 @@ Check to see that the container was completely removed. You shouldnt see the deb
 docker container ls -a
 ```
 
-6.  Use the `docker exec` command to execute a bash command in a running container. This can be used to execute any command within a running container.
+### Part 2: Debugging Containers
+
+The `docker exec` command is very similar to the `docker run -it` command. Both are very helpful for debugging containers as they allow you to jump inside your container instance. The exec command needs a running container to execute **any** command, whereas the `-it` flag starts a container and places you into a terminal in interactive mode. Use the `docker exec` command to execute a bash command in a running container. This can be used to execute any command within a running container. 
+
+`docker exec` requires two arguments - the container and the command you want to run.
+
+```
+docker exec [OPTIONS] CONTAINER [COMMAND] [ARG...]
+```
+1. Use `docker run -it` to jump into an ubuntu container.
 
 ```         
 docker run -it -d ubuntu
-docker container ls -a # to get the container ID
-docker exec -it CONTAINER_ID bash
+exit
 ```
 
-7. Lets run a detached MySQL container and then check out some logs. The database requires a password to work.In production you should never pass credentials directly in your command but we will do it for testing purposes. (The forward slashes below allow you to use a new line for your code)
+2. Use `docker exec` to run commands in a container
+
+
+```
+docker container ls -a # to get a container ID of a running container
+docker exec -it CONTAINER_ID bash
+exit
+docker exec CONTAINER_ID ls 
+```
+
+3. Lets run a detached MySQL container and then check out some logs. The database requires a password to work.In production you should never pass credentials directly in your command but we will do it for testing purposes. (The forward slashes below allow you to use a new line for your code)
 
 ```         
- docker container run -d --name mydb -e 
- -detach \
+ docker container run -d --name mydb \
  --name mydb \
  -e MYSQL_ROOT_PASSWORD=my-secret-pw \ 
  mysql
  
- docker container logs mydb
+docker container logs mydb
 ```
-### Part 2: Mounting Data
+### Part 3: Mapping Ports
 
-1. Stop your running containers with `docker stop` and return to your original command prompt.
-2. Create a  text file.
+1. Pull two versions of the same image
+```
+docker pull httpd:alpine
+docker pull httpd:latest
+```
+
+2. Inspect ports. 
+```
+docker inspect  httpd:latest
+docker inspect  httpd:alpine
+```
+
+3. Map two different host ports to the same application port for the two containers.
+```
+docker run -d -p 81:80 --name httpd-latest httpd:latest
+docker run -d -p 80:80 --name httpd-alpine httpd:alpine
+docker ps
+```
+
+
+### Part 4: Mounting Data
+
+1.  Stop your running containers with `docker stop` and return to your original command prompt.
+2.  Create a text file.
 
 ```         
 touch test.txt # create a text file
@@ -114,7 +165,7 @@ echo "this is a test file" > test.txt # redirect string to the file
 cat test.txt # confirm that the echo command worked
 ```
 
-3. We want to add this file from our host machine into a separate Ubuntu container. 
+3.  We want to add this file from our host machine into a separate Ubuntu container.
 
 ```         
 pwd # to see where the test.txt file is located on your host machine
@@ -129,21 +180,13 @@ cd data # move to the newly created data directory
 
 ls # confirm that the text file is there
 ```
+
 In order to get data in or out of a container, you need to mount a shared volume (directory) between the container and host with the -v flag. You specify a host directory and a container directory separated by :. Anything in the volume will be available to both the host and the container at the file paths specified.
 
-### Part 3:Building images
+### Part 5: Building images interactively
 
-New images can be built interactively for development purposes or by using a Dockerfile for production.
-
-Part A: Building interactively
-
--- draw the dots between what is happening in the following
---commit
---tag
---push
-
-1.  Exit out of your container with `exit` and confirm that the container is still running.
-2.  Run `docker diff CONTAINER_ID` to see the difference between the base image and the new container. You should see the new data folder, 
+1.  Exit out of your container from the previous exercise with `exit` and confirm that the container is still running. This container should have the new directory and text file. 
+2.  Run `docker diff CONTAINER_ID` to see the difference between the base image and the new container. You should see the new data folder,
 3.  Login to docker hub in your instance using `docker login` and enter your username and password.
 4.  Commit the changed ubuntu image and give it a new name like `ubuntu_text`.
 
@@ -158,8 +201,8 @@ docker image ls # to check the new image is available
 docker tag ubuntu_text docker_hub_username/ubuntu_text
 docker push docker_hub_username/ubuntu_text
 ```
-i
-Part B: Building Shiny Server OS with Dockerfile
+
+### Part B: Building Shiny Server OS with Dockerfile
 
 Best practice is to create a Dockerfile so that any changes to your image can be documented.
 
@@ -223,14 +266,15 @@ cd /etc/shiny-server
 cat shiny-server.conf 
 ```
 
-7. Let's delete the home page and the sample apps in the server.
+7.  Let's delete the home page and the sample apps in the server.
 
-```
+```         
 sudo rm /srv/shiny-server/index.html
 sudo rm -rf /srv/shiny-server/sample-apps
 # refresh your shiny server webpage
 ```
-Notice how the server home page now has a directory of the apps that live in `/srv/shiny-server`. Recall how the configuration file had directory_index turned on. 
+
+Notice how the server home page now has a directory of the apps that live in `/srv/shiny-server`. Recall how the configuration file had directory_index turned on.
 
 7.  Let's create a basic shiny app and then rebuild our image. We will move our app to the server in our Dockerfile instead of on the fly in our run command.
 
@@ -293,9 +337,9 @@ shinyApp(ui = ui, server = server)
 ##docker run -d -p 3838:3838 -v ./apps:/srv/shinyapps my_server # my_server is the name of the docker image that you built
 ```
 
-8. Update our Dockerfile
+8.  Update our Dockerfile
 
-```
+```         
 cd /root
 vim Dockerfile
 # press i to insert code
@@ -313,17 +357,16 @@ RUN R -e "install.packages(('palmerpenguins'), \
 COPY ./apps/* /srv/shiny-server/
 
 CMD ["/usr/bin/shiny-server"]
-
 ```
-9. Rebuild the dockerfile with a new name
 
-```
+9.  Rebuild the dockerfile with a new name
+
+```         
 docker build -t new_app
 ```
 
 10. Run the container
 
-```
+```         
 docker run -d -p 3838:3838 new_app
 ```
-
