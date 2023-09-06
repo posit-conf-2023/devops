@@ -1,0 +1,37 @@
+openapi: 3.1.0
+info:
+  description: plumber prediction api
+  title: Car Model
+  version: 1.0.0
+paths:
+  /predict:
+    post:
+      summary: Generate predicted outcomes
+      responses:
+        '200':
+          description: OK
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: Default response.
+      parameters: []
+      requestBody:
+        description: Model Input Data
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cyl:
+                  type: number
+                  title: "Cylinders"
+                  example: 6
+                hp:
+                  type: number
+                  title: "Horse power"
+                  example: 100

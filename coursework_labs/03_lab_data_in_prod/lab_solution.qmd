@@ -1,0 +1,42 @@
+---
+title: "solution_code"
+format: html
+editor: visual
+---
+
+## Setup
+
+Code from <https://github.com/sol-eng/plumber-mode/>
+
+```{r}
+library(plumber)
+library(jsonlite)
+```
+
+## Create Model
+
+Train linear model to predict miles per gallon and save as RDS.
+
+```{r}
+cars_model <- lm(mpg ~ cyl + hp, data = mtcars)
+saveRDS(cars_model, "cars-model.rds")
+```
+
+## Create API 
+
+## Deployment Environment
+
+```{r}
+# Add server
+rsconnect::addServer(
+  url = "https://colorado.posit.co/rsc/__api__",
+  name = "colorado"
+)
+
+# Add account
+rsconnect::connectApiUser(
+  account = "",
+  server = "colorado",
+  apiKey = Sys.getenv("CONNECT_API_KEY"),
+)
+```

@@ -745,7 +745,7 @@ Complete Lab 2: Part 5
 
 ## Dockerfile Example
 
-Walk through Posit Workbench [Dockerfile](https://github.com/rstudio/rstudio-docker-products/blob/dev/workbench/Dockerfile.ubuntu2204)
+Walk through Posit Connect [Dockerfile](https://github.com/rstudio/rstudio-docker-products/blob/dev/connect/Dockerfile.ubuntu2204)
 
 ## Activity
 
