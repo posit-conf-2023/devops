@@ -1,27 +1,19 @@
-openapi: 3.1.0
+openapi: 3.0.3
 info:
-  description: plumber prediction api
-  title: Car Model
-  version: 1.0.0
+  description: Cars
+  title: Cars Reprex
+  version: "1.0.0"
 paths:
-  /predict:
+  /predict_mpg:
     post:
-      summary: Generate predicted outcomes
+      summary: "Predict MPG"
       responses:
-        '200':
-          description: OK
-        '500':
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                type: string
         default:
           description: Default response.
       parameters: []
       requestBody:
-        description: Model Input Data
-        required: true
+        description: Car Attributes
+        required: false
         content:
           application/json:
             schema:
@@ -29,9 +21,7 @@ paths:
               properties:
                 cyl:
                   type: number
-                  title: "Cylinders"
                   example: 6
                 hp:
                   type: number
-                  title: "Horse power"
-                  example: 100
+                  example: 150

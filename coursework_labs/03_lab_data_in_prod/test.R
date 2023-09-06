@@ -14,7 +14,7 @@ saveRDS(cars_model, "cars-model.rds")
 #* How many mpg should we expect?
 #* @post /predict_mpg
 function(req, res) {
-  predict(cars_model, data = as.data.frame(req$body))
+  predict(cars_model, new_data = as.data.frame(req$body))
 }
 #> function(req, res) {
 #>   predict(trained_mod, new_data = as.data.frame(req$body))

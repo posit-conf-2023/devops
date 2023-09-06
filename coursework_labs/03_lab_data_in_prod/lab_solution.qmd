@@ -22,7 +22,7 @@ cars_model <- lm(mpg ~ cyl + hp, data = mtcars)
 saveRDS(cars_model, "cars-model.rds")
 ```
 
-## Create API 
+## Create API
 
 ## Deployment Environment
 
