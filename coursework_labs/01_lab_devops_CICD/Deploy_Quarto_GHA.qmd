@@ -49,12 +49,14 @@ styles.css - custom CSS
 
 3.  Press render to see your new website! Or preview via terminal with `quarto preview`. Make sure that your web browser allows popups.
 
-4.  Exercises:
+4.  Create a [repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git) on github but do not initialize it with a README, license, or gitignore files. This repo will host the files for the site that you will be deploying to Github Pages.
 
-    -   Inspect the yaml file
+    -   Name your repository `username.github.io` where username is your github username. If you already have this name in use, then name your repo `quarto_website`
 
-    -   Use the quarto [website](www.quarto.org) to identify what each file in the directory does
+5.  Open the terminal tab in your Rstudio Workbench environment, `cd` into your project directory, and initialize a local git repository with `git init`.
 
+6.  Create a branch with `git checkout -b gh-pages`. You can use `git checkout <branch_name>` to move between existing branches.
+    	
 ## Part 2: `renv` workflow
 
 1.  Exercises:
@@ -73,20 +75,6 @@ styles.css - custom CSS
 
 -   Recreate your environment when collaborating or coming back to your work with `renv::restore()`
 :::
-
-2.  Exercises:
-
--   Let's say someone wanted to reproduce your project including your code and your environment. Make a list of the layers that would need to be reproduced on their machine. (For example, a layer would be the version of R that you're using)
-
--   Hints:
-
-    -   Inspect your renv.lock file.
-    -   Where are your packages being pulled from? Confirm by typing `options("repos")`.
-        -   You can modify your package repository by running `options("repos" = c("<REPO-NAME>" = "https://your-repository-url.com"))` in your RStudio console.
-    -   Visit the webpage where packages are being pulled from and see if you can identify package dependencies. Are packages downloaded as binaries or from source?
-    -   What are your server and OS dependencies? (If you are not sure which distribution of Linux you are using, you can find it by typing `cat /etc/*-release` in your terminal)
-
--   In your day-to-day work, what's the hardest reproducibility challenge?
 
 -   (**Optional)** Learning how to use all the power of Quarto is beyond the scope of this workshop but you can use the below resources to pla around with difference templates and designs for your new website.
 
@@ -113,9 +101,7 @@ styles.css - custom CSS
     git config --list
     ```
 
-2.  Your project files are saved locally on the server. We want to version them by adding them to [www.github.com](www.github.com). Create a [repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git) on github but do not initialize it with a README, license, or gitignore files. This repo will host the files for the site that you will be deploying to Github Pages.
-
-3.  We will need to securely authenticate from our server environment to the server that lives on Github. You can do this via two different authentication mechanisms - SSH or HTTPS. Note that there are two urls created for your repo on github- one is for https and the other is for SSH.
+2.  We will need to securely authenticate from our server environment to the server that lives on Github. You can do this via two different authentication mechanisms - SSH or HTTPS. Note that there are two urls created for your repo on github- one is for https and the other is for SSH.
 
 \*\* we will assign half the class to https and half to SSH \*\*
 
@@ -129,11 +115,10 @@ styles.css - custom CSS
 
 **Version Control:**
 
-1.  Open the terminal tab in your Rstudio Workbench environment, `cd` into your project directory, and initialize a local git repository with `git init`.
-2.  Add your files to local version control with `git add .`
-3.  Commit your files with `git commit -m "my first commit"`
-4.  Using the https url from github add your github repository as the "remote" with `git remote add origin https://github.com/username/repo_name.git`
-5.  Push your local files to github with `git push -u origin main` where main is the name of your branch in github. You will be prompted for a username and password. Enter your github username and the personal access token from above as your password.
+1.  Add your files to local version control with `git add .`
+2.  Commit your files with `git commit -m "my first commit"`
+3.  Using the https url from github add your github repository as the "remote" with `git remote add origin https://github.com/username/repo_name.git`
+4.  Push your local files to github with `git push -u origin main` where main is the name of your branch in github. You will be prompted for a username and password. Enter your github username and the personal access token from above as your password.
 
 Resources: <https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github>
 
@@ -169,11 +154,10 @@ ssh-add ~/.ssh/id_ed25519
 
 **Version Control:**
 
-7.  Open the terminal tab in your Rstudio Workbench environment, `cd` into your project directory, and initialize a local git repository with `git init`.
-8.  Add your files to local version control with `git add .`
-9.  Commit your files with `git commit -m "my first commit"`
-10. Using the https url from github add your github repository as the "remote" with `git remote add origin git@github.com:username/repo_name.git`
-11. Push your local files to github with `git push -u origin main` where main is the name of your branch in github. Type yes to add github to your list of known hosts.
+7.  Add your files to local version control with `git add .`
+8.  Commit your files with `git commit -m "my first commit"`
+9.  Using the https url from github add your github repository as the "remote" with `git remote add origin git@github.com:username/repo_name.git`
+10. Push your local files to github with `git push -u origin main` where main is the name of your branch in github. Type yes to add github to your list of known hosts.
 
 Resources
 
@@ -233,18 +217,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-7.  Add the following directories to your .gitignore file:
+2.  Add the following directories to your .gitignore file:
 
     /.quarto/ /\_site/
 
-8.  Go to your repository on github and maneuver to Settings \> Pages.
+3.  Go to your repository on github and maneuver to Settings \> Pages.
 
-9.  Change your Source branch to Github Actions
+4.  Change your Source branch to Github Actions from root
 
-10. Create another branch
-
-11. Create and add a github token in your repository.
-
-12. Create Connect API
-
-13. Add github token
+5. commit and push!

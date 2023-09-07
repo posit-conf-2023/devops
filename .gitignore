@@ -4,5 +4,6 @@
 .Ruserdata
 .Renviron
 
+
 /.quarto/
-docs/
+/_site/
