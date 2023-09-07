@@ -56,7 +56,12 @@ styles.css - custom CSS
 5.  Open the terminal tab in your Rstudio Workbench environment, `cd` into your project directory, and initialize a local git repository with `git init`.
 
 6.  Create a branch with `git checkout -b gh-pages`. You can use `git checkout <branch_name>` to move between existing branches.
-    	
+
+```         
+git checkout -b gh-pages
+git checkout main
+```
+
 ## Part 2: `renv` workflow
 
 1.  Exercises:
@@ -225,4 +230,4 @@ jobs:
 
 4.  Change your Source branch to Github Actions from root
 
-5. commit and push!
+5.  commit and push!
