@@ -198,7 +198,7 @@ cd workflows
 touch publish.yaml
 ```
 
-1.   Edit the publish.yaml file:
+1.  Edit the publish.yaml file:
 
 ```         
 name: Deploy quarto site to Github Pages
