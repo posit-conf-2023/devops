@@ -75,7 +75,7 @@ styles.css - custom CSS
 
 ```         
 git checkout -b gh-pages
-git checkout main
+git checkout -b main
 ```
 
 ## Part 2: `renv` workflow
@@ -116,8 +116,15 @@ git checkout main
 
 **Authentication:**
 
-1.  Copy the https repository URL.
+1.  Copy the https repository URL that you created.
+
 2.  Create a classic [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) and give it permissions to your repository. Make sure to note your token somewhere safe.
+
+3.  Save your PAT with
+
+    ```         
+    gitcreds::gitcreds_set()
+    ```
 
 **Version Control:**
 
@@ -132,7 +139,7 @@ Resources: <https://docs.github.com/en/migrations/importing-source-code/using-th
 
 **Authentication:**
 
-1.  Copy the SSH repository URL.
+1.  Copy the SSH repository URL that you created.
 
 2.  Generate a new SSH key on your server - open the terminal tab in your Rstudio Workbench environment and type `ssh-keygen -t ed25519 -C "your_github_email@example.com"` . Press enter 3 times to leave the file path as the default and to leave the passphrase blank.
 
@@ -180,7 +187,18 @@ To learn more about the Github CLI and the `gh` package please check out this [a
 
 ## Part 4: [Publish](https://quarto.org/docs/publishing/) using GHA
 
-1.  Create a .github/workflows folders with the following publish.yaml file:
+1.  Create a .github/workflows folders in your main directory
+
+```         
+mkdir .github
+ls -lha
+cd .github
+mkdir workflows
+cd workflows
+touch publish.yaml
+```
+
+1.   Edit the publish.yaml file:
 
 ```         
 name: Deploy quarto site to Github Pages
@@ -223,12 +241,20 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-2.  Add the following directories to your .gitignore file:
+2.  Add a .gitignore file in your main directory and add the following:
 
-    /.quarto/ /\_site/
+    ```         
+    cd ../..
+    touch .gitignore
 
-3.  Go to your repository on github and maneuver to Settings \> Pages.
+    /.quarto/ 
+    /_site/
+    ```
 
-4.  Change your Source branch to Github Actions from root
+3.  /.quarto/ /\_site/
 
-5.  commit and push!
+4.  Go to your repository on github and maneuver to Settings \> Pages.
+
+5.  Change your Source branch to Github Actions from root
+
+6.  commit and push!

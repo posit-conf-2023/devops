@@ -759,13 +759,17 @@ git config --list git config --global user.name "Your Name" git config --global 
 
 -   GHA is one tool to automate developer workflows
 -   CI/CD is just one example of these workflows
--   Run on github servers
--   uses yaml
+-   Runs on github servers
+-   Uses yaml
 
 ![](images/Screenshot%202023-09-10%20at%201.32.42%20PM.png)
 
 ::: notes
 -   A github action allows us to create workflows that are triggered by a github action such as a push or pull to a branch
+
+-   Build tools + version control in on system
+
+-   Parts of a GHA - trigger, job, steps
 
 -   Workflows can include tests, markdown renders, shell scripts, cron jobs, or deployments. They can be as simple or as complicated as you need. Open-source community provides a ton of examples of actions.
 
@@ -773,7 +777,9 @@ git config --list git config --global user.name "Your Name" git config --global 
 
 1.  In the previous exercise we created a repo - we can use it to see what kind of actions we can create
 
-https://github.com/Rikagx/workshop_testing/blob/master/.github/workflows/publish.yaml github.com/actions https://github.com/r-lib/actions
+https://github.com/Rikagx/workshop_testing/blob/master/.github/workflows/publish.yaml
+
+github.com/actions https://github.com/r-lib/actions
 :::
 
 ## Lab Activity
