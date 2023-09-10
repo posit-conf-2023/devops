@@ -1,0 +1,14 @@
+{
+  "hash": "424b15f0c57f69f2e14c3ea1e20dd288",
+  "result": {
+    "markdown": "---\ntitle: \"solution_code\"\nformat: html\neditor: visual\n---\n\n\n## Setup\n\nCode from <https://github.com/sol-eng/plumber-mode/>\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(plumber)\nlibrary(jsonlite)\n```\n:::\n\n\n## Create Model\n\nTrain linear model to predict miles per gallon and save as RDS.\n\n\n::: {.cell}\n\n```{.r .cell-code}\ncars_model <- lm(mpg ~ cyl + hp, data = mtcars)\nsaveRDS(cars_model, \"cars-model.rds\")\n```\n:::\n\n\n## Create API\n\n## Deployment Environment\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Add server\n# rsconnect::addServer(\n#   url = \"https://colorado.posit.co/rsc/__api__\",\n#   name = \"colorado\"\n# )\n# \n# # Add account\n# rsconnect::connectApiUser(\n#   account = \"\",\n#   server = \"colorado\",\n#   apiKey = Sys.getenv(\"CONNECT_API_KEY\"),\n# )\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

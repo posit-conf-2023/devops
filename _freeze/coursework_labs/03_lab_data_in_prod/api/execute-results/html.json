@@ -1,0 +1,14 @@
+{
+  "hash": "e0584edfd2a77cae540c74275f090a28",
+  "result": {
+    "markdown": "---\ntitle: \"API\"\nformat: html\neditor: visual\n---\n\n\n## Create Connect API\n\n-   login\n\n-   go to your username\n\n-   create key\n\n-   add to environment var\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(dplyr)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\n\nAttaching package: 'dplyr'\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n```\n:::\n\n```{.r .cell-code}\nlibrary(vetiver)\nlibrary(pins)\nlibrary(tidymodels)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\n── Attaching packages ────────────────────────────────────── tidymodels 1.1.1 ──\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\n✔ broom        1.0.5     ✔ rsample      1.2.0\n✔ dials        1.2.0     ✔ tibble       3.2.1\n✔ ggplot2      3.4.3     ✔ tidyr        1.3.0\n✔ infer        1.0.5     ✔ tune         1.1.2\n✔ modeldata    1.2.0     ✔ workflows    1.1.3\n✔ parsnip      1.1.1     ✔ workflowsets 1.0.1\n✔ purrr        1.0.2     ✔ yardstick    1.2.0\n✔ recipes      1.0.8     \n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ purrr::discard()  masks scales::discard()\n✖ dplyr::filter()   masks stats::filter()\n✖ dplyr::lag()      masks stats::lag()\n✖ tune::load_pkgs() masks vetiver::load_pkgs()\n✖ recipes::step()   masks stats::step()\n• Search for functions across packages at https://www.tidymodels.org/find/\n```\n:::\n\n```{.r .cell-code}\nlibrary(plumber)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# car_mod <-\n#     workflow(mpg ~ ., decision_tree(mode = \"regression\")) %>%\n#     fit(mtcars)\n# v <- vetiver_model(car_mod, \"cars_mpg\")\n# model_board <- board_folder(\"pins-r\", versioned = TRUE)\n# model_board %>% vetiver_pin_write(v)\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

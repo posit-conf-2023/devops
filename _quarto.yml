@@ -1,20 +1,34 @@
 project:
   type: website
+  render: 
+    - "*.qmd"
 
 website:
-  title: "devops"
+  title: "Devops for Data Scientists"
   navbar:
+    background: dark
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
-
+      - href: slides/workshop_full_slides.qmd
+        text: Slides
+      - text: Labs
+        menu: 
+          - text: "Lab 1"
+            href: coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.qmd
+          - text: "Lab 2"
+            href: coursework_labs/02_lab_docker/Exercises.qmd
+          - text: "Lab 3"
+            href: coursework_labs/03_lab_data_in_prod/lab_solution.qmd
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
+    link-external-newwindow: true
 
+editor: visual
+engine: knitr
 execute:
   freeze: auto
   

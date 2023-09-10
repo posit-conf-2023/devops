@@ -160,6 +160,8 @@ Take 5 minutes and introduce yourself to your neighbors.
 
 -   What are you most looking forward to in the conference?
 
+## Word Cloud
+
 ## Logistics & Workshop Setup {.toc-people-dark}
 
 ## Pre-workshop Install {.brackets-light}
@@ -192,7 +194,7 @@ Login to Docker Playground with your Docker Hub username and password.
 
 -   All documents including slides are available at this github [repo](https://github.com/posit-conf-2023/devops)
 -   We will use the Discord channel for communicating code snippets and answering questions
--   "Posit" Notes system for TA support during exercises and labs
+-   Place a note on the back of your laptop
     -   🟥 - I need help
     -   🟨 - I'm still working
     -   🟩 - I'm done
@@ -234,36 +236,46 @@ https://posit.co/code-of-conduct/
 
 -   To deploy a quarto site to Github Pages using Github Actions for Continuous Deployment.
 
-## Principles of Devops
+## Principles and History of Devops
 
 ![](images/Screenshot%202023-08-29%20at%203.32.37%20PM.png){width="586"}
 
 -   Collaboration
 
+-   Continuous Integration & Delivery
+
 -   Automation
 
--   CI/CD
-
--   Rapid feedback loops
+-   Reproducibility
 
 -   Culture change
 
 ::: notes
-**DevOps** is a combination of software development (dev) and operations (ops). It is defined as a software engineering methodology which aims to integrate the work of development teams and operations teams by facilitating a culture of collaboration and shared responsibility.
+**Many way of defining but at its core -**
 
--   Development of system of practice in the late 2000's in software and IT online communities
+**DevOps** is a combination of cultural philosophies, practices, and tools intended to integrate the work that development and operations team do.
 
--   Developers often siloed from operations teams resulting in inefficient processes
+Let's go back to early 2000s, developers are working on creating applications and adding features, when that's done, its thrown over the fence to the ops team who is in charge of maintaining, scaling, and securing the applications -
 
--   Long development cycles and monolithic environments made it difficult to quickly iterate and deploy
+**What are some of the problems that arise:**
 
--   Software stacks used different languages, frameworks, databases
+-But Developers often siloed from operations teams resulting in miscommunication and inefficient processes
 
--   Devops built on agile methodologies used in software dev and extended it to operations
+-monolithic environments made it difficult to quickly iterate and deploy
 
--   Microservices architectures become more popular
+-all the processes are manual, opaque, error prone - explain the manual bit
 
--   Movement to integrate security into devops cycles
+-Software stacks used different languages, frameworks, databases
+
+-conflict of interest and diff incentives - new features vs stability and security
+
+-Ultimately it resulted in stretching release period for days or even months
+
+**Devops for the win!**
+
+-   Development of system of practice in the late 2000's in software and IT online communities with the goal of improving the application release process by integrating the work of the two teams
+
+But why should we as data scientists care about this?
 :::
 
 ::: footer
@@ -272,36 +284,97 @@ Illustration & Definition credit:Gitlab, https://about.gitlab.com/topics/devops/
 
 ## Has this ever happened to you?
 
-::: incremental
--   You come back to code from a year ago and now it doesnt run!
+::: columns
+::: {.column width="50%"}
+[You come back to code from a year ago and now it doesnt run!]{.fragment fragment-index="1"}
+:::
 
--   Your boss asks you to share that Shiny app with a client but the dev team is too busy working on their roadmap to help you deploy it somewhere.
+::: {.column width="50%"}
+[Reproduce your environment]{.fragment fragment-index="2" style="color: blue;"}
+:::
+:::
 
--   You need to share your prediction model (created in R) with the Engineering team but they only code in Java.
+::: columns
+::: {.column width="50%"}
+[You need to hand off your model to the Engineering team but they only code in Java]{.fragment fragment-index="3"}
+:::
 
--   What other problems have you ran into that could possibly be solved with devops practices or tools?
+::: {.column width="50%"}
+[Create an API]{.fragment fragment-index="4" style="color: blue;"}
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+[Your boss asks you to share that Shiny app with a client but the ops team is too busy working on their roadmap to help you deploy it somewhere.]{.fragment fragment-index="5"}
+:::
+
+::: {.column width="50%"}
+[Containerize & deploy your code]{.fragment fragment-index="6" style="color: blue;"}
+:::
 :::
 
 ## Why should data scientists/analysts care about devops?
 
 ::: incremental
--   Building and delivering software includes models, visualizations, data transformations & data applications
+-   Data scientists are developers!
 
--   Practices such as automation, collaboration, testing, and iterative improvement can dramatically improve data work and improve reproducibility
+-   Data science careers have moved from academic sphere to tech and software but education hasnt always followed
 
--   Developers of code are often also asked to help "operationalize" their code
+-   Automation, collaboration, testing can dramatically improve data work and improve reproducibility
 
--   Improve collaboration & communication with engineering, ops, IT, and security teams
+-   The many hats of a data scientist
+
+-   Improve collaboration & communication with other teams
 :::
 
 ## Responsibility of the analyst
 
+::: columns
+::: {.column width="50%"}
 ![](images/Screenshot%202023-08-22%20at%203.26.22%20PM.png)
+:::
+
+::: {.column width="50%"}
+![](images/Screenshot%202023-09-10%20at%2012.18.42%20PM.png)
+:::
+:::
 
 ::: notes
-2005 essay on crisis in scientific publishing, argument that majority medical research studies cannot be replicated.
+reproducing your results is called the "cornerstone of science" - replication crisis
+
+2005 essay by John Ioannidis in scientific journal on crisis in scientific publishing, argument that majority medical research studies cannot be replicated.
 
 Solo, siloed investigator limited to small sample sizes No preregistration of hypotheses being tested Post-hoc cherry picking of hypotheses with best P values Only requiring P \< .05 No replication No data sharing
+
+**27271** Notebooks:
+
+-   **11454** could not declare dependencies
+
+-   **5429** could not successfully install declared dependencies
+
+-   **9185** returned an error when ran
+
+-   **324** returned a different result than originally reported
+:::
+
+## Devops Toolkit
+
+-   CI/CD
+-   Environment Management
+-   Package Management
+-   Version Control & Git workflows
+-   Automated Build tools
+    -   YAML
+    -   Dedicated cloud & CI/CD platforms
+    -   Infrastructure as Code
+-   Container Orchestration
+-   Continuous Monitoring and testing
+
+::: notes
+build tools for automating workflows, creating configurations for those workflows, and tools to reproduce environments consistently across workflows
+
+discuss these very very briefly
 :::
 
 ## The CI/CD Pipeline
@@ -309,25 +382,16 @@ Solo, siloed investigator limited to small sample sizes No preregistration of hy
 ![](images/cicd.png)
 
 ::: notes
--Automation is a core principle for devops -CI/CD is a critical component to making that happen. -CI/CD comprises of continuous integration and continuous delivery or continuous deployment. -Put together, they form a "CI/CD pipeline"---a series of automated workflows that help DevOps teams cut down on manual tasks:
+-   an iterative cycle of small steps to quickly build, test, and deploy your code -CI/CD is a critical component tof making devops happen. -CI/CD comprises of an iterative cycle continuous integration and continuous delivery or continuous deployment. -Put together, they form a "CI/CD pipeline"---a series of automated workflows that help DevOps teams cut down on manual tasks:
 
--Continuous integration (CI) automatically builds, tests, and integrates code changes within a shared repository; -Continuous delivery (CD) automatically delivers code changes to production-ready environments for approval; -Continuous deployment (CD) automatically deploys code changes to customers directly.
+-Continuous integration (CI) automatically builds, tests, and commit code changes into a shared repository; Developer writes code and commits to a repo like github. This triggers an automatic process where the code is built, tested and then either passes or fails.
+
+-Continuous delivery (CD) delivers code changes to production-ready environments for approval; final step is sometimes manual
+
+-Continuous deployment (CD) automatically deploys code changes to customers directly. All code based - not manual
 :::
 
-## CI/CD Toolkit
-
--   Environments
--   Version Control & Git workflows
--   Build tools
-    -   YAML
-    -   package managers
-    -   CI/CD platforms
-
-::: notes
-build tools for automating workflows, creating configurations for those workflows, and tools to reproduce environments consistently across workflows
-:::
-
-## Environments {.smaller}
+## Environment Management {.smaller}
 
 ::: notes
 Content is deployed (and code is promoted) across different environments with different intended audiences.
@@ -352,7 +416,15 @@ Content is deployed (and code is promoted) across different environments with di
 ::: notes
 Version control is a main tool for Continuous Integration -
 
-lots of variants - giit, github., svn, gitlab, etc an an iterative process to build, test, collaborate on your code to above environments. Very commonly, individuals work on separate branches that are then tested and reviewed by colleagues before they are merged into a main branch.
+lots of variants - giit, github., svn, gitlab, etc
+
+distributed version control - everyone has their own repo
+
+can track changes and roll them back
+
+can fix merge conflicts
+
+an an iterative process to build, test, collaborate on your code to above environments. Very commonly, individuals work on separate branches that are then tested and reviewed by colleagues before they are merged into a main branch.
 
 In addition to the action of promoting your code - its also important to have processes in place for how it happens code reviews, process for your team, how to name things, pull requests, version control with git, feature branching, automatic tests
 :::
@@ -365,7 +437,115 @@ In addition to the action of promoting your code - its also important to have pr
 
 🟩 - I'm done
 
-Part 1 of the Deploy Quarto Site with GHA Lab
+Login to pos.it/class with code `conftest` and create an account with your name and email
+
+Complete Part 1 of Lab - add link
+
+## Reproducing your environment
+
+What are the layers that need to be reproduced across your dev, test, and prod environments?
+
+In your day-to-day work, what's the hardest reproducibility challenge?
+
+## Layers of reproducibility
+
++----------------+---------------------------------+
+| Layer          | Contents                        |
++================+=================================+
+| Code           | scripts, configs, applications  |
++----------------+---------------------------------+
+| Packages       | R + Python Packages             |
++----------------+---------------------------------+
+| System         | R + Python Language Versions    |
+|                |                                 |
+|                | System Libraries                |
+|                |                                 |
+|                | Operating System + dependencies |
++----------------+---------------------------------+
+| Hardware       | Virtual Hardware                |
+|                |                                 |
+|                | Physical Hardware               |
++----------------+---------------------------------+
+
+::: notes
+-   Let's say someone wanted to reproduce your project including your code and your environment. Make a list of the layers that would need to be reproduced on their machine. (For example, a layer would be the version of R that you're using)
+
+options("repos") Run .libPaths()
+
+-   Hints:
+
+    -   Inspect your renv.lock file.
+    -   Where are your packages being pulled from? Confirm by typing `options("repos")`.
+        -   You can modify your package repository by running `options("repos" = c("<REPO-NAME>" = "https://your-repository-url.com"))` in your RStudio console.
+    -   Visit the webpage where packages are being pulled from and see if you can identify package dependencies. Are packages downloaded as binaries or from source?
+    -   What are your server and OS dependencies? (If you are not sure which distribution of Linux you are using, you can find it by typing `cat /etc/*-release` in your terminal)
+:::
+
+## Mechanisms for reproducibility
+
+\*\* make this a diagram starting from least to most reproducibility
+
+-   documenting state & version control
+
+-   virtual environments (`renv`, `venv`) + package management
+
+-   Containerization & docker
+
+-   Infrastructure as Code
+
+## Packages vs. Libraries vs. Repositories
+
+**Package** - contains code, functions, data, and documentation.
+
+**Library** - is a directory where packages are installed.
+
+**Repository** - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.
+
+::: notes
+packages - Can be be distributed as SOURCE (a directory with all package components), [BINARIES](https://solutions.posit.co/envs-pkgs/environments/repositories/index.html#binary-packages) (contains files in OS-specific format) or as a BUNDLE (compressed file containing package components, similar to source).
+
+library - You can have user-level or project-level libraries. Run `.libPaths()` to see yours. To use a package in has to be installed in a library with `install.packages()` and then loaded into memory with `library(x)` .
+
+repo - others include pypi, bioconducter, private repos
+:::
+
+## Renv workflow
+
+![](images/Screenshot%202023-09-06%20at%208.31.22%20PM.png)
+
+::: notes
+1.  Use a version control system e.g.[git](https://git-scm.com/) with [GitHub](https://github.com/)
+
+2.  One user (perhaps yourself) should explicitly initialize `renv` in the project, via [`renv::init()`](https://rstudio.github.io/renv/reference/init.html). This will create the initial `renv` lockfile, and also write the `renv` auto-loaders to the project's `.Rprofile` and `renv/activate.R`. These will ensure the right version of `renv` is downloaded and installed for your collaborators when they start in this project.
+
+3.  Using a branching strategy push your code alongside the generated lockfile `renv.lock`. Be sure to also share the generated auto-loaders in `.Rprofile` and `renv/activate.R`.
+
+4.  When a collaborator first launches in this project, `renv` should automatically bootstrap itself, thereby downloading and installing the appropriate version of `renv` into the project library. After this has completed, they can then use [`renv::restore()`](https://rstudio.github.io/renv/reference/restore.html) to restore the project library locally on their machine.
+:::
+
+## Example
+
+```{R}
+.libPaths()
+# install.packages("renv")
+renv::init()
+renv::snapshot()
+lapply(.libPaths(), list.files)
+```
+
+::: footer
+🔍 Live code
+:::
+
+## Lab Activity
+
+🟥 - I need help
+
+🟨 - I'm still working
+
+🟩 - I'm done
+
+Complete Part 2 of Lab: Deploy Quarto with GHA including the exercises
 
 ## Build tools
 
@@ -469,12 +649,16 @@ Illustration credit:
 
 -   Dashes are used to denote a list
 
--   https://github.com/sd031/yaml-crash-course/blob/main/full_example.yaml
+https://github.com/sd031/yaml-crash-course/blob/main/full_example.yaml
 
 ## Examples
 
 -   https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.yml
 -   https://github.com/Rikagx/personal-website/blob/main/.github/workflows/publish.yaml
+
+::: footer
+🔍 Live code
+:::
 
 ## Lab Activity
 
@@ -485,98 +669,6 @@ Illustration credit:
 🟩 - I'm done
 
 Inspect your \_quarto.yml file and identify what each part of it does using the quarto site.
-
-## Reproducing your environment
-
-What are the layers that need to be reproduced across your dev, test, and prod environments?
-
-In your day-to-day work, what's the hardest reproducibility challenge?
-
-## Layers of reproducibility
-
-+---------------+---------------------------------+
-| Layer         | Contents                        |
-+===============+=================================+
-| Code          | scripts, configs, applications  |
-+---------------+---------------------------------+
-| Packages      | R + Python Packages             |
-+---------------+---------------------------------+
-| System        | R + Python Language Versions    |
-|               |                                 |
-|               | System Libraries                |
-|               |                                 |
-|               | Operating System + dependencies |
-+---------------+---------------------------------+
-| Hardware      | Virtual Hardware                |
-|               |                                 |
-|               | Physical Hardware               |
-+---------------+---------------------------------+
-
-::: notes
--   Let's say someone wanted to reproduce your project including your code and your environment. Make a list of the layers that would need to be reproduced on their machine. (For example, a layer would be the version of R that you're using)
-
-options("repos") Run .libPaths()
-
--   Hints:
-
-    -   Inspect your renv.lock file.
-    -   Where are your packages being pulled from? Confirm by typing `options("repos")`.
-        -   You can modify your package repository by running `options("repos" = c("<REPO-NAME>" = "https://your-repository-url.com"))` in your RStudio console.
-    -   Visit the webpage where packages are being pulled from and see if you can identify package dependencies. Are packages downloaded as binaries or from source?
-    -   What are your server and OS dependencies? (If you are not sure which distribution of Linux you are using, you can find it by typing `cat /etc/*-release` in your terminal)
-:::
-
-## Mechanisms for reproducibility
-
-\*\* make this a diagram starting from least to most reproducibility
-
--   documenting state & version control
-
--   virtual environments (`renv`, `venv`) + package management
-
--   Containerization & docker
-
--   Infrastructure as Code
-
-## Packages vs. Libraries vs. Repositories
-
-**Package** - contains code, functions, data, and documentation.
-
-**Library** - is a directory where packages are installed.
-
-**Repository** - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.
-
-::: notes
-packages - Can be be distributed as SOURCE (a directory with all package components), [BINARIES](https://solutions.posit.co/envs-pkgs/environments/repositories/index.html#binary-packages) (contains files in OS-specific format) or as a BUNDLE (compressed file containing package components, similar to source).
-
-library - You can have user-level or project-level libraries. Run `.libPaths()` to see yours. To use a package in has to be installed in a library with `install.packages()` and then loaded into memory with `library(x)` .
-
-repo - others include pypi, bioconducter, private repos
-:::
-
-## Renv workflow
-
-![](images/Screenshot%202023-09-06%20at%208.31.22%20PM.png)
-
-::: notes
-1.  Use a version control system e.g.[git](https://git-scm.com/) with [GitHub](https://github.com/)
-
-2.  One user (perhaps yourself) should explicitly initialize `renv` in the project, via [`renv::init()`](https://rstudio.github.io/renv/reference/init.html). This will create the initial `renv` lockfile, and also write the `renv` auto-loaders to the project's `.Rprofile` and `renv/activate.R`. These will ensure the right version of `renv` is downloaded and installed for your collaborators when they start in this project.
-
-3.  Using a branching strategy push your code alongside the generated lockfile `renv.lock`. Be sure to also share the generated auto-loaders in `.Rprofile` and `renv/activate.R`.
-
-4.  When a collaborator first launches in this project, `renv` should automatically bootstrap itself, thereby downloading and installing the appropriate version of `renv` into the project library. After this has completed, they can then use [`renv::restore()`](https://rstudio.github.io/renv/reference/restore.html) to restore the project library locally on their machine.
-:::
-
-## Lab Activity
-
-🟥 - I need help
-
-🟨 - I'm still working
-
-🟩 - I'm done
-
-Complete Part 2 of Lab: Deploy Quarto with GHA including the exercises
 
 ## Is version control secure?
 
@@ -592,10 +684,8 @@ Complete Part 2 of Lab: Deploy Quarto with GHA including the exercises
 ![](images/Screenshot%202023-09-07%20at%209.28.32%20AM.png)
 
 ::: notes
-whether its email, text, files, etc
+whether its email, text, files, etc A port is a virtual point where network connections start and end. Ports are software-based and managed by a computer's operating system. Ports allow computers to easily differentiate between different kinds of traffic: emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection.
 :::
-
-::: notes: A port is a virtual point where network connections start and end. Ports are software-based and managed by a computer's operating system. Ports allow computers to easily differentiate between different kinds of traffic: emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection. :::
 
 ## Git protocol options
 
@@ -603,10 +693,16 @@ whether its email, text, files, etc
 |---------|----------|---------|
 | port 80 | port 443 | port 22 |
 
+http - text sent over the internet
+
+https - http encrypted with "SSL/TLS"
+
+SSH - secure shell
+
 ::: notes
 hypertext transfer protocol When a web user wants to load or interact with a web page, their web browser sends an HTTP request to the origin server that hosts the website's files. These requests are essentially lines of text that are sent via the internet.
 
-https : http encrypted with SSL/TLS
+https : http encrypted with SSL/TLS - digital certificates that establish an encrypted connected
 
 SSH: secure shell, public-key cryptography to authenticate the client, used for remote logins, command line execution
 
@@ -621,17 +717,27 @@ The primary downside for most people is that you must enter your Git password/to
 Where SSH takes the lead is with the authentication factor---the key. The length of it alone makes it harder to accidentally leak, and due to it being unwieldy and unique, it's generally more secure.
 :::
 
-## Local protocol
+## Which one should I use
 
--   Each port is associated with a specific process or service.
+::: columns
+::: {.column width="50%"}
+https - simpler - username and password or PAT - have to either cache credentials or enter in every time
+:::
 
-```         
-ping localhost
-```
+::: {.column width="50%"}
+SSH - potentially more secure - uses key for auth - created per machine once
+:::
+:::
 
 ## Port Examples
 
 ![](images/ports-01.jpg)
+
+::: notes
+Each port is associated with a specific process or service.
+
+show ping localhost
+:::
 
 ## Lab Activity
 
@@ -643,11 +749,20 @@ ping localhost
 
 Part 3 of Lab: Deploy Quarto with GHA including the exercises
 
-## Automating your build
+::: notes
+show first part
+
+git config --list git config --global user.name "Your Name" git config --global user.email "youremail\@yourdomain.com"
+:::
+
+## Automation Build Tools
 
 -   GHA is one tool to automate developer workflows
 -   CI/CD is just one example of these workflows
 -   Run on github servers
+-   uses yaml
+
+![](images/Screenshot%202023-09-10%20at%201.32.42%20PM.png)
 
 ::: notes
 -   A github action allows us to create workflows that are triggered by a github action such as a push or pull to a branch
@@ -656,7 +771,9 @@ Part 3 of Lab: Deploy Quarto with GHA including the exercises
 
 -   Open source collection of "available" actions
 
-create a blank repo and show actions workflows https://github.com/Rikagx/workshop_testing/blob/master/.github/workflows/publish.yaml github.com/actions https://github.com/r-lib/actions
+1.  In the previous exercise we created a repo - we can use it to see what kind of actions we can create
+
+https://github.com/Rikagx/workshop_testing/blob/master/.github/workflows/publish.yaml github.com/actions https://github.com/r-lib/actions
 :::
 
 ## Lab Activity

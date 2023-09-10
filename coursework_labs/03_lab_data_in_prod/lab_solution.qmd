@@ -28,15 +28,15 @@ saveRDS(cars_model, "cars-model.rds")
 
 ```{r}
 # Add server
-rsconnect::addServer(
-  url = "https://colorado.posit.co/rsc/__api__",
-  name = "colorado"
-)
-
-# Add account
-rsconnect::connectApiUser(
-  account = "",
-  server = "colorado",
-  apiKey = Sys.getenv("CONNECT_API_KEY"),
-)
+# rsconnect::addServer(
+#   url = "https://colorado.posit.co/rsc/__api__",
+#   name = "colorado"
+# )
+# 
+# # Add account
+# rsconnect::connectApiUser(
+#   account = "",
+#   server = "colorado",
+#   apiKey = Sys.getenv("CONNECT_API_KEY"),
+# )
 ```
