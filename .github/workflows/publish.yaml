@@ -22,13 +22,6 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         
-      - name: Setup renv and install packages
-        uses: r-lib/actions/setup-renv@v2
-        with:
-          cache-version: 1
-        env:
-          RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.rstudio.com/all/latest
-
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
