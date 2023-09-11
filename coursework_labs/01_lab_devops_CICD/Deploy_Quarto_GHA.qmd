@@ -47,7 +47,7 @@ styles.css - custom CSS
 \_site - this will be created after you render your files
 :::
 
-3.  Press render to see your new website! Or preview via terminal with `quarto preview`. Make sure that your web browser allows popups.
+3.  Press render to see your new website! Or preview via terminal with `quarto preview`. Make sure that your web browser allows popups. This may take a few moments to install some required packages.
 
 4.  Create a [repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git) on github but do not initialize it with a README, license, or gitignore files. This repo will host the files for the site that you will be deploying to Github Pages.
 
@@ -57,7 +57,14 @@ styles.css - custom CSS
 
 6.  Initialize a local git repository with `git init`.
 
-7.  Configure your github information in the terminal. To set your global commit name and email address run the `git config` command with the `--global` option:
+7.  Rename your master branch to main so that branch names are consistent across your github repo and your local git. You can use `git branch` to see what branches exist on your repo and switch between them using `git checkout <branch>`.
+
+```         
+# in your terminal
+git branch -m master main
+```
+
+8.  Configure your github information in the terminal. To set your global commit name and email address run the `git config` command with the `--global` option:
 
     ```         
     git config --global user.name "Your Name"
@@ -71,11 +78,13 @@ styles.css - custom CSS
     git config --list
     ```
 
-8.  Create a branch with `git checkout -b gh-pages`. You can use `git checkout <branch_name>` to move between existing branches.
+9.  Create a `.gitignore` file in your main directory. Add the following to the file and save:
 
 ```         
-git checkout -b gh-pages
-git checkout -b main
+/.quarto/
+/_site/
+.Rproj.user
+.Rhistory
 ```
 
 ## Part 2: `renv` workflow
@@ -118,9 +127,11 @@ git checkout -b main
 
 1.  Copy the https repository URL that you created.
 
-2.  Create a classic [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) and give it permissions to your repository. Make sure to note your token somewhere safe.
+2.  Create a classic [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) and give it permissions to your repository for "repo", "user", and "workflow". Make sure to note your token somewhere safe.
 
-3.  Save your PAT with
+3.  Install `usethis` with `install.packages("usethis")`
+
+4.  Save your PAT with
 
     ```         
     gitcreds::gitcreds_set()
@@ -128,7 +139,7 @@ git checkout -b main
 
 **Version Control:**
 
-1.  Add your files to local version control with `git add .`
+1.  Add your files to local version control with `git add .` in the terminal.
 2.  Commit your files with `git commit -m "my first commit"`
 3.  Using the https url from github add your github repository as the "remote" with `git remote add origin https://github.com/username/repo_name.git`
 4.  Push your local files to github with `git push -u origin main` where main is the name of your branch in github. You will be prompted for a username and password. Enter your github username and the personal access token from above as your password.
@@ -162,15 +173,15 @@ Host github.com
 ssh-add ~/.ssh/id_ed25519
 ```
 
-7.  Copy your public key with `cat ~/.ssh/id_ed25519.pub`
-8.  In your Github account go to Settings \> SSH and GPG Keys, and add your SSH key. Give it a name like "workbench key."
+6.  Copy your public key with `cat ~/.ssh/id_ed25519.pub`
+7.  In your Github account go to Settings \> SSH and GPG Keys, and add your SSH key. Give it a name like "workbench key."
 
 **Version Control:**
 
-7.  Add your files to local version control with `git add .`
-8.  Commit your files with `git commit -m "my first commit"`
-9.  Using the https url from github add your github repository as the "remote" with `git remote add origin git@github.com:username/repo_name.git`
-10. Push your local files to github with `git push -u origin main` where main is the name of your branch in github. Type yes to add github to your list of known hosts.
+8.  Add your files to local version control with `git add .`
+9.  Commit your files with `git commit -m "my first commit"`
+10. Using the https url from github add your github repository as the "remote" with `git remote add origin git@github.com:username/repo_name.git`
+11. Push your local files to github with `git push -u origin main` where main is the name of your branch in github. Type yes to add github to your list of known hosts.
 
 Resources
 
@@ -187,18 +198,34 @@ To learn more about the Github CLI and the `gh` package please check out this [a
 
 ## Part 4: [Publish](https://quarto.org/docs/publishing/) using GHA
 
-1.  Create a .github/workflows folders in your main directory
+1.  We need to create a `gh-pages` branch to publish to github pages.
+
+```         
+git status # - make sure everything is committed
+git checkout --orphan gh-pages
+git reset --hard # make sure you've committed changes before running this!
+git commit --allow-empty -m "Initialising gh-pages branch"
+git push origin gh-pages
+git checkout main
+```
+
+2.  Go to Settings \> Pages in your github repository and make sure that your site is being built from the `gh-pages` branch.
+
+![](images/Screenshot%202023-09-11%20at%2010.41.52%20AM.png)
+
+3.  In your terminal run `quarto publish gh-pages` and click Yes to the prompt to update the site.
+4.  Your site should now be live!
+5.  Create a github action called `publish.yaml` and save it in `.github/workflows:`
 
 ```         
 mkdir .github
-ls -lha
 cd .github
 mkdir workflows
 cd workflows
 touch publish.yaml
 ```
 
-1.  Edit the publish.yaml file:
+6.  Edit the publish.yaml file:
 
 ```         
 name: Deploy quarto site to Github Pages
@@ -215,7 +242,7 @@ jobs:
       contents: write
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -223,7 +250,7 @@ jobs:
       - name: Install R
         uses: r-lib/actions/setup-r@v2
         with:
-          r-version: '4.2.0'
+          r-version: '4.2.3'
           use-public-rspm: true
 
       - name: Setup renv and install packages
@@ -241,20 +268,79 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-2.  Add a .gitignore file in your main directory and add the following:
+7.  Snapshot your `renv` environment with `renv::snapshot`.
 
-    ```         
-    cd ../..
-    touch .gitignore
+8.  Commit and push your code: (Make sure that your renv.lock file has been added!)
 
-    /.quarto/ 
-    /_site/
-    ```
+```         
+git add .
+git commit -m "created action"
+git push
+```
 
-3.  /.quarto/ /\_site/
+9.  Go to the actions tab in your Github repository and watch your deploy!
 
-4.  Go to your repository on github and maneuver to Settings \> Pages.
+## Part 5: Publish to Connect with GHA
 
-5.  Change your Source branch to Github Actions from root
+1.  Create an API key on the Connect website.
 
-6.  commit and push!
+![](images/Screenshot%202023-09-11%20at%2011.16.59%20AM.png)
+
+2.  Add the Connect URL and your API key to your repository:
+
+-   In your repository go to Settings \> Security \> Secrets and variables \> Actions
+
+-   Add 2 secrets:
+
+![](images/Screenshot%202023-09-11%20at%2011.20.00%20AM.png)
+
+3.  Edit your publish.yaml file:
+
+```         
+---
+on:
+  workflow_dispatch: 
+  push:
+    branches:
+      - main
+name: Quarto Publish
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 4.2.3
+          use-public-rspm: true
+      - name: Setup renv and install packages
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
+        env:
+          RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.rstudio.com/all/latest
+      - name: Create manifest.json
+        shell: Rscript {0}
+        run: |
+          rsconnect::writeManifest()
+      - name: Publish Connect content
+        uses: rstudio/actions/connect-publish@main
+        with:
+          url: ${{ secrets.CONNECT_SERVER }}
+          api-key: ${{ secrets.CONNECT_API_KEY }}
+          access-type: logged_in
+          dir: |
+            .:/github-actions
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```

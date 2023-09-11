@@ -445,23 +445,23 @@ In your day-to-day work, what's the hardest reproducibility challenge?
 
 ## Layers of reproducibility
 
-+----------+---------------------------------+
-| Layer    | Contents                        |
-+==========+=================================+
-| Code     | scripts, configs, applications  |
-+----------+---------------------------------+
-| Packages | R + Python Packages             |
-+----------+---------------------------------+
-| System   | R + Python Language Versions    |
-|          |                                 |
-|          | System Libraries                |
-|          |                                 |
-|          | Operating System + dependencies |
-+----------+---------------------------------+
-| Hardware | Virtual Hardware                |
-|          |                                 |
-|          | Physical Hardware               |
-+----------+---------------------------------+
++-------------+---------------------------------+
+| Layer       | Contents                        |
++=============+=================================+
+| Code        | scripts, configs, applications  |
++-------------+---------------------------------+
+| Packages    | R + Python Packages             |
++-------------+---------------------------------+
+| System      | R + Python Language Versions    |
+|             |                                 |
+|             | System Libraries                |
+|             |                                 |
+|             | Operating System + dependencies |
++-------------+---------------------------------+
+| Hardware    | Virtual Hardware                |
+|             |                                 |
+|             | Physical Hardware               |
++-------------+---------------------------------+
 
 ::: notes
 -   Let's say someone wanted to reproduce your project including your code and your environment. Make a list of the layers that would need to be reproduced on their machine. (For example, a layer would be the version of R that you're using)
@@ -717,7 +717,7 @@ Where SSH takes the lead is with the authentication factor---the key. The length
 
 ::: columns
 ::: {.column width="50%"}
-https - simpler - username and password or PAT - have to either cache credentials or enter in every time
+https - simpler - username and password or PAT - have to either cache credentials or enter in every time. can be used with Github REST API
 :::
 
 ::: {.column width="50%"}
@@ -901,11 +901,15 @@ this is because the container itself doesnt have a host operating system or any 
 
 ## Mode for running containers
 
++------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Mode                                                       | Run command       | Use case                                                                                                                                                                                                           |
-|------------------------------------------------------------|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
++============================================================+===================+====================================================================================================================================================================================================================+
 | Detached                                                   | `docker run -d`   | This runs the container in the **background** so the container keeps running until the application process exits, or you stop the container. Detached mode is often used for production purposes.                  |
++------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Interactive + terminal                                     | `docker run -it`  | This runs the container in the **foreground** so you are unable to access the command prompt. Interactive mode is often used for development and testing.                                                          |
++------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Remove everything once the container is done with its task | `docker run --rm` | This mode is used on foreground containers that perform **short-term tasks** such as tests or database backups. Once it is removed anything you may have downloaded or created in the container is also destroyed. |
++------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 ## Lab Activity
 
