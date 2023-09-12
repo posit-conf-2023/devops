@@ -1,42 +1,105 @@
 ---
-title: "solution_code"
+title: "Lab: Data in Production"
 format: html
 editor: visual
 ---
 
+## Goals
+
 ## Setup
 
-Code from <https://github.com/sol-eng/plumber-mode/>
+To setup your cloud-based development environment create an account using your email at http://rstd.io/class with code `angry-beaver`. Click on the Rstudio [Connect](https://docs.posit.co/connect/user/) widget to start your environment.
 
-```{r}
+## Part 1: Host API on Posit Connect
+
+1.  Go to the Solutions Engineering R-examples [repo](https://github.com/sol-eng/r-examples) and copy the HTTPS url.
+2.  In Connect click `Publish` and `Import from Git`. Enter the URL that you copied above and click Next.
+3.  Select the main branch and click next.
+4.  Select the `plumber-penguins/app` directory and give it a name.
+5.  Click \`Deploy Content. In a few moments your API should be live!
+
+## Part 2: Explore your API
+
+1.  Explore the endpoints for the API. Click the `GET` for each endpoint and then click `Try it out` and `Execute`.
+2.  Click on the link ending in openapi.json below the title of you API.
+
+![](images/Screenshot%202023-09-11%20at%207.22.12%20PM.png)
+
+3.  Try accessing the API via the terminal with `curl <URL>`. You should receive output that the app is not authorized!
+4.  Authorize the app for everyone by changing the Access \> Sharing option to `Anyone - no login required` and then try the curl command again. It should work now!
+
+![](images/Screenshot%202023-09-11%20at%207.27.05%20PM.png)
+
+5.  Try out the /penguins endpoint and grab the Request URL.
+6.  Access the /penguins endpoint and provide input for the sample size in your terminal and in the app itself.
+
+`curl "<REQUEST URL>/penguins?sample_size=5"`
+
+## Part 3: Plumber Examples
+
+1.  Install the plumber examples package. `remotes::install_github("sol-eng/plumberExamples")`
+2.  Run `available_apis` to see plumber examples in the package.
+3.  Access examples and code:
+
+```         
 library(plumber)
-library(jsonlite)
+plumb_api(package = "plumberExamples", name = "00-hello") %>% pr_run()
 ```
 
-## Create Model
+## Part 5: Push-button deployment
 
-Train linear model to predict miles per gallon and save as RDS.
+1.  Publish the 11-car-inventory example to Connect.
+2.  Click the blue publishing icon in the upper right of the file editor.
 
-```{r}
-cars_model <- lm(mpg ~ cyl + hp, data = mtcars)
-saveRDS(cars_model, "cars-model.rds")
-```
+![](images/Screenshot%202023-09-11%20at%207.44.06%20PM.png)
 
-## Create API
+6.  When prompted connect to the Posit Connect server with the provided url. Click Publish.
 
-## Deployment Environment
+## Part 6: Programmatically access Connect
+
+1.  We want to programmatically identify all the content that has been published. You will need to use the Connect API Key that you created in the earlier lab. Or you can create a new key.
+
+![](images/Screenshot%202023-09-11%20at%2011.16.59%20AM.png)
+
+2.  Open a new R script In your workbench console. Add your Connect information:
 
 ```{r}
 # Add server
-# rsconnect::addServer(
-#   url = "https://colorado.posit.co/rsc/__api__",
-#   name = "colorado"
-# )
-# 
-# # Add account
-# rsconnect::connectApiUser(
-#   account = "",
-#   server = "colorado",
-#   apiKey = Sys.getenv("CONNECT_API_KEY"),
-# )
+rsconnect::addServer(
+  url = "https://liberal-bullfinch.74633.fleeting.rstd.io/rsconnect/__api__",
+  name = "colorado"
+)
+
+# Add account
+rsconnect::connectApiUser(
+  account = "",
+  server = "colorado",
+  apiKey = Sys.getenv("CONNECT_API_KEY"),
+)
+```
+
+3.  Access your content programmatically in R: - need to add key ias env variable
+
+``` R
+library(httr)
+library(tidyr)
+
+# Use the /v1/content endpoint to retrieve the full list of content items
+result <- GET(
+  paste0(Sys.getenv("CONNECT_SERVER"),"__api__/v1/content"),
+    add_headers(Authorization = paste("Key", Sys.getenv("CONNECT_API_KEY"))))
+
+# Create a tibble for the content list result response
+df_full <- unnest_wider(tibble::tibble(dat = content(result)), dat) 
+```
+
+4.  Access your content programmatically in the terminal using curl:
+
+```         
+export CONNECT_API_KEY=XXX
+export CONNECT_SERVER=https://liberal-bullfinch.74633.fleeting.rstd.io/rsconnect/
+
+curl --silent --show-error -L --max-redirs 0 --fail \
+    -H "Authorization: Key ${CONNECT_API_KEY}" \
+    "${CONNECT_SERVER}__api__/v1/content"
 ```

@@ -1,4 +1,9 @@
-## Docker Exercises
+---
+title: "Lab: Docker"
+format: html
+editor: visual
+---
+## Goals
 
 ### Setup
 
@@ -13,7 +18,7 @@ Your terminal should say something like `[node1] (local) root@123.123.0.12` If i
 
 ### Part 1: [Run](https://docs.docker.com/engine/reference/run/) Commands
 
- The basic `docker run` command takes this form:
+The basic `docker run` command takes this form:
 
 ```         
 docker run [OPTIONS] [IMAGE:TAG] [COMMAND] [ARG...]
@@ -21,8 +26,8 @@ docker run [OPTIONS] [IMAGE:TAG] [COMMAND] [ARG...]
 
 In the below exercise we will practice running docker containers with different options or "flags."
 
-1. Currently we have no docker images downloaded. Confirm this with `docker image ls -a.`  
-2. Pull down a Dockerhub linux image. Confirm that the image is downloaded with the `ls` command.
+1.  Currently we have no docker images downloaded. Confirm this with `docker image ls -a.`\
+2.  Pull down a Dockerhub linux image. Confirm that the image is downloaded with the `ls` command.
 
 ```         
 docker pull ubuntu
@@ -69,7 +74,7 @@ This should bring you to the nginx server.
 
 ![](images/Screenshot%202023-08-31%20at%208.14.54%20PM-02.png)
 
-5. Examine your container and then stop it.
+5.  Examine your container and then stop it.
 
 ```         
 # check your running containers
@@ -82,7 +87,7 @@ docker ps -a
 docker container stop nginx1
 ```
 
-6. Run a container with a different linux distro and then automatically remove it. Add an echo command to confirm that the container has actually run.
+6.  Run a container with a different linux distro and then automatically remove it. Add an echo command to confirm that the container has actually run.
 
 ```         
 docker run --rm debian echo "hello world"
@@ -98,31 +103,31 @@ docker container ls -a
 
 ### Part 2: Debugging Containers
 
-The `docker exec` command is very similar to the `docker run -it` command. Both are very helpful for debugging containers as they allow you to jump inside your container instance. The exec command needs a running container to execute **any** command, whereas the `-it` flag starts a container and places you into a terminal in interactive mode. Use the `docker exec` command to execute a bash command in a running container. This can be used to execute any command within a running container. 
+The `docker exec` command is very similar to the `docker run -it` command. Both are very helpful for debugging containers as they allow you to jump inside your container instance. The exec command needs a running container to execute **any** command, whereas the `-it` flag starts a container and places you into a terminal in interactive mode. Use the `docker exec` command to execute a bash command in a running container. This can be used to execute any command within a running container.
 
 `docker exec` requires two arguments - the container and the command you want to run.
 
-```
+```         
 docker exec [OPTIONS] CONTAINER [COMMAND] [ARG...]
 ```
-1. Use `docker run -it` to jump into an ubuntu container.
+
+1.  Use `docker run -it` to jump into an ubuntu container.
 
 ```         
 docker run -it -d ubuntu
 exit
 ```
 
-2. Use `docker exec` to run commands in a container
+2.  Use `docker exec` to run commands in a container
 
-
-```
+```         
 docker container ls -a # to get a container ID of a running container
 docker exec -it CONTAINER_ID bash
 exit
 docker exec CONTAINER_ID ls 
 ```
 
-3. Lets run a detached MySQL container and then check out some logs. The database requires a password to work.In production you should never pass credentials directly in your command but we will do it for testing purposes. (The forward slashes below allow you to use a new line for your code)
+3.  Lets run a detached MySQL container and then check out some logs. The database requires a password to work.In production you should never pass credentials directly in your command but we will do it for testing purposes. (The forward slashes below allow you to use a new line for your code)
 
 ```         
  docker container run -d --name mydb \
@@ -132,27 +137,30 @@ docker exec CONTAINER_ID ls
  
 docker container logs mydb
 ```
+
 ### Part 3: Mapping Ports
 
-1. Pull two versions of the same image
-```
+1.  Pull two versions of the same image
+
+```         
 docker pull httpd:alpine
 docker pull httpd:latest
 ```
 
-2. Inspect ports. 
-```
+2.  Inspect ports.
+
+```         
 docker inspect  httpd:latest
 docker inspect  httpd:alpine
 ```
 
-3. Map two different host ports to the same application port for the two containers.
-```
+3.  Map two different host ports to the same application port for the two containers.
+
+```         
 docker run -d -p 81:80 --name httpd-latest httpd:latest
 docker run -d -p 80:80 --name httpd-alpine httpd:alpine
 docker ps
 ```
-
 
 ### Part 4: Mounting Data
 
@@ -185,7 +193,7 @@ In order to get data in or out of a container, you need to mount a shared volume
 
 ### Part 5: Building images interactively
 
-1.  Exit out of your container from the previous exercise with `exit` and confirm that the container is still running. This container should have the new directory and text file. 
+1.  Exit out of your container from the previous exercise with `exit` and confirm that the container is still running. This container should have the new directory and text file.
 2.  Run `docker diff CONTAINER_ID` to see the difference between the base image and the new container. You should see the new data folder,
 3.  Login to docker hub in your instance using `docker login` and enter your username and password.
 4.  Commit the changed ubuntu image and give it a new name like `ubuntu_text`.
