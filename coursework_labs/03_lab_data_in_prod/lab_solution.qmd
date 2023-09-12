@@ -2,6 +2,8 @@
 title: "Lab: Data in Production"
 format: html
 editor: visual
+execute: 
+  eval: false
 ---
 
 ## Goals
@@ -46,7 +48,7 @@ library(plumber)
 plumb_api(package = "plumberExamples", name = "00-hello") %>% pr_run()
 ```
 
-## Part 5: Push-button deployment
+## Part 4: Push-button deployment
 
 1.  Publish the 11-car-inventory example to Connect.
 2.  Click the blue publishing icon in the upper right of the file editor.
@@ -55,7 +57,7 @@ plumb_api(package = "plumberExamples", name = "00-hello") %>% pr_run()
 
 6.  When prompted connect to the Posit Connect server with the provided url. Click Publish.
 
-## Part 6: Programmatically access Connect
+## Part 5: Programmatically access Connect
 
 1.  We want to programmatically identify all the content that has been published. You will need to use the Connect API Key that you created in the earlier lab. Or you can create a new key.
 
@@ -80,7 +82,7 @@ rsconnect::connectApiUser(
 
 3.  Access your content programmatically in R: - need to add key ias env variable
 
-``` R
+``` r
 library(httr)
 library(tidyr)
 
