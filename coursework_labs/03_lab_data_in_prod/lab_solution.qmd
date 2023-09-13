@@ -2,8 +2,6 @@
 title: "Lab: Data in Production"
 format: html
 editor: visual
-execute: 
-  eval: false
 ---
 
 ## Goals
@@ -65,7 +63,7 @@ plumb_api(package = "plumberExamples", name = "00-hello") %>% pr_run()
 
 2.  Open a new R script In your workbench console. Add your Connect information:
 
-```{r}
+```
 # Add server
 rsconnect::addServer(
   url = "https://liberal-bullfinch.74633.fleeting.rstd.io/rsconnect/__api__",
@@ -82,7 +80,7 @@ rsconnect::connectApiUser(
 
 3.  Access your content programmatically in R: - need to add key ias env variable
 
-``` r
+```
 library(httr)
 library(tidyr)
 
