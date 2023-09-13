@@ -164,6 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#part-2-renv-workflow" id="toc-part-2-renv-workflow" class="nav-link" data-scroll-target="#part-2-renv-workflow">Part 2: <code>renv</code> workflow</a></li>
   <li><a href="#part-3-version-control-and-authentication-with-github" id="toc-part-3-version-control-and-authentication-with-github" class="nav-link" data-scroll-target="#part-3-version-control-and-authentication-with-github">Part 3: Version Control and Authentication with Github</a></li>
   <li><a href="#part-4-publish-using-gha" id="toc-part-4-publish-using-gha" class="nav-link" data-scroll-target="#part-4-publish-using-gha">Part 4: Publish using GHA</a></li>
+  <li><a href="#part-5-publish-to-connect-with-gha" id="toc-part-5-publish-to-connect-with-gha" class="nav-link" data-scroll-target="#part-5-publish-to-connect-with-gha">Part 5: Publish to Connect with GHA</a></li>
   </ul>
 </nav>
     </div>
@@ -246,23 +247,30 @@ quarto site file structure
 </div>
 </div>
 <ol start="3" type="1">
-<li><p>Press render to see your new website! Or preview via terminal with <code>quarto preview</code>. Make sure that your web browser allows popups.</p></li>
+<li><p>Press render to see your new website! Or preview via terminal with <code>quarto preview</code>. Make sure that your web browser allows popups. This may take a few moments to install some required packages.</p></li>
 <li><p>Create a <a href="https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git">repository</a> on github but do not initialize it with a README, license, or gitignore files. This repo will host the files for the site that you will be deploying to Github Pages.</p>
 <ul>
 <li>Name your repository <code>username.github.io</code> where username is your github username. If you already have this name in use, then name your repo <code>quarto_website</code></li>
 </ul></li>
 <li><p>Open the terminal tab in your Rstudio Workbench environment, <code>cd</code> into your project directory.</p></li>
 <li><p>Initialize a local git repository with <code>git init</code>.</p></li>
+<li><p>Rename your master branch to main so that branch names are consistent across your github repo and your local git. You can use <code>git branch</code> to see what branches exist on your repo and switch between them using <code>git checkout &lt;branch&gt;</code>.</p></li>
+</ol>
+<pre><code># in your terminal
+git branch -m master main</code></pre>
+<ol start="8" type="1">
 <li><p>Configure your github information in the terminal. To set your global commit name and email address run the <code>git config</code> command with the <code>--global</code> option:</p>
 <pre><code>git config --global user.name "Your Name"
 git config --global user.email "youremail@yourdomain.com"
 git config --global init.defaultBranch main</code></pre>
 <p>Once done, you can confirm that the information is set by running:</p>
 <pre><code>git config --list</code></pre></li>
-<li><p>Create a branch with <code>git checkout -b gh-pages</code>. You can use <code>git checkout &lt;branch_name&gt;</code> to move between existing branches.</p></li>
+<li><p>Create a <code>.gitignore</code> file in your main directory. Add the following to the file and save:</p></li>
 </ol>
-<pre><code>git checkout -b gh-pages
-git checkout -b main</code></pre>
+<pre><code>/.quarto/
+/_site/
+.Rproj.user
+.Rhistory</code></pre>
 </section>
 <section id="part-2-renv-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="part-2-renv-workflow">Part 2: <code>renv</code> workflow</h2>
@@ -320,13 +328,14 @@ git checkout -b main</code></pre>
 <p><strong>Authentication:</strong></p>
 <ol type="1">
 <li><p>Copy the https repository URL that you created.</p></li>
-<li><p>Create a classic <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic">personal access token</a> and give it permissions to your repository. Make sure to note your token somewhere safe.</p></li>
+<li><p>Create a classic <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic">personal access token</a> and give it permissions to your repository for “repo”, “user”, and “workflow”. Make sure to note your token somewhere safe.</p></li>
+<li><p>Install <code>usethis</code> with <code>install.packages("usethis")</code></p></li>
 <li><p>Save your PAT with</p>
 <pre><code>gitcreds::gitcreds_set()</code></pre></li>
 </ol>
 <p><strong>Version Control:</strong></p>
 <ol type="1">
-<li>Add your files to local version control with <code>git add .</code></li>
+<li>Add your files to local version control with <code>git add .</code> in the terminal.</li>
 <li>Commit your files with <code>git commit -m "my first commit"</code></li>
 <li>Using the https url from github add your github repository as the “remote” with <code>git remote add origin https://github.com/username/repo_name.git</code></li>
 <li>Push your local files to github with <code>git push -u origin main</code> where main is the name of your branch in github. You will be prompted for a username and password. Enter your github username and the personal access token from above as your password.</li>
@@ -342,22 +351,22 @@ git checkout -b main</code></pre>
 <li><p>Create a new hidden file (dot files and directories are hidden but you can see them with <code>ls -la</code>) with <code>touch ~/.ssh/config</code> .</p></li>
 <li><p>Edit the file using vi or vim and then add your SSH private key to the ssh-agent. Use the cheat sheet below for common vim commands.</p></li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> touch ~/.ssh/config</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">i</span> <span class="co"># to get into insert mode</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> github.com</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">IgnoreUnknown</span> UseKeychain</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">AddKeysToAgent</span> yes</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">UseKeychain</span> yes</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">IdentityFile</span> ~/.ssh/id_ed25519</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Press the escape key to exit insert mode</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">:wq</span> <span class="co"># to save and exit out of the file</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="7" type="1">
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> touch ~/.ssh/config</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">i</span> <span class="co"># to get into insert mode</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> github.com</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">IgnoreUnknown</span> UseKeychain</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">AddKeysToAgent</span> yes</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">UseKeychain</span> yes</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">IdentityFile</span> ~/.ssh/id_ed25519</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Press the escape key to exit insert mode</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ex">:wq</span> <span class="co"># to save and exit out of the file</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="6" type="1">
 <li>Copy your public key with <code>cat ~/.ssh/id_ed25519.pub</code></li>
 <li>In your Github account go to Settings &gt; SSH and GPG Keys, and add your SSH key. Give it a name like “workbench key.”</li>
 </ol>
 <p><strong>Version Control:</strong></p>
-<ol start="7" type="1">
+<ol start="8" type="1">
 <li>Add your files to local version control with <code>git add .</code></li>
 <li>Commit your files with <code>git commit -m "my first commit"</code></li>
 <li>Using the https url from github add your github repository as the “remote” with <code>git remote add origin git@github.com:username/repo_name.git</code></li>
@@ -389,15 +398,29 @@ Github CLI
 <section id="part-4-publish-using-gha" class="level2">
 <h2 class="anchored" data-anchor-id="part-4-publish-using-gha">Part 4: <a href="https://quarto.org/docs/publishing/">Publish</a> using GHA</h2>
 <ol type="1">
-<li>Create a .github/workflows folders in your main directory</li>
+<li>We need to create a <code>gh-pages</code> branch to publish to github pages.</li>
+</ol>
+<pre><code>git status # - make sure everything is committed
+git checkout --orphan gh-pages
+git reset --hard # make sure you've committed changes before running this!
+git commit --allow-empty -m "Initialising gh-pages branch"
+git push origin gh-pages
+git checkout main</code></pre>
+<ol start="2" type="1">
+<li>Go to Settings &gt; Pages in your github repository and make sure that your site is being built from the <code>gh-pages</code> branch.</li>
+</ol>
+<p><img src="images/Screenshot 2023-09-11 at 10.41.52 AM.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li>In your terminal run <code>quarto publish gh-pages</code> and click Yes to the prompt to update the site.</li>
+<li>Your site should now be live!</li>
+<li>Create a github action called <code>publish.yaml</code> and save it in <code>.github/workflows:</code></li>
 </ol>
 <pre><code>mkdir .github
-ls -lha
 cd .github
 mkdir workflows
 cd workflows
 touch publish.yaml</code></pre>
-<ol type="1">
+<ol start="6" type="1">
 <li>Edit the publish.yaml file:</li>
 </ol>
 <pre><code>name: Deploy quarto site to Github Pages
@@ -414,7 +437,7 @@ jobs:
       contents: write
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -422,7 +445,7 @@ jobs:
       - name: Install R
         uses: r-lib/actions/setup-r@v2
         with:
-          r-version: '4.2.0'
+          r-version: '4.2.3'
           use-public-rspm: true
 
       - name: Setup renv and install packages
@@ -438,18 +461,106 @@ jobs:
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}</code></pre>
-<ol start="2" type="1">
-<li><p>Add a .gitignore file in your main directory and add the following:</p>
-<pre><code>cd ../..
-touch .gitignore
-
-/.quarto/ 
-/_site/</code></pre></li>
-<li><p>/.quarto/ /_site/</p></li>
-<li><p>Go to your repository on github and maneuver to Settings &gt; Pages.</p></li>
-<li><p>Change your Source branch to Github Actions from root</p></li>
-<li><p>commit and push!</p></li>
+<ol start="7" type="1">
+<li><p>Snapshot your <code>renv</code> environment with <code>renv::snapshot</code>.</p></li>
+<li><p>Commit and push your code: (Make sure that your renv.lock file has been added!)</p></li>
 </ol>
+<pre><code>git add .
+git commit -m "created action"
+git push</code></pre>
+<ol start="9" type="1">
+<li>Go to the actions tab in your Github repository and watch your deploy!</li>
+</ol>
+</section>
+<section id="part-5-publish-to-connect-with-gha" class="level2">
+<h2 class="anchored" data-anchor-id="part-5-publish-to-connect-with-gha">Part 5: Publish to Connect with GHA</h2>
+<ol type="1">
+<li>Create an API key on the Connect website. Note this API somewhere safe as you will be using it multiple times in the workshop.</li>
+</ol>
+<p><img src="images/Screenshot 2023-09-11 at 11.16.59 AM.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li>Add the Connect URL and your API key to your repository:</li>
+</ol>
+<ul>
+<li><p>In your repository go to Settings &gt; Security &gt; Secrets and variables &gt; Actions</p></li>
+<li><p>Add 2 secrets:</p></li>
+</ul>
+<p><img src="images/Screenshot 2023-09-11 at 11.20.00 AM.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li>The rsconnect package needs to be explicitly called in your code to be correctly snapshot in your lock file. Install it and call it in one of your .qmd files.</li>
+</ol>
+<pre><code>install.packages("rsconnect")
+library(rsconnect)
+renv::snapshot()</code></pre>
+<ol start="3" type="1">
+<li>Edit your publish.yaml file:</li>
+</ol>
+<pre><code>---
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+name: Quarto and Connect Publish
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 4.2.3
+          use-public-rspm: true
+      - name: Setup renv and install packages
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
+        env:
+          RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.rstudio.com/all/latest
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  test-and-connect-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+          
+      - name: Remove `.Rprofile`
+        shell: bash
+        run: |
+          rm .Rprofile
+          
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 4.2.3
+          use-public-rspm: true
+          
+      - uses: r-lib/actions/setup-renv@v2
+      - name: Create manifest.json
+        shell: Rscript {0}
+        run: |
+          rsconnect::writeManifest()
+          
+      - name: Publish Connect content
+        uses: rstudio/actions/connect-publish@main
+        with:
+          url: ${{ secrets.CONNECT_SERVER }}
+          api-key: ${{ secrets.CONNECT_API_KEY }}
+          access-type: logged_in
+          dir: |
+            .:/github-actions</code></pre>
 
 
 </section>

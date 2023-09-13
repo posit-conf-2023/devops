@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Devops for Data Scientists - solution_code</title>
+<title>Devops for Data Scientists - Lab: Data in Production</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -158,10 +124,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#create-model" id="toc-create-model" class="nav-link" data-scroll-target="#create-model">Create Model</a></li>
-  <li><a href="#create-api" id="toc-create-api" class="nav-link" data-scroll-target="#create-api">Create API</a></li>
-  <li><a href="#deployment-environment" id="toc-deployment-environment" class="nav-link" data-scroll-target="#deployment-environment">Deployment Environment</a></li>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#part-1-host-api-on-posit-connect" id="toc-part-1-host-api-on-posit-connect" class="nav-link" data-scroll-target="#part-1-host-api-on-posit-connect">Part 1: Host API on Posit Connect</a></li>
+  <li><a href="#part-2-explore-your-api" id="toc-part-2-explore-your-api" class="nav-link" data-scroll-target="#part-2-explore-your-api">Part 2: Explore your API</a></li>
+  <li><a href="#part-3-plumber-examples" id="toc-part-3-plumber-examples" class="nav-link" data-scroll-target="#part-3-plumber-examples">Part 3: Plumber Examples</a></li>
+  <li><a href="#part-4-push-button-deployment" id="toc-part-4-push-button-deployment" class="nav-link" data-scroll-target="#part-4-push-button-deployment">Part 4: Push-button deployment</a></li>
+  <li><a href="#part-5-programmatically-access-connect" id="toc-part-5-programmatically-access-connect" class="nav-link" data-scroll-target="#part-5-programmatically-access-connect">Part 5: Programmatically access Connect</a></li>
   </ul>
 </nav>
     </div>
@@ -170,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">solution_code</h1>
+<h1 class="title">Lab: Data in Production</h1>
 </div>
 
 
@@ -185,41 +154,105 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="goals" class="level2">
+<h2 class="anchored" data-anchor-id="goals">Goals</h2>
+</section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<p>Code from <a href="https://github.com/sol-eng/plumber-mode/" class="uri">https://github.com/sol-eng/plumber-mode/</a></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plumber)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>To setup your cloud-based development environment create an account using your email at http://rstd.io/class with code <code>angry-beaver</code>. Click on the Rstudio <a href="https://docs.posit.co/connect/user/">Connect</a> widget to start your environment.</p>
 </section>
-<section id="create-model" class="level2">
-<h2 class="anchored" data-anchor-id="create-model">Create Model</h2>
-<p>Train linear model to predict miles per gallon and save as RDS.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cars_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> cyl <span class="sc">+</span> hp, <span class="at">data =</span> mtcars)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(cars_model, <span class="st">"cars-model.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="part-1-host-api-on-posit-connect" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-host-api-on-posit-connect">Part 1: Host API on Posit Connect</h2>
+<ol type="1">
+<li>Go to the Solutions Engineering R-examples <a href="https://github.com/sol-eng/r-examples">repo</a> and copy the HTTPS url.</li>
+<li>In Connect click <code>Publish</code> and <code>Import from Git</code>. Enter the URL that you copied above and click Next.</li>
+<li>Select the main branch and click next.</li>
+<li>Select the <code>plumber-penguins/app</code> directory and give it a name.</li>
+<li>Click `Deploy Content. In a few moments your API should be live!</li>
+</ol>
 </section>
-<section id="create-api" class="level2">
-<h2 class="anchored" data-anchor-id="create-api">Create API</h2>
+<section id="part-2-explore-your-api" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-explore-your-api">Part 2: Explore your API</h2>
+<ol type="1">
+<li>Explore the endpoints for the API. Click the <code>GET</code> for each endpoint and then click <code>Try it out</code> and <code>Execute</code>.</li>
+<li>Click on the link ending in openapi.json below the title of you API.</li>
+</ol>
+<p><img src="images/Screenshot 2023-09-11 at 7.22.12 PM.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li>Try accessing the API via the terminal with <code>curl &lt;URL&gt;</code>. You should receive output that the app is not authorized!</li>
+<li>Authorize the app for everyone by changing the Access &gt; Sharing option to <code>Anyone - no login required</code> and then try the curl command again. It should work now!</li>
+</ol>
+<p><img src="images/Screenshot 2023-09-11 at 7.27.05 PM.png" class="img-fluid"></p>
+<ol start="5" type="1">
+<li>Try out the /penguins endpoint and grab the Request URL.</li>
+<li>Access the /penguins endpoint and provide input for the sample size in your terminal and in the app itself.</li>
+</ol>
+<p><code>curl "&lt;REQUEST URL&gt;/penguins?sample_size=5"</code></p>
 </section>
-<section id="deployment-environment" class="level2">
-<h2 class="anchored" data-anchor-id="deployment-environment">Deployment Environment</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add server</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># rsconnect::addServer(</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   url = "https://colorado.posit.co/rsc/__api__",</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   name = "colorado"</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># # Add account</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># rsconnect::connectApiUser(</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   account = "",</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   server = "colorado",</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   apiKey = Sys.getenv("CONNECT_API_KEY"),</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="part-3-plumber-examples" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-plumber-examples">Part 3: Plumber Examples</h2>
+<ol type="1">
+<li>Install the plumber examples package. <code>remotes::install_github("sol-eng/plumberExamples")</code></li>
+<li>Run <code>available_apis</code> to see plumber examples in the package.</li>
+<li>Access examples and code:</li>
+</ol>
+<pre><code>library(plumber)
+plumb_api(package = "plumberExamples", name = "00-hello") %&gt;% pr_run()</code></pre>
+</section>
+<section id="part-4-push-button-deployment" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-push-button-deployment">Part 4: Push-button deployment</h2>
+<ol type="1">
+<li>Publish the 11-car-inventory example to Connect.</li>
+<li>Click the blue publishing icon in the upper right of the file editor.</li>
+</ol>
+<p><img src="images/Screenshot 2023-09-11 at 7.44.06 PM.png" class="img-fluid"></p>
+<ol start="6" type="1">
+<li>When prompted connect to the Posit Connect server with the provided url. Click Publish.</li>
+</ol>
+</section>
+<section id="part-5-programmatically-access-connect" class="level2">
+<h2 class="anchored" data-anchor-id="part-5-programmatically-access-connect">Part 5: Programmatically access Connect</h2>
+<ol type="1">
+<li>We want to programmatically identify all the content that has been published. You will need to use the Connect API Key that you created in the earlier lab. Or you can create a new key.</li>
+</ol>
+<p><img src="images/Screenshot 2023-09-11 at 11.16.59 AM.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li>Open a new R script In your workbench console. Add your Connect information:</li>
+</ol>
+<pre><code># Add server
+rsconnect::addServer(
+  url = "https://liberal-bullfinch.74633.fleeting.rstd.io/rsconnect/__api__",
+  name = "colorado"
+)
+
+# Add account
+rsconnect::connectApiUser(
+  account = "",
+  server = "colorado",
+  apiKey = Sys.getenv("CONNECT_API_KEY"),
+)</code></pre>
+<ol start="3" type="1">
+<li>Access your content programmatically in R: - need to add key ias env variable</li>
+</ol>
+<pre><code>library(httr)
+library(tidyr)
+
+# Use the /v1/content endpoint to retrieve the full list of content items
+result &lt;- GET(
+  paste0(Sys.getenv("CONNECT_SERVER"),"__api__/v1/content"),
+    add_headers(Authorization = paste("Key", Sys.getenv("CONNECT_API_KEY"))))
+
+# Create a tibble for the content list result response
+df_full &lt;- unnest_wider(tibble::tibble(dat = content(result)), dat) </code></pre>
+<ol start="4" type="1">
+<li>Access your content programmatically in the terminal using curl:</li>
+</ol>
+<pre><code>export CONNECT_API_KEY=XXX
+export CONNECT_SERVER=https://liberal-bullfinch.74633.fleeting.rstd.io/rsconnect/
+
+curl --silent --show-error -L --max-redirs 0 --fail \
+    -H "Authorization: Key ${CONNECT_API_KEY}" \
+    "${CONNECT_SERVER}__api__/v1/content"</code></pre>
 
 
 </section>
