@@ -22,7 +22,7 @@ format:
       - positconfslides
 ---
 
-## Part 1: Introductions, setup, & workshop overview
+## Part 1: Introductions, setup, & workshop overview {.toc-people-dark}
 
 ## Workshop Goals
 
@@ -45,7 +45,7 @@ format:
 |                                    |                                                      |                                                                                                                                                               |
 |                                    | Introductions                                        |                                                                                                                                                               |
 +------------------------------------+------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Part 2: Devops Principles          | Introduction to devops                               | Lab 1: Deploy your own Quarto website on Github Pages using GitHub Actions CI/CD                                                                              |
+| Part 2: Devops Principles          | Introduction to devops                               | Lab 1: Deploy your own Quarto website on Github Pages using GitHub Actions                                                                              |
 |                                    |                                                      |                                                                                                                                                               |
 |                                    | Version control & github                             |                                                                                                                                                               |
 |                                    |                                                      |                                                                                                                                                               |
@@ -176,6 +176,8 @@ We encourage you to set up the following systems prior to the start of the works
 6.  Download [quarto](https://quarto.org/docs/download/).
 7.  Sign up for our workshop Discord channel
 
+DevOps is a set of cultural norms, practices, and supporting tooling to help make the process of developing and deploying software smoother and lower risk."
+
 ## Wifi & Workshop Install {.brackets-light}
 
 Wifi Name:
@@ -216,9 +218,13 @@ Login to Docker Playground with your Docker Hub username and password.
 
 https://posit.co/code-of-conduct/
 
-## Part 2 Goals: Devops Principles
+## Part 2: Devops Principles {.toc-people-dark}
 
--   To understand the main principles of Devops and how they can improve data science workflows
+## Goals: 
+
+-   To understand the main principles of Devops and how they can improve data science workflows.
+
+-   To get familiar with the Devops toolkit.
 
 -   To get familiar with how the `renv` package helps create reproducible environments for your R projects.
 
@@ -226,11 +232,7 @@ https://posit.co/code-of-conduct/
 
 -   To understand how to authenticate to github using SSH or HTTPS.
 
--   To practice writing and reading a yaml file.
-
--   To understand the basics of a quarto website.
-
--   To deploy a quarto site to Github Pages using Github Actions for Continuous Deployment.
+-   To practice creating a CI/CD workflow using yaml and Github Actions.
 
 ## Principles and History of Devops
 
@@ -354,7 +356,7 @@ Solo, siloed investigator limited to small sample sizes No preregistration of hy
 -   **324** returned a different result than originally reported
 :::
 
-## Devops Toolkit
+## Devops Toolkit 
 
 -   CI/CD
 -   Environment Management
@@ -445,23 +447,23 @@ In your day-to-day work, what's the hardest reproducibility challenge?
 
 ## Layers of reproducibility
 
-+-------------+---------------------------------+
-| Layer       | Contents                        |
-+=============+=================================+
-| Code        | scripts, configs, applications  |
-+-------------+---------------------------------+
-| Packages    | R + Python Packages             |
-+-------------+---------------------------------+
-| System      | R + Python Language Versions    |
-|             |                                 |
-|             | System Libraries                |
-|             |                                 |
-|             | Operating System + dependencies |
-+-------------+---------------------------------+
-| Hardware    | Virtual Hardware                |
-|             |                                 |
-|             | Physical Hardware               |
-+-------------+---------------------------------+
++---------------+---------------------------------+
+| Layer         | Contents                        |
++===============+=================================+
+| Code          | scripts, configs, applications  |
++---------------+---------------------------------+
+| Packages      | R + Python Packages             |
++---------------+---------------------------------+
+| System        | R + Python Language Versions    |
+|               |                                 |
+|               | System Libraries                |
+|               |                                 |
+|               | Operating System + dependencies |
++---------------+---------------------------------+
+| Hardware      | Virtual Hardware                |
+|               |                                 |
+|               | Physical Hardware               |
++---------------+---------------------------------+
 
 ::: notes
 -   Let's say someone wanted to reproduce your project including your code and your environment. Make a list of the layers that would need to be reproduced on their machine. (For example, a layer would be the version of R that you're using)
@@ -521,8 +523,7 @@ repo - others include pypi, bioconducter, private repos
 
 ## Example
 
-```{R}
-.libPaths()
+```{.libPaths()}
 # install.packages("renv")
 renv::init()
 renv::snapshot()
@@ -569,73 +570,63 @@ Illustration credit:
 
 -   used for configuration files across many execution environments including Docker, virtual machines, K8s, helm, IaaS, etc
 
-## XML {.smaller}
+## XML
 
-```{xml}
-<?xml version="1.0" encoding="UTF-8" ?>
-<root>
-  <row>
-    <name>William</name>
-    <dob>1962</dob>
-    <nickname>Axl Rose</nickname>
-    <instruments>vocals</instruments>
-    <instruments>piano</instruments>
-    <last_name>Bailey</last_name>
-  </row>
-  <row>
-    <name>Saul</name>
-    <dob>1965</dob>
-    <nickname>Slash</nickname>
-    <instruments>guitar</instruments>
-    <last_name>Hudson</last_name>
-  </row>
-</root>
+```
+<?xml version="1.0"?>
+<EmpRecord>
+<Employee id="emp01">
+<name>Alex</name>
+<job>Developer</job>
+<skills>python, C/C++, paskal</skills>
+</Employee>
+ 
+<Employee id="emp02">
+<name>Bob</name>
+<job>Tester</job>
+<skills>lips, forton, REST APIs</skills>
+</Employee>
+ 
+</EmpRecord>
 ```
 
-## JSON {.smaller}
 
-```{json}
-[
-  {
-    "name": "William",
-    "last name": "Bailey",
-    "dob": 1962,
-    "nickname": "Axl Rose",
-    "instruments": [
-      "vocals",
-      "piano"
-    ]
-  },
-  {
-    "name": "Saul",
-    "last name": "Hudson",
-    "dob": 1965,
-    "nickname": "Slash",
-    "instruments": [
-      "guitar"
-    ]
-  }
+## JSON
+```
+{
+"EmpRecord": {
+"Employee": [
+{
+"-id": "emp01",
+"name": "Alex",
+"job": "Developer",
+"skills": "python, C/C++, paskal"
+},
+{
+"-id": "emp02",
+"name": "Bob",
+"job": "Tester",
+"skills": "lips, forton, REST APIs"
+}
 ]
+}
+}
 ```
+
 
 ## YAML
-
-```{yaml}
-- name: William
-  last name: Bailey
-  dob: 1962
-  nickname: Axl Rose
-  instruments:
-    - vocals
-    - piano
-
-- name: Saul
-  last name: Hudson
-  dob: 1965
-  nickname: Slash
-  instruments:
-    - guitar
 ```
+EmpRecord:  
+  emp01:
+    name: Alex
+    job: Developer
+    skills: python, C/C++, paskal
+  emp02:
+    name: Bob
+    job: Tester
+    skills: lips, forton, REST APIs
+```
+
 
 ## YAML syntax
 
@@ -775,8 +766,51 @@ git config --list git config --global user.name "Your Name" git config --global 
 
 https://github.com/Rikagx/workshop_testing/blob/master/.github/workflows/publish.yaml
 
-github.com/actions https://github.com/r-lib/actions
+github.com/actions
+
+https://github.com/r-lib/actions
 :::
+
+## Actions Ecosystem
+
+github.com/actions
+
+github.com/r-lib/actions
+
+https://github.com/Rikagx/ssh_testing/actions/new
+
+## Syntax {.smaller}
+
+```         
+name: My Workflow
+on:
+  push:
+    branches:
+      - releases
+env:
+  my_token: ${{ secrets.GITHUB_TOKEN }}
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out our code
+        uses: actions/checkout@master
+      - name: Say something
+        run: |
+          echo "A little less ${message}"
+          echo "A little more action"
+  job_2:
+    needs: job_1
+    container:
+      image: node:10.16
+      env:
+        NODE_ENV: development
+      ports:
+        - 80
+      volumes:
+        - my_docker_volume:/volume_mount
+      options: --cpus 1
+```
 
 ## Lab Activity
 
@@ -790,7 +824,10 @@ Part 4 of Lab: Deploy Quarto with GHA including the exercises
 
 ## Part 3 Goals: Docker for Data Scientists
 
--   to understand
+-   to understand different docker workflows
+-   to learn common docker syntax for building and running containers
+-   to get hands on experience building and running containers
+-   to explore the linux file system
 
 ## Introduction to Docker
 
@@ -803,32 +840,15 @@ Part 4 of Lab: Deploy Quarto with GHA including the exercises
 Docker is a tool that allows you to virtualize (put your computer in the cloud) everything you need to create an application or in this case a data science product You can share containers with colleagues without requiring them to have to set up their own local machines Without something like this, in order to recreate or test code that someone else wrote, you'd need every developer to download the same dependencies, configurations, scripts and make sure that it ran on their machine - whether thats a mac, or windows, or linux or some other operating system
 :::
 
-## How can docker help data scientists?
-
-## Portability
-
--   diagram r code creates model/api in docker container
--   uses gha to create docker image
-
-## Isolation
-
-## Consistency
-
-::: notes
--   Data scientists benefit from Docker's consistency and reproducibility.
-
--   Create isolated environments for different experiments.
-
--   Share work with colleagues without environment setup issues.
-
--   **Consistency:** Containers ensure that applications run the same way across different environments.
-
--   **Isolation:** Containers isolate applications and their dependencies, preventing conflicts.
-
--   **Portability:** Containers can run on any system that supports Docker, reducing "it works on my machine" issues.
-:::
-
 ## Lifecycle
+
+Dockerfile - script of instruction to build an image
+
+Image - read-only instructions that build everything you need to run an application. Made up of layers
+
+Container - isolated instance of a running image
+
+Image Registry - repository for images
 
 ![](images/lifecycle.png)
 
@@ -836,7 +856,13 @@ Docker is a tool that allows you to virtualize (put your computer in the cloud) 
 Illustration credit: Alex Gold, do4ds.com
 :::
 
-## Lifecycle Example
+## How do data scientists use docker?
+
+## Docker as testing environment
+
+![](images/Screenshot%202023-09-12%20at%209.49.46%20AM.png)
+
+## Example
 
 ``` bash
 docker pull postgres:12
@@ -870,6 +896,96 @@ every docker file starts with a from command - this is the base layers that star
 
 lets run the image and see
 :::
+
+## Docker as development environment
+
+![](images/Screenshot%202023-09-12%20at%2010.00.41%20AM.png)
+
+## Example
+
+```         
+# pull the image
+docker pull rocker/rstudio:4.2.2
+
+# run container
+docker run --rm \
+           -p 8888:8787 \
+           -e PASSWORD=password \
+           rocker/rstudio:4.2.2
+```
+
+## Docker as a portable app (in production)
+
+![](images/shiny.png){width="74"}
+
+![](images/plumber.png){width="74"}
+
+![](images/bookdown.png){width="74"}
+
+![](images/tidymodels.png){width="74"}
+
+## Example
+
+![](images/Screenshot%202023-09-12%20at%2010.14.39%20AM.png)
+
+## Docker for CI/CD
+
+![](images/docker_ci.png)
+
+## Example
+
+```         
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/latest
+```
+
+::: notes
+-   Data scientists benefit from Docker's consistency and reproducibility.
+
+-   Create isolated environments for different experiments.
+
+-   Share work with colleagues without environment setup issues.
+
+-   **Consistency:** Containers ensure that applications run the same way across different environments.
+
+-   **Isolation:** Containers isolate applications and their dependencies, preventing conflicts.
+
+-   **Portability:** Containers can run on any system that supports Docker, reducing "it works on my machine" issues.
+:::
+
+## Docker as a platform
+
+![](images/shiny-01.png){width="100"}
+
+![](images/rsconnect.png){width="100"}
+
+## Example
+
+```         
+docker run -d -p 3838:3838 rocker/shiny
+```
 
 ## Virtual Machine vs. Container
 
@@ -980,7 +1096,21 @@ curl http://localhost:80
 
 ## Persisting data with Docker
 
-Stateless vs. Stateful applications volume mount bind mount external storage shared file system
+-   State is persistent information that is recorded and recalled later
+
+-   Containers are designed to be ephemeral e.g. stateless by default
+
+-   Data applications are usually stateful and more complex to deploy
+
+## Docker examples
+
+-   volume mount
+
+-   bind mount
+
+-   external storage
+
+-   shared file system
 
 ## Putting it all together
 
@@ -1056,13 +1186,17 @@ Complete Lab 2: Part 6
 
 -   credit text
 
+## Choosing an API
+
+![](images/apis.png)
+
 ## Production "State"
 
 Questions to ask once your content is able to be consumed by your intended audience
 
--   Is it reproducible?
+-   Where is it deployed?
 
--   Is it portable?
+-   Is it secure and accessible?
 
 -   Is it maintainable?
 
@@ -1070,56 +1204,72 @@ Questions to ask once your content is able to be consumed by your intended audie
 
 -   Is your code efficiently written?
 
--   Is it secure and accessible?
+-   Is it tested?
 
--   Can you trust your code?
+## Where is it deployed?
 
-## APIs can help
+list of PaaS / Caas and highlight Connect
 
--   RESTful APIs
+## Lab Activity:
 
--   a way to access content by non-R users
+🟥 - I need help
 
-## Structure of an API
+🟨 - I'm still working
 
-## Activity: Create a Posit Connect API key
+🟩 - I'm done
 
--   login to Connect
+Part 1: Host API on Posit Connect
 
--   create connect key
+## Is it secure?
 
--   use rsconnect to access
+-   Basic Auth
 
--   use curl to access
+-   API keys
 
-## Creating an API
+-   Token-based
 
--   plumber exercise
+## Securing credentials
 
-## Securing your application
+-   username and password
 
--   SSL & https
+-   centralized credential server
 
--   live code
+-   SSO
 
-## Authentication vs. Authorization
+## Is it accessible?
 
-## Deploying and hosting your API
+RBAC
 
-## Activity
+## Lab Activity:
 
--   deploy api to connect
+🟥 - I need help
 
--   put shiny frontend and call api
+🟨 - I'm still working
 
-## Testing and logging
+🟩 - I'm done
 
-## Activity
+Part 2:
 
--   add logging and test to shiny app (if there's time)
+## Is it maintainable
 
-## Activity
+git-backed deploymnet
 
--   add app to server
+## Is it scalable?
+
+scaling up vs. scaling out
+
+connect shiny resource options
+
+## Is your code efficient?
+
+-   data storage
+
+-   computations
+
+-   caches
+
+## Is it tested
+
+testing as part of CI/CD
 
 ## 
