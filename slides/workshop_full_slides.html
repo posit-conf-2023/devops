@@ -11,7 +11,7 @@
 <script src="../site_libs/quarto-contrib/posit_slides/posit-slides.js"></script><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.450">
 
-  <title>Devops for Data Scientists – DevOps for Data Scientists</title>
+  <title>Devops for Data Scientists - DevOps for Data Scientists</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -393,9 +393,7 @@
 
 <section id="title-slide" data-background-color="white" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-light.svg" data-background-size="contain" class="quarto-title-block">
   <h1 class="title">DevOps for Data Scientists</h1>
-  <p class="subtitle"></p><p><br>
-Wifi: Posit Conf 2023<br>
-password: conf2023</p><p></p>
+  <p class="subtitle">wifi</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -857,10 +855,20 @@ password: conf2023</p><p></p>
 </section>
 <section id="why-should-we-as-data-scientists-care-about-this" class="slide level2">
 <h2>Why should we as data scientists care about this?</h2>
-<iframe src="https://giphy.com/embed/f2ExpHhfiPJNceqORt" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen\="">\</iframe\>
+
 <aside class="notes">
 <p>lets have a little thought experiment</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="has-this-ever-happened-to-you" class="slide level2">
 <h2>Has this ever happened to you?</h2>
@@ -900,15 +908,25 @@ password: conf2023</p><p></p>
 <aside class="notes">
 <p>spent a lot of time talking about teams working together to create a shared product. Data scientists are a part of that team. DS is a relatively new field and creating data-intensive apps is a huge part of tech world today.</p>
 <p>DS career paths started in academia - not a lot of best practices are taught</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="responsibility-of-the-analyst" class="slide level2">
 <h2>Responsibility of the analyst</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="images/Screenshot%202023-08-22%20at%203.26.22%20PM.png" /></p>
+<p><img data-src="images/Screenshot 2023-08-22 at 3.26.22 PM.png"></p>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/Screenshot%202023-09-10%20at%2012.18.42%20PM.png" /></p>
+<p><img data-src="images/Screenshot 2023-09-10 at 12.18.42 PM.png"></p>
 </div>
 </div>
 <aside class="notes">
@@ -923,51 +941,94 @@ password: conf2023</p><p></p>
 <li><p><strong>9,185</strong> returned an error when ran</p></li>
 <li><p><strong>324</strong> returned a different result than originally reported</p></li>
 </ul>
-</aside>
+<p>Let’s get back to our principles:</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="from-principles-to-tools" class="slide level2">
-<h2>From principles to tools</h2>
+<section id="the-devops-process-flow" class="slide level2">
+<h2>The Devops Process Flow</h2>
+
+<img data-src="images/Concept Map.jpg" width="690" class="r-stretch"></section>
+<section id="profileration-of-tools" class="slide level2">
+<h2>Profileration of tools</h2>
+
+<img data-src="images/ecosystem.png" class="r-stretch"><aside class="notes">
+<p>proliferation of tools source code management repo management build tools data management deployment container services config management monitoring cloud services</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="an-opinionated-take-on-tools" class="slide level2">
+<h2>An opinionated take on tools</h2>
 <ul>
 <li>CI/CD</li>
 <li>Environment Management</li>
-<li>Package Management</li>
 <li>Version Control &amp; Git workflows</li>
-<li>Automation Build tools
-<ul>
-<li>YAML</li>
-<li>Dedicated cloud &amp; CI/CD platforms</li>
-<li>Infrastructure as Code</li>
-<li></li>
-</ul></li>
-<li>Continuous Monitoring and testing</li>
+<li>Package Management</li>
+<li>Automation &amp; Build tools</li>
+<li>Continuous Monitoring and Logging</li>
 </ul>
 <aside class="notes">
-<p>build tools for automating workflows, creating configurations for those workflows, and tools to reproduce environments consistently across workflows</p>
-<p>discuss these very very briefly</p>
-</aside>
+<p>these are the ones that we’re going to be covering - definitely not going to be a complete overview - but in my opinion the most important tool types to get you started quickly. We will also be discussing this in the context of ds and how these types of tools can fit in a data workflow - and hopefully improve it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="the-cicd-pipeline" class="slide level2">
 <h2>The CI/CD Pipeline</h2>
-<p><img data-src="images/cicd.png" /></p>
-<aside class="notes">
+
+<img data-src="images/cicd.png" class="r-stretch"><aside class="notes">
 <ul>
-<li>an iterative cycle of small steps to quickly build, test, and deploy your code -CI/CD is a critical component tof making DevOps happen. -CI/CD comprises of an iterative cycle continuous integration and continuous delivery or continuous deployment. -Put together, they form a “CI/CD pipeline”—a series of automated workflows that help DevOps teams cut down on manual tasks:</li>
+<li><p>As we discussed before CI/CD is an iterative cycle of small steps to quickly build, test, and deploy your code - this is a critical component of devops.</p></li>
+<li><p>So CI/CD is often said together - as it makes up a continuous pipeline as one word - but its actual pretty discrete parts so I want to make sure we understand how they differ.</p></li>
 </ul>
-<p>-Continuous integration (CI) automatically builds, tests, and commit code changes into a shared repository; Developer writes code and commits to a repo like github. This triggers an automatic process where the code is built, tested and then either passes or fails.</p>
-<p>-Continuous delivery (CD) delivers code changes to production-ready environments for approval; final step is sometimes manual</p>
-<p>-Continuous deployment (CD) automatically deploys code changes to customers directly. All code based - not manual</p>
-</aside>
+<p>-Continuous integration (CI) - this is where you or anyone who writes code, automatically builds, tests, and commits code changes into a shared repository; This is usually triggered by an automatic process where the code is built, tested and then either passes or fails. This step is focused on improving the actual build or application as quickly as possible.</p>
+<p>Different types of tests - from unit tests to integration tests to regression tests.</p>
+<p>-Continuous delivery (CD) and deployment are less focused on the build but on the actual installation and distribution of your build. This includes an automated process to deploy across different environments - from development to testing and finally to production. Delivery is the process for the final release - that “push of a button step” to get to prod.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="environment-management" class="slide level2 smaller">
-<h2 class="smaller">Environment Management</h2>
-<aside class="notes">
-<p>Content is deployed (and code is promoted) across different environments with different intended audiences.</p>
-</aside>
+<h2>Environment Management</h2>
 <table style="width:99%;">
 <colgroup>
-<col style="width: 39%" />
-<col style="width: 41%" />
-<col style="width: 18%" />
+<col style="width: 51%">
+<col style="width: 23%">
+<col style="width: 23%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -978,14 +1039,13 @@ password: conf2023</p><p></p>
 </thead>
 <tbody>
 <tr class="odd">
-<td><p>a place for data scientists to do exploratory analysis and experiment</p>
+<td><p>exploratory analysis and experiments</p>
 <p>often just your local desktop</p>
 <p>data science “sandbox” with data that’s as close to real as possible</p>
 <p>access to R/Python packages</p></td>
 <td><p>as similar to prod as possible</p>
-<p>code testing</p>
-<p>data validation</p>
-<p>in software dev world includes integration, unit, and regression testing</p></td>
+<p>unit &amp; integration testing</p>
+<p>data validation</p></td>
 <td><p>separate from dev and test</p>
 <p>created using code</p>
 <p>code promotion process + tests</p>
@@ -993,71 +1053,69 @@ password: conf2023</p><p></p>
 </tr>
 </tbody>
 </table>
+<aside class="notes">
+<p>unit test - testing individual units of code to make sure it does what you want it to do</p>
+<p>integration test - make sure putting pieces together doesnt introduce any errors</p>
+<p>want to be able to reproduce the environments as closely as possible</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="version-control-workflows" class="slide level2">
 <h2>Version Control &amp; Workflows</h2>
-<p><img data-src="images/Screenshot%202023-08-23%20at%2011.20.04%20AM.png" /></p>
-<aside class="notes">
+
+<img data-src="images/Screenshot 2023-08-23 at 11.20.04 AM.png" class="r-stretch"><aside class="notes">
 <p>Version control is a main tool for Continuous Integration -</p>
-<p>lots of variants - giit, github., svn, gitlab, etc</p>
+<p>lots of variants - git, github., svn, gitlab, etc</p>
 <p>distributed version control - everyone has their own repo</p>
 <p>can track changes and roll them back</p>
 <p>can fix merge conflicts</p>
 <p>an an iterative process to build, test, collaborate on your code to above environments. Very commonly, individuals work on separate branches that are then tested and reviewed by colleagues before they are merged into a main branch.</p>
-<p>In addition to the action of promoting your code - its also important to have processes in place for how it happens code reviews, process for your team, how to name things, pull requests, version control with git, feature branching, automatic tests</p>
-</aside>
+<p>In addition to the action of promoting your code - its also important to have processes in place for how the code integration process occurs - includes humans coming together and making some decisions -</p>
+<p>e.g code reviews, process for your team, how to name things, pull requests, merging, feature branching, automatic tests</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="lab-activity" class="slide level2">
-<h2>Lab Activity</h2>
+<section id="lab-activity---developing-locally-using-quarto" class="slide level2">
+<h2>Lab Activity - developing locally using Quarto</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
-<p>Login to pos.it/class with code <code>conftest</code> and create an account with your name and email</p>
-<p>Complete Part 1 of Lab - add link</p>
+<p>Login to pos.it/class with code <code>devops_workshop</code></p>
+<p>Lab 1 Part 1</p>
 </section>
 <section id="reproducing-your-environment" class="slide level2">
 <h2>Reproducing your environment</h2>
 <p>What are the layers that need to be reproduced across your dev, test, and prod environments?</p>
-<p>In your day-to-day work, what’s the hardest reproducibility challenge?</p>
+<p>What’s your most difficult reproducibility challenge?</p>
 </section>
 <section id="layers-of-reproducibility" class="slide level2">
 <h2>Layers of reproducibility</h2>
-<table style="width:69%;">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 47%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Layer</th>
-<th>Contents</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Code</td>
-<td>scripts, configs, applications</td>
-</tr>
-<tr class="even">
-<td>Packages</td>
-<td>R + Python Packages</td>
-</tr>
-<tr class="odd">
-<td>System</td>
-<td><p>R + Python Language Versions</p>
-<p>System Libraries</p>
-<p>Operating System + dependencies</p></td>
-</tr>
-<tr class="even">
-<td>Hardware</td>
-<td><p>Virtual Hardware</p>
-<p>Physical Hardware</p></td>
-</tr>
-</tbody>
-</table>
-<aside class="notes">
+
+<img data-src="images/Screenshot 2023-09-13 at 8.23.56 PM.png" class="r-stretch"><aside class="notes">
 <ul>
-<li>Let’s say someone wanted to reproduce your project including your code and your environment. Make a list of the layers that would need to be reproduced on their machine. (For example, a layer would be the version of R that you’re using)</li>
+<li>code - scripts, configs, applications</li>
+<li>Packages</li>
+<li>System - r and python depend on underlying system software - for example, spatial analysis packages, or anything that requires Java - rJava</li>
+<li>OS</li>
+<li>Hardware - processors Intel chip, silicon chip</li>
 </ul>
 <p>options(“repos”) Run .libPaths()</p>
 <ul>
@@ -1072,20 +1130,20 @@ password: conf2023</p><p></p>
 <li>What are your server and OS dependencies? (If you are not sure which distribution of Linux you are using, you can find it by typing <code>cat /etc/*-release</code> in your terminal)</li>
 </ul></li>
 </ul>
-</aside>
-</section>
-<section id="mechanisms-for-reproducibility" class="slide level2">
-<h2>Mechanisms for reproducibility</h2>
-<p>** make this a diagram starting from least to most reproducibility</p>
-<ul>
-<li><p>documenting state &amp; version control</p></li>
-<li><p>virtual environments (<code>renv</code>, <code>venv</code>) + package management</p></li>
-<li><p>Containerization &amp; docker</p></li>
-<li><p>Infrastructure as Code</p></li>
-</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="packages-vs.-libraries-vs.-repositories" class="slide level2">
-<h2>Packages vs. Libraries vs. Repositories</h2>
+<h2>Packages vs.&nbsp;Libraries vs.&nbsp;Repositories</h2>
 <p><strong>Package</strong> - contains code, functions, data, and documentation.</p>
 <p><strong>Library</strong> - is a directory where packages are installed.</p>
 <p><strong>Repository</strong> - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.</p>
@@ -1093,19 +1151,39 @@ password: conf2023</p><p></p>
 <p>packages - Can be be distributed as SOURCE (a directory with all package components), <a href="https://solutions.posit.co/envs-pkgs/environments/repositories/index.html#binary-packages">BINARIES</a> (contains files in OS-specific format) or as a BUNDLE (compressed file containing package components, similar to source).</p>
 <p>library - You can have user-level or project-level libraries. Run <code>.libPaths()</code> to see yours. To use a package in has to be installed in a library with <code>install.packages()</code> and then loaded into memory with <code>library(x)</code> .</p>
 <p>repo - others include pypi, bioconducter, private repos</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="renv-workflow" class="slide level2">
-<h2>Renv workflow</h2>
-<p><img data-src="images/Screenshot%202023-09-06%20at%208.31.22%20PM.png" /></p>
-<aside class="notes">
+<h2><code>renv</code> workflow</h2>
+
+<img data-src="images/Screenshot 2023-09-06 at 8.31.22 PM.png" class="r-stretch"><aside class="notes">
 <ol type="1">
 <li><p>Use a version control system e.g.<a href="https://git-scm.com/">git</a> with <a href="https://github.com/">GitHub</a></p></li>
-<li><p>One user (perhaps yourself) should explicitly initialize <code>renv</code> in the project, via <a href="https://rstudio.github.io/renv/reference/init.html"><code>renv::init()</code></a>. This will create the initial <code>renv</code> lockfile, and also write the <code>renv</code> auto-loaders to the project’s <code>.Rprofile</code> and <code>renv/activate.R</code>. These will ensure the right version of <code>renv</code> is downloaded and installed for your collaborators when they start in this project.</p></li>
-<li><p>Using a branching strategy push your code alongside the generated lockfile <code>renv.lock</code>. Be sure to also share the generated auto-loaders in <code>.Rprofile</code> and <code>renv/activate.R</code>.</p></li>
-<li><p>When a collaborator first launches in this project, <code>renv</code> should automatically bootstrap itself, thereby downloading and installing the appropriate version of <code>renv</code> into the project library. After this has completed, they can then use <a href="https://rstudio.github.io/renv/reference/restore.html"><code>renv::restore()</code></a> to restore the project library locally on their machine.</p></li>
+<li><p>One user (should explicitly initialize <code>renv</code> in the project, This will create the initial <code>renv</code> lockfile, and also write the <code>renv</code> auto-loaders to the project’s <code>.Rprofile</code> and <code>renv/activate.R</code>. These will ensure the right version of <code>renv</code> is downloaded and installed for your collaborators when they start in this project.</p></li>
+<li><p>push your code alongside the generated lockfile <code>renv.lock</code>. Be sure to also share the generated auto-loaders in <code>.Rprofile</code> and <code>renv/activate.R</code>.</p></li>
+<li><p>After this has completed, they can then use <a href="https://rstudio.github.io/renv/reference/restore.html"><code>renv::restore()</code></a> to restore the project library locally on their machine.</p></li>
 </ol>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
@@ -1114,8 +1192,8 @@ password: conf2023</p><p></p>
 <p>🔍 Live code</p>
 </div>
 </section>
-<section id="lab-activity-1" class="slide level2">
-<h2>Lab Activity</h2>
+<section id="lab-activity---try-out-renv" class="slide level2">
+<h2>Lab Activity - try out <code>renv</code></h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
@@ -1123,11 +1201,27 @@ password: conf2023</p><p></p>
 </section>
 <section id="build-tools" class="slide level2">
 <h2>Build tools</h2>
+<ul>
+<li><p>Production-identical environments for development</p></li>
+<li><p>Infrastructure as code</p></li>
+<li><p>Automation with Github Actions/Jenkins</p></li>
+</ul>
 <aside class="notes">
+<p>prod-identical - docker, kubernetes, other container services</p>
+<p>IaC - quickly reprovision your entire environment with code (chef, puppet, dockr, terraform, ansible</p>
 <p>tools that automate the process of building and deploying your code once it goes from your dev env to test and prod</p>
 <p>Tools include config files, <code>config</code> package, CI/CD software such as GHA, automatic tests</p>
-</aside>
-<p><img data-src="images/Screenshot%202023-08-23%20at%202.49.21%20PM.png" /></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="footer">
 <p>Illustration credit:</p>
 </div>
@@ -1138,48 +1232,8 @@ password: conf2023</p><p></p>
 <li><p>YAML Ain’t Markup Language</p></li>
 <li><p>communication of data between people and computers.</p></li>
 <li><p>human friendly</p></li>
-<li><p>everything is a key value pair and interpreted as maps or dictionaries</p></li>
 <li><p>used for configuration files across many execution environments including Docker, virtual machines, K8s, helm, IaaS, etc</p></li>
 </ul>
-</section>
-<section id="xml" class="slide level2">
-<h2>XML</h2>
-<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;EmpRecord&gt;
-&lt;Employee id=&quot;emp01&quot;&gt;
-&lt;name&gt;Alex&lt;/name&gt;
-&lt;job&gt;Developer&lt;/job&gt;
-&lt;skills&gt;python, C/C++, paskal&lt;/skills&gt;
-&lt;/Employee&gt;
- 
-&lt;Employee id=&quot;emp02&quot;&gt;
-&lt;name&gt;Bob&lt;/name&gt;
-&lt;job&gt;Tester&lt;/job&gt;
-&lt;skills&gt;lips, forton, REST APIs&lt;/skills&gt;
-&lt;/Employee&gt;
- 
-&lt;/EmpRecord&gt;</code></pre>
-</section>
-<section id="json" class="slide level2">
-<h2>JSON</h2>
-<pre><code>{
-&quot;EmpRecord&quot;: {
-&quot;Employee&quot;: [
-{
-&quot;-id&quot;: &quot;emp01&quot;,
-&quot;name&quot;: &quot;Alex&quot;,
-&quot;job&quot;: &quot;Developer&quot;,
-&quot;skills&quot;: &quot;python, C/C++, paskal&quot;
-},
-{
-&quot;-id&quot;: &quot;emp02&quot;,
-&quot;name&quot;: &quot;Bob&quot;,
-&quot;job&quot;: &quot;Tester&quot;,
-&quot;skills&quot;: &quot;lips, forton, REST APIs&quot;
-}
-]
-}
-}</code></pre>
 </section>
 <section id="yaml" class="slide level2">
 <h2>YAML</h2>
@@ -1192,32 +1246,30 @@ password: conf2023</p><p></p>
     name: Bob
     job: Tester
     skills: lips, forton, REST APIs</code></pre>
-</section>
-<section id="yaml-syntax" class="slide level2">
-<h2>YAML syntax</h2>
 <ul>
 <li><p>whitespace indentation is used to denote structure, no need for quotes nor brackets</p></li>
 <li><p>Colons separate keys and their values</p></li>
 <li><p>Dashes are used to denote a list</p></li>
 </ul>
-<p>https://github.com/sd031/yaml-crash-course/blob/main/full_example.yaml</p>
 </section>
 <section id="examples" class="slide level2">
 <h2>Examples</h2>
 <ul>
-<li>https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.yml</li>
-<li>https://github.com/Rikagx/personal-website/blob/main/.github/workflows/publish.yaml</li>
+<li>Docker compose <a href="https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.ym">yaml</a> to spin up all 3 Posit Pro products</li>
 </ul>
 <div class="footer">
 <p>🔍 Live code</p>
 </div>
 </section>
-<section id="lab-activity-2" class="slide level2">
-<h2>Lab Activity</h2>
+<section id="lab-activity---inspect-your-yaml" class="slide level2">
+<h2>Lab Activity - Inspect your YAML</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
 <p>Inspect your _quarto.yml file and identify what each part of it does using the quarto site.</p>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
 </section>
 <section id="is-version-control-secure" class="slide level2">
 <h2>Is version control secure?</h2>
@@ -1233,10 +1285,20 @@ password: conf2023</p><p></p>
 <li>protocols specify what kind of traffic is moving between 2 machines</li>
 <li>a port specifies where to direct the traffic</li>
 </ul>
-<p><img data-src="images/Screenshot%202023-09-07%20at%209.28.32%20AM.png" /></p>
-<aside class="notes">
+
+<img data-src="images/Screenshot 2023-09-07 at 9.28.32 AM.png" class="r-stretch"><aside class="notes">
 <p>whether its email, text, files, etc A port is a virtual point where network connections start and end. Ports are software-based and managed by a computer’s operating system. Ports allow computers to easily differentiate between different kinds of traffic: emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection.</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="git-protocol-options" class="slide level2">
 <h2>Git protocol options</h2>
@@ -1268,7 +1330,17 @@ password: conf2023</p><p></p>
 <p>Port 443, which HTTPS uses, is open in basically any firewall that can access the internet. That isn’t always the case for SSH.</p>
 <p>The primary downside for most people is that you must enter your Git password/token every time you push. While it gets added to a cache, it’s not configured to cache permanently (though this can be changed). With SSH keys, it just uses the key file on disk every time.</p>
 <p>Where SSH takes the lead is with the authentication factor—the key. The length of it alone makes it harder to accidentally leak, and due to it being unwieldy and unique, it’s generally more secure.</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="which-one-should-i-use" class="slide level2">
 <h2>Which one should I use</h2>
@@ -1282,13 +1354,23 @@ password: conf2023</p><p></p>
 </section>
 <section id="port-examples" class="slide level2">
 <h2>Port Examples</h2>
-<p><img data-src="images/ports-01.jpg" /></p>
-<aside class="notes">
+
+<img data-src="images/ports-01.jpg" class="r-stretch"><aside class="notes">
 <p>Each port is associated with a specific process or service.</p>
 <p>show ping localhost</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="lab-activity-3" class="slide level2">
+<section id="lab-activity" class="slide level2">
 <h2>Lab Activity</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
@@ -1297,7 +1379,17 @@ password: conf2023</p><p></p>
 <aside class="notes">
 <p>show first part</p>
 <p>git config –list git config –global user.name “Your Name” git config –global user.email “youremail@yourdomain.com”</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="automation-build-tools" class="slide level2">
 <h2>Automation Build Tools</h2>
@@ -1307,8 +1399,8 @@ password: conf2023</p><p></p>
 <li>Runs on github servers</li>
 <li>Uses yaml</li>
 </ul>
-<p><img data-src="images/Screenshot%202023-09-10%20at%201.32.42%20PM.png" /></p>
-<aside class="notes">
+
+<img data-src="images/Screenshot 2023-09-10 at 1.32.42 PM.png" class="r-stretch"><aside class="notes">
 <ul>
 <li><p>A github action allows us to create workflows that are triggered by a github action such as a push or pull to a branch</p></li>
 <li><p>Build tools + version control in on system</p></li>
@@ -1322,7 +1414,17 @@ password: conf2023</p><p></p>
 <p>https://github.com/Rikagx/workshop_testing/blob/master/.github/workflows/publish.yaml</p>
 <p>github.com/actions</p>
 <p>https://github.com/r-lib/actions</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="actions-ecosystem" class="slide level2">
 <h2>Actions Ecosystem</h2>
@@ -1331,7 +1433,7 @@ password: conf2023</p><p></p>
 <p>https://github.com/Rikagx/ssh_testing/actions/new</p>
 </section>
 <section id="syntax" class="slide level2 smaller">
-<h2 class="smaller">Syntax</h2>
+<h2>Syntax</h2>
 <pre><code>name: My Workflow
 on:
   push:
@@ -1347,8 +1449,8 @@ jobs:
         uses: actions/checkout@master
       - name: Say something
         run: |
-          echo &quot;A little less ${message}&quot;
-          echo &quot;A little more action&quot;
+          echo "A little less ${message}"
+          echo "A little more action"
   job_2:
     needs: job_1
     container:
@@ -1361,7 +1463,7 @@ jobs:
         - my_docker_volume:/volume_mount
       options: --cpus 1</code></pre>
 </section>
-<section id="lab-activity-4" class="slide level2">
+<section id="lab-activity-1" class="slide level2">
 <h2>Lab Activity</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
@@ -1387,7 +1489,17 @@ jobs:
 </ul>
 <aside class="notes">
 <p>Docker is a tool that allows you to virtualize (put your computer in the cloud) everything you need to create an application or in this case a data science product You can share containers with colleagues without requiring them to have to set up their own local machines Without something like this, in order to recreate or test code that someone else wrote, you’d need every developer to download the same dependencies, configurations, scripts and make sure that it ran on their machine - whether thats a mac, or windows, or linux or some other operating system</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="lifecycle" class="slide level2">
 <h2>Lifecycle</h2>
@@ -1395,8 +1507,8 @@ jobs:
 <p>Image - read-only instructions that build everything you need to run an application. Made up of layers</p>
 <p>Container - isolated instance of a running image</p>
 <p>Image Registry - repository for images</p>
-<p><img data-src="images/lifecycle.png" /></p>
-<div class="footer">
+
+<img data-src="images/lifecycle.png" class="r-stretch"><div class="footer">
 <p>Illustration credit: Alex Gold, do4ds.com</p>
 </div>
 </section>
@@ -1405,18 +1517,18 @@ jobs:
 </section>
 <section id="docker-as-testing-environment" class="slide level2">
 <h2>Docker as testing environment</h2>
-<p><img data-src="images/Screenshot%202023-09-12%20at%209.49.46%20AM.png" /></p>
-</section>
+
+<img data-src="images/Screenshot 2023-09-12 at 9.49.46 AM.png" class="r-stretch"></section>
 <section id="example-1" class="slide level2">
 <h2>Example</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">docker</span> pull postgres:12</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="ex">docker</span> pull postgres:latest</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="ex">docker</span> container ls <span class="at">-a</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-e</span> POSTGRES_PASSWORD=mysecretpassword <span class="at">--name</span> postgres_early imageID</span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-e</span> POSTGRES_PASSWORD=mysecretpassword <span class="at">--name</span> postgres_new imageID</span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="ex">docker</span> container ls <span class="at">-a</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="ex">docker</span> stop</span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="ex">docker</span> restart</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">docker</span> pull postgres:12</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">docker</span> pull postgres:latest</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="ex">docker</span> container ls <span class="at">-a</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-e</span> POSTGRES_PASSWORD=mysecretpassword <span class="at">--name</span> postgres_early imageID</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-e</span> POSTGRES_PASSWORD=mysecretpassword <span class="at">--name</span> postgres_new imageID</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="ex">docker</span> container ls <span class="at">-a</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="ex">docker</span> stop</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="ex">docker</span> restart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 <p>🔍 Live code</p>
 </div>
@@ -1429,12 +1541,22 @@ jobs:
 <p>we can see that there are a lot of layers but its hard to understand what exactly is happening - lets look at the dockerfile that shows us the recipe for postgres - this is usually saved in a <a href="https://github.com/docker-library/docs/blob/master/postgres/README.md">github</a> repo - not on dockerhub which is just images</p>
 <p>every docker file starts with a from command - this is the base layers that starts the image, then we are running some things, copying , env variables, and starting</p>
 <p>lets run the image and see</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="docker-as-development-environment" class="slide level2">
 <h2>Docker as development environment</h2>
-<p><img data-src="images/Screenshot%202023-09-12%20at%2010.00.41%20AM.png" /></p>
-</section>
+
+<img data-src="images/Screenshot 2023-09-12 at 10.00.41 AM.png" class="r-stretch"></section>
 <section id="example-2" class="slide level2">
 <h2>Example</h2>
 <pre><code># pull the image
@@ -1448,19 +1570,19 @@ docker run --rm \
 </section>
 <section id="docker-as-a-portable-app-in-production" class="slide level2">
 <h2>Docker as a portable app (in production)</h2>
-<p><img data-src="images/shiny.png" width="74" /></p>
-<p><img data-src="images/plumber.png" width="74" /></p>
-<p><img data-src="images/bookdown.png" width="74" /></p>
-<p><img data-src="images/tidymodels.png" width="74" /></p>
+<p><img data-src="images/shiny.png" width="74"></p>
+<p><img data-src="images/plumber.png" width="74"></p>
+<p><img data-src="images/bookdown.png" width="74"></p>
+<p><img data-src="images/tidymodels.png" width="74"></p>
 </section>
 <section id="example-3" class="slide level2">
 <h2>Example</h2>
-<p><img data-src="images/Screenshot%202023-09-12%20at%2010.14.39%20AM.png" /></p>
-</section>
+
+<img data-src="images/Screenshot 2023-09-12 at 10.14.39 AM.png" class="r-stretch"></section>
 <section id="docker-for-cicd" class="slide level2">
 <h2>Docker for CI/CD</h2>
-<p><img data-src="images/docker_ci.png" /></p>
-</section>
+
+<img data-src="images/docker_ci.png" class="r-stretch"></section>
 <section id="example-4" class="slide level2">
 <h2>Example</h2>
 <pre><code>jobs:
@@ -1496,29 +1618,49 @@ docker run --rm \
 <li><p><strong>Isolation:</strong> Containers isolate applications and their dependencies, preventing conflicts.</p></li>
 <li><p><strong>Portability:</strong> Containers can run on any system that supports Docker, reducing “it works on my machine” issues.</p></li>
 </ul>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="docker-as-a-platform" class="slide level2">
 <h2>Docker as a platform</h2>
-<p><img data-src="images/shiny-01.png" width="100" /></p>
-<p><img data-src="images/rsconnect.png" width="100" /></p>
+<p><img data-src="images/shiny-01.png" width="100"></p>
+<p><img data-src="images/rsconnect.png" width="100"></p>
 </section>
 <section id="example-5" class="slide level2">
 <h2>Example</h2>
 <pre><code>docker run -d -p 3838:3838 rocker/shiny</code></pre>
 </section>
 <section id="virtual-machine-vs.-container" class="slide level2">
-<h2>Virtual Machine vs. Container</h2>
-<p><img data-src="images/Screenshot%202023-09-03%20at%209.56.54%20AM.png" /></p>
-<aside class="notes">
+<h2>Virtual Machine vs.&nbsp;Container</h2>
+
+<img data-src="images/Screenshot 2023-09-03 at 9.56.54 AM.png" class="r-stretch"><aside class="notes">
 <p>containers are very lightweight which makes it really easy and quick to spin them up</p>
 <p>this is because the container itself doesnt have a host operating system or any hardware - intel chip, apple chip etc - this is in the docker engine or runtime which we will look at in the architecture</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="docker-architecture" class="slide level2">
 <h2>Docker Architecture</h2>
-<p><img data-src="images/Screenshot%202023-08-30%20at%2011.31.56%20AM.png" /></p>
-<aside class="notes">
+
+<img data-src="images/Screenshot 2023-08-30 at 11.31.56 AM.png" class="r-stretch"><aside class="notes">
 <ul>
 <li><p>Docker uses a client-server architecture. The Docker client talks to the Docker daemon.</p></li>
 <li><p>The Docker client - is the primary way that users interface with Docker via CLI</p></li>
@@ -1527,15 +1669,25 @@ docker run --rm \
 <li><p>Registry is a Repository for Docker images (e.g., Docker Hub) where you can store and share images.</p></li>
 <li><p>Docker engine is a container runtime that runs on diffrent OS’s. Set up the isolated environment for your container</p></li>
 </ul>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="mode-for-running-containers" class="slide level2">
 <h2>Mode for running containers</h2>
 <table style="width:100%;">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 6%" />
-<col style="width: 72%" />
+<col style="width: 20%">
+<col style="width: 6%">
+<col style="width: 72%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1563,7 +1715,7 @@ docker run --rm \
 </tbody>
 </table>
 </section>
-<section id="lab-activity-5" class="slide level2">
+<section id="lab-activity-2" class="slide level2">
 <h2>Lab Activity</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
@@ -1591,7 +1743,7 @@ docker container run -d --name mydb \
 <p>🔍 Live code</p>
 </div>
 </section>
-<section id="lab-activity-6" class="slide level2">
+<section id="lab-activity-3" class="slide level2">
 <h2>Lab Activity</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
@@ -1603,8 +1755,8 @@ docker container run -d --name mydb \
 <pre><code>docker pull httpd:alpine
 docker pull httpd:latest
 
-docker inspect --format=&#39;{{.Config.ExposedPorts}}&#39; httpd:latest
-docker inspect --format=&#39;{{.Config.ExposedPorts}}&#39; httpd:alpine
+docker inspect --format='{{.Config.ExposedPorts}}' httpd:latest
+docker inspect --format='{{.Config.ExposedPorts}}' httpd:alpine
 
 docker run -p DockerHostPort:ApplicationPort
 
@@ -1621,7 +1773,7 @@ curl http://localhost:80</code></pre>
 <h2>Persisting data with Docker</h2>
 <ul>
 <li><p>State is persistent information that is recorded and recalled later</p></li>
-<li><p>Containers are designed to be ephemeral e.g. stateless by default</p></li>
+<li><p>Containers are designed to be ephemeral e.g.&nbsp;stateless by default</p></li>
 <li><p>Data applications are usually stateful and more complex to deploy</p></li>
 </ul>
 </section>
@@ -1643,9 +1795,19 @@ curl http://localhost:80</code></pre>
 <li>Uses a YAML file to define services, networks, and volumes.</li>
 <li>Simplifies the orchestration of complex applications.</li>
 </ul>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="lab-activity-7" class="slide level2">
+<section id="lab-activity-4" class="slide level2">
 <h2>Lab Activity</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
@@ -1660,7 +1822,7 @@ curl http://localhost:80</code></pre>
 </ul>
 <p>make this a diagram Step 1: Commit Step 2: Tag Step 3: Push</p>
 </section>
-<section id="lab-activity-8" class="slide level2">
+<section id="lab-activity-5" class="slide level2">
 <h2>Lab Activity</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
@@ -1720,7 +1882,7 @@ curl http://localhost:80</code></pre>
 <h2>Part 4: Data Science in Production</h2>
 </section>
 <section id="data-science-in-production" class="slide level2 content-dark">
-<h2 class="content-dark">Data Science in Production</h2>
+<h2>Data Science in Production</h2>
 <ul>
 <li><p>Presentation Layer</p></li>
 <li><p>Processing Layer</p></li>
@@ -1736,8 +1898,8 @@ curl http://localhost:80</code></pre>
 </section>
 <section id="choosing-an-api" class="slide level2">
 <h2>Choosing an API</h2>
-<p><img data-src="images/apis.png" /></p>
-</section>
+
+<img data-src="images/apis.png" class="r-stretch"></section>
 <section id="production-state" class="slide level2">
 <h2>Production “State”</h2>
 <p>Questions to ask once your content is able to be consumed by your intended audience</p>
@@ -1754,7 +1916,7 @@ curl http://localhost:80</code></pre>
 <h2>Where is it deployed?</h2>
 <p>list of PaaS / Caas and highlight Connect</p>
 </section>
-<section id="lab-activity-9" class="slide level2">
+<section id="lab-activity-6" class="slide level2">
 <h2>Lab Activity:</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
@@ -1781,7 +1943,7 @@ curl http://localhost:80</code></pre>
 <h2>Is it accessible?</h2>
 <p>RBAC</p>
 </section>
-<section id="lab-activity-10" class="slide level2">
+<section id="lab-activity-7" class="slide level2">
 <h2>Lab Activity:</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
@@ -1794,7 +1956,7 @@ curl http://localhost:80</code></pre>
 </section>
 <section id="is-it-scalable" class="slide level2">
 <h2>Is it scalable?</h2>
-<p>scaling up vs. scaling out</p>
+<p>scaling up vs.&nbsp;scaling out</p>
 <p>connect shiny resource options</p>
 </section>
 <section id="is-your-code-efficient" class="slide level2">
@@ -1809,11 +1971,9 @@ curl http://localhost:80</code></pre>
 <h2>Is it tested</h2>
 <p>testing as part of CI/CD</p>
 </section>
-<section id="section" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
-<div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden" data-render-id="quarto-metatitle">Devops for Data Scientists - DevOps for Data Scientists</span> <span class="hidden" data-render-id="quarto-twittercardtitle">Devops for Data Scientists - DevOps for Data Scientists</span> <span class="hidden" data-render-id="quarto-ogcardtitle">Devops for Data Scientists - DevOps for Data Scientists</span> <span class="hidden" data-render-id="quarto-metasitename">Devops for Data Scientists</span> <span class="hidden" data-render-id="quarto-twittercarddesc">| | Wifi: Posit Conf 2023 | password: conf2023</span> <span class="hidden" data-render-id="quarto-ogcardddesc">| | Wifi: Posit Conf 2023 | password: conf2023</span></p>
-</div>
+
 <div class="footer footer-default">
 <p><a href="https://github.com/posit-conf-2023/DevOps" class="uri">https://github.com/posit-conf-2023/DevOps</a></p>
 </div>
@@ -1842,7 +2002,18 @@ curl http://localhost:80</code></pre>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
-      Reveal.initialize({ 
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
         // Display controls in the bottom right corner
         controls: false,
 
@@ -1861,7 +2032,7 @@ curl http://localhost:80</code></pre>
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: c/t,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -2011,7 +2182,8 @@ curl http://localhost:80</code></pre>
         },
 
         // reveal.js plugins
-        plugins: [
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
           RevealMath,
           RevealNotes,
           RevealSearch,
@@ -2019,7 +2191,7 @@ curl http://localhost:80</code></pre>
         ]
       });
     </script>
-    <script id = "quarto-html-after-body" type="application/javascript">
+    <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -2165,6 +2337,6 @@ curl http://localhost:80</code></pre>
       }
     });
     </script>
-    </body>
-</html>
-</iframe></section></section></div></div></body></html>
+    
+
+</body></html>
