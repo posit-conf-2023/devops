@@ -268,7 +268,7 @@ Let's get into it. We're at a DevOps workshop - so what is it. This is a best ef
 
 ![](images/pheonix.webp){width="304"}
 
-![](images/devops.jpg){width="200"}
+![](images/devops.jpg){width="304"}
 
 ::: notes
 Reason for squishy definition is because it developed organically in the 2007-2009, across social media, twitter tag #devops was popular, online communities and became more organized through conferences, workshops, and grassroots attempts at implementation at diff companies. Then was introduced into larger companies like Intel, PayPal, Facebook.
@@ -308,9 +308,9 @@ sounds pretty efficient right -
 -   Opaque undocumented processes
 
 ::: notes
-Unfortunately this isnt how it started. You want to make the release process as fast as possible but you also want it to be tested and free of bugs. And this introduces a natural conflict between speed and stability
+So this is the idealized example - but what was it like in practice 20 years ago. You want to make the release process as fast as possible but you also want it to be tested and free of bugs. And this introduces a natural conflict between speed and stability
 
-So let's go back to the early aughts. You have the same goals of speed and accuracy - but this process of continuous integration, of testing, of automating processes so that your users can get their hands on the app - didnt exist.
+ You have the same goals of speed and accuracy - but this process of continuous integration, of testing, of automating processes so that your users can get their hands on the app - didnt exist.
 
 One problem is that the entire process is siloed between the creation of the code and the deployment of your app. So your developers finish their code and then throw it over the fence to ops. Maybe they then throw it to security or to QA. But there was no formal alliance in place or processes on how the teams work together. Because each team is seemingly working on one part - the code vs. the deploy - there's also technical knowledge siloes - each team only knows their bit but not anything else.
 
@@ -344,9 +344,9 @@ Then we have this concept of **Continuous Integration & Delivery** - we'll take 
 
 So for the CI/CD process to work and specifically to work quickly - we will need some level of **automation** as we move through that cyclical process. You don't want to have to pause things to get approval or manually change things when tests pass - you want it to get to the user as quickly as possible after everything has been tested.
 
-The next piece is reproducibility. You have different teams working on different pieces of the puzzle, but at the end of the day the end result is the same. Everyone is working on that same app - in this case our stock platform. So as jobs go from one team to another team and as your app goes from development to testing to finally your users, you want to make sure that there's a common ecoystem that everyone is working in. When you're testing your app you want to make sure that your environment is as similar to what is going to be in real-life or what is called "production". You also want to make sure that your code itself is reproducible and that it works for users regardless of their location or their computer or their browser maybe.
+The next piece is **reproducibility**. You have different teams working on different pieces of the puzzle, but at the end of the day the end result is the same. Everyone is working on that same app - in this case our stock platform. So as jobs go from one team to another team and as your app goes from development to testing to finally your users, you want to make sure that there's a common ecoystem that everyone is working in. When you're testing your app you want to make sure that your environment is as similar to what is going to be in real-life or what is called "production". You also want to make sure that your code itself is reproducible and that it works for users regardless of their location or their computer or their browser maybe.
 
-The last piece that I find really interesting is the concept of culture change. So what needs to change in your organization so that you're able to function while still holding this tension or conflict between speed and stability. How do you make sure that teams that have different incentives - for example security team vs. a data team - are able to work together.
+The last piece that I find really interesting is the concept of **culture change**. So what needs to change in your organization so that you're able to function while still holding this tension or conflict between speed and stability. How do you make sure that teams that have different incentives - for example security team vs. a data team - are able to work together.
 
 So let me pause - that's a lot - everyone got a bit of a history lesson but as far as i'm aware no one here is a software developer or an IT engineer. So that brings me to this very important question: But
 :::
@@ -454,7 +454,7 @@ Let's get back to our principles:
 ![](images/ecosystem.png)
 
 ::: notes
-proliferation of tools source code management repo management build tools data management deployment container services config management monitoring cloud services
+proliferation of tools, source code management, repo management, build tools, data management, deployment, container services, config management, monitoring, cloud services
 :::
 
 ## An opinionated take on tools
@@ -467,7 +467,7 @@ proliferation of tools source code management repo management build tools data m
 -   Continuous Monitoring and Logging
 
 ::: notes
-these are the ones that we're going to be covering - definitely not going to be a complete overview - but in my opinion the most important tool types to get you started quickly. We will also be discussing this in the context of ds and how these types of tools can fit in a data workflow - and hopefully improve it.
+these are the ones that we're going to be covering - definitely not going to be a complete overview of the entire ecosystem - but in my opinion the most important tool types to get you started quickly. We will also be discussing this in the context of ds and how these types of tools can fit in a data workflow - and hopefully improve it.
 :::
 
 ## The CI/CD Pipeline
@@ -477,7 +477,7 @@ these are the ones that we're going to be covering - definitely not going to be 
 ::: notes
 -   As we discussed before CI/CD is an iterative cycle of small steps to quickly build, test, and deploy your code - this is a critical component of devops.
 
--   So CI/CD is often said together - as it makes up a continuous pipeline as one word - but its actual pretty discrete parts so I want to make sure we understand how they differ.
+-   So CI/CD is often said in the same breath - as it makes up a continuous pipeline  - but its actually pretty discrete parts so I want to make sure we understand how they differ.
 
 -Continuous integration (CI) - this is where you or anyone who writes code, automatically builds, tests, and commits code changes into a shared repository; This is usually triggered by an automatic process where the code is built, tested and then either passes or fails. This step is focused on improving the actual build or application as quickly as possible.
 
@@ -495,7 +495,7 @@ Different types of tests - from unit tests to integration tests to regression te
 |                                                                      |                                |                                |
 | often just your local desktop                                        | unit & integration testing     | created using code             |
 |                                                                      |                                |                                |
-| data science "sandbox" with data that's as close to real as possible | data validation                | code promotion process + tests |
+| "sandbox" with data that's as close to real as possible | data validation                | code promotion process + tests |
 |                                                                      |                                |                                |
 | access to R/Python packages                                          |                                | completely automatic           |
 +----------------------------------------------------------------------+--------------------------------+--------------------------------+
@@ -540,7 +540,72 @@ e.g code reviews, process for your team, how to name things, pull requests, merg
 
 Login to pos.it/class with code `devops_workshop`
 
-Lab 1 Part 1
+Lab 1 Part 1:
+
+:::{.notes}
+
+Show how to login to the workshop environment and where the lab is
+
+5 minutes
+
+:::
+
+## Is version control secure?
+
+-   Our code is still saved locally
+-   How do we make sure that the code we push to Github (or elsewhere) is secure?
+
+## A short auth teaser
+
+-   We can use a variety of data sharing "transfer protocols"
+-   Protocols specify what kind of traffic is moving between 2 machines
+-   Use different security mechanisms
+-   Ports on the host and destination specifies where to direct the traffic
+
+![](images/Screenshot%202023-09-07%20at%209.28.32%20AM.png)
+
+::: notes
+
+Add diagram - http and https two computers with ports
+
+There are lots of diff transfer protocols; what you use depends on what kind data is being transferred and your security requirements. So for example, maybe you're sending plain text or email or a webpage.
+
+Protocols as well as processes or application run on specific ports. A port is a virtual point where network connections start and end. Allow computers to easily differentiate between different kinds of traffic. So for example, Shiny Server runs on port 3838, Workbench runs on ...
+
+whether its email, text, files, etc  Ports are software-based and managed by a computer's operating system. Ports  emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection.
+:::
+
+## Git protocol options
+
+| http    | https    | SSH     |
+|---------|----------|---------|
+| port 80 | port 443 | port 22 |
+
+http - text sent over the internet
+
+https - http encrypted with "SSL/TLS"
+
+SSH - secure shell
+
+::: notes
+we'll be using https - because ... from jenny bryans happy git with R
+
+hypertext transfer protocol When a web user wants to load or interact with a web page, their web browser sends an HTTP request to the origin server that hosts the website's files. These requests are essentially lines of text that are sent via the internet.
+
+https : http encrypted with SSL/TLS - digital certificates that establish an encrypted connected
+
+SSH: secure shell, public-key cryptography to authenticate the client, used for remote logins, command line execution
+
+HTTPS is simpler. For most services besides Github, you just have to enter in your username and password, and you'll be able to push and pull code.
+
+You don't have to juggle multiple SSH keys around to use multiple devices.
+
+Port 443, which HTTPS uses, is open in basically any firewall that can access the internet. That isn't always the case for SSH.
+
+The primary downside for most people is that you must enter your Git password/token every time you push. While it gets added to a cache, it's not configured to cache permanently (though this can be changed). With SSH keys, it just uses the key file on disk every time.
+
+Where SSH takes the lead is with the authentication factor---the key. The length of it alone makes it harder to accidentally leak, and due to it being unwieldy and unique, it's generally more secure.
+:::
 
 ## Reproducing your environment
 
@@ -558,16 +623,6 @@ What's your most difficult reproducibility challenge?
 -   System - r and python depend on underlying system software - for example, spatial analysis packages, or anything that requires Java - rJava
 -   OS
 -   Hardware - processors Intel chip, silicon chip
-
-options("repos") Run .libPaths()
-
--   Hints:
-
-    -   Inspect your renv.lock file.
-    -   Where are your packages being pulled from? Confirm by typing `options("repos")`.
-        -   You can modify your package repository by running `options("repos" = c("<REPO-NAME>" = "https://your-repository-url.com"))` in your RStudio console.
-    -   Visit the webpage where packages are being pulled from and see if you can identify package dependencies. Are packages downloaded as binaries or from source?
-    -   What are your server and OS dependencies? (If you are not sure which distribution of Linux you are using, you can find it by typing `cat /etc/*-release` in your terminal)
 :::
 
 ## Packages vs. Libraries vs. Repositories
@@ -613,7 +668,7 @@ lapply(.libPaths(), list.files)
 🔍 Live code
 :::
 
-## Lab Activity - try out `renv`
+## Lab Activity - `renv` workflow & github authentication
 
 🟥 - I need help
 
@@ -621,7 +676,16 @@ lapply(.libPaths(), list.files)
 
 🟩 - I'm done
 
-Complete Part 2 of Lab: Deploy Quarto with GHA including the exercises
+Lab 1: Part 2 & 3
+
+:::{.notes}
+You'll be doing renv in your workbench environment both in your console for r code and in the terminal for git commands
+you'll also need to log in to your github account where you'll be creating an upstream repository to link with your local code.
+
+we'll be using https auth but there's also information if you later want to test out ssh
+
+10-15 minutes
+:::
 
 ## Build tools
 
@@ -632,13 +696,14 @@ Complete Part 2 of Lab: Deploy Quarto with GHA including the exercises
 -   Automation with Github Actions/Jenkins
 
 ::: notes
-prod-identical - docker, kubernetes, other container services
+prod-identical - help you build isolated environments and tested and debug code;  docker, kubernetes, other container services
 
-IaC - quickly reprovision your entire environment with code (chef, puppet, dockr, terraform, ansible
+IaC - quickly re-provision your entire environment with code (chef, puppet, dockr, terraform, ansible) instead of fixing it, just tear it down and restart it
 
 tools that automate the process of building and deploying your code once it goes from your dev env to test and prod
 
-Tools include config files, `config` package, CI/CD software such as GHA, automatic tests
+You also have support tools - that are used across a lot of these tools - I want to discuss one of them here -
+YAML
 :::
 
 ::: footer
@@ -653,37 +718,42 @@ Illustration credit:
 
 -   human friendly
 
--   used for configuration files across many execution environments including Docker, virtual machines, K8s, helm, IaaS, etc
+-   configures files across many execution environments including Docker, virtual machines, K8s, helm, IaaS, etc
 
 ## YAML
 
 ```         
 EmpRecord:  
   emp01:
-    name: Alex
-    job: Developer
-    skills: python, C/C++, paskal
+    name: Michael
+    job: Manager
+    skills: 
+      - Improv
+      - Public speaking
+      - People management
   emp02:
-    name: Bob
-    job: Tester
-    skills: lips, forton, REST APIs
+    name: Dwight
+    job: Assistant to the Manager
+    skills: 
+      - Martial Arts
+      - Beets
+      - Sales
 ```
-
--   whitespace indentation is used to denote structure, no need for quotes nor brackets
+-   whitespace indentation denotes structure
 
 -   Colons separate keys and their values
 
 -   Dashes are used to denote a list
 
-## Examples
+## Example - YAML in action
 
--   Docker compose [yaml](https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.ym) to spin up all 3 Posit Pro products
+-   Docker compose [yaml file](https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.ym) to spin up all 3 Posit Pro products
 
 ::: footer
 🔍 Live code
 :::
 
-## Lab Activity - Inspect your YAML
+## Exercise - Inspect your YAML
 
 🟥 - I need help
 
@@ -693,104 +763,32 @@ EmpRecord:
 
 Inspect your \_quarto.yml file and identify what each part of it does using the quarto site.
 
-## 
-
-## Is version control secure?
-
--   our code is still saved locally
--   How do we make sure that the code we push to Github (or elsewhere) is secure?
-
-## A short auth teaser
-
--   We can use a variety of data sharing "transfer protocols"
--   protocols specify what kind of traffic is moving between 2 machines
--   a port specifies where to direct the traffic
-
-![](images/Screenshot%202023-09-07%20at%209.28.32%20AM.png)
-
-::: notes
-whether its email, text, files, etc A port is a virtual point where network connections start and end. Ports are software-based and managed by a computer's operating system. Ports allow computers to easily differentiate between different kinds of traffic: emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection.
-:::
-
-## Git protocol options
-
-| http    | https    | SSH     |
-|---------|----------|---------|
-| port 80 | port 443 | port 22 |
-
-http - text sent over the internet
-
-https - http encrypted with "SSL/TLS"
-
-SSH - secure shell
-
-::: notes
-hypertext transfer protocol When a web user wants to load or interact with a web page, their web browser sends an HTTP request to the origin server that hosts the website's files. These requests are essentially lines of text that are sent via the internet.
-
-https : http encrypted with SSL/TLS - digital certificates that establish an encrypted connected
-
-SSH: secure shell, public-key cryptography to authenticate the client, used for remote logins, command line execution
-
-HTTPS is simpler. For most services besides Github, you just have to enter in your username and password, and you'll be able to push and pull code.
-
-You don't have to juggle multiple SSH keys around to use multiple devices.
-
-Port 443, which HTTPS uses, is open in basically any firewall that can access the internet. That isn't always the case for SSH.
-
-The primary downside for most people is that you must enter your Git password/token every time you push. While it gets added to a cache, it's not configured to cache permanently (though this can be changed). With SSH keys, it just uses the key file on disk every time.
-
-Where SSH takes the lead is with the authentication factor---the key. The length of it alone makes it harder to accidentally leak, and due to it being unwieldy and unique, it's generally more secure.
-:::
-
-## Which one should I use
-
-::: columns
-::: {.column width="50%"}
-https - simpler - username and password or PAT - have to either cache credentials or enter in every time. can be used with Github REST API
-:::
-
-::: {.column width="50%"}
-SSH - potentially more secure - uses key for auth - created per machine once
-:::
-:::
-
-## Port Examples
-
-![](images/ports-01.jpg)
-
-::: notes
-Each port is associated with a specific process or service.
-
-show ping localhost
-:::
-
-## Lab Activity
-
-🟥 - I need help
-
-🟨 - I'm still working
-
-🟩 - I'm done
-
-Part 3 of Lab: Deploy Quarto with GHA including the exercises
-
-::: notes
-show first part
-
-git config --list git config --global user.name "Your Name" git config --global user.email "youremail\@yourdomain.com"
+:::{.notes}
+2-5 minutes - render your site to help
 :::
 
 ## Automation Build Tools
 
--   GHA is one tool to automate developer workflows
--   CI/CD is just one example of these workflows
--   Runs on github servers
--   Uses yaml
+-   Automate steps in your workflow
+-   Incorporate continuous integration process
+-   Work with your version control system
+
+:::{.notes}
+- we'll be discussing GHA Actions - which is a CI tool that is handy because it uses the same platform as your versioned repositories
+
+:::
+
+## Quarto Publish GHA Flow
+- show regular quarto publish with arrows
+- show github actions flow to ghp and connect
+
+## GHA Structure
 
 ![](images/Screenshot%202023-09-10%20at%201.32.42%20PM.png)
 
-::: notes
 -   A github action allows us to create workflows that are triggered by a github action such as a push or pull to a branch
+
+- uses yaml format
 
 -   Build tools + version control in on system
 
@@ -809,6 +807,7 @@ github.com/actions
 https://github.com/r-lib/actions
 :::
 
+
 ## Actions Ecosystem
 
 github.com/actions
@@ -820,34 +819,7 @@ https://github.com/Rikagx/ssh_testing/actions/new
 ## Syntax {.smaller}
 
 ```         
-name: My Workflow
-on:
-  push:
-    branches:
-      - releases
-env:
-  my_token: ${{ secrets.GITHUB_TOKEN }}
-jobs:
-  job_1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checking out our code
-        uses: actions/checkout@master
-      - name: Say something
-        run: |
-          echo "A little less ${message}"
-          echo "A little more action"
-  job_2:
-    needs: job_1
-    container:
-      image: node:10.16
-      env:
-        NODE_ENV: development
-      ports:
-        - 80
-      volumes:
-        - my_docker_volume:/volume_mount
-      options: --cpus 1
+go through yaml file for the lab
 ```
 
 ## Lab Activity
@@ -859,6 +831,17 @@ jobs:
 🟩 - I'm done
 
 Part 4 of Lab: Deploy Quarto with GHA including the exercises
+
+:::{.notes}
+we'll be doing a few things
+- create a gh branch
+- publish to github
+- create a gha with a yaml file
+- create an api key for connect
+- update yaml file
+- push everything
+
+:::
 
 ## Part 3 Goals: Docker for Data Scientists
 
