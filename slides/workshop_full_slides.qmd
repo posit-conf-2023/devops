@@ -1,9 +1,6 @@
 ---
 title: "DevOps for Data Scientists"
-subtitle: | 
-  |
-  | Wifi: Posit Conf 2023
-  | password: conf2023
+subtitle: "wifi"
 title-slide-attributes: 
   data-background-color: white
   data-background-image: _extensions/positconfslides/assets/backgrounds/toc-light.svg
@@ -87,7 +84,6 @@ Take 5 minutes and introduce yourself to your neighbors.
 
 ![](images/Screenshot%202023-09-13%20at%201.49.45%20PM.png)
 
-
 ## Logistics & Workshop Setup {.toc-people-dark}
 
 ## Wifi
@@ -107,7 +103,6 @@ Name: Posit Conf 2023 Password: `conf2023`
 <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>\
 <https://quarto.org/docs/get-started/>\
 <https://posit.co/downloads/>
-
 
 ## Workshop Install
 
@@ -243,7 +238,6 @@ https://
 
 -   In-depth security and auth practices
 
-
 ## Part 2: DevOps Principles & Tools {.toc-people-dark}
 
 ## Section Goals
@@ -360,7 +354,6 @@ So let me pause - that's a lot - everyone got a bit of a history lesson but as f
 ## Why should we as data scientists care about this?
 
 ```{=html}
-<iframe src="https://giphy.com/embed/f2ExpHhfiPJNceqORt" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen\>\</iframe\>
 ```
 ::: notes
 lets have a little thought experiment
@@ -448,25 +441,33 @@ This second paper started looking a method of reproducing results - namely Jupyt
 -   **9,185** returned an error when ran
 
 -   **324** returned a different result than originally reported
+
+Let's get back to our principles:
 :::
 
-## From principles to tools
+## The Devops Process Flow
+
+![](images/Concept%20Map.jpg){width="690"}
+
+## Profileration of tools
+
+![](images/ecosystem.png)
+
+::: notes
+proliferation of tools source code management repo management build tools data management deployment container services config management monitoring cloud services
+:::
+
+## An opinionated take on tools
 
 -   CI/CD
 -   Environment Management
--   Package Management
 -   Version Control & Git workflows
--   Automation Build tools
-    -   YAML
-    -   Dedicated cloud & CI/CD platforms
-    -   Infrastructure as Code
-    -   
--   Continuous Monitoring and testing
+-   Package Management
+-   Automation & Build tools
+-   Continuous Monitoring and Logging
 
 ::: notes
-build tools for automating workflows, creating configurations for those workflows, and tools to reproduce environments consistently across workflows
-
-discuss these very very briefly
+these are the ones that we're going to be covering - definitely not going to be a complete overview - but in my opinion the most important tool types to get you started quickly. We will also be discussing this in the context of ds and how these types of tools can fit in a data workflow - and hopefully improve it.
 :::
 
 ## The CI/CD Pipeline
@@ -474,32 +475,38 @@ discuss these very very briefly
 ![](images/cicd.png)
 
 ::: notes
--   an iterative cycle of small steps to quickly build, test, and deploy your code -CI/CD is a critical component tof making DevOps happen. -CI/CD comprises of an iterative cycle continuous integration and continuous delivery or continuous deployment. -Put together, they form a "CI/CD pipeline"---a series of automated workflows that help DevOps teams cut down on manual tasks:
+-   As we discussed before CI/CD is an iterative cycle of small steps to quickly build, test, and deploy your code - this is a critical component of devops.
 
--Continuous integration (CI) automatically builds, tests, and commit code changes into a shared repository; Developer writes code and commits to a repo like github. This triggers an automatic process where the code is built, tested and then either passes or fails.
+-   So CI/CD is often said together - as it makes up a continuous pipeline as one word - but its actual pretty discrete parts so I want to make sure we understand how they differ.
 
--Continuous delivery (CD) delivers code changes to production-ready environments for approval; final step is sometimes manual
+-Continuous integration (CI) - this is where you or anyone who writes code, automatically builds, tests, and commits code changes into a shared repository; This is usually triggered by an automatic process where the code is built, tested and then either passes or fails. This step is focused on improving the actual build or application as quickly as possible.
 
--Continuous deployment (CD) automatically deploys code changes to customers directly. All code based - not manual
+Different types of tests - from unit tests to integration tests to regression tests.
+
+-Continuous delivery (CD) and deployment are less focused on the build but on the actual installation and distribution of your build. This includes an automated process to deploy across different environments - from development to testing and finally to production. Delivery is the process for the final release - that "push of a button step" to get to prod.
 :::
 
 ## Environment Management {.smaller}
 
-::: notes
-Content is deployed (and code is promoted) across different environments with different intended audiences.
-:::
++----------------------------------------------------------------------+--------------------------------+--------------------------------+
+| Dev                                                                  | Test                           | Prod                           |
++======================================================================+================================+================================+
+| exploratory analysis and experiments                                 | as similar to prod as possible | separate from dev and test     |
+|                                                                      |                                |                                |
+| often just your local desktop                                        | unit & integration testing     | created using code             |
+|                                                                      |                                |                                |
+| data science "sandbox" with data that's as close to real as possible | data validation                | code promotion process + tests |
+|                                                                      |                                |                                |
+| access to R/Python packages                                          |                                | completely automatic           |
++----------------------------------------------------------------------+--------------------------------+--------------------------------+
 
-+-----------------------------------------------------------------------+--------------------------------------------------------------------------+--------------------------------+
-| Dev                                                                   | Test                                                                     | Prod                           |
-+=======================================================================+==========================================================================+================================+
-| a place for data scientists to do exploratory analysis and experiment | as similar to prod as possible                                           | separate from dev and test     |
-|                                                                       |                                                                          |                                |
-| often just your local desktop                                         | code testing                                                             | created using code             |
-|                                                                       |                                                                          |                                |
-| data science "sandbox" with data that's as close to real as possible  | data validation                                                          | code promotion process + tests |
-|                                                                       |                                                                          |                                |
-| access to R/Python packages                                           | in software dev world includes integration, unit, and regression testing | completely automatic           |
-+-----------------------------------------------------------------------+--------------------------------------------------------------------------+--------------------------------+
+::: notes
+unit test - testing individual units of code to make sure it does what you want it to do
+
+integration test - make sure putting pieces together doesnt introduce any errors
+
+want to be able to reproduce the environments as closely as possible
+:::
 
 ## Version Control & Workflows
 
@@ -508,7 +515,7 @@ Content is deployed (and code is promoted) across different environments with di
 ::: notes
 Version control is a main tool for Continuous Integration -
 
-lots of variants - giit, github., svn, gitlab, etc
+lots of variants - git, github., svn, gitlab, etc
 
 distributed version control - everyone has their own repo
 
@@ -518,10 +525,12 @@ can fix merge conflicts
 
 an an iterative process to build, test, collaborate on your code to above environments. Very commonly, individuals work on separate branches that are then tested and reviewed by colleagues before they are merged into a main branch.
 
-In addition to the action of promoting your code - its also important to have processes in place for how it happens code reviews, process for your team, how to name things, pull requests, version control with git, feature branching, automatic tests
+In addition to the action of promoting your code - its also important to have processes in place for how the code integration process occurs - includes humans coming together and making some decisions -
+
+e.g code reviews, process for your team, how to name things, pull requests, merging, feature branching, automatic tests
 :::
 
-## Lab Activity
+## Lab Activity - developing locally using Quarto
 
 🟥 - I need help
 
@@ -529,38 +538,26 @@ In addition to the action of promoting your code - its also important to have pr
 
 🟩 - I'm done
 
-Login to pos.it/class with code `conftest` and create an account with your name and email
+Login to pos.it/class with code `devops_workshop`
 
-Complete Part 1 of Lab - add link
+Lab 1 Part 1
 
 ## Reproducing your environment
 
 What are the layers that need to be reproduced across your dev, test, and prod environments?
 
-In your day-to-day work, what's the hardest reproducibility challenge?
+What's your most difficult reproducibility challenge?
 
 ## Layers of reproducibility
 
-+---------------+---------------------------------+
-| Layer         | Contents                        |
-+===============+=================================+
-| Code          | scripts, configs, applications  |
-+---------------+---------------------------------+
-| Packages      | R + Python Packages             |
-+---------------+---------------------------------+
-| System        | R + Python Language Versions    |
-|               |                                 |
-|               | System Libraries                |
-|               |                                 |
-|               | Operating System + dependencies |
-+---------------+---------------------------------+
-| Hardware      | Virtual Hardware                |
-|               |                                 |
-|               | Physical Hardware               |
-+---------------+---------------------------------+
+![](images/Screenshot%202023-09-13%20at%208.23.56%20PM.png)
 
 ::: notes
--   Let's say someone wanted to reproduce your project including your code and your environment. Make a list of the layers that would need to be reproduced on their machine. (For example, a layer would be the version of R that you're using)
+-   code - scripts, configs, applications
+-   Packages
+-   System - r and python depend on underlying system software - for example, spatial analysis packages, or anything that requires Java - rJava
+-   OS
+-   Hardware - processors Intel chip, silicon chip
 
 options("repos") Run .libPaths()
 
@@ -572,18 +569,6 @@ options("repos") Run .libPaths()
     -   Visit the webpage where packages are being pulled from and see if you can identify package dependencies. Are packages downloaded as binaries or from source?
     -   What are your server and OS dependencies? (If you are not sure which distribution of Linux you are using, you can find it by typing `cat /etc/*-release` in your terminal)
 :::
-
-## Mechanisms for reproducibility
-
-\*\* make this a diagram starting from least to most reproducibility
-
--   documenting state & version control
-
--   virtual environments (`renv`, `venv`) + package management
-
--   Containerization & docker
-
--   Infrastructure as Code
 
 ## Packages vs. Libraries vs. Repositories
 
@@ -601,18 +586,18 @@ library - You can have user-level or project-level libraries. Run `.libPaths()` 
 repo - others include pypi, bioconducter, private repos
 :::
 
-## Renv workflow
+## `renv` workflow
 
 ![](images/Screenshot%202023-09-06%20at%208.31.22%20PM.png)
 
 ::: notes
 1.  Use a version control system e.g.[git](https://git-scm.com/) with [GitHub](https://github.com/)
 
-2.  One user (perhaps yourself) should explicitly initialize `renv` in the project, via [`renv::init()`](https://rstudio.github.io/renv/reference/init.html). This will create the initial `renv` lockfile, and also write the `renv` auto-loaders to the project's `.Rprofile` and `renv/activate.R`. These will ensure the right version of `renv` is downloaded and installed for your collaborators when they start in this project.
+2.  One user (should explicitly initialize `renv` in the project, This will create the initial `renv` lockfile, and also write the `renv` auto-loaders to the project's `.Rprofile` and `renv/activate.R`. These will ensure the right version of `renv` is downloaded and installed for your collaborators when they start in this project.
 
-3.  Using a branching strategy push your code alongside the generated lockfile `renv.lock`. Be sure to also share the generated auto-loaders in `.Rprofile` and `renv/activate.R`.
+3.  push your code alongside the generated lockfile `renv.lock`. Be sure to also share the generated auto-loaders in `.Rprofile` and `renv/activate.R`.
 
-4.  When a collaborator first launches in this project, `renv` should automatically bootstrap itself, thereby downloading and installing the appropriate version of `renv` into the project library. After this has completed, they can then use [`renv::restore()`](https://rstudio.github.io/renv/reference/restore.html) to restore the project library locally on their machine.
+4.  After this has completed, they can then use [`renv::restore()`](https://rstudio.github.io/renv/reference/restore.html) to restore the project library locally on their machine.
 :::
 
 ## Example
@@ -628,7 +613,7 @@ lapply(.libPaths(), list.files)
 🔍 Live code
 :::
 
-## Lab Activity
+## Lab Activity - try out `renv`
 
 🟥 - I need help
 
@@ -640,13 +625,21 @@ Complete Part 2 of Lab: Deploy Quarto with GHA including the exercises
 
 ## Build tools
 
+-   Production-identical environments for development
+
+-   Infrastructure as code
+
+-   Automation with Github Actions/Jenkins
+
 ::: notes
+prod-identical - docker, kubernetes, other container services
+
+IaC - quickly reprovision your entire environment with code (chef, puppet, dockr, terraform, ansible
+
 tools that automate the process of building and deploying your code once it goes from your dev env to test and prod
 
 Tools include config files, `config` package, CI/CD software such as GHA, automatic tests
 :::
-
-![](images/Screenshot%202023-08-23%20at%202.49.21%20PM.png)
 
 ::: footer
 Illustration credit:
@@ -660,52 +653,7 @@ Illustration credit:
 
 -   human friendly
 
--   everything is a key value pair and interpreted as maps or dictionaries
-
 -   used for configuration files across many execution environments including Docker, virtual machines, K8s, helm, IaaS, etc
-
-## XML
-
-```         
-<?xml version="1.0"?>
-<EmpRecord>
-<Employee id="emp01">
-<name>Alex</name>
-<job>Developer</job>
-<skills>python, C/C++, paskal</skills>
-</Employee>
- 
-<Employee id="emp02">
-<name>Bob</name>
-<job>Tester</job>
-<skills>lips, forton, REST APIs</skills>
-</Employee>
- 
-</EmpRecord>
-```
-
-## JSON
-
-```         
-{
-"EmpRecord": {
-"Employee": [
-{
-"-id": "emp01",
-"name": "Alex",
-"job": "Developer",
-"skills": "python, C/C++, paskal"
-},
-{
-"-id": "emp02",
-"name": "Bob",
-"job": "Tester",
-"skills": "lips, forton, REST APIs"
-}
-]
-}
-}
-```
 
 ## YAML
 
@@ -721,26 +669,21 @@ EmpRecord:
     skills: lips, forton, REST APIs
 ```
 
-## YAML syntax
-
 -   whitespace indentation is used to denote structure, no need for quotes nor brackets
 
 -   Colons separate keys and their values
 
 -   Dashes are used to denote a list
 
-https://github.com/sd031/yaml-crash-course/blob/main/full_example.yaml
-
 ## Examples
 
--   https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.yml
--   https://github.com/Rikagx/personal-website/blob/main/.github/workflows/publish.yaml
+-   Docker compose [yaml](https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.ym) to spin up all 3 Posit Pro products
 
 ::: footer
 🔍 Live code
 :::
 
-## Lab Activity
+## Lab Activity - Inspect your YAML
 
 🟥 - I need help
 
@@ -749,6 +692,8 @@ https://github.com/sd031/yaml-crash-course/blob/main/full_example.yaml
 🟩 - I'm done
 
 Inspect your \_quarto.yml file and identify what each part of it does using the quarto site.
+
+## 
 
 ## Is version control secure?
 
