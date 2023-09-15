@@ -310,7 +310,7 @@ sounds pretty efficient right -
 ::: notes
 So this is the idealized example - but what was it like in practice 20 years ago. You want to make the release process as fast as possible but you also want it to be tested and free of bugs. And this introduces a natural conflict between speed and stability
 
- You have the same goals of speed and accuracy - but this process of continuous integration, of testing, of automating processes so that your users can get their hands on the app - didnt exist.
+You have the same goals of speed and accuracy - but this process of continuous integration, of testing, of automating processes so that your users can get their hands on the app - didnt exist.
 
 One problem is that the entire process is siloed between the creation of the code and the deployment of your app. So your developers finish their code and then throw it over the fence to ops. Maybe they then throw it to security or to QA. But there was no formal alliance in place or processes on how the teams work together. Because each team is seemingly working on one part - the code vs. the deploy - there's also technical knowledge siloes - each team only knows their bit but not anything else.
 
@@ -353,8 +353,6 @@ So let me pause - that's a lot - everyone got a bit of a history lesson but as f
 
 ## Why should we as data scientists care about this?
 
-```{=html}
-```
 ::: notes
 lets have a little thought experiment
 :::
@@ -449,7 +447,7 @@ Let's get back to our principles:
 
 ![](images/Concept%20Map.jpg){width="690"}
 
-## Profileration of tools
+## Proliferation of tools
 
 ![](images/ecosystem.png)
 
@@ -467,7 +465,8 @@ proliferation of tools, source code management, repo management, build tools, da
 -   Continuous Monitoring and Logging
 
 ::: notes
-these are the ones that we're going to be covering - definitely not going to be a complete overview of the entire ecosystem - but in my opinion the most important tool types to get you started quickly. We will also be discussing this in the context of ds and how these types of tools can fit in a data workflow - and hopefully improve it.
+-these are the ones that we're going to be covering - lot of tools, but this is what they should help you to do -definitely not going to be a complete overview of the entire ecosystem - there's also a lot of overlap in the definitions -\
+-but in my opinion the most important tool types to get you started quickly.
 :::
 
 ## The CI/CD Pipeline
@@ -477,28 +476,24 @@ these are the ones that we're going to be covering - definitely not going to be 
 ::: notes
 -   As we discussed before CI/CD is an iterative cycle of small steps to quickly build, test, and deploy your code - this is a critical component of devops.
 
--   So CI/CD is often said in the same breath - as it makes up a continuous pipeline  - but its actually pretty discrete parts so I want to make sure we understand how they differ.
+-   So CI/CD is often said in the same breath - as it makes up a continuous pipeline - but its actually pretty discrete parts so I want to make sure we understand how they differ.
 
 -Continuous integration (CI) - this is where you or anyone who writes code, automatically builds, tests, and commits code changes into a shared repository; This is usually triggered by an automatic process where the code is built, tested and then either passes or fails. This step is focused on improving the actual build or application as quickly as possible.
 
 Different types of tests - from unit tests to integration tests to regression tests.
 
 -Continuous delivery (CD) and deployment are less focused on the build but on the actual installation and distribution of your build. This includes an automated process to deploy across different environments - from development to testing and finally to production. Delivery is the process for the final release - that "push of a button step" to get to prod.
+
+we'll talk about some examples of popular CI/CD tools in a bit - Github Actions, Jenkins, CircleCI, Gitlab CI
 :::
 
 ## Environment Management {.smaller}
 
-+----------------------------------------------------------------------+--------------------------------+--------------------------------+
-| Dev                                                                  | Test                           | Prod                           |
-+======================================================================+================================+================================+
-| exploratory analysis and experiments                                 | as similar to prod as possible | separate from dev and test     |
-|                                                                      |                                |                                |
-| often just your local desktop                                        | unit & integration testing     | created using code             |
-|                                                                      |                                |                                |
-| "sandbox" with data that's as close to real as possible | data validation                | code promotion process + tests |
-|                                                                      |                                |                                |
-| access to R/Python packages                                          |                                | completely automatic           |
-+----------------------------------------------------------------------+--------------------------------+--------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+
+| Dev                                                                                                                                                                                                                                                                                                                                                                             | Test | Prod |
++=================================================================================================================================================================================================================================================================================================================================================================================+======+======+
+| exploratory analysis and experiments \| as similar to prod as possible \| separate from dev and test \| \| often just your local desktop \| unit & integration testing \| created using code \| \| "sandbox" with data that's as close to real as possible \| data validation \| code promotion process + tests \| \| \| access to R/Python packages \| \| completely automatic |      |      |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+
 
 ::: notes
 unit test - testing individual units of code to make sure it does what you want it to do
@@ -542,12 +537,10 @@ Login to pos.it/class with code `devops_workshop`
 
 Lab 1 Part 1:
 
-:::{.notes}
-
+::: notes
 Show how to login to the workshop environment and where the lab is
 
 5 minutes
-
 :::
 
 ## Is version control secure?
@@ -565,14 +558,13 @@ Show how to login to the workshop environment and where the lab is
 ![](images/Screenshot%202023-09-07%20at%209.28.32%20AM.png)
 
 ::: notes
-
 Add diagram - http and https two computers with ports
 
 There are lots of diff transfer protocols; what you use depends on what kind data is being transferred and your security requirements. So for example, maybe you're sending plain text or email or a webpage.
 
 Protocols as well as processes or application run on specific ports. A port is a virtual point where network connections start and end. Allow computers to easily differentiate between different kinds of traffic. So for example, Shiny Server runs on port 3838, Workbench runs on ...
 
-whether its email, text, files, etc  Ports are software-based and managed by a computer's operating system. Ports  emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection.
+whether its email, text, files, etc Ports are software-based and managed by a computer's operating system. Ports emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection.
 :::
 
 ## Git protocol options
@@ -657,7 +649,7 @@ repo - others include pypi, bioconducter, private repos
 
 ## Example
 
-``` {.libpaths()}
+``` {eval="FALSE"}
 # install.packages("renv")
 renv::init()
 renv::snapshot()
@@ -678,9 +670,8 @@ lapply(.libPaths(), list.files)
 
 Lab 1: Part 2 & 3
 
-:::{.notes}
-You'll be doing renv in your workbench environment both in your console for r code and in the terminal for git commands
-you'll also need to log in to your github account where you'll be creating an upstream repository to link with your local code.
+::: notes
+You'll be doing renv in your workbench environment both in your console for r code and in the terminal for git commands you'll also need to log in to your github account where you'll be creating an upstream repository to link with your local code.
 
 we'll be using https auth but there's also information if you later want to test out ssh
 
@@ -689,21 +680,28 @@ we'll be using https auth but there's also information if you later want to test
 
 ## Build tools
 
--   Production-identical environments for development
+-   Virtualization/Containerization
 
 -   Infrastructure as code
 
--   Automation with Github Actions/Jenkins
+-   Automation with Github Actions/Jenkins/CircleCI
+
+-   Cloud devops tools (Azure Devops, Google Cloud Build)
 
 ::: notes
-prod-identical - help you build isolated environments and tested and debug code;  docker, kubernetes, other container services
+-   automate common build and deployment tasks
+-   for example, generating artifacts, deploying to diff environs, provisioning or deprovisioning environments -
+-   some overlap here between these tools and CI/CD
 
-IaC - quickly re-provision your entire environment with code (chef, puppet, dockr, terraform, ansible) instead of fixing it, just tear it down and restart it
+Virtual/Container -prod-identical - help you build isolated environments and tested and debug code; docker, kubernetes, other container services
+
+IaC - quickly re-provision your entire environment with code (chef, puppet, dockr, terraform, ansible) instead of fixing it, just tear it down and restart it - configuration management
 
 tools that automate the process of building and deploying your code once it goes from your dev env to test and prod
 
-You also have support tools - that are used across a lot of these tools - I want to discuss one of them here -
-YAML
+cloud devops - run your entire devops stack in a cloud managed cloud managed platform
+
+You also have support tools - that are used across a lot of these tools - I want to discuss one of them here - YAML
 :::
 
 ::: footer
@@ -714,11 +712,11 @@ Illustration credit:
 
 -   YAML Ain't Markup Language
 
--   communication of data between people and computers.
+-   communication of data between people and computers
 
 -   human friendly
 
--   configures files across many execution environments including Docker, virtual machines, K8s, helm, IaaS, etc
+-   configures files across many execution environments
 
 ## YAML
 
@@ -739,7 +737,8 @@ EmpRecord:
       - Beets
       - Sales
 ```
--   whitespace indentation denotes structure
+
+-   whitespace indentation denotes structure & hierarchy
 
 -   Colons separate keys and their values
 
@@ -747,7 +746,7 @@ EmpRecord:
 
 ## Example - YAML in action
 
--   Docker compose [yaml file](https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.ym) to spin up all 3 Posit Pro products
+-   Docker compose [yaml file](https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.yml) to spin up all 3 Posit Pro products
 
 ::: footer
 🔍 Live code
@@ -763,64 +762,67 @@ EmpRecord:
 
 Inspect your \_quarto.yml file and identify what each part of it does using the quarto site.
 
-:::{.notes}
+::: notes
 2-5 minutes - render your site to help
 :::
 
-## Automation Build Tools
+## Continuous Integration Example
 
--   Automate steps in your workflow
--   Incorporate continuous integration process
--   Work with your version control system
+![](images/Untitled%20(2).jpg)
 
-:::{.notes}
-- we'll be discussing GHA Actions - which is a CI tool that is handy because it uses the same platform as your versioned repositories
+::: notes
+today - we'll be discussing GHA Actions - which is a common CI tool that is handy because it uses the same platform as your versioned repositories - inthis case github
 
+uses yaml as a configuration tool
 :::
 
-## Quarto Publish GHA Flow
-- show regular quarto publish with arrows
-- show github actions flow to ghp and connect
+## Other GHA Categories
+
+-   Deployment
+
+-   Security
+
+-   Continuous Integration
+
+-   Automation
+
+-   Pages
+
+-   Make your own!
+
+[Examples](https://github.com/Rikagx/ssh_testing/actions/new)
+
+## Quarto Publish Flows
+
+### Manually
+
+![](images/Untitled.jpg){width="400"}
+
+### Continuous Integration
+
+![](images/Untitled%20(1).jpg)
+
+::: notes
+can publish to quarto pub, GHP, connect, netlify, confluence, other destinations, more work to set up
+:::
 
 ## GHA Structure
 
 ![](images/Screenshot%202023-09-10%20at%201.32.42%20PM.png)
 
--   A github action allows us to create workflows that are triggered by a github action such as a push or pull to a branch
+**Open source ecosystem of available actions**
 
-- uses yaml format
+-   [Github Official Actions](https://www.github.com/actions)
 
--   Build tools + version control in on system
+-   [RLib Actions](https://www.github.com/r-lib/actions)
 
--   Parts of a GHA - trigger, job, steps
-
--   Workflows can include tests, markdown renders, shell scripts, cron jobs, or deployments. They can be as simple or as complicated as you need. Open-source community provides a ton of examples of actions.
-
--   Open source collection of "available" actions
-
-1.  In the previous exercise we created a repo - we can use it to see what kind of actions we can create
-
-https://github.com/Rikagx/workshop_testing/blob/master/.github/workflows/publish.yaml
-
-github.com/actions
-
-https://github.com/r-lib/actions
+::: notes
+Workflows can include tests, markdown renders, shell scripts, cron jobs, or deployments. They can be as simple or as complicated as you need. Open-source community provides a ton of examples of actions.
 :::
 
+## Actions Syntax
 
-## Actions Ecosystem
-
-github.com/actions
-
-github.com/r-lib/actions
-
-https://github.com/Rikagx/ssh_testing/actions/new
-
-## Syntax {.smaller}
-
-```         
-go through yaml file for the lab
-```
+[Code](https://posit-conf-2023.github.io/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html#part-4-publish-using-gha)
 
 ## Lab Activity
 
@@ -832,16 +834,58 @@ go through yaml file for the lab
 
 Part 4 of Lab: Deploy Quarto with GHA including the exercises
 
-:::{.notes}
-we'll be doing a few things
-- create a gh branch
-- publish to github
-- create a gha with a yaml file
-- create an api key for connect
-- update yaml file
-- push everything
-
+::: notes
+we'll be doing a few things - create a gh branch - publish to github - create a gha with a yaml file - create an api key for connect - update yaml file - push everything
 :::
+
+## Logging
+
+log session ➡️ log statement ➡️ log entry
+
+::: columns
+::: {.column width="50%"}
+```{python filename="app.py"}
+import logging
+
+# Configure the log object
+logging.basicConfig(
+    format='%(asctime)s - %(message)s',
+    level=logging.INFO
+)
+
+# Log app start
+logging.info("App Started")
+```
+:::
+
+::: {.column width="50%"}
+```{r filename="app.R"}
+# Configure the log object
+log <- log4r::logger()
+
+# Log app start
+log4r::info(log, "App Started")
+```
+:::
+:::
+
+::: notes
+create a log session for your r or python code, write a log statement, gets added into an entry
+
+what to log
+
+types of logs
+:::
+
+## Monitoring
+
+![](images/icons8-prometheus-48.png)
+
+If you want to register metrics from your API or app with Prometheus, there is an official [Prometheus client](https://github.com/prometheus/client_python) in Python and the `{openmetrics}` package in R makes it easy to register metrics from a Plumber API or Shiny app.
+
+![](images/icons8-grafana-48.png)
+
+There's a great [Get Started with Grafana and Prometheus](https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/) doc on the Grafana Labs website if you want to actually try it out.
 
 ## Part 3 Goals: Docker for Data Scientists
 
@@ -850,40 +894,86 @@ we'll be doing a few things
 -   to get hands on experience building and running containers
 -   to explore the linux file system
 
-## Introduction to Docker
+## Why use a container at all?
 
--   Open-source tool.
--   Package applications and its dependencies in a unit called a container.
--   Create isolated environments for different experiments.
--   Share work with colleagues without environment setup issues.
+-   allows you to package up everything you need to reproduce an environment/application
+-   lightweight system without much overhead
+-   share containers with colleagues without requiring them to have to set up their own local machines
+-   quick testing and debugging
+-   allows you to easily version snapshots of your work
+-   scaling up
+
+## Our Docker Environment
+
+![](images/Screenshot%202023-09-15%20at%2011.56.18%20AM.png)
+
+## Workflow
+
+![](images/Screenshot%202023-09-15%20at%2012.58.53%20PM.png){width="800"}
 
 ::: notes
-Docker is a tool that allows you to virtualize (put your computer in the cloud) everything you need to create an application or in this case a data science product You can share containers with colleagues without requiring them to have to set up their own local machines Without something like this, in order to recreate or test code that someone else wrote, you'd need every developer to download the same dependencies, configurations, scripts and make sure that it ran on their machine - whether thats a mac, or windows, or linux or some other operating system
+dockerfile - is a script of instructions for how to build an image
+
+image - everything you need to run an application - all the layers that build the environment, dependencies, libraries, files
+
+container - isolated instance of a running image. you can create, stop, start, restart, containers. When a container is removed/deleted any changes to its state that arent stored in some kind of persistent storage disappear. Called ephemeral container - Think of a container as a snapshot in time of a particular application.
+
+Missing piece - repository - for images, like dockerhub, container registry cloud services, private registries
+
+Build - Run - Push
 :::
 
-## Lifecycle
+## Architecture
 
-Dockerfile - script of instruction to build an image
+![](images/Screenshot%202023-08-30%20at%2010.12.11%20AM-01.png)
 
-Image - read-only instructions that build everything you need to run an application. Made up of layers
+::: notes
+On the left we have the client - think of this as your computer or perhaps a computer somewhere in the cloud
 
-Container - isolated instance of a running image
+on the right you have the server - this the docker host which runs something called the Docker daemon - you'll be communicating with the Docker daemon via a command line interface.
 
-Image Registry - repository for images
+The host can be remote or it can be on your computer with the client - so for example, you can download something called Docker Engine. In most cases the host is running on a Linux OS. (in different laptop OS, Docker Desktop uses a lightweight VM under the hood)
 
-![](images/lifecycle.png)
+Docker engine is a container runtime that runs on different OS's. Sets up the isolated environment for your container.
 
-::: footer
-Illustration credit: Alex Gold, do4ds.com
+what the heck is the Docker daemon - its a service that does all the heavy lifting of building and running your containers
+
+registry - upload and download images
+
+Docker Desktop includes the Docker daemon (dockerd), the Docker client (docker), Docker Compose - another client, Docker Content Trust, Kubernetes, and Credential Helper.
 :::
 
-## How do data scientists use docker?
+## Images
 
-## Docker as testing environment
+![](images/Screenshot%202023-09-15%20at%2012.25.29%20PM.png){width="800"}
 
-![](images/Screenshot%202023-09-12%20at%209.49.46%20AM.png)
+::: notes
+made up of individual layers so its really quick to build isolating applications into their own image
+:::
 
-## Example
+## Dockerhub Registry
+
+https://hub.docker.com/search?q=
+
+## Containers
+
+![](images/Screenshot%202023-09-15%20at%2012.14.04%20PM.png)
+
+::: notes
+runnable instance of an image.
+
+From the bottom up Containers run on some sort of infrastructure - this could be your laptop or a server somewhere in the cloud
+
+host OS - shared OS between container instances, dont need a guest os for each one, makes them really light and able to spinup in milliseconds
+
+containers are very lightweight which makes it really easy and quick to spin them up
+
+Instead, the Docker daemon communicates directly with the host operating system and knows how to ration out resources for the running Docker containers.
+:::
+
+## How can data scientists use docker?
+
+## Example - testing & versioning
 
 ``` bash
 docker pull postgres:12
@@ -901,59 +991,45 @@ docker restart
 :::
 
 ::: notes
-a dockerfile is the recipe to build a docker images this recipe is stored in some sort of repository, this can be private, public, or dockerhub - which is the default a docker image contains lightweight instructions to create your application. Docker images use something called layers which makes it super easy and quick to update. Layers start at a base layer which is usually the linux operating system and then they go up to the application layer. a container is the environment for a running process of an image - so if an image is running then its using a container instance. You can have multiple containers running at the same time. But once you delete it everything inside of it goes away.
+can pull but also if you just run - will put it from hub if doenst find locally Let's see an example of what this looks like in practice. Lets say we need to use a postgres sql database for some testing - but we want to test using an older and a newer version of postgres.
 
-Let's see an example of what this looks like in practice. Lets say we need to use a postgres sql database for some testing - but we want to test using an older and a newer version of postgres.
+docker image ls - lets list all the images that we have
 
-Lets go to Dockerhub and search for it. We can see official images but there are also thousands of them created by people- hub only has images not dockerfiles or containers themselves. docker image ls - lets list all the images that we have docker pull postgres:12 - see how its pulling and extracting all these layers - but what if we want a newer version or what if we need to run both versions on our machine
+docker pull postgres:12 - see how its pulling and extracting all these layers - but what if we want a newer version or what if we need to run both versions on our machine
 
 docker pull postgres:latest - notice how some of these layers already exist so it takes a lot less time
-
-Lets go on dockerhub and see if we can understand a bit more about the layers https://hub.docker.com/layers/library/postgres/12/images/sha256-a97fd76ab09599e2ddc15c90a87f9a4a2a60551d99f8e7397f12a1d606d7f0ab?context=explore -
-
-we can see that there are a lot of layers but its hard to understand what exactly is happening - lets look at the dockerfile that shows us the recipe for postgres - this is usually saved in a [github](https://github.com/docker-library/docs/blob/master/postgres/README.md) repo - not on dockerhub which is just images
-
-every docker file starts with a from command - this is the base layers that starts the image, then we are running some things, copying , env variables, and starting
-
-lets run the image and see
 :::
 
-## Docker as development environment
+## Example - reproduce environments
 
-![](images/Screenshot%202023-09-12%20at%2010.00.41%20AM.png)
-
-## Example
+https://hub.docker.com/u/rocker
 
 ```         
 # pull the image
-docker pull rocker/rstudio:4.2.2
+docker pull rocker/r-base
 
 # run container
-docker run --rm \
-           -p 8888:8787 \
-           -e PASSWORD=password \
-           rocker/rstudio:4.2.2
+docker run --rm -it rocker/r-base
 ```
 
-## Docker as a portable app (in production)
+## Example - isolate applications
 
-![](images/shiny.png){width="74"}
+https://hub.docker.com/u/rstudio
 
-![](images/plumber.png){width="74"}
+**DO NOT RUN!**
 
-![](images/bookdown.png){width="74"}
+```         
+docker run -it --privileged \
+    -p 3939:3939 \
+    -e RSC_LICENSE=$RSC_LICENSE \
+    rstudio/rstudio-connect:ubuntu2204
+```
 
-![](images/tidymodels.png){width="74"}
+## Docker as deployment strategy
 
-## Example
+![](images/dep_strategy.png)
 
-![](images/Screenshot%202023-09-12%20at%2010.14.39%20AM.png)
-
-## Docker for CI/CD
-
-![](images/docker_ci.png)
-
-## Example
+## Example - Docker in CI pipeline
 
 ```         
 jobs:
@@ -994,49 +1070,11 @@ jobs:
 -   **Isolation:** Containers isolate applications and their dependencies, preventing conflicts.
 
 -   **Portability:** Containers can run on any system that supports Docker, reducing "it works on my machine" issues.
+
+## 
 :::
 
-## Docker as a platform
-
-![](images/shiny-01.png){width="100"}
-
-![](images/rsconnect.png){width="100"}
-
-## Example
-
-```         
-docker run -d -p 3838:3838 rocker/shiny
-```
-
-## Virtual Machine vs. Container
-
-![](images/Screenshot%202023-09-03%20at%209.56.54%20AM.png)
-
-::: notes
-containers are very lightweight which makes it really easy and quick to spin them up
-
-this is because the container itself doesnt have a host operating system or any hardware - intel chip, apple chip etc - this is in the docker engine or runtime which we will look at in the architecture
-:::
-
-## Docker Architecture
-
-![](images/Screenshot%202023-08-30%20at%2011.31.56%20AM.png)
-
-::: notes
--   Docker uses a client-server architecture. The Docker client talks to the Docker daemon.
-
--   The Docker client - is the primary way that users interface with Docker via CLI
-
--   The Docker daemon does the heavy lifting of building, running, and distributing your Docker containers
-
--   The Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface.
-
--   Registry is a Repository for Docker images (e.g., Docker Hub) where you can store and share images.
-
--   Docker engine is a container runtime that runs on diffrent OS's. Set up the isolated environment for your container
-:::
-
-## Mode for running containers
+## Modes for running containers
 
 +------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Mode                                                       | Run command       | Use case                                                                                                                                                                                                           |
@@ -1048,7 +1086,7 @@ this is because the container itself doesnt have a host operating system or any 
 | Remove everything once the container is done with its task | `docker run --rm` | This mode is used on foreground containers that perform **short-term tasks** such as tests or database backups. Once it is removed anything you may have downloaded or created in the container is also destroyed. |
 +------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-## Lab Activity
+## Lab Activity - Running containers
 
 🟥 - I need help
 
@@ -1056,15 +1094,9 @@ this is because the container itself doesnt have a host operating system or any 
 
 🟩 - I'm done
 
-Complete Lab 2: Part 1
+Lab 2: Part 1
 
 ## Container Debugging
-
--   Interactive mode
-
--   `docker exec`
-
--   Logging
 
 ```         
 docker run -it -d ubuntu
@@ -1083,7 +1115,7 @@ docker container run -d --name mydb \
 🔍 Live code
 :::
 
-## Lab Activity
+## Lab Activity - Debugging Containers
 
 🟥 - I need help
 
@@ -1095,6 +1127,10 @@ Complete Lab 2: Part 2
 
 ## Port Mapping with `docker run -p`
 
+`docker run -p host_port:container_port`
+
+![](images/port%20mapping.png){width="600"}
+
 ```         
 docker pull httpd:alpine
 docker pull httpd:latest
@@ -1104,7 +1140,7 @@ docker inspect --format='{{.Config.ExposedPorts}}' httpd:alpine
 
 docker run -p DockerHostPort:ApplicationPort
 
-docker run -d -p 81:80 --name httpd-latest httpd:latest
+docker run -d -p 6574:80 --name httpd-latest httpd:latest
 curl http://localhost:81
 
 docker run -d -p 80:80 --name httpd-alpine httpd:alpine

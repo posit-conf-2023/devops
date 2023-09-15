@@ -99,14 +99,14 @@ git branch -m master main
 
 -   Run `renv::init()` in your console to initialize a new project-local environment with a private R library and click yes to the prompt.
 
--   Change the title of your site in index.qmd. After you've done some work on your code take a snapshot with `renv::snapshot()`
+-   Change the title of your site in index.qmd and try adding a library. After you've done some work on your code take a snapshot with `renv::snapshot()`
 
 -   Run `.libPaths()` and `lapply(.libPaths(), list.files)`again. What has changed?
 
 -   Recreate your environment when collaborating or coming back to your work with `renv::restore()`
 :::
 
--   (**Optional)** Learning how to use all the power of Quarto is beyond the scope of this workshop but you can use the below resources to pla around with difference templates and designs for your new website.
+-   (**Optional)** Learning how to use all the power of Quarto is beyond the scope of this workshop but you can use the below resources to play around with difference templates and designs for your new website.
 
 <!-- -->
 
@@ -201,7 +201,7 @@ To learn more about the Github CLI and the `gh` package please check out this [a
 1.  We need to create a `gh-pages` branch to publish to github pages.
 
 ```         
-git status # - make sure everything is committed
+git status # - make sure everything is committed! 
 git checkout --orphan gh-pages
 git reset --hard # make sure you've committed changes before running this!
 git commit --allow-empty -m "Initialising gh-pages branch"
@@ -282,11 +282,11 @@ git push
 
 ## Part 5: Publish to Connect with GHA
 
-1.  Create an API key on the Connect website. Note this API somewhere safe as you will be using it multiple times in the workshop.
+1.  Create an API key on the Connect website. Note this API somewhere safe as you will be using it multiple times in this workshop.
 
 ![](images/Screenshot%202023-09-11%20at%2011.16.59%20AM.png)
 
-2.  Add the Connect URL and your API key to your repository:
+2.  Add the Connect URL and your API key to your Github repository:
 
 -   In your repository go to Settings \> Security \> Secrets and variables \> Actions
 
@@ -294,7 +294,7 @@ git push
 
 ![](images/Screenshot%202023-09-11%20at%2011.20.00%20AM.png)
 
-3.  The rsconnect package needs to be explicitly called in your code to be correctly snapshot in your lock file. Install it and call it in one of your .qmd files.
+3.  The rsconnect package needs to be explicitly called in your code to be correctly snapshot in your lock file. Install it and call it in one of your files.
 
 ```         
 install.packages("rsconnect")
@@ -342,27 +342,22 @@ jobs:
   test-and-connect-publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-          
-      - name: Remove `.Rprofile`
-        shell: bash
-        run: |
-          rm .Rprofile
-          
+      - name: Check out repository
+        uses: actions/checkout@v4
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-
-      - uses: r-lib/actions/setup-r@v2
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
         with:
           r-version: 4.2.3
           use-public-rspm: true
           
-      - uses: r-lib/actions/setup-renv@v2
+      - name: Setup renv and install packages
+        uses: r-lib/actions/setup-renv@v2
       - name: Create manifest.json
         shell: Rscript {0}
         run: |
           rsconnect::writeManifest()
-          
       - name: Publish Connect content
         uses: rstudio/actions/connect-publish@main
         with:

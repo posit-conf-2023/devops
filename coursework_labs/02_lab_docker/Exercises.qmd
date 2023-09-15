@@ -106,6 +106,8 @@ docker container ls -a
 
 The `docker exec` command is very similar to the `docker run -it` command. Both are very helpful for debugging containers as they allow you to jump inside your container instance. The exec command needs a running container to execute **any** command, whereas the `-it` flag starts a container and places you into a terminal in interactive mode. Use the `docker exec` command to execute a bash command in a running container. This can be used to execute any command within a running container.
 
+**Be careful not use `docker exec` to change your container as once it is deleted you will lose any changes you've made!**
+
 `docker exec` requires two arguments - the container and the command you want to run.
 
 ```         
