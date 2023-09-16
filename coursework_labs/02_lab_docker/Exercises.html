@@ -132,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#part-3-mapping-ports" id="toc-part-3-mapping-ports" class="nav-link" data-scroll-target="#part-3-mapping-ports">Part 3: Mapping Ports</a></li>
   <li><a href="#part-4-mounting-data" id="toc-part-4-mounting-data" class="nav-link" data-scroll-target="#part-4-mounting-data">Part 4: Mounting Data</a></li>
   <li><a href="#part-5-building-images-interactively" id="toc-part-5-building-images-interactively" class="nav-link" data-scroll-target="#part-5-building-images-interactively">Part 5: Building images interactively</a></li>
-  <li><a href="#part-b-building-shiny-server-os-with-dockerfile" id="toc-part-b-building-shiny-server-os-with-dockerfile" class="nav-link" data-scroll-target="#part-b-building-shiny-server-os-with-dockerfile">Part B: Building Shiny Server OS with Dockerfile</a></li>
+  <li><a href="#part-6-building-shiny-server-os-with-dockerfile" id="toc-part-6-building-shiny-server-os-with-dockerfile" class="nav-link" data-scroll-target="#part-6-building-shiny-server-os-with-dockerfile">Part 6: Building Shiny Server OS with Dockerfile</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -328,8 +328,8 @@ docker image ls # to check the new image is available</code></pre>
 <pre><code>docker tag ubuntu_text docker_hub_username/ubuntu_text
 docker push docker_hub_username/ubuntu_text</code></pre>
 </section>
-<section id="part-b-building-shiny-server-os-with-dockerfile" class="level3">
-<h3 class="anchored" data-anchor-id="part-b-building-shiny-server-os-with-dockerfile">Part B: Building Shiny Server OS with Dockerfile</h3>
+<section id="part-6-building-shiny-server-os-with-dockerfile" class="level3">
+<h3 class="anchored" data-anchor-id="part-6-building-shiny-server-os-with-dockerfile">Part 6: Building Shiny Server OS with Dockerfile</h3>
 <p>Best practice is to create a Dockerfile so that any changes to your image can be documented.</p>
 <ol type="1">
 <li>Create a Dockerfile (no file extension needed)in your instance with <code>touch Dockerfile</code> and add the following to it.</li>

@@ -159,5 +159,712 @@
     "title": "Lab: Data in Production",
     "section": "Part 5: Programmatically access Connect",
     "text": "Part 5: Programmatically access Connect\n\nWe want to programmatically identify all the content that has been published. You will need to use the Connect API Key that you created in the earlier lab. Or you can create a new key.\n\n\n\nOpen a new R script In your workbench console. Add your Connect information:\n\n# Add server\nrsconnect::addServer(\n  url = \"https://liberal-bullfinch.74633.fleeting.rstd.io/rsconnect/__api__\",\n  name = \"colorado\"\n)\n\n# Add account\nrsconnect::connectApiUser(\n  account = \"\",\n  server = \"colorado\",\n  apiKey = Sys.getenv(\"CONNECT_API_KEY\"),\n)\n\nAccess your content programmatically in R: - need to add key ias env variable\n\nlibrary(httr)\nlibrary(tidyr)\n\n# Use the /v1/content endpoint to retrieve the full list of content items\nresult &lt;- GET(\n  paste0(Sys.getenv(\"CONNECT_SERVER\"),\"__api__/v1/content\"),\n    add_headers(Authorization = paste(\"Key\", Sys.getenv(\"CONNECT_API_KEY\"))))\n\n# Create a tibble for the content list result response\ndf_full &lt;- unnest_wider(tibble::tibble(dat = content(result)), dat) \n\nAccess your content programmatically in the terminal using curl:\n\nexport CONNECT_API_KEY=XXX\nexport CONNECT_SERVER=https://liberal-bullfinch.74633.fleeting.rstd.io/rsconnect/\n\ncurl --silent --show-error -L --max-redirs 0 --fail \\\n    -H \"Authorization: Key ${CONNECT_API_KEY}\" \\\n    \"${CONNECT_SERVER}__api__/v1/content\""
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#part-1-introductions-setup-workshop-overview",
+    "href": "slides/workshop_full_slides.html#part-1-introductions-setup-workshop-overview",
+    "title": "DevOps for Data Scientists",
+    "section": "Part 1: Introductions, setup, & workshop overview",
+    "text": "Part 1: Introductions, setup, & workshop overview"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#meet-your-instructors",
+    "href": "slides/workshop_full_slides.html#meet-your-instructors",
+    "title": "DevOps for Data Scientists",
+    "section": "Meet your instructors",
+    "text": "Meet your instructors\n\nRikaAndrieDavidGaganMichael\n\n\n\n\nSolutions Engineer at Posit\nFormer Data Scientist and Data Engineer\n\n\n\n\n\nDirector of Posit Strategy, former Solutions Engineer\n\n\n\n\n\nDavid Aja is a Solutions Engineer at Posit. Before joining Posit, he worked as a data scientist in the public sector.\n\n\n\n\n\nGagandeep Singh is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit as a Solutions Engineer.\n\n\n\n\n\nScientist by training turned IT / HPC / Scientific Computing"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#solutions-engineering-at-posit",
+    "href": "slides/workshop_full_slides.html#solutions-engineering-at-posit",
+    "title": "DevOps for Data Scientists",
+    "section": "Solutions Engineering at Posit",
+    "text": "Solutions Engineering at Posit\n\n\nPosit’s Solutions Engineering team aims to shrink the distance between the needs of Posit’s customers and our Pro and Open Source offerings, leading with curiosity and technical excellence.\nOur customer-facing work helps our customers deploy, install, configure, and use our Pro products."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#special-thanks-to-alex-gold",
+    "href": "slides/workshop_full_slides.html#special-thanks-to-alex-gold",
+    "title": "DevOps for Data Scientists",
+    "section": "Special Thanks to Alex Gold!",
+    "text": "Special Thanks to Alex Gold!\n\nAuthor of DevOps for Data Science\nPosit Solutions Engineering Team Director"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#introduce-yourself-to-your-neighbor",
+    "href": "slides/workshop_full_slides.html#introduce-yourself-to-your-neighbor",
+    "title": "DevOps for Data Scientists",
+    "section": "Introduce yourself to your neighbor",
+    "text": "Introduce yourself to your neighbor\n\nTake 5 minutes and introduce yourself to your neighbors."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#word-cloud",
+    "href": "slides/workshop_full_slides.html#word-cloud",
+    "title": "DevOps for Data Scientists",
+    "section": "Word Cloud",
+    "text": "Word Cloud"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#if-your-wifi-isnt-working-let-us-know-as-soon-as-possible",
+    "href": "slides/workshop_full_slides.html#if-your-wifi-isnt-working-let-us-know-as-soon-as-possible",
+    "title": "DevOps for Data Scientists",
+    "section": "💻 If your WIFI isn’t working let us know as soon as possible!",
+    "text": "💻 If your WIFI isn’t working let us know as soon as possible!\n\nName: Posit Conf 2023\nPassword: conf2023"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#pre-workshop-install",
+    "href": "slides/workshop_full_slides.html#pre-workshop-install",
+    "title": "DevOps for Data Scientists",
+    "section": "Pre-workshop Install",
+    "text": "Pre-workshop Install\n\nRequired:\nhttps://registry.hub.docker.com/signup\nhttps://github.com/signup\n\n\nOptional: (for local development)\nhttps://docs.docker.com/desktop/\nhttps://git-scm.com/book/en/v2/Getting-Started-Installing-Git\nhttps://quarto.org/docs/get-started/\nhttps://posit.co/downloads/"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#workshop-install",
+    "href": "slides/workshop_full_slides.html#workshop-install",
+    "title": "DevOps for Data Scientists",
+    "section": "Workshop Install",
+    "text": "Workshop Install\n\n\n\n\nSoftware\nLink\nCredentials\n\n\n\n\nPosit Workbench & Connect\nhttp://pos.it/class\nClassroom ID: DevOps_workshop\n\n\nDocker Classroom\nhttps://labs.play-with-docker.com/\nDocker Hub credentials"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#documentation-communication",
+    "href": "slides/workshop_full_slides.html#documentation-communication",
+    "title": "DevOps for Data Scientists",
+    "section": "Documentation & Communication",
+    "text": "Documentation & Communication\n\nAll documents including slides are available on our website: https://posit-conf-2023.github.io/DevOps/\nDiscord channel - devops-for-data-scientists\n\nDuring labs and exercises,please place a post-it note on the back of your laptop for:\n🟥 - I need help\n🟩 - I’m done"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#daily-schedule",
+    "href": "slides/workshop_full_slides.html#daily-schedule",
+    "title": "DevOps for Data Scientists",
+    "section": "Daily Schedule",
+    "text": "Daily Schedule\n\n📅 September 17 and 18, 2023\n⏰ 09:00am - 5:00pm\n\n\n\n\nTime\nTopic\n\n\n\n\n10:30 - 11:00am\nBreak\n\n\n12:30 - 1:30pm\nLunch\n\n\n3:00 - 3:30pm\nBreak"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#code-of-conduct",
+    "href": "slides/workshop_full_slides.html#code-of-conduct",
+    "title": "DevOps for Data Scientists",
+    "section": "Code of Conduct",
+    "text": "Code of Conduct\n\nEveryone who comes to learn and enjoy the experience should feel welcome at posit::conf. Posit is committed to providing a professional, friendly and safe environment for all participants at its events, regardless of gender, sexual orientation, disability, race, ethnicity, religion, national origin or other protected class.\nThis code of conduct outlines the expectations for all participants, including attendees, sponsors, speakers, vendors, media, exhibitors, and volunteers. Posit will actively enforce this code of conduct throughout posit::conf.\n\n\nhttps://posit.co/code-of-conduct/"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#workshop-goals",
+    "href": "slides/workshop_full_slides.html#workshop-goals",
+    "title": "DevOps for Data Scientists",
+    "section": "Workshop Goals",
+    "text": "Workshop Goals\n\nTo understand how DevOps can help you in your work as data scientists\nTo understand the main principles and tools of DevOps\nTo get hands-on experience putting code into production using common DevOps workflows\nTo leave the workshop with some “assets” and skills you can use in your work"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#agenda-lab-overview",
+    "href": "slides/workshop_full_slides.html#agenda-lab-overview",
+    "title": "DevOps for Data Scientists",
+    "section": "Agenda & Lab Overview",
+    "text": "Agenda & Lab Overview\n\n\n\nSection/Time\nTopics\nLabs\n\n\n\n\nPart 1\nWorkshop overview\nLogistics & setup\nIntroductions\nInfrastructure & wifi setup\n\n\nPart 2: DevOps Principles & Tools\nIntroduction to DevOps\nVersion control & github\nCI/CD\nReproducing workflows and environments\nLab 1: Deploy your own Quarto website on Github Pages & Posit Connect using GitHub Actions |\n\n\nPart 3: Docker for Data Scientists\nHow and why data scientists use docker in production\nDocker: overview and architecture\nBuilding docker images and containers\nPorts & networking\nLab #2: Write your own Dockerfile to deploy Open Source Shiny Server on Docker playground and host an app on the server\n\n\nPart 4: Data Science in Production\nChoosing your deployment method\nAPIs and when to use them\nJust enough auth\nLogging & metrics & testing\nLab #3: Host and secure an API on Posit Connect\n\n\nPart 5: Discussion\nCourse feedback\nQuestions for the team\nWorkshop Survey"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#most-important-linux-commands",
+    "href": "slides/workshop_full_slides.html#most-important-linux-commands",
+    "title": "DevOps for Data Scientists",
+    "section": "Most important Linux commands",
+    "text": "Most important Linux commands\n\n\n\nCommand\nDescription\nExamples\n\n\n\n\ncd\nchange directory\nhttps://linuxize.com/post/linux-cd-command/\n\n\nls\nlist all files in current working directory;\nadd -lha flag for hidden files\nhttps://linuxize.com/post/how-to-list-files-in-linux-using-the-ls-command/\n\n\npwd\nprint working directory\nhttps://linuxize.com/post/current-working-directory/\n\n\ntouch\ncreate a file\nhttps://linuxize.com/post/linux-touch-command/\n\n\nmkdir\ncreate a directory\nhttps://linuxize.com/post/how-to-create-directories-in-linux-with-the-mkdir-command/\n\n\nvim\nopen a file in Vim text editor\nhttps://linuxize.com/post/how-to-save-file-in-vim-quit-editor/\n\n\ncurl\ncommand-line utility for transferring data from or to a server. Uses one of the supported protocols including HTTP, HTTPS, SCP , SFTP , and FTP\nhttps://linuxize.com/post/curl-command-examples/\n\n\necho\nprint argument to standard output\nhttps://linuxize.com/post/echo-command-in-linux-with-examples/\n\n\n$PATH\nenvironmental variable that includes colon-delimited list of directories where the shell searches for executable files\nhttps://linuxize.com/post/how-to-add-directory-to-path-in-linux/"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#what-we-wont-cover",
+    "href": "slides/workshop_full_slides.html#what-we-wont-cover",
+    "title": "DevOps for Data Scientists",
+    "section": "What we won’t cover",
+    "text": "What we won’t cover\n\n\n\nHow to become a DevOps engineer\nPython-based workflows\nIn-depth security and auth practices"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#part-2-devops-principles-tools",
+    "href": "slides/workshop_full_slides.html#part-2-devops-principles-tools",
+    "title": "DevOps for Data Scientists",
+    "section": "Part 2: DevOps Principles & Tools",
+    "text": "Part 2: DevOps Principles & Tools"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#section-goals",
+    "href": "slides/workshop_full_slides.html#section-goals",
+    "title": "DevOps for Data Scientists",
+    "section": "Section Goals",
+    "text": "Section Goals\n\n\nTo understand the main principles of DevOps and how they can improve data science workflows.\nTo get familiar with the DevOps toolkit.\nTo get familiar with how the renv package helps create reproducible environments for your R projects.\nTo get comfortable using the terminal for interacting with git and github.\nTo understand how to authenticate to github using SSH or HTTPS.\nTo practice creating a CI/CD workflow using yaml and Github Actions."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#section",
+    "href": "slides/workshop_full_slides.html#section",
+    "title": "DevOps for Data Scientists",
+    "section": "",
+    "text": "“DevOps is a set of cultural norms, practices, and supporting tooling to help make the process of developing and deploying software smoother and lower risk.”\n\n\nDefinition credit:Alex Gold, https://www.do4ds.com\n\n\nLet’s get into it. We’re at a DevOps workshop - so what is it. This is a best effort attempt by our very own Alex Gold, but its still a squishy broad buzz word that’s defined differently across organization. Let’s discuss how the concept of devops came about."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#but-firsta-very-brief-history-lesson",
+    "href": "slides/workshop_full_slides.html#but-firsta-very-brief-history-lesson",
+    "title": "DevOps for Data Scientists",
+    "section": "But first…a very brief history lesson",
+    "text": "But first…a very brief history lesson\n\n\nReason for squishy definition is because it developed organically in the 2007-2009, across social media, twitter tag #devops was popular, online communities and became more organized through conferences, workshops, and grassroots attempts at implementation at diff companies. Then was introduced into larger companies like Intel, PayPal, Facebook.\nBecame more popular through work by Gene Kim and Patrick Debois and others - Pheonix Project is actually a novel about an IT project at a made-up company.\nSo what were all these people trying to do - what was the context? All trying to create something."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#so-you-want-to-create-an-app",
+    "href": "slides/workshop_full_slides.html#so-you-want-to-create-an-app",
+    "title": "DevOps for Data Scientists",
+    "section": "So you want to create an app?",
+    "text": "So you want to create an app?\n\n\nLet’s talk about what it looks like to create an application. On one side you had developers creating some sort of application - let’s say a stock trading application, so your end user are stock traders\nDevs would work on creating the code for this app, get requirements, test it and then package up all the source code in some way so that its executable and that it could be deployed somehow to those end users you’d configure the server, install any tools and frameworks needed to run the code, and then launch.\nNow your stock traders are using their application - maybe they’re giving feedback somehow or errors are being logged. Another team is monitoring the environment and seeing if servers are able to handle the load of all the users.\nBut eventually you’d need to fix bugs or release new features or maybe change things so that the app could handle more end users -\nyour dev team make updates, version those changes, test them, re-launch the app and you do this over and over again in some sort or release process – so you have this continuous cycle of releasing your app, finding something to fix or add, testing that change, integrating that code, and then releasing the app..\nMaking this continuous process as fast, efficient, accurate, and low risk is the goal of devops.\nsounds pretty efficient right -"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#problems-devops-tries-to-solve",
+    "href": "slides/workshop_full_slides.html#problems-devops-tries-to-solve",
+    "title": "DevOps for Data Scientists",
+    "section": "Problems DevOps tries to solve",
+    "text": "Problems DevOps tries to solve\n\n\n\nSo this is the idealized example - but what was it like in practice 20 years ago. You want to make the release process as fast as possible but you also want it to be tested and free of bugs. And this introduces a natural conflict between speed and stability\nYou have the same goals of speed and accuracy - but this process of continuous integration, of testing, of automating processes so that your users can get their hands on the app - didnt exist.\nOne problem is that the entire process is siloed between the creation of the code and the deployment of your app. So your developers finish their code and then throw it over the fence to ops. Maybe they then throw it to security or to QA. But there was no formal alliance in place or processes on how the teams work together. Because each team is seemingly working on one part - the code vs. the deploy - there’s also technical knowledge siloes - each team only knows their bit but not anything else.\nSo imagine this stock trading app - your developers are creating cool new features so that you can easily buy and sell stock, maybe even see data on whats happening in the market. But they’re not necessarily thinking about how the app is secured or if its compliant with federal regulations or if user data is protected. Obvi this is a worst case scenario - but you get the picture.\nSo as the app is built it keeps getting thrown back and forth between the two teams and leads to one of the major problems that devops is trying to fix - really slow and manual bureaucratic release process.\nOn the technical side, a lot of the actual work is done manually. So you can imagine one team running tests manually in one environment - maybe the environment itself is created manually, or someone manually sizing up or fixing a server. This takes time, you need to get approval from people, and its not easily reproduced or really documented anywhere. Also, there is a lot of room for error and if things break its not easy to roll back bugs.\nProblem becomes how do you automate this release process, make it streamlined, less error prone, improve how all these teams integrate and operate, and at the end of the day make the process of getting the app into the hands of your users much faster."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#common-devops-principles",
+    "href": "slides/workshop_full_slides.html#common-devops-principles",
+    "title": "DevOps for Data Scientists",
+    "section": "Common DevOps Principles",
+    "text": "Common DevOps Principles\n\n\n🤲 Collaboration\n\n🚚 Continuous Integration & Delivery\n\n🤖 Automation\n\n📔 Reproducibility\n\n👨‍🎤 Culture change\n\nAs the field of devops developed, there are different implementations/diff technologies of what devops means - these happen differently at different companies But there have been some common philosophies and best practices that have come out that I’ve seen consistently across the entire ecosystem.\nFirst - everyone that’s involved in the creation of this application should be collaborating and working together. This is my wink wink moment for you all of why devops is so important for data scientists\nThen we have this concept of Continuous Integration & Delivery - we’ll take about this in greater length in a few minutes - but this is the process of 1. the coding of the app 2. the versioning of that code is some kind of repository 3. testing those changes 4. integrating them into the app if those tests are passed 5. And then that continuous process of releasing those changes into production\nSo for the CI/CD process to work and specifically to work quickly - we will need some level of automation as we move through that cyclical process. You don’t want to have to pause things to get approval or manually change things when tests pass - you want it to get to the user as quickly as possible after everything has been tested.\nThe next piece is reproducibility. You have different teams working on different pieces of the puzzle, but at the end of the day the end result is the same. Everyone is working on that same app - in this case our stock platform. So as jobs go from one team to another team and as your app goes from development to testing to finally your users, you want to make sure that there’s a common ecoystem that everyone is working in. When you’re testing your app you want to make sure that your environment is as similar to what is going to be in real-life or what is called “production”. You also want to make sure that your code itself is reproducible and that it works for users regardless of their location or their computer or their browser maybe.\nThe last piece that I find really interesting is the concept of culture change. So what needs to change in your organization so that you’re able to function while still holding this tension or conflict between speed and stability. How do you make sure that teams that have different incentives - for example security team vs. a data team - are able to work together.\nSo let me pause - that’s a lot - everyone got a bit of a history lesson but as far as i’m aware no one here is a software developer or an IT engineer. So that brings me to this very important question: But"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#why-should-we-as-data-scientists-care-about-this",
+    "href": "slides/workshop_full_slides.html#why-should-we-as-data-scientists-care-about-this",
+    "title": "DevOps for Data Scientists",
+    "section": "Why should we as data scientists care about this?",
+    "text": "Why should we as data scientists care about this?\n\nlets have a little thought experiment"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#has-this-ever-happened-to-you",
+    "href": "slides/workshop_full_slides.html#has-this-ever-happened-to-you",
+    "title": "DevOps for Data Scientists",
+    "section": "Has this ever happened to you?",
+    "text": "Has this ever happened to you?\n\n\nYou come back to code from a year ago and now it doesnt run!\n\nReproducibility\n\n\n\n\nYou need to hand off your model to the Engineering team but they only code in Java\n\nContinuous Integration & Delivery & Collaboration\n\n\n\n\nYour boss asks you to share that Shiny app with a client but the ops team is too busy working on their roadmap to help you deploy it somewhere.\n\nCulture Change"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#we-should-care-because",
+    "href": "slides/workshop_full_slides.html#we-should-care-because",
+    "title": "DevOps for Data Scientists",
+    "section": "We should care because …",
+    "text": "We should care because …\n\n\n\nData scientists are developers!\nData science careers have moved from academic sphere to tech and software but education hasnt always followed\nAutomation, collaboration, testing can dramatically improve data work and improve reproducibility\nThe many hats of a data scientist\nImprove collaboration & communication with other teams\n\n\n\nspent a lot of time talking about teams working together to create a shared product. Data scientists are a part of that team. DS is a relatively new field and creating data-intensive apps is a huge part of tech world today.\nDS career paths started in academia - not a lot of best practices are taught"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#responsibility-of-the-analyst",
+    "href": "slides/workshop_full_slides.html#responsibility-of-the-analyst",
+    "title": "DevOps for Data Scientists",
+    "section": "Responsibility of the analyst",
+    "text": "Responsibility of the analyst\n\n\nI mentioned before that a lot of DS comes from academia and research. So the concept of reproducing your results - especially if those results play a role in how medicines or medical devices are developed - is incredibly important.\n2005 essay by John Ioannidis in scientific journal on what is known as the replicability crisis in scientific publishing, arguing that majority medical research studies cannot be replicated.\nSo as data scientists and we are curators of the data and are responsible for its legitimacy in many ways - obv cant always control it of course.\nThis second paper started looking a method of reproducing results - namely Jupyter notebooks - and found a lot of ways that reproducibility was improved but also a lot of places where things could have been done better and some best practices for how to do that - in what we call literate programming.\n27,271 Notebooks:\n\n11,454 could not declare dependencies\n5,429 could not successfully install declared dependencies\n9,185 returned an error when ran\n324 returned a different result than originally reported\n\nLet’s get back to our principles:"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#the-devops-process-flow",
+    "href": "slides/workshop_full_slides.html#the-devops-process-flow",
+    "title": "DevOps for Data Scientists",
+    "section": "The Devops Process Flow",
+    "text": "The Devops Process Flow"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#proliferation-of-tools",
+    "href": "slides/workshop_full_slides.html#proliferation-of-tools",
+    "title": "DevOps for Data Scientists",
+    "section": "Proliferation of tools",
+    "text": "Proliferation of tools\n\n\nproliferation of tools, source code management, repo management, build tools, data management, deployment, container services, config management, monitoring, cloud services"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#an-opinionated-take-on-tools",
+    "href": "slides/workshop_full_slides.html#an-opinionated-take-on-tools",
+    "title": "DevOps for Data Scientists",
+    "section": "An opinionated take on tools",
+    "text": "An opinionated take on tools\n\n\nCI/CD\nEnvironment Management\nVersion Control & Git workflows\nPackage Management\nAutomation & Build tools\nContinuous Monitoring and Logging\n\n\n-these are the ones that we’re going to be covering - lot of tools, but this is what they should help you to do -definitely not going to be a complete overview of the entire ecosystem - there’s also a lot of overlap in the definitions -\n-but in my opinion the most important tool types to get you started quickly."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#the-cicd-pipeline",
+    "href": "slides/workshop_full_slides.html#the-cicd-pipeline",
+    "title": "DevOps for Data Scientists",
+    "section": "The CI/CD Pipeline",
+    "text": "The CI/CD Pipeline\n\n\n\nAs we discussed before CI/CD is an iterative cycle of small steps to quickly build, test, and deploy your code - this is a critical component of devops.\nSo CI/CD is often said in the same breath - as it makes up a continuous pipeline - but its actually pretty discrete parts so I want to make sure we understand how they differ.\n\n-Continuous integration (CI) - this is where you or anyone who writes code, automatically builds, tests, and commits code changes into a shared repository; This is usually triggered by an automatic process where the code is built, tested and then either passes or fails. This step is focused on improving the actual build or application as quickly as possible.\nDifferent types of tests - from unit tests to integration tests to regression tests.\n-Continuous delivery (CD) and deployment are less focused on the build but on the actual installation and distribution of your build. This includes an automated process to deploy across different environments - from development to testing and finally to production. Delivery is the process for the final release - that “push of a button step” to get to prod.\nwe’ll talk about some examples of popular CI/CD tools in a bit - Github Actions, Jenkins, CircleCI, Gitlab CI"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#environment-management",
+    "href": "slides/workshop_full_slides.html#environment-management",
+    "title": "DevOps for Data Scientists",
+    "section": "Environment Management",
+    "text": "Environment Management\n\n\n\n\n\n\n\n\n\nDevelopment ➡️ | Testing ➡️ | Production 🔄 |\n\n\n\n\n\nExploratory\nOften local machine\nAccess to R/Python Packages\n\n\nas similar to prod as possible\nunit & integration testing\ndata validation\n“sandbox” with data that’s as close to real as possible\n\n\nautomatic CD\nisolated from dev & test\ncreated with code\n\n\n\n\n\nunit test - testing individual units of code to make sure it does what you want it to do\nintegration test - make sure putting pieces together doesnt introduce any errors\nwant to be able to reproduce the environments as closely as possible"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#version-control-workflows",
+    "href": "slides/workshop_full_slides.html#version-control-workflows",
+    "title": "DevOps for Data Scientists",
+    "section": "Version Control & Workflows",
+    "text": "Version Control & Workflows\n\n\nVersion control is a main tool for Continuous Integration -\nlots of variants - git, github., svn, gitlab, etc\ndistributed version control - everyone has their own repo\ncan track changes and roll them back\ncan fix merge conflicts\nan an iterative process to build, test, collaborate on your code to above environments. Very commonly, individuals work on separate branches that are then tested and reviewed by colleagues before they are merged into a main branch.\nIn addition to the action of promoting your code - its also important to have processes in place for how the code integration process occurs - includes humans coming together and making some decisions -\ne.g code reviews, process for your team, how to name things, pull requests, merging, feature branching, automatic tests"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#lab-activity---developing-locally-using-quarto",
+    "href": "slides/workshop_full_slides.html#lab-activity---developing-locally-using-quarto",
+    "title": "DevOps for Data Scientists",
+    "section": "Lab Activity - developing locally using Quarto",
+    "text": "Lab Activity - developing locally using Quarto\n🟥 - I need help\n🟩 - I’m done\n\nLogin to pos.it/class with code devops_workshop\nLab 1 Part 1\n\nShow how to login to the workshop environment and where the lab is\n5 minutes"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#is-version-control-secure",
+    "href": "slides/workshop_full_slides.html#is-version-control-secure",
+    "title": "DevOps for Data Scientists",
+    "section": "Is version control secure?",
+    "text": "Is version control secure?\n\nOur code is still saved locally\nHow do we make sure that the code we push to Github (or elsewhere) is secure?"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#a-short-auth-teaser",
+    "href": "slides/workshop_full_slides.html#a-short-auth-teaser",
+    "title": "DevOps for Data Scientists",
+    "section": "A short auth teaser",
+    "text": "A short auth teaser\n\nWe can use a variety of data sharing “transfer protocols”\nProtocols specify what kind of traffic is moving between 2 machines\nUse different security mechanisms\nPorts on the host and destination specifies where to direct the traffic\n\n\n\nAdd diagram - http and https two computers with ports\nThere are lots of diff transfer protocols; what you use depends on what kind data is being transferred and your security requirements. So for example, maybe you’re sending plain text or email or a webpage.\nProtocols as well as processes or application run on specific ports. A port is a virtual point where network connections start and end. Allow computers to easily differentiate between different kinds of traffic. So for example, Shiny Server runs on port 3838, Workbench runs on …\nwhether its email, text, files, etc Ports are software-based and managed by a computer’s operating system. Ports emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#git-protocol-options",
+    "href": "slides/workshop_full_slides.html#git-protocol-options",
+    "title": "DevOps for Data Scientists",
+    "section": "Git protocol options",
+    "text": "Git protocol options\n\n\n\nhttp\nhttps\nSSH\n\n\n\n\nport 80\nport 443\nport 22\n\n\n\nhttp - text sent over the internet\nhttps - http encrypted with “SSL/TLS”\nSSH - secure shell\n\nwe’ll be using https - because … from jenny bryans happy git with R\nhypertext transfer protocol When a web user wants to load or interact with a web page, their web browser sends an HTTP request to the origin server that hosts the website’s files. These requests are essentially lines of text that are sent via the internet.\nhttps : http encrypted with SSL/TLS - digital certificates that establish an encrypted connected\nSSH: secure shell, public-key cryptography to authenticate the client, used for remote logins, command line execution\nHTTPS is simpler. For most services besides Github, you just have to enter in your username and password, and you’ll be able to push and pull code.\nYou don’t have to juggle multiple SSH keys around to use multiple devices.\nPort 443, which HTTPS uses, is open in basically any firewall that can access the internet. That isn’t always the case for SSH.\nThe primary downside for most people is that you must enter your Git password/token every time you push. While it gets added to a cache, it’s not configured to cache permanently (though this can be changed). With SSH keys, it just uses the key file on disk every time.\nWhere SSH takes the lead is with the authentication factor—the key. The length of it alone makes it harder to accidentally leak, and due to it being unwieldy and unique, it’s generally more secure."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#reproducing-your-environment",
+    "href": "slides/workshop_full_slides.html#reproducing-your-environment",
+    "title": "DevOps for Data Scientists",
+    "section": "Reproducing your environment",
+    "text": "Reproducing your environment\nWhat are the layers that need to be reproduced across your dev, test, and prod environments?\nWhat’s your most difficult reproducibility challenge?"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#layers-of-reproducibility",
+    "href": "slides/workshop_full_slides.html#layers-of-reproducibility",
+    "title": "DevOps for Data Scientists",
+    "section": "Layers of reproducibility",
+    "text": "Layers of reproducibility\n\n\n\ncode - scripts, configs, applications\nPackages\nSystem - r and python depend on underlying system software - for example, spatial analysis packages, or anything that requires Java - rJava\nOS\nHardware - processors Intel chip, silicon chip"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#packages-vs.-libraries-vs.-repositories",
+    "href": "slides/workshop_full_slides.html#packages-vs.-libraries-vs.-repositories",
+    "title": "DevOps for Data Scientists",
+    "section": "Packages vs. Libraries vs. Repositories",
+    "text": "Packages vs. Libraries vs. Repositories\n\nPackage - contains code, functions, data, and documentation. \nLibrary - is a directory where packages are installed. \nRepository - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.\n\npackages - Can be be distributed as SOURCE (a directory with all package components), BINARIES (contains files in OS-specific format) or as a BUNDLE (compressed file containing package components, similar to source).\nlibrary - You can have user-level or project-level libraries. Run .libPaths() to see yours. To use a package in has to be installed in a library with install.packages() and then loaded into memory with library(x) .\nrepo - others include pypi, bioconducter, private repos"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#renv-workflow",
+    "href": "slides/workshop_full_slides.html#renv-workflow",
+    "title": "DevOps for Data Scientists",
+    "section": "renv workflow",
+    "text": "renv workflow\n\n\n\nUse a version control system e.g.git with GitHub\nOne user (should explicitly initialize renv in the project, This will create the initial renv lockfile, and also write the renv auto-loaders to the project’s .Rprofile and renv/activate.R. These will ensure the right version of renv is downloaded and installed for your collaborators when they start in this project.\npush your code alongside the generated lockfile renv.lock. Be sure to also share the generated auto-loaders in .Rprofile and renv/activate.R.\nAfter this has completed, they can then use renv::restore() to restore the project library locally on their machine."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#example",
+    "href": "slides/workshop_full_slides.html#example",
+    "title": "DevOps for Data Scientists",
+    "section": "Example",
+    "text": "Example\n# install.packages(\"renv\")\nrenv::init()\nrenv::snapshot()\nlapply(.libPaths(), list.files)\n\n🔍 Live code"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#lab-activity---renv-workflow-github-authentication",
+    "href": "slides/workshop_full_slides.html#lab-activity---renv-workflow-github-authentication",
+    "title": "DevOps for Data Scientists",
+    "section": "Lab Activity - renv workflow & github authentication",
+    "text": "Lab Activity - renv workflow & github authentication\n🟥 - I need help\n🟩 - I’m done\n\nLab 1: Part 2 & 3\n\nYou’ll be doing renv in your workbench environment both in your console for r code and in the terminal for git commands you’ll also need to log in to your github account where you’ll be creating an upstream repository to link with your local code.\nwe’ll be using https auth but there’s also information if you later want to test out ssh\n10-15 minutes"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#build-tools",
+    "href": "slides/workshop_full_slides.html#build-tools",
+    "title": "DevOps for Data Scientists",
+    "section": "Build tools",
+    "text": "Build tools\n\nVirtualization/Containerization\nInfrastructure as code\nAutomation with Github Actions/Jenkins/CircleCI\nCloud devops tools (Azure Devops, Google Cloud Build)\n\n\n\nautomate common build and deployment tasks\nfor example, generating artifacts, deploying to diff environs, provisioning or deprovisioning environments -\nsome overlap here between these tools and CI/CD\n\nVirtual/Container -prod-identical - help you build isolated environments and tested and debug code; docker, kubernetes, other container services\nIaC - quickly re-provision your entire environment with code (chef, puppet, dockr, terraform, ansible) instead of fixing it, just tear it down and restart it - configuration management\ntools that automate the process of building and deploying your code once it goes from your dev env to test and prod\ncloud devops - run your entire devops stack in a cloud managed cloud managed platform\nYou also have support tools - that are used across a lot of these tools - I want to discuss one of them here - YAML\n\n\nIllustration credit:"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#power-of-yaml",
+    "href": "slides/workshop_full_slides.html#power-of-yaml",
+    "title": "DevOps for Data Scientists",
+    "section": "Power of YAML",
+    "text": "Power of YAML\n\nYAML Ain’t Markup Language\ncommunication of data between people and computers\nhuman friendly\nconfigures files across many execution environments"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#yaml",
+    "href": "slides/workshop_full_slides.html#yaml",
+    "title": "DevOps for Data Scientists",
+    "section": "YAML",
+    "text": "YAML\nEmpRecord:  \n  emp01:\n    name: Michael\n    job: Manager\n    skills: \n      - Improv\n      - Public speaking\n      - People management\n  emp02:\n    name: Dwight\n    job: Assistant to the Manager\n    skills: \n      - Martial Arts\n      - Beets\n      - Sales\n\nwhitespace indentation denotes structure & hierarchy\nColons separate keys and their values\nDashes are used to denote a list"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#example---yaml-in-action",
+    "href": "slides/workshop_full_slides.html#example---yaml-in-action",
+    "title": "DevOps for Data Scientists",
+    "section": "Example - YAML in action",
+    "text": "Example - YAML in action\n\nDocker compose yaml file to spin up all 3 Posit Pro products\n\n\n🔍 Live code"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#exercise---inspect-your-yaml",
+    "href": "slides/workshop_full_slides.html#exercise---inspect-your-yaml",
+    "title": "DevOps for Data Scientists",
+    "section": "Exercise - Inspect your YAML",
+    "text": "Exercise - Inspect your YAML\n🟥 - I need help\n🟨 - I’m still working\n🟩 - I’m done\nInspect your _quarto.yml file and identify what each part of it does using the quarto site.\n\n2-5 minutes - render your site to help"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#continuous-integration-example",
+    "href": "slides/workshop_full_slides.html#continuous-integration-example",
+    "title": "DevOps for Data Scientists",
+    "section": "Continuous Integration Example",
+    "text": "Continuous Integration Example\n\n\ntoday - we’ll be discussing GHA Actions - which is a common CI tool that is handy because it uses the same platform as your versioned repositories - inthis case github\nuses yaml as a configuration tool"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#other-gha-categories",
+    "href": "slides/workshop_full_slides.html#other-gha-categories",
+    "title": "DevOps for Data Scientists",
+    "section": "Other GHA Categories",
+    "text": "Other GHA Categories\n\nDeployment\nSecurity\nContinuous Integration\nAutomation\nPages\nMake your own!\n\nExamples"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#quarto-publish-flows",
+    "href": "slides/workshop_full_slides.html#quarto-publish-flows",
+    "title": "DevOps for Data Scientists",
+    "section": "Quarto Publish Flows",
+    "text": "Quarto Publish Flows\nManually\n\nContinuous Integration\n\n\ncan publish to quarto pub, GHP, connect, netlify, confluence, other destinations, more work to set up"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#gha-structure",
+    "href": "slides/workshop_full_slides.html#gha-structure",
+    "title": "DevOps for Data Scientists",
+    "section": "GHA Structure",
+    "text": "GHA Structure\n\nOpen source ecosystem of available actions\n\nGithub Official Actions\nRLib Actions\n\n\nWorkflows can include tests, markdown renders, shell scripts, cron jobs, or deployments. They can be as simple or as complicated as you need. Open-source community provides a ton of examples of actions."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#actions-syntax",
+    "href": "slides/workshop_full_slides.html#actions-syntax",
+    "title": "DevOps for Data Scientists",
+    "section": "Actions Syntax",
+    "text": "Actions Syntax\nCode"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#lab-activity---cicd-with-github-actions",
+    "href": "slides/workshop_full_slides.html#lab-activity---cicd-with-github-actions",
+    "title": "DevOps for Data Scientists",
+    "section": "Lab Activity - CICD with Github Actions",
+    "text": "Lab Activity - CICD with Github Actions\n🟥 - I need help\n🟩 - I’m done\n\nLab 1: Part 4\n\nwe’ll be doing a few things - create a gh branch - publish to github - create a gha with a yaml file - create an api key for connect - update yaml file - push everything"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#logging",
+    "href": "slides/workshop_full_slides.html#logging",
+    "title": "DevOps for Data Scientists",
+    "section": "Logging",
+    "text": "Logging\nlog session ➡️ log statement ➡️ log entry\n\n\n\n\n\napp.py\n\nimport logging\n\n# Configure the log object\nlogging.basicConfig(\n    format='%(asctime)s - %(message)s',\n    level=logging.INFO\n)\n\n# Log app start\nlogging.info(\"App Started\")\n\n\n\n\n\n\napp.R\n\n# Configure the log object\nlog &lt;- log4r::logger()\n\n# Log app start\nlog4r::info(log, \"App Started\")\n\n\n\n\n\ncreate a log session for your r or python code, write a log statement, gets added into an entry\nwhat to log\ntypes of logs"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#monitoring",
+    "href": "slides/workshop_full_slides.html#monitoring",
+    "title": "DevOps for Data Scientists",
+    "section": "Monitoring",
+    "text": "Monitoring\n\nIf you want to register metrics from your API or app with Prometheus, there is an official Prometheus client in Python and the {openmetrics} package in R makes it easy to register metrics from a Plumber API or Shiny app.\n\nThere’s a great Get Started with Grafana and Prometheus doc on the Grafana Labs website if you want to actually try it out."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#part-3-goals-docker-for-data-scientists",
+    "href": "slides/workshop_full_slides.html#part-3-goals-docker-for-data-scientists",
+    "title": "DevOps for Data Scientists",
+    "section": "Part 3 Goals: Docker for Data Scientists",
+    "text": "Part 3 Goals: Docker for Data Scientists\n\nto understand different docker workflows\nto learn common docker syntax for building and running containers\nto get hands on experience building and running containers\nto explore the linux file system"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#why-use-a-container-at-all",
+    "href": "slides/workshop_full_slides.html#why-use-a-container-at-all",
+    "title": "DevOps for Data Scientists",
+    "section": "Why use a container at all?",
+    "text": "Why use a container at all?\n\nallows you to package up everything you need to reproduce an environment/application\nlightweight system without much overhead\nshare containers with colleagues without requiring them to have to set up their own local machines\nquick testing and debugging\nallows you to easily version snapshots of your work\nscaling up"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#our-docker-environment",
+    "href": "slides/workshop_full_slides.html#our-docker-environment",
+    "title": "DevOps for Data Scientists",
+    "section": "Our Docker Environment",
+    "text": "Our Docker Environment"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#workflow",
+    "href": "slides/workshop_full_slides.html#workflow",
+    "title": "DevOps for Data Scientists",
+    "section": "Workflow",
+    "text": "Workflow\n\n\ndockerfile - is a script of instructions for how to build an image\nimage - everything you need to run an application - all the layers that build the environment, dependencies, libraries, files\ncontainer - isolated instance of a running image. you can create, stop, start, restart, containers. When a container is removed/deleted any changes to its state that arent stored in some kind of persistent storage disappear. Called ephemeral container - Think of a container as a snapshot in time of a particular application.\nMissing piece - repository - for images, like dockerhub, container registry cloud services, private registries\nBuild - Run - Push"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#architecture",
+    "href": "slides/workshop_full_slides.html#architecture",
+    "title": "DevOps for Data Scientists",
+    "section": "Architecture",
+    "text": "Architecture\n\n\nOn the left we have the client - think of this as your computer or perhaps a computer somewhere in the cloud\non the right you have the server - this the docker host which runs something called the Docker daemon - you’ll be communicating with the Docker daemon via a command line interface.\nThe host can be remote or it can be on your computer with the client - so for example, you can download something called Docker Engine. In most cases the host is running on a Linux OS. (in different laptop OS, Docker Desktop uses a lightweight VM under the hood)\nDocker engine is a container runtime that runs on different OS’s. Sets up the isolated environment for your container.\nwhat the heck is the Docker daemon - its a service that does all the heavy lifting of building and running your containers\nregistry - upload and download images\nDocker Desktop includes the Docker daemon (dockerd), the Docker client (docker), Docker Compose - another client, Docker Content Trust, Kubernetes, and Credential Helper."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#images",
+    "href": "slides/workshop_full_slides.html#images",
+    "title": "DevOps for Data Scientists",
+    "section": "Images",
+    "text": "Images\n\n\nmade up of individual layers so its really quick to build isolating applications into their own image"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#dockerhub-registry",
+    "href": "slides/workshop_full_slides.html#dockerhub-registry",
+    "title": "DevOps for Data Scientists",
+    "section": "Dockerhub Registry",
+    "text": "Dockerhub Registry\nhttps://hub.docker.com/search?q="
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#containers",
+    "href": "slides/workshop_full_slides.html#containers",
+    "title": "DevOps for Data Scientists",
+    "section": "Containers",
+    "text": "Containers\n\n\nrunnable instance of an image.\nFrom the bottom up Containers run on some sort of infrastructure - this could be your laptop or a server somewhere in the cloud\nhost OS - shared OS between container instances, dont need a guest os for each one, makes them really light and able to spinup in milliseconds\ncontainers are very lightweight which makes it really easy and quick to spin them up\nInstead, the Docker daemon communicates directly with the host operating system and knows how to ration out resources for the running Docker containers."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#how-can-data-scientists-use-docker",
+    "href": "slides/workshop_full_slides.html#how-can-data-scientists-use-docker",
+    "title": "DevOps for Data Scientists",
+    "section": "How can data scientists use docker?",
+    "text": "How can data scientists use docker?"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#example---testing-versioning",
+    "href": "slides/workshop_full_slides.html#example---testing-versioning",
+    "title": "DevOps for Data Scientists",
+    "section": "Example - testing & versioning",
+    "text": "Example - testing & versioning\ndocker pull postgres:12\ndocker pull postgres:latest\ndocker container ls -a\ndocker run -d -e POSTGRES_PASSWORD=mysecretpassword --name postgres_early imageID\ndocker run -d -e POSTGRES_PASSWORD=mysecretpassword --name postgres_new imageID\ndocker container ls -a\ndocker stop\ndocker restart\n\n🔍 Live code\n\n\ncan pull but also if you just run - will put it from hub if doenst find locally Let’s see an example of what this looks like in practice. Lets say we need to use a postgres sql database for some testing - but we want to test using an older and a newer version of postgres.\ndocker image ls - lets list all the images that we have\ndocker pull postgres:12 - see how its pulling and extracting all these layers - but what if we want a newer version or what if we need to run both versions on our machine\ndocker pull postgres:latest - notice how some of these layers already exist so it takes a lot less time"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#example---reproduce-environments",
+    "href": "slides/workshop_full_slides.html#example---reproduce-environments",
+    "title": "DevOps for Data Scientists",
+    "section": "Example - reproduce environments",
+    "text": "Example - reproduce environments\nhttps://hub.docker.com/u/rocker\n# pull the image\ndocker pull rocker/r-base\n\n# run container\ndocker run --rm -it rocker/r-base"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#example---isolate-applications",
+    "href": "slides/workshop_full_slides.html#example---isolate-applications",
+    "title": "DevOps for Data Scientists",
+    "section": "Example - isolate applications",
+    "text": "Example - isolate applications\nhttps://hub.docker.com/u/rstudio\nDO NOT RUN!\ndocker run -it --privileged \\\n    -p 3939:3939 \\\n    -e RSC_LICENSE=$RSC_LICENSE \\\n    rstudio/rstudio-connect:ubuntu2204"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#example---docker-as-deployment-strategy",
+    "href": "slides/workshop_full_slides.html#example---docker-as-deployment-strategy",
+    "title": "DevOps for Data Scientists",
+    "section": "Example - Docker as deployment strategy",
+    "text": "Example - Docker as deployment strategy"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#example---docker-in-ci-pipeline",
+    "href": "slides/workshop_full_slides.html#example---docker-in-ci-pipeline",
+    "title": "DevOps for Data Scientists",
+    "section": "Example - Docker in CI pipeline",
+    "text": "Example - Docker in CI pipeline\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      -\n        name: Checkout\n        uses: actions/checkout@v3\n      -\n        name: Login to Docker Hub\n        uses: docker/login-action@v2\n        with:\n          username: ${{ secrets.DOCKERHUB_USERNAME }}\n          password: ${{ secrets.DOCKERHUB_TOKEN }}\n      -\n        name: Set up Docker Buildx\n        uses: docker/setup-buildx-action@v2\n      -\n        name: Build and push\n        uses: docker/build-push-action@v4\n        with:\n          context: .\n          file: ./Dockerfile\n          push: true\n          tags: ${{ secrets.DOCKERHUB_USERNAME }}/latest\n\n\nData scientists benefit from Docker’s consistency and reproducibility.\nCreate isolated environments for different experiments.\nShare work with colleagues without environment setup issues.\nConsistency: Containers ensure that applications run the same way across different environments.\nIsolation: Containers isolate applications and their dependencies, preventing conflicts.\nPortability: Containers can run on any system that supports Docker, reducing “it works on my machine” issues."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#modes-for-running-containers",
+    "href": "slides/workshop_full_slides.html#modes-for-running-containers",
+    "title": "DevOps for Data Scientists",
+    "section": "Modes for running containers",
+    "text": "Modes for running containers\n\n\n\n\n\n\n\n\nMode\nRun command\nUse case\n\n\n\n\nDetached\ndocker run -d\nThis runs the container in the background so the container keeps running until the application process exits, or you stop the container. Detached mode is often used for production purposes.\n\n\nInteractive + terminal\ndocker run -it\nThis runs the container in the foreground so you are unable to access the command prompt. Interactive mode is often used for development and testing.\n\n\nRemove everything once the container is done with its task\ndocker run --rm\nThis mode is used on foreground containers that perform short-term tasks such as tests or database backups. Once it is removed anything you may have downloaded or created in the container is also destroyed."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#lab-activity---running-containers",
+    "href": "slides/workshop_full_slides.html#lab-activity---running-containers",
+    "title": "DevOps for Data Scientists",
+    "section": "Lab Activity - Running containers",
+    "text": "Lab Activity - Running containers\n🟥 - I need help\n🟩 - I’m done\n\nLab 2: Part 1"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#running-containers",
+    "href": "slides/workshop_full_slides.html#running-containers",
+    "title": "DevOps for Data Scientists",
+    "section": "Running containers",
+    "text": "Running containers\ndocker pull ubuntu\ndocker image ls -a\n\ndocker run -it ubuntu bash\nls\nwhoami\nhostname\n# exit the container with Ctrl+D or exit\n\ndocker run -d ubuntu\ndocker container ls -a\n\ndocker run -d -P --name nginx1 nginx:alpine\n\ndocker container stop nginx1\n\ndocker run --rm debian echo \"hello world\""
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#container-debugging",
+    "href": "slides/workshop_full_slides.html#container-debugging",
+    "title": "DevOps for Data Scientists",
+    "section": "Container Debugging",
+    "text": "Container Debugging\ndocker run -it -d ubuntu\ndocker container ls -a \ndocker exec -it CONTAINER_ID bash\n\ndocker container run -d --name mydb \\\n --name mydb \\\n -e MYSQL_ROOT_PASSWORD=my-secret-pw \\ \n mysql\n \n docker container logs mydb\n\n🔍 Live code"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#lab-activity---debugging-containers",
+    "href": "slides/workshop_full_slides.html#lab-activity---debugging-containers",
+    "title": "DevOps for Data Scientists",
+    "section": "Lab Activity - Debugging Containers",
+    "text": "Lab Activity - Debugging Containers\n🟥 - I need help\n🟩 - I’m done\n\nLab 2: Part 2"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#port-mapping-with-docker-run--p",
+    "href": "slides/workshop_full_slides.html#port-mapping-with-docker-run--p",
+    "title": "DevOps for Data Scientists",
+    "section": "Port Mapping with docker run -p",
+    "text": "Port Mapping with docker run -p\ndocker run -p host_port:container_port\n\ndocker pull httpd:alpine\ndocker pull httpd:latest\n\ndocker inspect --format='{{.Config.ExposedPorts}}' httpd:latest\ndocker inspect --format='{{.Config.ExposedPorts}}' httpd:alpine\n\ndocker run -p DockerHostPort:ApplicationPort\n\ndocker run -d -p 80:80 --name httpd-latest httpd:latest\ncurl http://localhost:81\n\ndocker run -d -p 6574:80 --name httpd-alpine httpd:alpine\ncurl http://localhost:80\n\n🔍 Live code"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#lab-activity---mapping-ports",
+    "href": "slides/workshop_full_slides.html#lab-activity---mapping-ports",
+    "title": "DevOps for Data Scientists",
+    "section": "Lab Activity - Mapping ports",
+    "text": "Lab Activity - Mapping ports\n🟥 - I need help\n🟩 - I’m done\n\nLab 2: Part 3"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#persisting-data-with-docker",
+    "href": "slides/workshop_full_slides.html#persisting-data-with-docker",
+    "title": "DevOps for Data Scientists",
+    "section": "Persisting data with Docker",
+    "text": "Persisting data with Docker\n\nState is persistent information that is recorded and recalled later\nContainers are designed to be ephemeral e.g. stateless by default\nData applications are usually stateful and more complex to deploy\n\n\nImages are made of a set of read-only layers. When we start a new container, Docker adds a read-write layer on the top of the image layers allowing the container to run as though on a standard Linux file system.\nSo, any file change inside the container creates a working copy in the read-write layer. However, when the container is stopped or deleted, that read-write layer is lost."
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#options",
+    "href": "slides/workshop_full_slides.html#options",
+    "title": "DevOps for Data Scientists",
+    "section": "Options",
+    "text": "Options\n\n\n\n\n\n\n\n\nStorage Type\nDescription\nUse case\n\n\n\n\nVolume mount\ncreate new volume managed by Docker CLI\ndedicated filesystem on the host (/var/lib/ docker/volumes)\nNeed to transfer, share, data between multiple containers\n\n\nBind mount\nuse any available host filesystem\nnot managed by Docker CLI\nAccess hidden files\n\n\ntmpfs\nuses host memory\nnot permanent\nsensitive data\n\n\nExternal Database\ncontainer remains stateless;\ncontainer connects to external database\nProduction workflow\n\n\nExternal Shared File System\nshared network file system int the cloud (NFS)\nManaged or multi-cluster deployments\nDon’t want to limit storage"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#lab-activity---persisting-data",
+    "href": "slides/workshop_full_slides.html#lab-activity---persisting-data",
+    "title": "DevOps for Data Scientists",
+    "section": "Lab Activity - Persisting Data",
+    "text": "Lab Activity - Persisting Data\n🟥 - I need help\n🟩 - I’m done\n\nLab 2: Part 4"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#building-docker-images",
+    "href": "slides/workshop_full_slides.html#building-docker-images",
+    "title": "DevOps for Data Scientists",
+    "section": "Building Docker Images",
+    "text": "Building Docker Images\n\nImages are build using a Dockerfile or interactively “on-the-fly” for testing"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#lab-activity---commit-and-push-container-to-dockerhub",
+    "href": "slides/workshop_full_slides.html#lab-activity---commit-and-push-container-to-dockerhub",
+    "title": "DevOps for Data Scientists",
+    "section": "Lab Activity - Commit and push container to DockerHub",
+    "text": "Lab Activity - Commit and push container to DockerHub\n🟥 - I need help\n🟩 - I’m done\n\nLab 2: Part 5"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#a-few-dockerfile-build-commands",
+    "href": "slides/workshop_full_slides.html#a-few-dockerfile-build-commands",
+    "title": "DevOps for Data Scientists",
+    "section": "A few Dockerfile Build Commands",
+    "text": "A few Dockerfile Build Commands\n\n\n\n\n\n\n\nCommand\nDescription\n\n\n\n\nARG\nDefine variables passed at build time\n\n\nFROM\nBase image\n\n\nENV\nDefine variable\n\n\nCOPY\nAdd local file or directory\n\n\nRUN\nExecute commands during build process\n\n\nCMD\nExecute command when you run container; once per Dockerfile\n\n\nENTRYPOINT\nExecute command to change default entrypoint at runtime\n\n\nUSER\nSet username or ID\n\n\nVOLUME\nMount host machine to container\n\n\nEXPOSE\nSpecify port pn which container listens at runtime"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#dockerfile-example",
+    "href": "slides/workshop_full_slides.html#dockerfile-example",
+    "title": "DevOps for Data Scientists",
+    "section": "Dockerfile Example",
+    "text": "Dockerfile Example\nWalk through Posit Connect Dockerfile"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#activity---putting-it-all-together-in-dockerfile",
+    "href": "slides/workshop_full_slides.html#activity---putting-it-all-together-in-dockerfile",
+    "title": "DevOps for Data Scientists",
+    "section": "Activity - Putting it all together in Dockerfile",
+    "text": "Activity - Putting it all together in Dockerfile\n🟥 - I need help\n🟨 - I’m still working\n🟩 - I’m done\nComplete Lab 2: Part 5"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#part-4-data-science-in-production",
+    "href": "slides/workshop_full_slides.html#part-4-data-science-in-production",
+    "title": "DevOps for Data Scientists",
+    "section": "Part 4: Data Science in Production",
+    "text": "Part 4: Data Science in Production"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#data-science-in-production",
+    "href": "slides/workshop_full_slides.html#data-science-in-production",
+    "title": "DevOps for Data Scientists",
+    "section": "Data Science in Production",
+    "text": "Data Science in Production\n\nPresentation Layer\nProcessing Layer\nData store Layer"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#choosing-the-right-presentation-layer",
+    "href": "slides/workshop_full_slides.html#choosing-the-right-presentation-layer",
+    "title": "DevOps for Data Scientists",
+    "section": "Choosing the right presentation layer",
+    "text": "Choosing the right presentation layer\n\nAlex’s flow chart"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#choosing-an-api",
+    "href": "slides/workshop_full_slides.html#choosing-an-api",
+    "title": "DevOps for Data Scientists",
+    "section": "Choosing an API",
+    "text": "Choosing an API"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#production-state",
+    "href": "slides/workshop_full_slides.html#production-state",
+    "title": "DevOps for Data Scientists",
+    "section": "Production “State”",
+    "text": "Production “State”\nQuestions to ask once your content is able to be consumed by your intended audience\n\nWhere is it deployed?\nIs it secure and accessible?\nIs it maintainable?\nDoes it scale?\nIs your code efficiently written?\nIs it tested?"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#where-is-it-deployed",
+    "href": "slides/workshop_full_slides.html#where-is-it-deployed",
+    "title": "DevOps for Data Scientists",
+    "section": "Where is it deployed?",
+    "text": "Where is it deployed?\nlist of PaaS / Caas and highlight Connect"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#lab-activity",
+    "href": "slides/workshop_full_slides.html#lab-activity",
+    "title": "DevOps for Data Scientists",
+    "section": "Lab Activity:",
+    "text": "Lab Activity:\n🟥 - I need help\n🟨 - I’m still working\n🟩 - I’m done\nPart 1: Host API on Posit Connect"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#is-it-secure",
+    "href": "slides/workshop_full_slides.html#is-it-secure",
+    "title": "DevOps for Data Scientists",
+    "section": "Is it secure?",
+    "text": "Is it secure?\n\nBasic Auth\nAPI keys\nToken-based"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#securing-credentials",
+    "href": "slides/workshop_full_slides.html#securing-credentials",
+    "title": "DevOps for Data Scientists",
+    "section": "Securing credentials",
+    "text": "Securing credentials\n\nusername and password\ncentralized credential server\nSSO"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#is-it-accessible",
+    "href": "slides/workshop_full_slides.html#is-it-accessible",
+    "title": "DevOps for Data Scientists",
+    "section": "Is it accessible?",
+    "text": "Is it accessible?\nRBAC"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#lab-activity-1",
+    "href": "slides/workshop_full_slides.html#lab-activity-1",
+    "title": "DevOps for Data Scientists",
+    "section": "Lab Activity:",
+    "text": "Lab Activity:\n🟥 - I need help\n🟨 - I’m still working\n🟩 - I’m done\nPart 2:"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#is-it-maintainable",
+    "href": "slides/workshop_full_slides.html#is-it-maintainable",
+    "title": "DevOps for Data Scientists",
+    "section": "Is it maintainable",
+    "text": "Is it maintainable\ngit-backed deploymnet"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#is-it-scalable",
+    "href": "slides/workshop_full_slides.html#is-it-scalable",
+    "title": "DevOps for Data Scientists",
+    "section": "Is it scalable?",
+    "text": "Is it scalable?\nscaling up vs. scaling out\nconnect shiny resource options"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#is-your-code-efficient",
+    "href": "slides/workshop_full_slides.html#is-your-code-efficient",
+    "title": "DevOps for Data Scientists",
+    "section": "Is your code efficient?",
+    "text": "Is your code efficient?\n\ndata storage\ncomputations\ncaches"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#is-it-tested",
+    "href": "slides/workshop_full_slides.html#is-it-tested",
+    "title": "DevOps for Data Scientists",
+    "section": "Is it tested",
+    "text": "Is it tested\ntesting as part of CI/CD"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#section-2",
+    "href": "slides/workshop_full_slides.html#section-2",
+    "title": "DevOps for Data Scientists",
+    "section": "",
+    "text": "https://github.com/posit-conf-2023/DevOps"
   }
 ]

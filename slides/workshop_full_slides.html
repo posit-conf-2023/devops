@@ -7,8 +7,7 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/quarto-contrib/posit_slides/posit-slides.js"></script><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.433">
 
   <title>Devops for Data Scientists - DevOps for Data Scientists</title>
@@ -391,7 +390,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="white" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-light.svg" data-background-size="contain" class="quarto-title-block">
+<section id="title-slide" data-background-color="white" data-background-size="contain" class="quarto-title-block">
   <h1 class="title">DevOps for Data Scientists</h1>
   <p class="subtitle"><br>Wifi: Posit Conf 2023 <br>Password: conf2023</p>
 
@@ -399,15 +398,13 @@
 </div>
 
 </section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/content-light.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns">
-<div class="column" style="width:100%;">
+<section id="part-1-introductions-setup-workshop-overview" class="slide level2">
 <h2>Part 1: Introductions, setup, &amp; workshop overview</h2>
-</div>
-</div>
+<p><br></p>
+<iframe src="https://giphy.com/embed/xT5LMqaomxCIqZcYEM" width="480" height="366" frameborder="0" class="giphy-embed" allowfullscreen="">
+</iframe>
 </section>
-<section class="slide level2">
+<section id="meet-your-instructors" class="slide level2">
 <h2>Meet your instructors</h2>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Rika</a></li><li><a href="#tabset-1-2">Andrie</a></li><li><a href="#tabset-1-3">David</a></li><li><a href="#tabset-1-4">Gagan</a></li><li><a href="#tabset-1-5">Michael</a></li></ul>
@@ -420,7 +417,7 @@
 </ul>
 </div>
 <div id="tabset-1-2">
-<p><img data-src="images/Andrie square 500px.jpg" width="278"></p>
+<p><img data-src="images/Andrie square 500px.jpg" width="308"></p>
 <ul>
 <li>Director of Posit Strategy, former Solutions Engineer</li>
 </ul>
@@ -438,7 +435,7 @@
 </ul>
 </div>
 <div id="tabset-1-5">
-<p><img data-src="images/michaelmayer-scaled.jpg" width="154"></p>
+<p><img data-src="images/michaelmayer-scaled.jpg" width="260"></p>
 <ul>
 <li>Scientist by training turned IT / HPC / Scientific Computing</li>
 </ul>
@@ -446,7 +443,7 @@
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section id="solutions-engineering-at-posit" class="slide level2">
 <h2>Solutions Engineering at Posit</h2>
 
 <img data-src="images/sol-eng.png" style="width:25.0%" class="r-stretch"><ul>
@@ -454,13 +451,13 @@
 <li><p>Our customer-facing work helps our customers deploy, install, configure, and use our Pro products.</p></li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="special-thanks-to-alex-gold" class="slide level2">
 <h2>Special Thanks to Alex Gold!</h2>
 <p><img data-src="images/_40A8864.jpg" width="278" height="192"></p>
 <p>Author of <a href="www.do4ds.com">DevOps for Data Science</a></p>
 <p>Posit Solutions Engineering Team Director</p>
 </section>
-<section class="slide level2">
+<section id="introduce-yourself-to-your-neighbor" class="slide level2">
 <h2>Introduce yourself to your neighbor</h2>
 <p><br></p>
 <p>Take 5 minutes and introduce yourself to your neighbors.</p>
@@ -468,38 +465,31 @@
 <iframe src="https://giphy.com/embed/Cmr1OMJ2FN0B2" width="480" height="480" frameborder="0" class="giphy-embed" allowfullscreen="">
 </iframe>
 </section>
-<section class="slide level2">
+<section id="word-cloud" class="slide level2">
 <h2>Word Cloud</h2>
 
 <img data-src="images/Screenshot 2023-09-13 at 1.49.45 PM.png" class="r-stretch"></section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/toc-people-dark.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns has-dark-background">
-<div class="column" style="width:100%;">
-<h2>Logistics &amp; Workshop Setup</h2>
-</div>
-</div>
-</section>
-<section class="slide level2">
+<section id="if-your-wifi-isnt-working-let-us-know-as-soon-as-possible" class="slide level2">
 <h2>💻 If your WIFI isn’t working let us know as soon as possible!</h2>
 <p><br></p>
 <p>Name: Posit Conf 2023</p>
 <p>Password: <code>conf2023</code></p>
 </section>
-<section class="slide level2">
+<section id="pre-workshop-install" class="slide level2">
 <h2>Pre-workshop Install</h2>
 <p><br></p>
 <p><strong>Required</strong>:<br>
 <a href="https://registry.hub.docker.com/signup" class="uri">https://registry.hub.docker.com/signup</a><br>
 <a href="https://github.com/signup" class="uri">https://github.com/signup</a><br>
 </p>
-<p><br> <strong>Optional: (for local development)</strong><br>
+<p><br></p>
+<p><strong>Optional: (for local development)</strong><br>
 <a href="https://docs.docker.com/desktop/" class="uri">https://docs.docker.com/desktop/</a><br>
 <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" class="uri">https://git-scm.com/book/en/v2/Getting-Started-Installing-Git</a><br>
 <a href="https://quarto.org/docs/get-started/" class="uri">https://quarto.org/docs/get-started/</a><br>
 <a href="https://posit.co/downloads/" class="uri">https://posit.co/downloads/</a></p>
 </section>
-<section class="slide level2">
+<section id="workshop-install" class="slide level2">
 <h2>Workshop Install</h2>
 <p><br></p>
 <table>
@@ -524,20 +514,21 @@
 </tbody>
 </table>
 </section>
-<section class="slide level2">
+<section id="documentation-communication" class="slide level2">
 <h2>Documentation &amp; Communication</h2>
 <p><br></p>
 <p>All documents including <strong>slides</strong> are available on our website: <a href="https://posit-conf-2023.github.io/DevOps/" class="uri">https://posit-conf-2023.github.io/DevOps/</a></p>
-<p>Discord channel - <code>DevOps-for-data-scientists</code></p>
+<p>Discord channel - <code>devops-for-data-scientists</code></p>
 <p><br></p>
-<p>Place a note on the back of your laptop:</p>
+<p>During labs and exercises,please place a post-it note on the back of your laptop for:</p>
 <p>🟥 - I need help</p>
 <p>🟩 - I’m done</p>
 </section>
-<section class="slide level2">
+<section id="daily-schedule" class="slide level2">
 <h2>Daily Schedule</h2>
 <p><br></p>
-<p>📅 September 17 and 18, 2023 ⏰ 09:00am - 5:00pm</p>
+<p>📅 September 17 and 18, 2023</p>
+<p>⏰ 09:00am - 5:00pm</p>
 <p><br></p>
 <table>
 <thead>
@@ -562,10 +553,7 @@
 </tbody>
 </table>
 </section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/content-light.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns">
-<div class="column" style="width:100%;">
+<section id="code-of-conduct" class="slide level2 content-light">
 <h2>Code of Conduct</h2>
 <ul>
 <li><p>Everyone who comes to learn and enjoy the experience should feel welcome at posit::conf. Posit is committed to providing a professional, friendly and safe environment for all participants at its events, regardless of gender, sexual orientation, disability, race, ethnicity, religion, national origin or other protected class.</p></li>
@@ -574,10 +562,8 @@
 <div style="text-align: center; font-size: 200%; color: #EE6331">
 <p>https://posit.co/code-of-conduct/</p>
 </div>
-</div>
-</div>
 </section>
-<section class="slide level2">
+<section id="workshop-goals" class="slide level2">
 <h2>Workshop Goals</h2>
 <ul>
 <li><p>To understand how DevOps can help you in your work as data scientists</p></li>
@@ -586,7 +572,7 @@
 <li><p>To leave the workshop with some “assets” and skills you can use in your work</p></li>
 </ul>
 </section>
-<section class="slide level2 scrollable">
+<section id="agenda-lab-overview" class="slide level2 scrollable">
 <h2>Agenda &amp; Lab Overview</h2>
 <table>
 <thead>
@@ -637,16 +623,7 @@
 </tbody>
 </table>
 </section>
-<section class="slide level2">
-<h2>Supplemental Materials</h2>
-<ul>
-<li>Linux</li>
-<li>vim</li>
-<li>Git</li>
-<li>Cheat sheets</li>
-</ul>
-</section>
-<section class="slide level2 smaller">
+<section id="most-important-linux-commands" class="slide level2 smaller">
 <h2>Most important Linux commands</h2>
 <table>
 <thead>
@@ -706,36 +683,35 @@
 </tbody>
 </table>
 </section>
-<section class="slide level2">
+<section id="what-we-wont-cover" class="slide level2">
 <h2>What we won’t cover</h2>
+<iframe src="https://giphy.com/embed/26xBziMPJcCmBbpVm" width="300" height="300" frameborder="0" class="giphy-embed" allowfullscreen="">
+</iframe>
 <ul>
 <li><p>How to become a DevOps engineer</p></li>
 <li><p>Python-based workflows</p></li>
 <li><p>In-depth security and auth practices</p></li>
 </ul>
-<iframe src="https://giphy.com/embed/26xBziMPJcCmBbpVm" width="480" height="480" frameborder="0" class="giphy-embed" allowfullscreen="">
+</section>
+<section id="part-2-devops-principles-tools" class="slide level2">
+<h2>Part 2: DevOps Principles &amp; Tools</h2>
+<p><br></p>
+<iframe src="https://giphy.com/embed/l0G18BkChcRRctMZ2" width="480" height="362" frameborder="0" class="giphy-embed" allowfullscreen="">
 </iframe>
 </section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/content-light.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns">
-<div class="column" style="width:100%;">
-<h2>Part 2: DevOps Principles &amp; Tools</h2>
-</div>
-</div>
-</section>
-<section class="slide level2">
+<section id="section-goals" class="slide level2">
 <h2>Section Goals</h2>
+<p><br></p>
 <ul>
-<li><p>To understand the main principles of DevOps and how they can improve data science workflows.</p></li>
-<li><p>To get familiar with the DevOps toolkit.</p></li>
-<li><p>To get familiar with how the <code>renv</code> package helps create reproducible environments for your R projects.</p></li>
-<li><p>To get comfortable using the terminal for interacting with git and github.</p></li>
-<li><p>To understand how to authenticate to github using SSH or HTTPS.</p></li>
-<li><p>To practice creating a CI/CD workflow using yaml and Github Actions.</p></li>
+<li><p>To understand the main <strong>principles</strong> of DevOps and how they can improve data science workflows.</p></li>
+<li><p>To get familiar with the DevOps <strong>toolkit</strong>.</p></li>
+<li><p>To get familiar with how the <strong><code>renv</code></strong> package helps create reproducible environments for your R projects.</p></li>
+<li><p>To get comfortable using the terminal for interacting with <strong>git and github</strong>.</p></li>
+<li><p>To understand how to <strong>authenticate</strong> to github using SSH or HTTPS.</p></li>
+<li><p>To practice creating a <strong>CI/CD</strong> workflow using yaml and Github Actions.</p></li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="section" class="slide level2">
 <h2></h2>
 <div style="text-align: center; font-size: 200%; color: #EE6331">
 <p>“DevOps is a set of cultural norms, practices, and supporting tooling to help make the process of developing and deploying software smoother and lower risk.”</p>
@@ -757,19 +733,10 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="but-firsta-very-brief-history-lesson" class="slide level2">
 <h2>But first…a very brief history lesson</h2>
-<div class="quarto-figure quarto-figure-left">
-<figure>
-<p><img data-src="images/pheonix_project.png" width="200"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="images/devops.jpg" width="200"></p>
-</figure>
-</div>
-<aside class="notes">
+
+<img data-src="images/Untitled presentation.png" class="r-stretch"><aside class="notes">
 <p>Reason for squishy definition is because it developed organically in the 2007-2009, across social media, twitter tag #devops was popular, online communities and became more organized through conferences, workshops, and grassroots attempts at implementation at diff companies. Then was introduced into larger companies like Intel, PayPal, Facebook.</p>
 <p>Became more popular through work by Gene Kim and Patrick Debois and others - Pheonix Project is actually a novel about an IT project at a made-up company.</p>
 <p>So what were all these people trying to do - what was the context? All trying to create something.</p>
@@ -785,7 +752,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="so-you-want-to-create-an-app" class="slide level2">
 <h2>So you want to create an app?</h2>
 
 <img data-src="images/mobius.png" width="800" class="r-stretch"><aside class="notes">
@@ -808,17 +775,11 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="problems-devops-tries-to-solve" class="slide level2">
 <h2>Problems DevOps tries to solve</h2>
-<ul>
-<li>Siloed teams</li>
-<li>Miscommunication</li>
-<li>Slow &amp; manual release cycles</li>
-<li>Technical knowledge siloes</li>
-<li>Incompatible systems or tech stacks</li>
-<li>Opaque undocumented processes</li>
-</ul>
-<aside class="notes">
+<p><br></p>
+
+<img data-src="images/PROBLEMS.png" class="r-stretch"><aside class="notes">
 <p>So this is the idealized example - but what was it like in practice 20 years ago. You want to make the release process as fast as possible but you also want it to be tested and free of bugs. And this introduces a natural conflict between speed and stability</p>
 <p>You have the same goals of speed and accuracy - but this process of continuous integration, of testing, of automating processes so that your users can get their hands on the app - didnt exist.</p>
 <p>One problem is that the entire process is siloed between the creation of the code and the deployment of your app. So your developers finish their code and then throw it over the fence to ops. Maybe they then throw it to security or to QA. But there was no formal alliance in place or processes on how the teams work together. Because each team is seemingly working on one part - the code vs.&nbsp;the deploy - there’s also technical knowledge siloes - each team only knows their bit but not anything else.</p>
@@ -838,12 +799,18 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="common-devops-principles" class="slide level2">
 <h2>Common DevOps Principles</h2>
+<p><br></p>
+<p><br></p>
 <p>🤲 Collaboration</p>
+<p><br></p>
 <p>🚚 Continuous Integration &amp; Delivery</p>
+<p><br></p>
 <p>🤖 Automation</p>
+<p><br></p>
 <p>📔 Reproducibility</p>
+<p><br></p>
 <p>👨‍🎤 Culture change</p>
 <aside class="notes">
 <p>As the field of devops developed, there are different implementations/diff technologies of what devops means - these happen differently at different companies But there have been some common philosophies and best practices that have come out that I’ve seen consistently across the entire ecosystem.</p>
@@ -865,7 +832,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="why-should-we-as-data-scientists-care-about-this" class="slide level2" style="text-align: center; font-size: 200%; color: #EE6331">
 <h2>Why should we as data scientists care about this?</h2>
 <aside class="notes">
 <p>lets have a little thought experiment</p>
@@ -881,7 +848,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="has-this-ever-happened-to-you" class="slide level2">
 <h2>Has this ever happened to you?</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -905,15 +872,16 @@
 </div>
 </div>
 </section>
-<section class="slide level2">
-<h2>Why should data scientists/analysts care about DevOps?</h2>
+<section id="we-should-care-because" class="slide level2">
+<h2>We should care because …</h2>
+<p><br></p>
 <div>
 <ul>
-<li class="fragment"><p>Data scientists are developers!</p></li>
-<li class="fragment"><p>Data science careers have moved from academic sphere to tech and software but education hasnt always followed</p></li>
-<li class="fragment"><p>Automation, collaboration, testing can dramatically improve data work and improve reproducibility</p></li>
-<li class="fragment"><p>The many hats of a data scientist</p></li>
-<li class="fragment"><p>Improve collaboration &amp; communication with other teams</p></li>
+<li class="fragment">Data scientists are developers!</li>
+<li class="fragment">Data science careers have moved from academic sphere to tech and software but education hasnt always followed</li>
+<li class="fragment">Automation, collaboration, testing can dramatically improve data work and improve reproducibility</li>
+<li class="fragment">The many hats of a data scientist</li>
+<li class="fragment">Improve collaboration &amp; communication with other teams</li>
 </ul>
 </div>
 <aside class="notes">
@@ -931,9 +899,10 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="responsibility-of-the-analyst" class="slide level2">
 <h2>Responsibility of the analyst</h2>
-<aside class="notes">
+
+<img data-src="images/replic_crisis.png" class="r-stretch"><aside class="notes">
 <p>I mentioned before that a lot of DS comes from academia and research. So the concept of reproducing your results - especially if those results play a role in how medicines or medical devices are developed - is incredibly important.</p>
 <p>2005 essay by John Ioannidis in scientific journal on what is known as the replicability crisis in scientific publishing, arguing that majority medical research studies cannot be replicated.</p>
 <p>So as data scientists and we are curators of the data and are responsible for its legitimacy in many ways - obv cant always control it of course.</p>
@@ -958,11 +927,11 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="the-devops-process-flow" class="slide level2">
 <h2>The Devops Process Flow</h2>
 
 <img data-src="images/Concept Map.jpg" width="690" class="r-stretch"></section>
-<section class="slide level2">
+<section id="proliferation-of-tools" class="slide level2">
 <h2>Proliferation of tools</h2>
 
 <img data-src="images/ecosystem.png" class="r-stretch"><aside class="notes">
@@ -979,8 +948,9 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="an-opinionated-take-on-tools" class="slide level2">
 <h2>An opinionated take on tools</h2>
+<p><br></p>
 <ul>
 <li>CI/CD</li>
 <li>Environment Management</li>
@@ -1004,10 +974,10 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="the-cicd-pipeline" class="slide level2">
 <h2>The CI/CD Pipeline</h2>
 
-<img data-src="images/cicd.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<img data-src="images/cicd2.png" class="r-stretch"><aside class="notes">
 <ul>
 <li><p>As we discussed before CI/CD is an iterative cycle of small steps to quickly build, test, and deploy your code - this is a critical component of devops.</p></li>
 <li><p>So CI/CD is often said in the same breath - as it makes up a continuous pipeline - but its actually pretty discrete parts so I want to make sure we understand how they differ.</p></li>
@@ -1028,9 +998,41 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2 smaller">
+<section id="environment-management" class="slide level2 smaller">
 <h2>Environment Management</h2>
-<p>exploratory analysis and experiments | as similar to prod as possible | separate from dev and test | | often just your local desktop | unit &amp; integration testing | created using code | | “sandbox” with data that’s as close to real as possible | data validation | code promotion process + tests | | | access to R/Python packages | | completely automatic</p>
+<p><br></p>
+<table style="width:99%;">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 48%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="3">Development ➡️ | Testing ➡️ | Production 🔄 |</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><ul>
+<li><p>Exploratory</p></li>
+<li><p>Often local machine</p></li>
+<li><p>Access to R/Python Packages</p></li>
+</ul></td>
+<td><ul>
+<li><p>as similar to prod as possible</p></li>
+<li><p>unit &amp; integration testing</p></li>
+<li><p>data validation</p></li>
+<li><p>“sandbox” with data that’s as close to real as possible</p></li>
+</ul></td>
+<td><ul>
+<li><p>automatic CD</p></li>
+<li><p>isolated from dev &amp; test</p></li>
+<li><p>created with code</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
 <aside class="notes">
 <p>unit test - testing individual units of code to make sure it does what you want it to do</p>
 <p>integration test - make sure putting pieces together doesnt introduce any errors</p>
@@ -1047,7 +1049,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="version-control-workflows" class="slide level2">
 <h2>Version Control &amp; Workflows</h2>
 
 <img data-src="images/Screenshot 2023-08-23 at 11.20.04 AM.png" class="r-stretch quarto-figure-center"><aside class="notes">
@@ -1071,13 +1073,13 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="lab-activity---developing-locally-using-quarto" class="slide level2">
 <h2>Lab Activity - developing locally using Quarto</h2>
 <p>🟥 - I need help</p>
-<p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
-<p>Login to pos.it/class with code <code>devops_workshop</code></p>
-<p>Lab 1 Part 1:</p>
+<p><br></p>
+<p>Login to <a href="pos.it/class">pos.it/class</a> with code <code>devops_workshop</code></p>
+<p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html#part-1-create-a-local-quarto-website">Lab 1 Part 1</a></p>
 <aside class="notes">
 <p>Show how to login to the workshop environment and where the lab is</p>
 <p>5 minutes</p>
@@ -1093,14 +1095,14 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="is-version-control-secure" class="slide level2">
 <h2>Is version control secure?</h2>
 <ul>
 <li>Our code is still saved locally</li>
 <li>How do we make sure that the code we push to Github (or elsewhere) is secure?</li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="a-short-auth-teaser" class="slide level2">
 <h2>A short auth teaser</h2>
 <ul>
 <li>We can use a variety of data sharing “transfer protocols”</li>
@@ -1126,7 +1128,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="git-protocol-options" class="slide level2">
 <h2>Git protocol options</h2>
 <table>
 <thead>
@@ -1169,12 +1171,12 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="reproducing-your-environment" class="slide level2">
 <h2>Reproducing your environment</h2>
 <p>What are the layers that need to be reproduced across your dev, test, and prod environments?</p>
 <p>What’s your most difficult reproducibility challenge?</p>
 </section>
-<section class="slide level2">
+<section id="layers-of-reproducibility" class="slide level2">
 <h2>Layers of reproducibility</h2>
 
 <img data-src="images/Screenshot 2023-09-13 at 8.23.56 PM.png" class="r-stretch"><aside class="notes">
@@ -1197,7 +1199,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="packages-vs.-libraries-vs.-repositories" class="slide level2">
 <h2>Packages vs.&nbsp;Libraries vs.&nbsp;Repositories</h2>
 <p><br></p>
 <p><strong>Package</strong> - contains code, functions, data, and documentation. <br></p>
@@ -1219,7 +1221,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="renv-workflow" class="slide level2">
 <h2><code>renv</code> workflow</h2>
 
 <img data-src="images/Screenshot 2023-09-06 at 8.31.22 PM.png" class="r-stretch"><aside class="notes">
@@ -1241,7 +1243,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="example" class="slide level2">
 <h2>Example</h2>
 <pre data-eval="FALSE"><code># install.packages("renv")
 renv::init()
@@ -1251,12 +1253,12 @@ lapply(.libPaths(), list.files)</code></pre>
 <p>🔍 Live code</p>
 </div>
 </section>
-<section class="slide level2">
+<section id="lab-activity---renv-workflow-github-authentication" class="slide level2">
 <h2>Lab Activity - <code>renv</code> workflow &amp; github authentication</h2>
 <p>🟥 - I need help</p>
-<p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
-<p>Lab 1: Part 2 &amp; 3</p>
+<p><br></p>
+<p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html#part-2-renv-workflow">Lab 1: Part 2 &amp; 3</a></p>
 <aside class="notes">
 <p>You’ll be doing renv in your workbench environment both in your console for r code and in the terminal for git commands you’ll also need to log in to your github account where you’ll be creating an upstream repository to link with your local code.</p>
 <p>we’ll be using https auth but there’s also information if you later want to test out ssh</p>
@@ -1273,7 +1275,7 @@ lapply(.libPaths(), list.files)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="build-tools" class="slide level2">
 <h2>Build tools</h2>
 <ul>
 <li><p>Virtualization/Containerization</p></li>
@@ -1307,7 +1309,7 @@ lapply(.libPaths(), list.files)</code></pre>
 <p>Illustration credit:</p>
 </div>
 </section>
-<section class="slide level2">
+<section id="power-of-yaml" class="slide level2">
 <h2>Power of YAML</h2>
 <ul>
 <li><p>YAML Ain’t Markup Language</p></li>
@@ -1316,7 +1318,7 @@ lapply(.libPaths(), list.files)</code></pre>
 <li><p>configures files across many execution environments</p></li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="yaml" class="slide level2">
 <h2>YAML</h2>
 <pre><code>EmpRecord:  
   emp01:
@@ -1339,7 +1341,7 @@ lapply(.libPaths(), list.files)</code></pre>
 <li><p>Dashes are used to denote a list</p></li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="example---yaml-in-action" class="slide level2">
 <h2>Example - YAML in action</h2>
 <ul>
 <li>Docker compose <a href="https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.yml">yaml file</a> to spin up all 3 Posit Pro products</li>
@@ -1348,7 +1350,7 @@ lapply(.libPaths(), list.files)</code></pre>
 <p>🔍 Live code</p>
 </div>
 </section>
-<section class="slide level2">
+<section id="exercise---inspect-your-yaml" class="slide level2">
 <h2>Exercise - Inspect your YAML</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
@@ -1368,7 +1370,7 @@ lapply(.libPaths(), list.files)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="continuous-integration-example" class="slide level2">
 <h2>Continuous Integration Example</h2>
 
 <img data-src="images/Untitled (2).jpg" class="r-stretch"><aside class="notes">
@@ -1386,7 +1388,7 @@ lapply(.libPaths(), list.files)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="other-gha-categories" class="slide level2">
 <h2>Other GHA Categories</h2>
 <ul>
 <li><p>Deployment</p></li>
@@ -1398,7 +1400,7 @@ lapply(.libPaths(), list.files)</code></pre>
 </ul>
 <p><a href="https://github.com/Rikagx/ssh_testing/actions/new">Examples</a></p>
 </section>
-<section class="slide level2">
+<section id="quarto-publish-flows" class="slide level2">
 <h2>Quarto Publish Flows</h2>
 <h3 id="manually">Manually</h3>
 <p><img data-src="images/Untitled.jpg" width="400"></p>
@@ -1418,7 +1420,7 @@ lapply(.libPaths(), list.files)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="gha-structure" class="slide level2">
 <h2>GHA Structure</h2>
 
 <img data-src="images/Screenshot 2023-09-10 at 1.32.42 PM.png" class="r-stretch"><p><strong>Open source ecosystem of available actions</strong></p>
@@ -1440,16 +1442,16 @@ lapply(.libPaths(), list.files)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="actions-syntax" class="slide level2">
 <h2>Actions Syntax</h2>
 <p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html#part-4-publish-using-gha">Code</a></p>
 </section>
-<section class="slide level2">
-<h2>Lab Activity</h2>
+<section id="lab-activity---cicd-with-github-actions" class="slide level2">
+<h2>Lab Activity - CICD with Github Actions</h2>
 <p>🟥 - I need help</p>
-<p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
-<p>Part 4 of Lab: Deploy Quarto with GHA including the exercises</p>
+<p><br></p>
+<p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html#part-4-publish-using-gha">Lab 1: Part 4</a></p>
 <aside class="notes">
 <p>we’ll be doing a few things - create a gh branch - publish to github - create a gha with a yaml file - create an api key for connect - update yaml file - push everything</p>
 <style type="text/css">
@@ -1464,7 +1466,7 @@ lapply(.libPaths(), list.files)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="logging" class="slide level2">
 <h2>Logging</h2>
 <p>log session ➡️ log statement ➡️ log entry</p>
 <div class="columns">
@@ -1517,14 +1519,14 @@ lapply(.libPaths(), list.files)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="monitoring" class="slide level2">
 <h2>Monitoring</h2>
 <p><img data-src="images/icons8-prometheus-48.png"></p>
 <p>If you want to register metrics from your API or app with Prometheus, there is an official <a href="https://github.com/prometheus/client_python">Prometheus client</a> in Python and the <code>{openmetrics}</code> package in R makes it easy to register metrics from a Plumber API or Shiny app.</p>
 <p><img data-src="images/icons8-grafana-48.png"></p>
 <p>There’s a great <a href="https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/">Get Started with Grafana and Prometheus</a> doc on the Grafana Labs website if you want to actually try it out.</p>
 </section>
-<section class="slide level2">
+<section id="part-3-goals-docker-for-data-scientists" class="slide level2">
 <h2>Part 3 Goals: Docker for Data Scientists</h2>
 <ul>
 <li>to understand different docker workflows</li>
@@ -1533,7 +1535,7 @@ lapply(.libPaths(), list.files)</code></pre>
 <li>to explore the linux file system</li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="why-use-a-container-at-all" class="slide level2">
 <h2>Why use a container at all?</h2>
 <ul>
 <li>allows you to package up everything you need to reproduce an environment/application</li>
@@ -1544,11 +1546,11 @@ lapply(.libPaths(), list.files)</code></pre>
 <li>scaling up</li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="our-docker-environment" class="slide level2">
 <h2>Our Docker Environment</h2>
 
 <img data-src="images/Screenshot 2023-09-15 at 11.56.18 AM.png" class="r-stretch"></section>
-<section class="slide level2">
+<section id="workflow" class="slide level2">
 <h2>Workflow</h2>
 
 <img data-src="images/Screenshot 2023-09-15 at 12.58.53 PM.png" width="800" class="r-stretch"><aside class="notes">
@@ -1569,7 +1571,7 @@ lapply(.libPaths(), list.files)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="architecture" class="slide level2">
 <h2>Architecture</h2>
 
 <img data-src="images/Screenshot 2023-08-30 at 10.12.11 AM-01.png" width="800" class="r-stretch"><aside class="notes">
@@ -1592,7 +1594,7 @@ lapply(.libPaths(), list.files)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="images" class="slide level2">
 <h2>Images</h2>
 
 <img data-src="images/Screenshot 2023-09-15 at 12.25.29 PM.png" width="800" class="r-stretch"><aside class="notes">
@@ -1609,11 +1611,11 @@ lapply(.libPaths(), list.files)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="dockerhub-registry" class="slide level2">
 <h2>Dockerhub Registry</h2>
 <p>https://hub.docker.com/search?q=</p>
 </section>
-<section class="slide level2">
+<section id="containers" class="slide level2">
 <h2>Containers</h2>
 
 <img data-src="images/Screenshot 2023-09-15 at 12.14.04 PM.png" width="800" class="r-stretch"><aside class="notes">
@@ -1634,10 +1636,10 @@ lapply(.libPaths(), list.files)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="how-can-data-scientists-use-docker" class="slide level2">
 <h2>How can data scientists use docker?</h2>
 </section>
-<section class="slide level2">
+<section id="example---testing-versioning" class="slide level2">
 <h2>Example - testing &amp; versioning</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">docker</span> pull postgres:12</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="ex">docker</span> pull postgres:latest</span>
@@ -1667,7 +1669,7 @@ lapply(.libPaths(), list.files)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="example---reproduce-environments" class="slide level2">
 <h2>Example - reproduce environments</h2>
 <p>https://hub.docker.com/u/rocker</p>
 <pre><code># pull the image
@@ -1676,7 +1678,7 @@ docker pull rocker/r-base
 # run container
 docker run --rm -it rocker/r-base</code></pre>
 </section>
-<section class="slide level2">
+<section id="example---isolate-applications" class="slide level2">
 <h2>Example - isolate applications</h2>
 <p>https://hub.docker.com/u/rstudio</p>
 <p><strong>DO NOT RUN!</strong></p>
@@ -1685,11 +1687,11 @@ docker run --rm -it rocker/r-base</code></pre>
     -e RSC_LICENSE=$RSC_LICENSE \
     rstudio/rstudio-connect:ubuntu2204</code></pre>
 </section>
-<section class="slide level2">
+<section id="example---docker-as-deployment-strategy" class="slide level2">
 <h2>Example - Docker as deployment strategy</h2>
 
 <img data-src="images/dep_strategy.png" width="800" class="r-stretch"></section>
-<section class="slide level2">
+<section id="example---docker-in-ci-pipeline" class="slide level2">
 <h2>Example - Docker in CI pipeline</h2>
 <pre><code>jobs:
   build:
@@ -1739,7 +1741,7 @@ docker run --rm -it rocker/r-base</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="modes-for-running-containers" class="slide level2">
 <h2>Modes for running containers</h2>
 <table style="width:100%;">
 <colgroup>
@@ -1773,14 +1775,14 @@ docker run --rm -it rocker/r-base</code></pre>
 </tbody>
 </table>
 </section>
-<section class="slide level2">
+<section id="lab-activity---running-containers" class="slide level2">
 <h2>Lab Activity - Running containers</h2>
 <p>🟥 - I need help</p>
-<p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
-<p>Lab 2: Part 1</p>
+<p><br></p>
+<p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html#part-1-run-commands">Lab 2: Part 1</a></p>
 </section>
-<section class="slide level2">
+<section id="running-containers" class="slide level2">
 <h2>Running containers</h2>
 <pre><code>docker pull ubuntu
 docker image ls -a
@@ -1800,7 +1802,7 @@ docker container stop nginx1
 
 docker run --rm debian echo "hello world"</code></pre>
 </section>
-<section class="slide level2">
+<section id="container-debugging" class="slide level2">
 <h2>Container Debugging</h2>
 <pre><code>docker run -it -d ubuntu
 docker container ls -a 
@@ -1816,14 +1818,14 @@ docker container run -d --name mydb \
 <p>🔍 Live code</p>
 </div>
 </section>
-<section class="slide level2">
+<section id="lab-activity---debugging-containers" class="slide level2">
 <h2>Lab Activity - Debugging Containers</h2>
 <p>🟥 - I need help</p>
-<p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
-<p>Complete Lab 2: Part 2</p>
+<p><br></p>
+<p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html#part-2-debugging-containers">Lab 2: Part 2</a></p>
 </section>
-<section class="slide level2">
+<section id="port-mapping-with-docker-run--p" class="slide level2">
 <h2>Port Mapping with <code>docker run -p</code></h2>
 <p><code>docker run -p host_port:container_port</code></p>
 
@@ -1844,14 +1846,14 @@ curl http://localhost:80</code></pre>
 <p>🔍 Live code</p>
 </div>
 </section>
-<section class="slide level2">
+<section id="lab-activity---mapping-ports" class="slide level2">
 <h2>Lab Activity - Mapping ports</h2>
 <p>🟥 - I need help</p>
-<p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
-<p>Lab 2: Part 3</p>
+<p><br></p>
+<p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html#part-3-mapping-ports">Lab 2: Part 3</a></p>
 </section>
-<section class="slide level2">
+<section id="persisting-data-with-docker" class="slide level2">
 <h2>Persisting data with Docker</h2>
 <ul>
 <li><p>State is persistent information that is recorded and recalled later</p></li>
@@ -1873,13 +1875,13 @@ curl http://localhost:80</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
+<section id="options" class="slide level2">
 <h2>Options</h2>
 <table style="width:99%;">
 <colgroup>
-<col style="width: 22%">
-<col style="width: 32%">
-<col style="width: 44%">
+<col style="width: 19%">
+<col style="width: 40%">
+<col style="width: 39%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1891,48 +1893,58 @@ curl http://localhost:80</code></pre>
 <tbody>
 <tr class="odd">
 <td>Volume mount</td>
-<td>Create new volume managed by container</td>
+<td><p>create new volume managed by Docker CLI</p>
+<p>dedicated filesystem on the host (/var/lib/ docker/volumes)</p></td>
 <td>Need to transfer, share, data between multiple containers</td>
 </tr>
 <tr class="even">
 <td>Bind mount</td>
-<td>Mount location on host to container</td>
-<td></td>
+<td><p>use any available host filesystem</p>
+<p>not managed by Docker CLI</p></td>
+<td>Access hidden files</td>
 </tr>
 <tr class="odd">
-<td>External Database</td>
-<td><p>Container remains stateless;</p>
-<p>Container connects to external database</p></td>
-<td></td>
+<td>tmpfs</td>
+<td><p>uses host memory</p>
+<p>not permanent</p></td>
+<td>sensitive data</td>
 </tr>
 <tr class="even">
+<td>External Database</td>
+<td><p>container remains stateless;</p>
+<p>container connects to external database</p></td>
+<td>Production workflow</td>
+</tr>
+<tr class="odd">
 <td>External Shared File System</td>
-<td>Shared network file system int the cloud</td>
-<td>Managed or multi-cluster deployments</td>
+<td>shared network file system int the cloud (NFS)</td>
+<td><p>Managed or multi-cluster deployments</p>
+<p>Don’t want to limit storage</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section class="slide level2">
+<section id="lab-activity---persisting-data" class="slide level2">
 <h2>Lab Activity - Persisting Data</h2>
 <p>🟥 - I need help</p>
-<p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
-<p>Lab 2: Part 4</p>
+<p><br></p>
+<p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html#part-4-mounting-data">Lab 2: Part 4</a></p>
 </section>
-<section class="slide level2">
+<section id="building-docker-images" class="slide level2">
 <h2>Building Docker Images</h2>
+<p><br></p>
 <p>Images are build using a Dockerfile or interactively “on-the-fly” for testing</p>
-<p>make this a diagram Step 1: Commit Step 2: Tag Step 3: Push</p>
-</section>
-<section class="slide level2">
+
+<img data-src="images/buildimage-02.png" class="r-stretch"></section>
+<section id="lab-activity---commit-and-push-container-to-dockerhub" class="slide level2">
 <h2>Lab Activity - Commit and push container to DockerHub</h2>
 <p>🟥 - I need help</p>
-<p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
-<p>Complete Lab 2: Part 5</p>
+<p><br></p>
+<p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html#part-5-building-images-interactively">Lab 2: Part 5</a></p>
 </section>
-<section class="slide level2">
+<section id="a-few-dockerfile-build-commands" class="slide level2">
 <h2>A few Dockerfile Build Commands</h2>
 <table>
 <colgroup>
@@ -1989,44 +2001,39 @@ curl http://localhost:80</code></pre>
 </tbody>
 </table>
 </section>
-<section class="slide level2">
+<section id="dockerfile-example" class="slide level2">
 <h2>Dockerfile Example</h2>
 <p>Walk through Posit Connect <a href="https://github.com/rstudio/rstudio-docker-products/blob/dev/connect/Dockerfile.ubuntu2204">Dockerfile</a></p>
 </section>
-<section class="slide level2">
+<section id="activity---putting-it-all-together-in-dockerfile" class="slide level2">
 <h2>Activity - Putting it all together in Dockerfile</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
 <p>Complete Lab 2: Part 5</p>
 </section>
-<section class="slide level2">
+<section id="part-4-data-science-in-production" class="slide level2">
 <h2>Part 4: Data Science in Production</h2>
 </section>
-<section class="slide level2" data-background-image="_extensions/positconfslides/assets/backgrounds/content-dark.svg" data-background-size="contain">
-<h2></h2>
-<div class="columns has-dark-background">
-<div class="column" style="width:100%;">
+<section id="data-science-in-production" class="slide level2 content-dark">
 <h2>Data Science in Production</h2>
 <ul>
 <li><p>Presentation Layer</p></li>
 <li><p>Processing Layer</p></li>
 <li><p>Data store Layer</p></li>
 </ul>
-</div>
-</div>
 </section>
-<section class="slide level2">
+<section id="choosing-the-right-presentation-layer" class="slide level2">
 <h2>Choosing the right presentation layer</h2>
 <ul>
 <li><a href="https://do4ds.com/chapters/sec1/1-2-proj-arch.html">Alex’s flow chart</a></li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="choosing-an-api" class="slide level2">
 <h2>Choosing an API</h2>
 
 <img data-src="images/apis.png" class="r-stretch"></section>
-<section class="slide level2">
+<section id="production-state" class="slide level2">
 <h2>Production “State”</h2>
 <p>Questions to ask once your content is able to be consumed by your intended audience</p>
 <ul>
@@ -2038,18 +2045,18 @@ curl http://localhost:80</code></pre>
 <li><p>Is it tested?</p></li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="where-is-it-deployed" class="slide level2">
 <h2>Where is it deployed?</h2>
 <p>list of PaaS / Caas and highlight Connect</p>
 </section>
-<section class="slide level2">
+<section id="lab-activity" class="slide level2">
 <h2>Lab Activity:</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
 <p>Part 1: Host API on Posit Connect</p>
 </section>
-<section class="slide level2">
+<section id="is-it-secure" class="slide level2">
 <h2>Is it secure?</h2>
 <ul>
 <li><p>Basic Auth</p></li>
@@ -2057,7 +2064,7 @@ curl http://localhost:80</code></pre>
 <li><p>Token-based</p></li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="securing-credentials" class="slide level2">
 <h2>Securing credentials</h2>
 <ul>
 <li><p>username and password</p></li>
@@ -2065,27 +2072,27 @@ curl http://localhost:80</code></pre>
 <li><p>SSO</p></li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="is-it-accessible" class="slide level2">
 <h2>Is it accessible?</h2>
 <p>RBAC</p>
 </section>
-<section class="slide level2">
+<section id="lab-activity-1" class="slide level2">
 <h2>Lab Activity:</h2>
 <p>🟥 - I need help</p>
 <p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
 <p>Part 2:</p>
 </section>
-<section class="slide level2">
+<section id="is-it-maintainable" class="slide level2">
 <h2>Is it maintainable</h2>
 <p>git-backed deploymnet</p>
 </section>
-<section class="slide level2">
+<section id="is-it-scalable" class="slide level2">
 <h2>Is it scalable?</h2>
 <p>scaling up vs.&nbsp;scaling out</p>
 <p>connect shiny resource options</p>
 </section>
-<section class="slide level2">
+<section id="is-your-code-efficient" class="slide level2">
 <h2>Is your code efficient?</h2>
 <ul>
 <li><p>data storage</p></li>
@@ -2093,11 +2100,11 @@ curl http://localhost:80</code></pre>
 <li><p>caches</p></li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="is-it-tested" class="slide level2">
 <h2>Is it tested</h2>
 <p>testing as part of CI/CD</p>
 </section>
-<section class="slide level2">
+<section id="section-2" class="slide level2">
 <h2></h2>
 
 <div class="footer footer-default">
