@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/posit-conf-2023/devops/supplemental_materials/linux_exercises_files/linux_exercises.html</loc>
-    <lastmod>2023-09-14T01:46:24.267Z</lastmod>
+    <loc>https://posit-conf-2023.github.io/devops/supplemental_materials/linux_exercises_files/linux_exercises.html</loc>
+    <lastmod>2023-09-16T01:26:39.514Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/posit-conf-2023/devops/index.html</loc>
-    <lastmod>2023-09-14T01:46:21.007Z</lastmod>
+    <loc>https://posit-conf-2023.github.io/devops/index.html</loc>
+    <lastmod>2023-09-16T01:26:33.415Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/posit-conf-2023/devops/coursework_labs/02_lab_docker/Exercises.html</loc>
-    <lastmod>2023-09-14T01:46:20.199Z</lastmod>
+    <loc>https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html</loc>
+    <lastmod>2023-09-16T01:26:32.757Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/posit-conf-2023/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html</loc>
-    <lastmod>2023-09-14T01:46:19.223Z</lastmod>
+    <loc>https://posit-conf-2023.github.io/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html</loc>
+    <lastmod>2023-09-16T01:26:32.244Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/posit-conf-2023/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html</loc>
-    <lastmod>2023-09-14T01:46:20.667Z</lastmod>
+    <loc>https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html</loc>
+    <lastmod>2023-09-16T01:26:33.128Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/posit-conf-2023/devops/slides/workshop_full_slides.html</loc>
-    <lastmod>2023-09-14T01:46:23.183Z</lastmod>
+    <loc>https://posit-conf-2023.github.io/devops/slides/workshop_full_slides.html</loc>
+    <lastmod>2023-09-16T01:26:37.848Z</lastmod>
   </url>
 </urlset>

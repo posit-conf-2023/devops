@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -243,6 +243,7 @@ docker container stop nginx1</code></pre>
 <section id="part-2-debugging-containers" class="level3">
 <h3 class="anchored" data-anchor-id="part-2-debugging-containers">Part 2: Debugging Containers</h3>
 <p>The <code>docker exec</code> command is very similar to the <code>docker run -it</code> command. Both are very helpful for debugging containers as they allow you to jump inside your container instance. The exec command needs a running container to execute <strong>any</strong> command, whereas the <code>-it</code> flag starts a container and places you into a terminal in interactive mode. Use the <code>docker exec</code> command to execute a bash command in a running container. This can be used to execute any command within a running container.</p>
+<p><strong>Be careful not use <code>docker exec</code> to change your container as once it is deleted you will lose any changes you’ve made!</strong></p>
 <p><code>docker exec</code> requires two arguments - the container and the command you want to run.</p>
 <pre><code>docker exec [OPTIONS] CONTAINER [COMMAND] [ARG...]</code></pre>
 <ol type="1">
@@ -712,7 +713,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("https:\/\/github\.com\/posit-conf-2023\/devops");
+      var filterRegex = new RegExp("https:\/\/posit-conf-2023\.github\.io\/devops\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
