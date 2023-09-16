@@ -1,6 +1,6 @@
 ---
 title: "DevOps for Data Scientists"
-subtitle: "wifi"
+subtitle: "<br>Wifi: Posit Conf 2023 <br>Password: conf2023"
 title-slide-attributes: 
   data-background-color: white
   data-background-image: _extensions/positconfslides/assets/backgrounds/toc-light.svg
@@ -9,8 +9,7 @@ format:
   positconfslides-revealjs: 
     chalkboard: true
     slide-number: true
-    footer: <https://github.com/posit-conf-2023/DevOps>
-    incremental: false
+    footer: "[https://github.com/posit-conf-2023/DevOps](https://github.com/posit-conf-2023/DevOps)"
     code-copy: true
     center-title-slide: false
     code-link: true
@@ -20,9 +19,11 @@ format:
     height: "900"
     filters:
       - positconfslides
+    execute:
+      echo: true  
 ---
 
-## Part 1: Introductions, setup, & workshop overview {.toc-people-dark}
+## Part 1: Introductions, setup, & workshop overview {.content-light}
 
 ## Meet your instructors
 
@@ -37,7 +38,9 @@ format:
 
 ## Andrie
 
-![](images/Andrie%20square%20500px.jpg){width="200"}
+![](images/Andrie%20square%20500px.jpg){width="278"}
+
+-   Director of Posit Strategy, former Solutions Engineer
 
 ## David
 
@@ -47,13 +50,15 @@ format:
 
 ## Gagan
 
-![](images/gagan.png){width="25%"}
+![](images/gagan.png){width="27%"}
 
 -   Gagandeep Singh is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit as a Solutions Engineer.
 
 ## Michael
 
--   Michael Mayer is a Solutions Engineer at Posit.
+![](images/michaelmayer-scaled.jpg){width="154"}
+
+-   Scientist by training turned IT / HPC / Scientific Computing
 :::
 
 ## Solutions Engineering at Posit
@@ -74,11 +79,15 @@ Posit Solutions Engineering Team Director
 
 ## Introduce yourself to your neighbor
 
+<br>
+
 Take 5 minutes and introduce yourself to your neighbors.
 
--   How do you think DevOps can help you in your work?
+<br>
 
--   What are you most looking forward to in the conference?
+<iframe src="https://giphy.com/embed/Cmr1OMJ2FN0B2" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen>
+
+</iframe>
 
 ## Word Cloud
 
@@ -86,25 +95,31 @@ Take 5 minutes and introduce yourself to your neighbors.
 
 ## Logistics & Workshop Setup {.toc-people-dark}
 
-## Wifi
+## 💻 If your WIFI isn't working let us know as soon as possible!
 
-Name: Posit Conf 2023 Password: `conf2023`
+<br>
 
-#### 💻 If your WIFI isn't working let us know as soon as possible!
+Name: Posit Conf 2023
+
+Password: `conf2023`
 
 ## Pre-workshop Install
+
+<br>
 
 **Required**:\
 <https://registry.hub.docker.com/signup>\
 <https://github.com/signup>\
 
-**Optional: (for local development)**\
+<br> **Optional: (for local development)**\
 <https://docs.docker.com/desktop/>\
 <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>\
 <https://quarto.org/docs/get-started/>\
 <https://posit.co/downloads/>
 
 ## Workshop Install
+
+<br>
 
 +---------------------------+--------------------------------------+---------------------------------+
 | Software                  | Link                                 | Credentials                     |
@@ -114,24 +129,29 @@ Name: Posit Conf 2023 Password: `conf2023`
 | Docker Classroom          | <https://labs.play-with-docker.com/> | Docker Hub credentials          |
 +---------------------------+--------------------------------------+---------------------------------+
 
-## Documentation & Communication {.brackets-light}
+## Documentation & Communication
 
-All documents including slides are available on our website: <https://posit-conf-2023.github.io/DevOps/>
+<br>
+
+All documents including **slides** are available on our website: <https://posit-conf-2023.github.io/DevOps/>
 
 Discord channel - `DevOps-for-data-scientists`
 
-Place a note on the back of your laptop
+<br>
+
+Place a note on the back of your laptop:
 
 🟥 - I need help
 
 🟩 - I'm done
 
-## Daily Schedule {.brackets-light}
+## Daily Schedule
 
-📅 September 17 and 18, 2023\
-⏰ 09:00am - 5:00pm\
-🏨 ROOM: TBD\
-✍️TBD
+<br>
+
+📅 September 17 and 18, 2023 ⏰ 09:00am - 5:00pm
+
+<br>
 
 | Time            | Topic |
 |-----------------|-------|
@@ -139,11 +159,15 @@ Place a note on the back of your laptop
 | 12:30 - 1:30pm  | Lunch |
 | 3:00 - 3:30pm   | Break |
 
-## Code of Conduct {.brackets-light}
+## Code of Conduct {.content-light}
 
-<https://posit.co/code-of-conduct/>
+-   Everyone who comes to learn and enjoy the experience should feel welcome at posit::conf. Posit is committed to providing a professional, friendly and safe environment for all participants at its events, regardless of gender, sexual orientation, disability, race, ethnicity, religion, national origin or other protected class.
 
-You can report Code of Conduct violations in person, by email, or by phone.
+-   This code of conduct outlines the expectations for all participants, including attendees, sponsors, speakers, vendors, media, exhibitors, and volunteers. Posit will actively enforce this code of conduct throughout posit::conf.
+
+::: {style="text-align: center; font-size: 200%; color: #EE6331"}
+https://posit.co/code-of-conduct/
+:::
 
 ## Workshop Goals
 
@@ -197,8 +221,6 @@ You can report Code of Conduct violations in person, by email, or by phone.
 
 ## Supplemental Materials
 
-https://
-
 -   Linux
 -   vim
 -   Git
@@ -238,7 +260,9 @@ https://
 
 -   In-depth security and auth practices
 
-## Part 2: DevOps Principles & Tools {.toc-people-dark}
+<iframe src="https://giphy.com/embed/26xBziMPJcCmBbpVm" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+## Part 2: DevOps Principles & Tools {.content-light}
 
 ## Section Goals
 
@@ -254,7 +278,11 @@ https://
 
 -   To practice creating a CI/CD workflow using yaml and Github Actions.
 
-# "DevOps is a set of cultural norms, practices, and supporting tooling to help make the process of developing and deploying software smoother and lower risk."
+## 
+
+::: {style="text-align: center; font-size: 200%; color: #EE6331"}
+"DevOps is a set of cultural norms, practices, and supporting tooling to help make the process of developing and deploying software smoother and lower risk."
+:::
 
 ::: footer
 Definition credit:Alex Gold, https://www.do4ds.com
@@ -266,9 +294,9 @@ Let's get into it. We're at a DevOps workshop - so what is it. This is a best ef
 
 ## But first...a very brief history lesson
 
-![](images/pheonix.webp){width="304"}
+![](images/pheonix_project.png){fig-align="left" width="200"}
 
-![](images/devops.jpg){width="304"}
+![](images/devops.jpg){fig-align="right" width="200"}
 
 ::: notes
 Reason for squishy definition is because it developed organically in the 2007-2009, across social media, twitter tag #devops was popular, online communities and became more organized through conferences, workshops, and grassroots attempts at implementation at diff companies. Then was introduced into larger companies like Intel, PayPal, Facebook.
@@ -280,7 +308,7 @@ So what were all these people trying to do - what was the context? All trying to
 
 ## So you want to create an app?
 
-![](images/mobius.png)
+![](images/mobius.png){width="800"}
 
 ::: notes
 Let's talk about what it looks like to create an application. On one side you had developers creating some sort of application - let's say a stock trading application, so your end user are stock traders
@@ -325,15 +353,15 @@ Problem becomes how do you automate this release process, make it streamlined, l
 
 ## Common DevOps Principles
 
--   Collaboration
+🤲 Collaboration
 
--   Continuous Integration & Delivery
+🚚 Continuous Integration & Delivery
 
--   Automation
+🤖 Automation
 
--   Reproducibility
+📔 Reproducibility
 
--   Culture change
+👨‍🎤 Culture change
 
 ::: notes
 As the field of devops developed, there are different implementations/diff technologies of what devops means - these happen differently at different companies But there have been some common philosophies and best practices that have come out that I've seen consistently across the entire ecosystem.
@@ -411,16 +439,6 @@ DS career paths started in academia - not a lot of best practices are taught
 
 ## Responsibility of the analyst
 
-::: columns
-::: {.column width="50%"}
-![](images/Screenshot%202023-08-22%20at%203.26.22%20PM.png)
-:::
-
-::: {.column width="50%"}
-![](images/Screenshot%202023-09-10%20at%2012.18.42%20PM.png)
-:::
-:::
-
 ::: notes
 I mentioned before that a lot of DS comes from academia and research. So the concept of reproducing your results - especially if those results play a role in how medicines or medical devices are developed - is incredibly important.
 
@@ -471,7 +489,7 @@ proliferation of tools, source code management, repo management, build tools, da
 
 ## The CI/CD Pipeline
 
-![](images/cicd.png)
+![](images/cicd.png){fig-align="center"}
 
 ::: notes
 -   As we discussed before CI/CD is an iterative cycle of small steps to quickly build, test, and deploy your code - this is a critical component of devops.
@@ -489,11 +507,7 @@ we'll talk about some examples of popular CI/CD tools in a bit - Github Actions,
 
 ## Environment Management {.smaller}
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+
-| Dev                                                                                                                                                                                                                                                                                                                                                                             | Test | Prod |
-+=================================================================================================================================================================================================================================================================================================================================================================================+======+======+
-| exploratory analysis and experiments \| as similar to prod as possible \| separate from dev and test \| \| often just your local desktop \| unit & integration testing \| created using code \| \| "sandbox" with data that's as close to real as possible \| data validation \| code promotion process + tests \| \| \| access to R/Python packages \| \| completely automatic |      |      |
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+
+exploratory analysis and experiments | as similar to prod as possible | separate from dev and test | | often just your local desktop | unit & integration testing | created using code | | "sandbox" with data that's as close to real as possible | data validation | code promotion process + tests | | | access to R/Python packages | | completely automatic
 
 ::: notes
 unit test - testing individual units of code to make sure it does what you want it to do
@@ -505,7 +519,7 @@ want to be able to reproduce the environments as closely as possible
 
 ## Version Control & Workflows
 
-![](images/Screenshot%202023-08-23%20at%2011.20.04%20AM.png)
+![](images/Screenshot%202023-08-23%20at%2011.20.04%20AM.png){fig-align="center"}
 
 ::: notes
 Version control is a main tool for Continuous Integration -
@@ -619,9 +633,11 @@ What's your most difficult reproducibility challenge?
 
 ## Packages vs. Libraries vs. Repositories
 
-**Package** - contains code, functions, data, and documentation.
+<br>
 
-**Library** - is a directory where packages are installed.
+**Package** - contains code, functions, data, and documentation. <br>
+
+**Library** - is a directory where packages are installed. <br>
 
 **Repository** - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.
 
@@ -845,6 +861,7 @@ log session ➡️ log statement ➡️ log entry
 ::: columns
 ::: {.column width="50%"}
 ```{python filename="app.py"}
+#| eval: false
 import logging
 
 # Configure the log object
@@ -860,6 +877,7 @@ logging.info("App Started")
 
 ::: {.column width="50%"}
 ```{r filename="app.R"}
+#| eval: false
 # Configure the log object
 log <- log4r::logger()
 
@@ -925,7 +943,7 @@ Build - Run - Push
 
 ## Architecture
 
-![](images/Screenshot%202023-08-30%20at%2010.12.11%20AM-01.png)
+![](images/Screenshot%202023-08-30%20at%2010.12.11%20AM-01.png){width="800"}
 
 ::: notes
 On the left we have the client - think of this as your computer or perhaps a computer somewhere in the cloud
@@ -957,7 +975,7 @@ https://hub.docker.com/search?q=
 
 ## Containers
 
-![](images/Screenshot%202023-09-15%20at%2012.14.04%20PM.png)
+![](images/Screenshot%202023-09-15%20at%2012.14.04%20PM.png){width="800"}
 
 ::: notes
 runnable instance of an image.
@@ -1025,9 +1043,9 @@ docker run -it --privileged \
     rstudio/rstudio-connect:ubuntu2204
 ```
 
-## Docker as deployment strategy
+## Example - Docker as deployment strategy
 
-![](images/dep_strategy.png)
+![](images/dep_strategy.png){width="800"}
 
 ## Example - Docker in CI pipeline
 
@@ -1096,6 +1114,28 @@ jobs:
 
 Lab 2: Part 1
 
+## Running containers
+
+```         
+docker pull ubuntu
+docker image ls -a
+
+docker run -it ubuntu bash
+ls
+whoami
+hostname
+# exit the container with Ctrl+D or exit
+
+docker run -d ubuntu
+docker container ls -a
+
+docker run -d -P --name nginx1 nginx:alpine
+
+docker container stop nginx1
+
+docker run --rm debian echo "hello world"
+```
+
 ## Container Debugging
 
 ```         
@@ -1140,16 +1180,26 @@ docker inspect --format='{{.Config.ExposedPorts}}' httpd:alpine
 
 docker run -p DockerHostPort:ApplicationPort
 
-docker run -d -p 6574:80 --name httpd-latest httpd:latest
+docker run -d -p 80:80 --name httpd-latest httpd:latest
 curl http://localhost:81
 
-docker run -d -p 80:80 --name httpd-alpine httpd:alpine
+docker run -d -p 6574:80 --name httpd-alpine httpd:alpine
 curl http://localhost:80
 ```
 
 ::: footer
 🔍 Live code
 :::
+
+## Lab Activity - Mapping ports
+
+🟥 - I need help
+
+🟨 - I'm still working
+
+🟩 - I'm done
+
+Lab 2: Part 3
 
 ## Persisting data with Docker
 
@@ -1159,27 +1209,29 @@ curl http://localhost:80
 
 -   Data applications are usually stateful and more complex to deploy
 
-## Docker examples
-
--   volume mount
-
--   bind mount
-
--   external storage
-
--   shared file system
-
-## Putting it all together
-
-https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.yml
-
 ::: notes
--   **docker-compose:** A tool for defining and running multi-container Docker applications.
--   Uses a YAML file to define services, networks, and volumes.
--   Simplifies the orchestration of complex applications.
+Images are made of a set of read-only layers. When we start a new container, Docker adds a read-write layer on the top of the image layers allowing the container to run as though on a standard Linux file system.
+
+So, any file change inside the container creates a working copy in the read-write layer. However, when the container is stopped or deleted, that read-write layer is lost.
 :::
 
-## Lab Activity
+## Options
+
++-----------------------------+------------------------------------------+-----------------------------------------------------------+
+| Storage Type                | Description                              | Use case                                                  |
++=============================+==========================================+===========================================================+
+| Volume mount                | Create new volume managed by container   | Need to transfer, share, data between multiple containers |
++-----------------------------+------------------------------------------+-----------------------------------------------------------+
+| Bind mount                  | Mount location on host to container      |                                                           |
++-----------------------------+------------------------------------------+-----------------------------------------------------------+
+| External Database           | Container remains stateless;             |                                                           |
+|                             |                                          |                                                           |
+|                             | Container connects to external database  |                                                           |
++-----------------------------+------------------------------------------+-----------------------------------------------------------+
+| External Shared File System | Shared network file system int the cloud | Managed or multi-cluster deployments                      |
++-----------------------------+------------------------------------------+-----------------------------------------------------------+
+
+## Lab Activity - Persisting Data
 
 🟥 - I need help
 
@@ -1187,17 +1239,15 @@ https://github.com/rstudio/rstudio-docker-products/blob/dev/docker-compose.yml
 
 🟩 - I'm done
 
-Complete Lab 2: Part 3 Complete Lab 2: Part 4
+Lab 2: Part 4
 
 ## Building Docker Images
 
--   Images are build using a Dockerfile or interactively "on-the-fly"
-
--   Steps to version and share your images on Dockerhub (or a different repository)
+Images are build using a Dockerfile or interactively "on-the-fly" for testing
 
 make this a diagram Step 1: Commit Step 2: Tag Step 3: Push
 
-## Lab Activity
+## Lab Activity - Commit and push container to DockerHub
 
 🟥 - I need help
 
@@ -1207,25 +1257,45 @@ make this a diagram Step 1: Commit Step 2: Tag Step 3: Push
 
 Complete Lab 2: Part 5
 
-## Dockerfile Build Commands
+## A few Dockerfile Build Commands
 
-| Command | Description |
-|---------|-------------|
-| FROM    |             |
-| ENV     |             |
-| COPY    |             |
-| RUN     |             |
-|         |             |
-|         |             |
-|         |             |
++--------------+-------------------------------------------------------------+
+| Command      | Description                                                 |
++==============+=============================================================+
+| ARG          | Define variables passed at build time                       |
++--------------+-------------------------------------------------------------+
+| FROM         | Base image                                                  |
++--------------+-------------------------------------------------------------+
+| ENV          | Define variable                                             |
++--------------+-------------------------------------------------------------+
+| COPY         | Add local file or directory                                 |
++--------------+-------------------------------------------------------------+
+| RUN          | Execute commands during build process                       |
++--------------+-------------------------------------------------------------+
+| CMD          | Execute command when you run container; once per Dockerfile |
++--------------+-------------------------------------------------------------+
+| ENTRYPOINT   | Execute command to change default entrypoint at runtime     |
++--------------+-------------------------------------------------------------+
+| USER         | Set username or ID                                          |
++--------------+-------------------------------------------------------------+
+| VOLUME       | Mount host machine to container                             |
++--------------+-------------------------------------------------------------+
+| EXPOSE       | Specify port pn which container listens at runtime          |
++--------------+-------------------------------------------------------------+
 
 ## Dockerfile Example
 
 Walk through Posit Connect [Dockerfile](https://github.com/rstudio/rstudio-docker-products/blob/dev/connect/Dockerfile.ubuntu2204)
 
-## Activity
+## Activity - Putting it all together in Dockerfile
 
-Complete Lab 2: Part 6
+🟥 - I need help
+
+🟨 - I'm still working
+
+🟩 - I'm done
+
+Complete Lab 2: Part 5
 
 ## Part 4: Data Science in Production
 
@@ -1240,8 +1310,6 @@ Complete Lab 2: Part 6
 ## Choosing the right presentation layer
 
 -   [Alex's flow chart](https://do4ds.com/chapters/sec1/1-2-proj-arch.html)
-
--   credit text
 
 ## Choosing an API
 
