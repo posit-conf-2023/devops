@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>To get familiar with how the <code>renv</code> package helps create reproducible environments for your R projects.</p></li>
 <li><p>To get comfortable using the terminal for interacting with git and github.</p></li>
-<li><p>To understand how to authenticate to github using SSH or HTTPS.</p></li>
+<li><p>To understand how to authenticate to github using HTTPS.</p></li>
 <li><p>To practice writing and reading a yaml file.</p></li>
 <li><p>To understand the basics of a quarto website.</p></li>
 <li><p>To deploy a quarto site to Github Pages using Github Actions for Continuous Deployment. This will allow you to update your site every time you push a commit to git.</p></li>
@@ -202,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <ol type="1">
-<li>To setup your cloud-based development environment create an account using your email at http://rstd.io/class with code <code>angry-beaver</code>. Click on the Rstudio <a href="https://docs.posit.co/ide/server-pro/user/">Workbench</a> widget to start your environment.</li>
+<li>To setup your cloud-based development environment create an account using your email at <a href="http://rstd.io/class" class="uri">http://rstd.io/class</a> with code <code>devops_workshop</code>. Click on the Rstudio <a href="https://docs.posit.co/ide/server-pro/user/">Workbench</a> widget to start your environment.</li>
 <li>Click on <code>+ New Session</code> to create a new Rstudio Pro session.</li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -521,8 +521,6 @@ jobs:
         uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 1
-        env:
-          RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.rstudio.com/all/latest
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
@@ -541,7 +539,6 @@ jobs:
         with:
           r-version: 4.2.3
           use-public-rspm: true
-          
       - name: Setup renv and install packages
         uses: r-lib/actions/setup-renv@v2
       - name: Create manifest.json
