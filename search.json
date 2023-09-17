@@ -25,7 +25,7 @@
     "href": "index.html",
     "title": "DevOps for Data Scientists",
     "section": "",
-    "text": ":spiral_calendar: September 17 and 18, 2023\n:alarm_clock: 09:00 - 17:00\n:hotel: ROOM TBD\n:writing_hand: pos.it/conf\n\n\n\n\n\n\n\nhttps://community.rstudio.com/t/devops-for-data-scientists-workshop-posit-conf-2023/171829\n\n\n\n\nSlides\nCode for Slides\nLab instructions\nLab example code\n\n\n\n\n\n\n\n\n\n\n\n\n\nADD INSTRUCTOR BIO\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
+    "text": "📅 September 17 and 18, 2023\n⏰ 09:00 - 17:00\n🏨: Michigan 2\n\n\n\n\n\n\n\nhttps://community.rstudio.com/t/devops-for-data-scientists-workshop-posit-conf-2023/171829\n\n\n\n\nSlides\nCode\nLab 1\nLab 2\nLab 3\n\n\n\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
   },
   {
     "objectID": "index.html#pre-work",
@@ -39,14 +39,14 @@
     "href": "index.html#materials",
     "title": "DevOps for Data Scientists",
     "section": "",
-    "text": "Slides\nCode for Slides\nLab instructions\nLab example code"
+    "text": "Slides\nCode\nLab 1\nLab 2\nLab 3"
   },
   {
-    "objectID": "index.html#instructor",
-    "href": "index.html#instructor",
+    "objectID": "index.html#section",
+    "href": "index.html#section",
     "title": "DevOps for Data Scientists",
     "section": "",
-    "text": "ADD INSTRUCTOR BIO\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
+    "text": "This work is licensed under a Creative Commons Attribution 4.0 International License."
   },
   {
     "objectID": "coursework_labs/02_lab_docker/Exercises.html",
@@ -119,44 +119,51 @@
     "text": "Part 5: Publish to Connect with GHA\n\nCreate an API key on the Connect website. Note this API somewhere safe as you will be using it multiple times in this workshop.\n\n\n\nAdd the Connect URL and your API key to your Github repository:\n\n\nIn your repository go to Settings &gt; Security &gt; Secrets and variables &gt; Actions\nAdd 2 secrets:\n\n\n\nThe rsconnect package needs to be explicitly called in your code to be correctly snapshot in your lock file. Install it and call it in one of your files.\n\ninstall.packages(\"rsconnect\")\nlibrary(rsconnect)\nrenv::snapshot()\n\nEdit your publish.yaml file:\n\n---\non:\n  workflow_dispatch:\n  push:\n    branches:\n      - main\nname: Quarto and Connect Publish\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: 4.2.3\n          use-public-rspm: true\n      - name: Setup renv and install packages\n        uses: r-lib/actions/setup-renv@v2\n        with:\n          cache-version: 1\n        env:\n          RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.rstudio.com/all/latest\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n  test-and-connect-publish:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: 4.2.3\n          use-public-rspm: true\n          \n      - name: Setup renv and install packages\n        uses: r-lib/actions/setup-renv@v2\n      - name: Create manifest.json\n        shell: Rscript {0}\n        run: |\n          rsconnect::writeManifest()\n      - name: Publish Connect content\n        uses: rstudio/actions/connect-publish@main\n        with:\n          url: ${{ secrets.CONNECT_SERVER }}\n          api-key: ${{ secrets.CONNECT_API_KEY }}\n          access-type: logged_in\n          dir: |\n            .:/github-actions"
   },
   {
+    "objectID": "coursework_labs/03_lab_data_in_prod/lab_solution.html",
+    "href": "coursework_labs/03_lab_data_in_prod/lab_solution.html",
+    "title": "Lab 3: Data in Production",
+    "section": "",
+    "text": "To setup your cloud-based development environment create an account using your email at http://rstd.io/class with code angry-beaver. Click on the Rstudio Connect widget to start your environment."
+  },
+  {
     "objectID": "coursework_labs/03_lab_data_in_prod/lab_solution.html#setup",
     "href": "coursework_labs/03_lab_data_in_prod/lab_solution.html#setup",
-    "title": "Lab: Data in Production",
-    "section": "Setup",
-    "text": "Setup\nTo setup your cloud-based development environment create an account using your email at http://rstd.io/class with code angry-beaver. Click on the Rstudio Connect widget to start your environment."
+    "title": "Lab 3: Data in Production",
+    "section": "",
+    "text": "To setup your cloud-based development environment create an account using your email at http://rstd.io/class with code angry-beaver. Click on the Rstudio Connect widget to start your environment."
   },
   {
     "objectID": "coursework_labs/03_lab_data_in_prod/lab_solution.html#part-1-host-api-on-posit-connect",
     "href": "coursework_labs/03_lab_data_in_prod/lab_solution.html#part-1-host-api-on-posit-connect",
-    "title": "Lab: Data in Production",
+    "title": "Lab 3: Data in Production",
     "section": "Part 1: Host API on Posit Connect",
     "text": "Part 1: Host API on Posit Connect\n\nGo to the Solutions Engineering R-examples repo and copy the HTTPS url.\nIn Connect click Publish and Import from Git. Enter the URL that you copied above and click Next.\nSelect the main branch and click next.\nSelect the plumber-penguins/app directory and give it a name.\nClick `Deploy Content. In a few moments your API should be live!"
   },
   {
     "objectID": "coursework_labs/03_lab_data_in_prod/lab_solution.html#part-2-explore-your-api",
     "href": "coursework_labs/03_lab_data_in_prod/lab_solution.html#part-2-explore-your-api",
-    "title": "Lab: Data in Production",
+    "title": "Lab 3: Data in Production",
     "section": "Part 2: Explore your API",
     "text": "Part 2: Explore your API\n\nExplore the endpoints for the API. Click the GET for each endpoint and then click Try it out and Execute.\nClick on the link ending in openapi.json below the title of you API.\n\n\n\nTry accessing the API via the terminal with curl &lt;URL&gt;. You should receive output that the app is not authorized!\nAuthorize the app for everyone by changing the Access &gt; Sharing option to Anyone - no login required and then try the curl command again. It should work now!\n\n\n\nTry out the /penguins endpoint and grab the Request URL.\nAccess the /penguins endpoint and provide input for the sample size in your terminal and in the app itself.\n\ncurl \"&lt;REQUEST URL&gt;/penguins?sample_size=5\""
   },
   {
     "objectID": "coursework_labs/03_lab_data_in_prod/lab_solution.html#part-3-plumber-examples",
     "href": "coursework_labs/03_lab_data_in_prod/lab_solution.html#part-3-plumber-examples",
-    "title": "Lab: Data in Production",
+    "title": "Lab 3: Data in Production",
     "section": "Part 3: Plumber Examples",
     "text": "Part 3: Plumber Examples\n\nInstall the plumber examples package. remotes::install_github(\"sol-eng/plumberExamples\")\nRun available_apis to see plumber examples in the package.\nAccess examples and code:\n\nlibrary(plumber)\nplumb_api(package = \"plumberExamples\", name = \"00-hello\") %&gt;% pr_run()"
   },
   {
     "objectID": "coursework_labs/03_lab_data_in_prod/lab_solution.html#part-4-push-button-deployment",
     "href": "coursework_labs/03_lab_data_in_prod/lab_solution.html#part-4-push-button-deployment",
-    "title": "Lab: Data in Production",
+    "title": "Lab 3: Data in Production",
     "section": "Part 4: Push-button deployment",
     "text": "Part 4: Push-button deployment\n\nPublish the 11-car-inventory example to Connect.\nClick the blue publishing icon in the upper right of the file editor.\n\n\n\nWhen prompted connect to the Posit Connect server with the provided url. Click Publish."
   },
   {
     "objectID": "coursework_labs/03_lab_data_in_prod/lab_solution.html#part-5-programmatically-access-connect",
     "href": "coursework_labs/03_lab_data_in_prod/lab_solution.html#part-5-programmatically-access-connect",
-    "title": "Lab: Data in Production",
+    "title": "Lab 3: Data in Production",
     "section": "Part 5: Programmatically access Connect",
     "text": "Part 5: Programmatically access Connect\n\nWe want to programmatically identify all the content that has been published. You will need to use the Connect API Key that you created in the earlier lab. Or you can create a new key.\n\n\n\nOpen a new R script In your workbench console. Add your Connect information:\n\n# Add server\nrsconnect::addServer(\n  url = \"https://liberal-bullfinch.74633.fleeting.rstd.io/rsconnect/__api__\",\n  name = \"colorado\"\n)\n\n# Add account\nrsconnect::connectApiUser(\n  account = \"\",\n  server = \"colorado\",\n  apiKey = Sys.getenv(\"CONNECT_API_KEY\"),\n)\n\nAccess your content programmatically in R: - need to add key ias env variable\n\nlibrary(httr)\nlibrary(tidyr)\n\n# Use the /v1/content endpoint to retrieve the full list of content items\nresult &lt;- GET(\n  paste0(Sys.getenv(\"CONNECT_SERVER\"),\"__api__/v1/content\"),\n    add_headers(Authorization = paste(\"Key\", Sys.getenv(\"CONNECT_API_KEY\"))))\n\n# Create a tibble for the content list result response\ndf_full &lt;- unnest_wider(tibble::tibble(dat = content(result)), dat) \n\nAccess your content programmatically in the terminal using curl:\n\nexport CONNECT_API_KEY=XXX\nexport CONNECT_SERVER=https://liberal-bullfinch.74633.fleeting.rstd.io/rsconnect/\n\ncurl --silent --show-error -L --max-redirs 0 --fail \\\n    -H \"Authorization: Key ${CONNECT_API_KEY}\" \\\n    \"${CONNECT_SERVER}__api__/v1/content\""
   },
@@ -221,7 +228,7 @@
     "href": "slides/workshop_full_slides.html#workshop-install",
     "title": "DevOps for Data Scientists",
     "section": "Workshop Install",
-    "text": "Workshop Install\n\n\n\n\nSoftware\nLink\nCredentials\n\n\n\n\nPosit Workbench & Connect\nhttp://pos.it/class\nClassroom ID: DevOps_workshop\n\n\nDocker Classroom\nhttps://labs.play-with-docker.com/\nDocker Hub credentials"
+    "text": "Workshop Install\n\n\n\n\nSoftware\nLink\nCredentials\n\n\n\n\nPosit Workbench & Connect\nhttp://pos.it/class\nClassroom ID: devops_workshop\n\n\nDocker Classroom\nhttps://labs.play-with-docker.com/\nDocker Hub credentials"
   },
   {
     "objectID": "slides/workshop_full_slides.html#documentation-communication",
@@ -382,7 +389,7 @@
     "href": "slides/workshop_full_slides.html#environment-management",
     "title": "DevOps for Data Scientists",
     "section": "Environment Management",
-    "text": "Environment Management\n\n\n\n\n\n\n\n\n\nDevelopment ➡️ | Testing ➡️ | Production 🔄 |\n\n\n\n\n\nExploratory\nOften local machine\nAccess to R/Python Packages\n\n\nas similar to prod as possible\nunit & integration testing\ndata validation\n“sandbox” with data that’s as close to real as possible\n\n\nautomatic CD\nisolated from dev & test\ncreated with code\n\n\n\n\n\nunit test - testing individual units of code to make sure it does what you want it to do\nintegration test - make sure putting pieces together doesnt introduce any errors\nwant to be able to reproduce the environments as closely as possible"
+    "text": "Environment Management\n\n\n\n\n\n\n\n\n\nDevelopment\nTesting\nProduction\n\n\n\n\n\nExploratory\nOften local machine\nAccess to R/Python Packages\n\n\nas similar to prod as possible\nunit & integration testing\ndata validation\n“sandbox” with data that’s as close to real as possible\n\n\nautomatic CD\nisolated from dev & test\ncreated with code\n\n\n\n\n\nunit test - testing individual units of code to make sure it does what you want it to do\nintegration test - make sure putting pieces together doesnt introduce any errors\nwant to be able to reproduce the environments as closely as possible"
   },
   {
     "objectID": "slides/workshop_full_slides.html#version-control-workflows",
@@ -403,28 +410,28 @@
     "href": "slides/workshop_full_slides.html#is-version-control-secure",
     "title": "DevOps for Data Scientists",
     "section": "Is version control secure?",
-    "text": "Is version control secure?\n\nOur code is still saved locally\nHow do we make sure that the code we push to Github (or elsewhere) is secure?"
+    "text": "Is version control secure?"
   },
   {
     "objectID": "slides/workshop_full_slides.html#a-short-auth-teaser",
     "href": "slides/workshop_full_slides.html#a-short-auth-teaser",
     "title": "DevOps for Data Scientists",
     "section": "A short auth teaser",
-    "text": "A short auth teaser\n\nWe can use a variety of data sharing “transfer protocols”\nProtocols specify what kind of traffic is moving between 2 machines\nUse different security mechanisms\nPorts on the host and destination specifies where to direct the traffic\n\n\n\nAdd diagram - http and https two computers with ports\nThere are lots of diff transfer protocols; what you use depends on what kind data is being transferred and your security requirements. So for example, maybe you’re sending plain text or email or a webpage.\nProtocols as well as processes or application run on specific ports. A port is a virtual point where network connections start and end. Allow computers to easily differentiate between different kinds of traffic. So for example, Shiny Server runs on port 3838, Workbench runs on …\nwhether its email, text, files, etc Ports are software-based and managed by a computer’s operating system. Ports emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection."
+    "text": "A short auth teaser\n\nWe can use a variety of data sharing “transfer protocols”\nProtocols specify what kind of traffic is moving between 2 machines\nUse different security mechanisms\nPorts on the host and destination specifies where to direct the traffic\n\n\nHTTPS\n\n\nAdd diagram - http and https two computers with ports\nThere are lots of diff transfer protocols; what you use depends on what kind data is being transferred and your security requirements. So for example, maybe you’re sending plain text or email or a webpage.\nProtocols as well as processes or application run on specific ports. A port is a virtual point where network connections start and end. Allow computers to easily differentiate between different kinds of traffic. So for example, Shiny Server runs on port 3838, Workbench runs on 8787\nwhether its email, text, files, etc Ports are software-based and managed by a computer’s operating system. Ports emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection."
   },
   {
     "objectID": "slides/workshop_full_slides.html#git-protocol-options",
     "href": "slides/workshop_full_slides.html#git-protocol-options",
     "title": "DevOps for Data Scientists",
     "section": "Git protocol options",
-    "text": "Git protocol options\n\n\n\nhttp\nhttps\nSSH\n\n\n\n\nport 80\nport 443\nport 22\n\n\n\nhttp - text sent over the internet\nhttps - http encrypted with “SSL/TLS”\nSSH - secure shell\n\nwe’ll be using https - because … from jenny bryans happy git with R\nhypertext transfer protocol When a web user wants to load or interact with a web page, their web browser sends an HTTP request to the origin server that hosts the website’s files. These requests are essentially lines of text that are sent via the internet.\nhttps : http encrypted with SSL/TLS - digital certificates that establish an encrypted connected\nSSH: secure shell, public-key cryptography to authenticate the client, used for remote logins, command line execution\nHTTPS is simpler. For most services besides Github, you just have to enter in your username and password, and you’ll be able to push and pull code.\nYou don’t have to juggle multiple SSH keys around to use multiple devices.\nPort 443, which HTTPS uses, is open in basically any firewall that can access the internet. That isn’t always the case for SSH.\nThe primary downside for most people is that you must enter your Git password/token every time you push. While it gets added to a cache, it’s not configured to cache permanently (though this can be changed). With SSH keys, it just uses the key file on disk every time.\nWhere SSH takes the lead is with the authentication factor—the key. The length of it alone makes it harder to accidentally leak, and due to it being unwieldy and unique, it’s generally more secure."
+    "text": "Git protocol options\n\n\nhttp - 80\nhttps - 443\nssh - 22\nwe’ll be using https - because … from jenny bryans happy git with R\nI find HTTPS easier to get working quickly and strongly recommend it when you first start working with Git/GitHub.\nHTTPS is what GitHub recommends, presumably for exactly the same reasons.\nThe “ease of use” argument in favor of HTTPS is especially true for Windows users.\nAnother advantage of HTTPS is that the PAT we’ll set up for that can also be used with GitHub’s REST API.\nhypertext transfer protocol When a web user wants to load or interact with a web page, their web browser sends an HTTP request to the origin server that hosts the website’s files. These requests are essentially lines of text that are sent via the internet.\nhttps : http encrypted with SSL/TLS - digital certificates that establish an encrypted connected\nSSH: secure shell, public-key cryptography to authenticate the client, used for remote logins, command line execution\nHTTPS is simpler. For most services besides Github, you just have to enter in your username and password, and you’ll be able to push and pull code.\nYou don’t have to juggle multiple SSH keys around to use multiple devices.\nPort 443, which HTTPS uses, is open in basically any firewall that can access the internet. That isn’t always the case for SSH.\nThe primary downside for most people is that you must enter your Git password/token every time you push. While it gets added to a cache, it’s not configured to cache permanently (though this can be changed). With SSH keys, it just uses the key file on disk every time.\nWhere SSH takes the lead is with the authentication factor—the key. The length of it alone makes it harder to accidentally leak, and due to it being unwieldy and unique, it’s generally more secure."
   },
   {
     "objectID": "slides/workshop_full_slides.html#reproducing-your-environment",
     "href": "slides/workshop_full_slides.html#reproducing-your-environment",
     "title": "DevOps for Data Scientists",
     "section": "Reproducing your environment",
-    "text": "Reproducing your environment\nWhat are the layers that need to be reproduced across your dev, test, and prod environments?\nWhat’s your most difficult reproducibility challenge?"
+    "text": "Reproducing your environment\n\nWhat are the layers that need to be reproduced across your dev, test, and prod environments?\n\nWhat’s your most difficult reproducibility challenge?"
   },
   {
     "objectID": "slides/workshop_full_slides.html#layers-of-reproducibility",
@@ -438,7 +445,7 @@
     "href": "slides/workshop_full_slides.html#packages-vs.-libraries-vs.-repositories",
     "title": "DevOps for Data Scientists",
     "section": "Packages vs. Libraries vs. Repositories",
-    "text": "Packages vs. Libraries vs. Repositories\n\nPackage - contains code, functions, data, and documentation. \nLibrary - is a directory where packages are installed. \nRepository - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.\n\npackages - Can be be distributed as SOURCE (a directory with all package components), BINARIES (contains files in OS-specific format) or as a BUNDLE (compressed file containing package components, similar to source).\nlibrary - You can have user-level or project-level libraries. Run .libPaths() to see yours. To use a package in has to be installed in a library with install.packages() and then loaded into memory with library(x) .\nrepo - others include pypi, bioconducter, private repos"
+    "text": "Packages vs. Libraries vs. Repositories\n\nPackage - contains code, functions, data, and documentation.\n\nLibrary - is a directory where packages are installed.\n\nRepository - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.\n\npackages - Can be be distributed as SOURCE (a directory with all package components), BINARIES (contains files in OS-specific format) or as a BUNDLE (compressed file containing package components, similar to source).\nlibrary - You can have user-level or project-level libraries. Run .libPaths() to see yours. To use a package in has to be installed in a library with install.packages() and then loaded into memory with library(x) .\nrepo - others include pypi, bioconducter, private repos"
   },
   {
     "objectID": "slides/workshop_full_slides.html#renv-workflow",
@@ -448,11 +455,11 @@
     "text": "renv workflow\n\n\n\nUse a version control system e.g.git with GitHub\nOne user (should explicitly initialize renv in the project, This will create the initial renv lockfile, and also write the renv auto-loaders to the project’s .Rprofile and renv/activate.R. These will ensure the right version of renv is downloaded and installed for your collaborators when they start in this project.\npush your code alongside the generated lockfile renv.lock. Be sure to also share the generated auto-loaders in .Rprofile and renv/activate.R.\nAfter this has completed, they can then use renv::restore() to restore the project library locally on their machine."
   },
   {
-    "objectID": "slides/workshop_full_slides.html#example",
-    "href": "slides/workshop_full_slides.html#example",
+    "objectID": "slides/workshop_full_slides.html#example---renv",
+    "href": "slides/workshop_full_slides.html#example---renv",
     "title": "DevOps for Data Scientists",
-    "section": "Example",
-    "text": "Example\n# install.packages(\"renv\")\nrenv::init()\nrenv::snapshot()\nlapply(.libPaths(), list.files)\n\n🔍 Live code"
+    "section": "Example - renv",
+    "text": "Example - renv\n\n# install.packages(\"renv\")\nrenv::init()\nrenv::snapshot()\nlapply(.libPaths(), list.files)\n\n\n🔍 Live code"
   },
   {
     "objectID": "slides/workshop_full_slides.html#lab-activity---renv-workflow-github-authentication",
@@ -494,7 +501,7 @@
     "href": "slides/workshop_full_slides.html#exercise---inspect-your-yaml",
     "title": "DevOps for Data Scientists",
     "section": "Exercise - Inspect your YAML",
-    "text": "Exercise - Inspect your YAML\n🟥 - I need help\n🟨 - I’m still working\n🟩 - I’m done\nInspect your _quarto.yml file and identify what each part of it does using the quarto site.\n\n2-5 minutes - render your site to help"
+    "text": "Exercise - Inspect your YAML\n🟥 - I need help\n🟩 - I’m done\n\nInspect your _quarto.yml file and identify what each part of it does using the quarto site.\n\n2-5 minutes - render your site to help"
   },
   {
     "objectID": "slides/workshop_full_slides.html#continuous-integration-example",
@@ -543,21 +550,28 @@
     "href": "slides/workshop_full_slides.html#logging",
     "title": "DevOps for Data Scientists",
     "section": "Logging",
-    "text": "Logging\nlog session ➡️ log statement ➡️ log entry\n\n\n\n\n\napp.py\n\nimport logging\n\n# Configure the log object\nlogging.basicConfig(\n    format='%(asctime)s - %(message)s',\n    level=logging.INFO\n)\n\n# Log app start\nlogging.info(\"App Started\")\n\n\n\n\n\n\napp.R\n\n# Configure the log object\nlog &lt;- log4r::logger()\n\n# Log app start\nlog4r::info(log, \"App Started\")\n\n\n\n\n\ncreate a log session for your r or python code, write a log statement, gets added into an entry\nwhat to log\ntypes of logs"
+    "text": "Logging\n\n\n\n\n\n\napp.py\n\nimport logging\n\n# Configure the log object\nlogging.basicConfig(\n    format='%(asctime)s - %(message)s',\n    level=logging.INFO\n)\n\n# Log app start\nlogging.info(\"App Started\")\n\n\n\n\n\n\napp.R\n\n# Configure the log object\nlog &lt;- log4r::logger()\n\n# Log app start\nlog4r::info(log, \"App Started\")\n\n\n\n\n\ncreate a log session for your r or python code, write a log statement, gets added into an entry\nwhat to log\ntypes of logs"
   },
   {
     "objectID": "slides/workshop_full_slides.html#monitoring",
     "href": "slides/workshop_full_slides.html#monitoring",
     "title": "DevOps for Data Scientists",
     "section": "Monitoring",
-    "text": "Monitoring\n\nIf you want to register metrics from your API or app with Prometheus, there is an official Prometheus client in Python and the {openmetrics} package in R makes it easy to register metrics from a Plumber API or Shiny app.\n\nThere’s a great Get Started with Grafana and Prometheus doc on the Grafana Labs website if you want to actually try it out."
+    "text": "Monitoring\n\nPrometheus\n\nOS monitoring toolkit\nofficial Prometheus client in Python\n{openmetrics} package to register metrics from a Plumber API or Shiny app.\n\n\nGrafana\n\nGUI for Prometheus\nGet Started with Grafana and Prometheus"
   },
   {
-    "objectID": "slides/workshop_full_slides.html#part-3-goals-docker-for-data-scientists",
-    "href": "slides/workshop_full_slides.html#part-3-goals-docker-for-data-scientists",
+    "objectID": "slides/workshop_full_slides.html#part-3-docker-for-data-scientists",
+    "href": "slides/workshop_full_slides.html#part-3-docker-for-data-scientists",
     "title": "DevOps for Data Scientists",
-    "section": "Part 3 Goals: Docker for Data Scientists",
-    "text": "Part 3 Goals: Docker for Data Scientists\n\nto understand different docker workflows\nto learn common docker syntax for building and running containers\nto get hands on experience building and running containers\nto explore the linux file system"
+    "section": "Part 3: Docker for Data Scientists",
+    "text": "Part 3: Docker for Data Scientists"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#section-goals-1",
+    "href": "slides/workshop_full_slides.html#section-goals-1",
+    "title": "DevOps for Data Scientists",
+    "section": "Section Goals",
+    "text": "Section Goals\n\nto understand different docker workflows\nto learn common docker syntax for building and running containers\nto get hands on experience building and running containers\nto explore the linux file system"
   },
   {
     "objectID": "slides/workshop_full_slides.html#why-use-a-container-at-all",
@@ -620,21 +634,21 @@
     "href": "slides/workshop_full_slides.html#example---testing-versioning",
     "title": "DevOps for Data Scientists",
     "section": "Example - testing & versioning",
-    "text": "Example - testing & versioning\ndocker pull postgres:12\ndocker pull postgres:latest\ndocker container ls -a\ndocker run -d -e POSTGRES_PASSWORD=mysecretpassword --name postgres_early imageID\ndocker run -d -e POSTGRES_PASSWORD=mysecretpassword --name postgres_new imageID\ndocker container ls -a\ndocker stop\ndocker restart\n\n🔍 Live code\n\n\ncan pull but also if you just run - will put it from hub if doenst find locally Let’s see an example of what this looks like in practice. Lets say we need to use a postgres sql database for some testing - but we want to test using an older and a newer version of postgres.\ndocker image ls - lets list all the images that we have\ndocker pull postgres:12 - see how its pulling and extracting all these layers - but what if we want a newer version or what if we need to run both versions on our machine\ndocker pull postgres:latest - notice how some of these layers already exist so it takes a lot less time"
+    "text": "Example - testing & versioning\n\n\ndocker pull postgres:12\ndocker pull postgres:latest\ndocker container ls -a\ndocker run -d -e POSTGRES_PASSWORD=mysecretpassword --name postgres_early imageID\ndocker run -d -e POSTGRES_PASSWORD=mysecretpassword --name postgres_new imageID\ndocker container ls -a\ndocker stop\ndocker restart\n\n🔍 Live code\n\n\ncan pull but also if you just run - will put it from hub if doenst find locally Let’s see an example of what this looks like in practice. Lets say we need to use a postgres sql database for some testing - but we want to test using an older and a newer version of postgres.\ndocker image ls - lets list all the images that we have\ndocker pull postgres:12 - see how its pulling and extracting all these layers - but what if we want a newer version or what if we need to run both versions on our machine\ndocker pull postgres:latest - notice how some of these layers already exist so it takes a lot less time"
   },
   {
     "objectID": "slides/workshop_full_slides.html#example---reproduce-environments",
     "href": "slides/workshop_full_slides.html#example---reproduce-environments",
     "title": "DevOps for Data Scientists",
     "section": "Example - reproduce environments",
-    "text": "Example - reproduce environments\nhttps://hub.docker.com/u/rocker\n# pull the image\ndocker pull rocker/r-base\n\n# run container\ndocker run --rm -it rocker/r-base"
+    "text": "Example - reproduce environments\n\nhttps://hub.docker.com/u/rocker\n\n# pull the image\ndocker pull rocker/r-base\n\n# run container\ndocker run --rm -it rocker/r-base"
   },
   {
     "objectID": "slides/workshop_full_slides.html#example---isolate-applications",
     "href": "slides/workshop_full_slides.html#example---isolate-applications",
     "title": "DevOps for Data Scientists",
     "section": "Example - isolate applications",
-    "text": "Example - isolate applications\nhttps://hub.docker.com/u/rstudio\nDO NOT RUN!\ndocker run -it --privileged \\\n    -p 3939:3939 \\\n    -e RSC_LICENSE=$RSC_LICENSE \\\n    rstudio/rstudio-connect:ubuntu2204"
+    "text": "Example - isolate applications\n\nhttps://hub.docker.com/u/rstudio\n\nDO NOT RUN!\ndocker run -it --privileged \\\n    -p 3939:3939 \\\n    -e RSC_LICENSE=$RSC_LICENSE \\\n    rstudio/rstudio-connect:ubuntu2204"
   },
   {
     "objectID": "slides/workshop_full_slides.html#example---docker-as-deployment-strategy",
@@ -662,35 +676,35 @@
     "href": "slides/workshop_full_slides.html#lab-activity---running-containers",
     "title": "DevOps for Data Scientists",
     "section": "Lab Activity - Running containers",
-    "text": "Lab Activity - Running containers\n🟥 - I need help\n🟩 - I’m done\n\nLab 2: Part 1"
+    "text": "Lab Activity - Running containers\n\n🟥 - I need help\n🟩 - I’m done\n\nLab 2: Part 1"
   },
   {
     "objectID": "slides/workshop_full_slides.html#running-containers",
     "href": "slides/workshop_full_slides.html#running-containers",
     "title": "DevOps for Data Scientists",
     "section": "Running containers",
-    "text": "Running containers\ndocker pull ubuntu\ndocker image ls -a\n\ndocker run -it ubuntu bash\nls\nwhoami\nhostname\n# exit the container with Ctrl+D or exit\n\ndocker run -d ubuntu\ndocker container ls -a\n\ndocker run -d -P --name nginx1 nginx:alpine\n\ndocker container stop nginx1\n\ndocker run --rm debian echo \"hello world\""
+    "text": "Running containers\n\ndocker pull ubuntu\ndocker image ls -a\n\ndocker run -it ubuntu bash\nls\nwhoami\nhostname\n# exit the container with Ctrl+D or exit\n\ndocker run -d ubuntu\ndocker container ls -a\n\ndocker run -d -P --name nginx1 nginx:alpine\n\ndocker container stop nginx1\n\ndocker run --rm debian echo \"hello world\""
   },
   {
     "objectID": "slides/workshop_full_slides.html#container-debugging",
     "href": "slides/workshop_full_slides.html#container-debugging",
     "title": "DevOps for Data Scientists",
     "section": "Container Debugging",
-    "text": "Container Debugging\ndocker run -it -d ubuntu\ndocker container ls -a \ndocker exec -it CONTAINER_ID bash\n\ndocker container run -d --name mydb \\\n --name mydb \\\n -e MYSQL_ROOT_PASSWORD=my-secret-pw \\ \n mysql\n \n docker container logs mydb\n\n🔍 Live code"
+    "text": "Container Debugging\n\ndocker run -it -d ubuntu\ndocker container ls -a \ndocker exec -it CONTAINER_ID bash\n\ndocker container run -d --name mydb \\\n --name mydb \\\n -e MYSQL_ROOT_PASSWORD=my-secret-pw \\ \n mysql\n \n docker container logs mydb\n\n🔍 Live code"
   },
   {
     "objectID": "slides/workshop_full_slides.html#lab-activity---debugging-containers",
     "href": "slides/workshop_full_slides.html#lab-activity---debugging-containers",
     "title": "DevOps for Data Scientists",
     "section": "Lab Activity - Debugging Containers",
-    "text": "Lab Activity - Debugging Containers\n🟥 - I need help\n🟩 - I’m done\n\nLab 2: Part 2"
+    "text": "Lab Activity - Debugging Containers\n\n🟥 - I need help\n🟩 - I’m done\n\nLab 2: Part 2"
   },
   {
-    "objectID": "slides/workshop_full_slides.html#port-mapping-with-docker-run--p",
-    "href": "slides/workshop_full_slides.html#port-mapping-with-docker-run--p",
+    "objectID": "slides/workshop_full_slides.html#port-mapping-with-docker-run--phostcontainer",
+    "href": "slides/workshop_full_slides.html#port-mapping-with-docker-run--phostcontainer",
     "title": "DevOps for Data Scientists",
-    "section": "Port Mapping with docker run -p",
-    "text": "Port Mapping with docker run -p\ndocker run -p host_port:container_port\n\ndocker pull httpd:alpine\ndocker pull httpd:latest\n\ndocker inspect --format='{{.Config.ExposedPorts}}' httpd:latest\ndocker inspect --format='{{.Config.ExposedPorts}}' httpd:alpine\n\ndocker run -p DockerHostPort:ApplicationPort\n\ndocker run -d -p 80:80 --name httpd-latest httpd:latest\ncurl http://localhost:81\n\ndocker run -d -p 6574:80 --name httpd-alpine httpd:alpine\ncurl http://localhost:80\n\n🔍 Live code"
+    "section": "Port Mapping with docker run -p``host:container",
+    "text": "Port Mapping with docker run -p``host:container\n\n\n\ndocker pull httpd:alpine\ndocker pull httpd:latest\n\ndocker inspect --format='{{.Config.ExposedPorts}}' httpd:latest\ndocker inspect --format='{{.Config.ExposedPorts}}' httpd:alpine\n\ndocker run -p DockerHostPort:ApplicationPort\n\ndocker run -d -p 80:80 --name httpd-latest httpd:latest\ncurl http://localhost:81\n\ndocker run -d -p 6574:80 --name httpd-alpine httpd:alpine\ncurl http://localhost:80\n\n🔍 Live code"
   },
   {
     "objectID": "slides/workshop_full_slides.html#lab-activity---mapping-ports",
@@ -704,7 +718,7 @@
     "href": "slides/workshop_full_slides.html#persisting-data-with-docker",
     "title": "DevOps for Data Scientists",
     "section": "Persisting data with Docker",
-    "text": "Persisting data with Docker\n\nState is persistent information that is recorded and recalled later\nContainers are designed to be ephemeral e.g. stateless by default\nData applications are usually stateful and more complex to deploy\n\n\nImages are made of a set of read-only layers. When we start a new container, Docker adds a read-write layer on the top of the image layers allowing the container to run as though on a standard Linux file system.\nSo, any file change inside the container creates a working copy in the read-write layer. However, when the container is stopped or deleted, that read-write layer is lost."
+    "text": "Persisting data with Docker\n\n\nState is persistent information that is recorded and recalled later\nContainers are designed to be ephemeral e.g. stateless by default\nData applications are usually stateful and more complex to deploy\n\n\nImages are made of a set of read-only layers. When we start a new container, Docker adds a read-write layer on the top of the image layers allowing the container to run as though on a standard Linux file system.\nSo, any file change inside the container creates a working copy in the read-write layer. However, when the container is stopped or deleted, that read-write layer is lost."
   },
   {
     "objectID": "slides/workshop_full_slides.html#options",
@@ -718,7 +732,7 @@
     "href": "slides/workshop_full_slides.html#lab-activity---persisting-data",
     "title": "DevOps for Data Scientists",
     "section": "Lab Activity - Persisting Data",
-    "text": "Lab Activity - Persisting Data\n🟥 - I need help\n🟩 - I’m done\n\nLab 2: Part 4"
+    "text": "Lab Activity - Persisting Data\n\n🟥 - I need help\n🟩 - I’m done\n\nLab 2: Part 4"
   },
   {
     "objectID": "slides/workshop_full_slides.html#building-docker-images",
@@ -732,7 +746,7 @@
     "href": "slides/workshop_full_slides.html#lab-activity---commit-and-push-container-to-dockerhub",
     "title": "DevOps for Data Scientists",
     "section": "Lab Activity - Commit and push container to DockerHub",
-    "text": "Lab Activity - Commit and push container to DockerHub\n🟥 - I need help\n🟩 - I’m done\n\nLab 2: Part 5"
+    "text": "Lab Activity - Commit and push container to DockerHub\n\n🟥 - I need help\n🟩 - I’m done\n\nLab 2: Part 5"
   },
   {
     "objectID": "slides/workshop_full_slides.html#a-few-dockerfile-build-commands",
@@ -767,7 +781,7 @@
     "href": "slides/workshop_full_slides.html#data-science-in-production",
     "title": "DevOps for Data Scientists",
     "section": "Data Science in Production",
-    "text": "Data Science in Production\n\nPresentation Layer\nProcessing Layer\nData store Layer"
+    "text": "Data Science in Production"
   },
   {
     "objectID": "slides/workshop_full_slides.html#choosing-the-right-presentation-layer",
@@ -777,11 +791,11 @@
     "text": "Choosing the right presentation layer\n\nAlex’s flow chart"
   },
   {
-    "objectID": "slides/workshop_full_slides.html#choosing-an-api",
-    "href": "slides/workshop_full_slides.html#choosing-an-api",
+    "objectID": "slides/workshop_full_slides.html#choosing-a-rest-api",
+    "href": "slides/workshop_full_slides.html#choosing-a-rest-api",
     "title": "DevOps for Data Scientists",
-    "section": "Choosing an API",
-    "text": "Choosing an API"
+    "section": "Choosing a REST API",
+    "text": "Choosing a REST API"
   },
   {
     "objectID": "slides/workshop_full_slides.html#production-state",
@@ -791,80 +805,38 @@
     "text": "Production “State”\nQuestions to ask once your content is able to be consumed by your intended audience\n\nWhere is it deployed?\nIs it secure and accessible?\nIs it maintainable?\nDoes it scale?\nIs your code efficiently written?\nIs it tested?"
   },
   {
-    "objectID": "slides/workshop_full_slides.html#where-is-it-deployed",
-    "href": "slides/workshop_full_slides.html#where-is-it-deployed",
+    "objectID": "slides/workshop_full_slides.html#lab-activity-host-api-on-posit-connect",
+    "href": "slides/workshop_full_slides.html#lab-activity-host-api-on-posit-connect",
     "title": "DevOps for Data Scientists",
-    "section": "Where is it deployed?",
-    "text": "Where is it deployed?\nlist of PaaS / Caas and highlight Connect"
+    "section": "Lab Activity: Host API on Posit Connect",
+    "text": "Lab Activity: Host API on Posit Connect\n\n🟥 - I need help\n🟩 - I’m done\n\nLab 3: Part 1"
   },
   {
-    "objectID": "slides/workshop_full_slides.html#lab-activity",
-    "href": "slides/workshop_full_slides.html#lab-activity",
+    "objectID": "slides/workshop_full_slides.html#lab-activity-explore-api-structure",
+    "href": "slides/workshop_full_slides.html#lab-activity-explore-api-structure",
     "title": "DevOps for Data Scientists",
-    "section": "Lab Activity:",
-    "text": "Lab Activity:\n🟥 - I need help\n🟨 - I’m still working\n🟩 - I’m done\nPart 1: Host API on Posit Connect"
+    "section": "Lab Activity: Explore API structure",
+    "text": "Lab Activity: Explore API structure\n\n🟥 - I need help\n🟩 - I’m done\n\nLab 3: Part 2"
   },
   {
-    "objectID": "slides/workshop_full_slides.html#is-it-secure",
-    "href": "slides/workshop_full_slides.html#is-it-secure",
+    "objectID": "slides/workshop_full_slides.html#lab-activity-explore-plumber",
+    "href": "slides/workshop_full_slides.html#lab-activity-explore-plumber",
     "title": "DevOps for Data Scientists",
-    "section": "Is it secure?",
-    "text": "Is it secure?\n\nBasic Auth\nAPI keys\nToken-based"
+    "section": "Lab Activity: Explore Plumber",
+    "text": "Lab Activity: Explore Plumber\n\n🟥 - I need help\n🟩 - I’m done\n\nLab 3: Part 3"
   },
   {
-    "objectID": "slides/workshop_full_slides.html#securing-credentials",
-    "href": "slides/workshop_full_slides.html#securing-credentials",
+    "objectID": "slides/workshop_full_slides.html#lab-activity-push-button-deployment",
+    "href": "slides/workshop_full_slides.html#lab-activity-push-button-deployment",
     "title": "DevOps for Data Scientists",
-    "section": "Securing credentials",
-    "text": "Securing credentials\n\nusername and password\ncentralized credential server\nSSO"
+    "section": "Lab Activity: Push button deployment",
+    "text": "Lab Activity: Push button deployment\n\n🟥 - I need help\n🟩 - I’m done\n\nLab 3: Part 4"
   },
   {
-    "objectID": "slides/workshop_full_slides.html#is-it-accessible",
-    "href": "slides/workshop_full_slides.html#is-it-accessible",
+    "objectID": "slides/workshop_full_slides.html#lab-activity-access-api-data",
+    "href": "slides/workshop_full_slides.html#lab-activity-access-api-data",
     "title": "DevOps for Data Scientists",
-    "section": "Is it accessible?",
-    "text": "Is it accessible?\nRBAC"
-  },
-  {
-    "objectID": "slides/workshop_full_slides.html#lab-activity-1",
-    "href": "slides/workshop_full_slides.html#lab-activity-1",
-    "title": "DevOps for Data Scientists",
-    "section": "Lab Activity:",
-    "text": "Lab Activity:\n🟥 - I need help\n🟨 - I’m still working\n🟩 - I’m done\nPart 2:"
-  },
-  {
-    "objectID": "slides/workshop_full_slides.html#is-it-maintainable",
-    "href": "slides/workshop_full_slides.html#is-it-maintainable",
-    "title": "DevOps for Data Scientists",
-    "section": "Is it maintainable",
-    "text": "Is it maintainable\ngit-backed deploymnet"
-  },
-  {
-    "objectID": "slides/workshop_full_slides.html#is-it-scalable",
-    "href": "slides/workshop_full_slides.html#is-it-scalable",
-    "title": "DevOps for Data Scientists",
-    "section": "Is it scalable?",
-    "text": "Is it scalable?\nscaling up vs. scaling out\nconnect shiny resource options"
-  },
-  {
-    "objectID": "slides/workshop_full_slides.html#is-your-code-efficient",
-    "href": "slides/workshop_full_slides.html#is-your-code-efficient",
-    "title": "DevOps for Data Scientists",
-    "section": "Is your code efficient?",
-    "text": "Is your code efficient?\n\ndata storage\ncomputations\ncaches"
-  },
-  {
-    "objectID": "slides/workshop_full_slides.html#is-it-tested",
-    "href": "slides/workshop_full_slides.html#is-it-tested",
-    "title": "DevOps for Data Scientists",
-    "section": "Is it tested",
-    "text": "Is it tested\ntesting as part of CI/CD"
-  },
-  {
-    "objectID": "slides/workshop_full_slides.html#section-2",
-    "href": "slides/workshop_full_slides.html#section-2",
-    "title": "DevOps for Data Scientists",
-    "section": "",
-    "text": "https://github.com/posit-conf-2023/DevOps"
+    "section": "Lab Activity: Access API data",
+    "text": "Lab Activity: Access API data\n\n🟥 - I need help\n🟩 - I’m done\n\nLab 3: Part 5\n\n\nhttps://github.com/posit-conf-2023/DevOps"
   }
 ]

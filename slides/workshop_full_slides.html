@@ -504,7 +504,7 @@
 <tr class="odd">
 <td>Posit Workbench &amp; Connect</td>
 <td><a href="http://pos.it/class" class="uri">http://pos.it/class</a></td>
-<td>Classroom ID: <code>DevOps_workshop</code></td>
+<td>Classroom ID: <code>devops_workshop</code></td>
 </tr>
 <tr class="even">
 <td>Docker Classroom</td>
@@ -1009,7 +1009,9 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th colspan="3">Development ➡️ | Testing ➡️ | Production 🔄 |</th>
+<th>Development</th>
+<th>Testing</th>
+<th>Production</th>
 </tr>
 </thead>
 <tbody>
@@ -1052,7 +1054,7 @@
 <section id="version-control-workflows" class="slide level2">
 <h2>Version Control &amp; Workflows</h2>
 
-<img data-src="images/Screenshot 2023-08-23 at 11.20.04 AM.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<img data-src="images/versioncontrol.png" class="r-stretch"><aside class="notes">
 <p>Version control is a main tool for Continuous Integration -</p>
 <p>lots of variants - git, github., svn, gitlab, etc</p>
 <p>distributed version control - everyone has their own repo</p>
@@ -1097,10 +1099,7 @@
 </section>
 <section id="is-version-control-secure" class="slide level2">
 <h2>Is version control secure?</h2>
-<ul>
-<li>Our code is still saved locally</li>
-<li>How do we make sure that the code we push to Github (or elsewhere) is secure?</li>
-</ul>
+<p><br> <iframe src="https://giphy.com/embed/l2JdZzcXF8hqpPMpW" width="480" height="366" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe></p>
 </section>
 <section id="a-short-auth-teaser" class="slide level2">
 <h2>A short auth teaser</h2>
@@ -1110,11 +1109,13 @@
 <li>Use different security mechanisms</li>
 <li>Ports on the host and destination specifies where to direct the traffic</li>
 </ul>
+<p><br></p>
+<p><strong>HTTPS</strong></p>
 
 <img data-src="images/Screenshot 2023-09-07 at 9.28.32 AM.png" class="r-stretch"><aside class="notes">
 <p>Add diagram - http and https two computers with ports</p>
 <p>There are lots of diff transfer protocols; what you use depends on what kind data is being transferred and your security requirements. So for example, maybe you’re sending plain text or email or a webpage.</p>
-<p>Protocols as well as processes or application run on specific ports. A port is a virtual point where network connections start and end. Allow computers to easily differentiate between different kinds of traffic. So for example, Shiny Server runs on port 3838, Workbench runs on …</p>
+<p>Protocols as well as processes or application run on specific ports. A port is a virtual point where network connections start and end. Allow computers to easily differentiate between different kinds of traffic. So for example, Shiny Server runs on port 3838, Workbench runs on 8787</p>
 <p>whether its email, text, files, etc Ports are software-based and managed by a computer’s operating system. Ports emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1130,27 +1131,16 @@
 </section>
 <section id="git-protocol-options" class="slide level2">
 <h2>Git protocol options</h2>
-<table>
-<thead>
-<tr class="header">
-<th>http</th>
-<th>https</th>
-<th>SSH</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>port 80</td>
-<td>port 443</td>
-<td>port 22</td>
-</tr>
-</tbody>
-</table>
-<p>http - text sent over the internet</p>
-<p>https - http encrypted with “SSL/TLS”</p>
-<p>SSH - secure shell</p>
-<aside class="notes">
+
+<img data-src="images/http-vs-https.png" class="r-stretch"><aside class="notes">
+<p>http - 80</p>
+<p>https - 443</p>
+<p>ssh - 22</p>
 <p>we’ll be using https - because … from jenny bryans happy git with R</p>
+<p>I find HTTPS easier to get working quickly and <strong>strongly recommend</strong> it when you first start working with Git/GitHub.</p>
+<p>HTTPS is what GitHub recommends, presumably for exactly the same reasons.</p>
+<p>The “ease of use” argument in favor of HTTPS is especially true for Windows users.</p>
+<p>Another advantage of HTTPS is that the PAT we’ll set up for that can also be used with GitHub’s REST API.</p>
 <p>hypertext transfer protocol When a web user wants to load or interact with a web page, their web browser sends an HTTP request to the origin server that hosts the website’s files. These requests are essentially lines of text that are sent via the internet.</p>
 <p>https : http encrypted with SSL/TLS - digital certificates that establish an encrypted connected</p>
 <p>SSH: secure shell, public-key cryptography to authenticate the client, used for remote logins, command line execution</p>
@@ -1173,7 +1163,9 @@
 </section>
 <section id="reproducing-your-environment" class="slide level2">
 <h2>Reproducing your environment</h2>
+<p><br></p>
 <p>What are the layers that need to be reproduced across your dev, test, and prod environments?</p>
+<p><br></p>
 <p>What’s your most difficult reproducibility challenge?</p>
 </section>
 <section id="layers-of-reproducibility" class="slide level2">
@@ -1202,8 +1194,10 @@
 <section id="packages-vs.-libraries-vs.-repositories" class="slide level2">
 <h2>Packages vs.&nbsp;Libraries vs.&nbsp;Repositories</h2>
 <p><br></p>
-<p><strong>Package</strong> - contains code, functions, data, and documentation. <br></p>
-<p><strong>Library</strong> - is a directory where packages are installed. <br></p>
+<p><strong>Package</strong> - contains code, functions, data, and documentation.</p>
+<p><br></p>
+<p><strong>Library</strong> - is a directory where packages are installed.</p>
+<p><br></p>
 <p><strong>Repository</strong> - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.</p>
 <aside class="notes">
 <p>packages - Can be be distributed as SOURCE (a directory with all package components), <a href="https://solutions.posit.co/envs-pkgs/environments/repositories/index.html#binary-packages">BINARIES</a> (contains files in OS-specific format) or as a BUNDLE (compressed file containing package components, similar to source).</p>
@@ -1243,12 +1237,14 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
+<section id="example---renv" class="slide level2">
+<h2>Example - renv</h2>
+<div style="font-size: 100%">
 <pre data-eval="FALSE"><code># install.packages("renv")
 renv::init()
 renv::snapshot()
 lapply(.libPaths(), list.files)</code></pre>
+</div>
 <div class="footer">
 <p>🔍 Live code</p>
 </div>
@@ -1353,8 +1349,8 @@ lapply(.libPaths(), list.files)</code></pre>
 <section id="exercise---inspect-your-yaml" class="slide level2">
 <h2>Exercise - Inspect your YAML</h2>
 <p>🟥 - I need help</p>
-<p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
+<p><br></p>
 <p>Inspect your _quarto.yml file and identify what each part of it does using the quarto site.</p>
 <aside class="notes">
 <p>2-5 minutes - render your site to help</p>
@@ -1468,7 +1464,7 @@ lapply(.libPaths(), list.files)</code></pre>
 </section>
 <section id="logging" class="slide level2">
 <h2>Logging</h2>
-<p>log session ➡️ log statement ➡️ log entry</p>
+<p><br></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
@@ -1521,13 +1517,26 @@ lapply(.libPaths(), list.files)</code></pre>
 </section>
 <section id="monitoring" class="slide level2">
 <h2>Monitoring</h2>
-<p><img data-src="images/icons8-prometheus-48.png"></p>
-<p>If you want to register metrics from your API or app with Prometheus, there is an official <a href="https://github.com/prometheus/client_python">Prometheus client</a> in Python and the <code>{openmetrics}</code> package in R makes it easy to register metrics from a Plumber API or Shiny app.</p>
-<p><img data-src="images/icons8-grafana-48.png"></p>
-<p>There’s a great <a href="https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/">Get Started with Grafana and Prometheus</a> doc on the Grafana Labs website if you want to actually try it out.</p>
+<p><img data-src="images/icons8-prometheus-48.png" width="100"></p>
+<p><strong>Prometheus</strong></p>
+<ul>
+<li><p>OS monitoring toolkit</p></li>
+<li><p>official <a href="https://github.com/prometheus/client_python">Prometheus client</a> in Python</p></li>
+<li><p><code>{openmetrics}</code> package to register metrics from a Plumber API or Shiny app.</p></li>
+</ul>
+<p><img data-src="images/icons8-grafana-48.png" width="100"></p>
+<p><strong>Grafana</strong></p>
+<ul>
+<li><p>GUI for Prometheus</p></li>
+<li><p><a href="https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/">Get Started with Grafana and Prometheus</a></p></li>
+</ul>
 </section>
-<section id="part-3-goals-docker-for-data-scientists" class="slide level2">
-<h2>Part 3 Goals: Docker for Data Scientists</h2>
+<section id="part-3-docker-for-data-scientists" class="slide level2">
+<h2>Part 3: Docker for Data Scientists</h2>
+<p><br> <iframe src="https://giphy.com/embed/3orifbpd7ODPyeW5sk" width="480" height="366" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe></p>
+</section>
+<section id="section-goals-1" class="slide level2">
+<h2>Section Goals</h2>
 <ul>
 <li>to understand different docker workflows</li>
 <li>to learn common docker syntax for building and running containers</li>
@@ -1641,6 +1650,8 @@ lapply(.libPaths(), list.files)</code></pre>
 </section>
 <section id="example---testing-versioning" class="slide level2">
 <h2>Example - testing &amp; versioning</h2>
+<p><br></p>
+<p><br></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">docker</span> pull postgres:12</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="ex">docker</span> pull postgres:latest</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="ex">docker</span> container ls <span class="at">-a</span></span>
@@ -1671,7 +1682,9 @@ lapply(.libPaths(), list.files)</code></pre>
 </section>
 <section id="example---reproduce-environments" class="slide level2">
 <h2>Example - reproduce environments</h2>
+<p><br></p>
 <p>https://hub.docker.com/u/rocker</p>
+<p><br></p>
 <pre><code># pull the image
 docker pull rocker/r-base
 
@@ -1680,7 +1693,9 @@ docker run --rm -it rocker/r-base</code></pre>
 </section>
 <section id="example---isolate-applications" class="slide level2">
 <h2>Example - isolate applications</h2>
+<p><br></p>
 <p>https://hub.docker.com/u/rstudio</p>
+<p><br></p>
 <p><strong>DO NOT RUN!</strong></p>
 <pre><code>docker run -it --privileged \
     -p 3939:3939 \
@@ -1726,9 +1741,6 @@ docker run --rm -it rocker/r-base</code></pre>
 <li><p><strong>Isolation:</strong> Containers isolate applications and their dependencies, preventing conflicts.</p></li>
 <li><p><strong>Portability:</strong> Containers can run on any system that supports Docker, reducing “it works on my machine” issues.</p></li>
 </ul>
-<section id="section-1" class="slide level2">
-<h2></h2>
-</section>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1777,6 +1789,7 @@ docker run --rm -it rocker/r-base</code></pre>
 </section>
 <section id="lab-activity---running-containers" class="slide level2">
 <h2>Lab Activity - Running containers</h2>
+<p><br></p>
 <p>🟥 - I need help</p>
 <p>🟩 - I’m done</p>
 <p><br></p>
@@ -1784,6 +1797,7 @@ docker run --rm -it rocker/r-base</code></pre>
 </section>
 <section id="running-containers" class="slide level2">
 <h2>Running containers</h2>
+<p><br></p>
 <pre><code>docker pull ubuntu
 docker image ls -a
 
@@ -1804,6 +1818,7 @@ docker run --rm debian echo "hello world"</code></pre>
 </section>
 <section id="container-debugging" class="slide level2">
 <h2>Container Debugging</h2>
+<p><br></p>
 <pre><code>docker run -it -d ubuntu
 docker container ls -a 
 docker exec -it CONTAINER_ID bash
@@ -1820,16 +1835,18 @@ docker container run -d --name mydb \
 </section>
 <section id="lab-activity---debugging-containers" class="slide level2">
 <h2>Lab Activity - Debugging Containers</h2>
+<p><br></p>
 <p>🟥 - I need help</p>
 <p>🟩 - I’m done</p>
 <p><br></p>
 <p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html#part-2-debugging-containers">Lab 2: Part 2</a></p>
 </section>
-<section id="port-mapping-with-docker-run--p" class="slide level2">
-<h2>Port Mapping with <code>docker run -p</code></h2>
-<p><code>docker run -p host_port:container_port</code></p>
+<section id="port-mapping-with-docker-run--phostcontainer" class="slide level2">
+<h2>Port Mapping with <code>docker run -p``host:container</code></h2>
+<p><br></p>
 
-<img data-src="images/port mapping.png" width="600" class="r-stretch"><pre><code>docker pull httpd:alpine
+<img data-src="images/port mapping.png" width="600" class="r-stretch"><p><br></p>
+<pre><code>docker pull httpd:alpine
 docker pull httpd:latest
 
 docker inspect --format='{{.Config.ExposedPorts}}' httpd:latest
@@ -1855,6 +1872,7 @@ curl http://localhost:80</code></pre>
 </section>
 <section id="persisting-data-with-docker" class="slide level2">
 <h2>Persisting data with Docker</h2>
+<p><br></p>
 <ul>
 <li><p>State is persistent information that is recorded and recalled later</p></li>
 <li><p>Containers are designed to be ephemeral e.g.&nbsp;stateless by default</p></li>
@@ -1875,7 +1893,7 @@ curl http://localhost:80</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section id="options" class="slide level2">
+<section id="options" class="slide level2 scrollable">
 <h2>Options</h2>
 <table style="width:99%;">
 <colgroup>
@@ -1926,6 +1944,7 @@ curl http://localhost:80</code></pre>
 </section>
 <section id="lab-activity---persisting-data" class="slide level2">
 <h2>Lab Activity - Persisting Data</h2>
+<p><br></p>
 <p>🟥 - I need help</p>
 <p>🟩 - I’m done</p>
 <p><br></p>
@@ -1939,6 +1958,7 @@ curl http://localhost:80</code></pre>
 <img data-src="images/buildimage-02.png" class="r-stretch"></section>
 <section id="lab-activity---commit-and-push-container-to-dockerhub" class="slide level2">
 <h2>Lab Activity - Commit and push container to DockerHub</h2>
+<p><br></p>
 <p>🟥 - I need help</p>
 <p>🟩 - I’m done</p>
 <p><br></p>
@@ -2014,25 +2034,22 @@ curl http://localhost:80</code></pre>
 </section>
 <section id="part-4-data-science-in-production" class="slide level2">
 <h2>Part 4: Data Science in Production</h2>
+<p><br> <iframe src="https://giphy.com/embed/4oMoIbIQrvCjm" width="480" height="369" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe></p>
 </section>
-<section id="data-science-in-production" class="slide level2 content-dark">
+<section id="data-science-in-production" class="slide level2">
 <h2>Data Science in Production</h2>
-<ul>
-<li><p>Presentation Layer</p></li>
-<li><p>Processing Layer</p></li>
-<li><p>Data store Layer</p></li>
-</ul>
-</section>
+
+<img data-src="images/layers.png" class="r-stretch"></section>
 <section id="choosing-the-right-presentation-layer" class="slide level2">
 <h2>Choosing the right presentation layer</h2>
 <ul>
 <li><a href="https://do4ds.com/chapters/sec1/1-2-proj-arch.html">Alex’s flow chart</a></li>
 </ul>
 </section>
-<section id="choosing-an-api" class="slide level2">
-<h2>Choosing an API</h2>
+<section id="choosing-a-rest-api" class="slide level2">
+<h2>Choosing a REST API</h2>
 
-<img data-src="images/apis.png" class="r-stretch"></section>
+<img data-src="images/rest-api.png" class="r-stretch"></section>
 <section id="production-state" class="slide level2">
 <h2>Production “State”</h2>
 <p>Questions to ask once your content is able to be consumed by your intended audience</p>
@@ -2045,67 +2062,45 @@ curl http://localhost:80</code></pre>
 <li><p>Is it tested?</p></li>
 </ul>
 </section>
-<section id="where-is-it-deployed" class="slide level2">
-<h2>Where is it deployed?</h2>
-<p>list of PaaS / Caas and highlight Connect</p>
-</section>
-<section id="lab-activity" class="slide level2">
-<h2>Lab Activity:</h2>
+<section id="lab-activity-host-api-on-posit-connect" class="slide level2">
+<h2>Lab Activity: Host API on Posit Connect</h2>
+<p><br></p>
 <p>🟥 - I need help</p>
-<p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
-<p>Part 1: Host API on Posit Connect</p>
+<p><br></p>
+<p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html#part-1-host-api-on-posit-connect">Lab 3: Part 1</a></p>
 </section>
-<section id="is-it-secure" class="slide level2">
-<h2>Is it secure?</h2>
-<ul>
-<li><p>Basic Auth</p></li>
-<li><p>API keys</p></li>
-<li><p>Token-based</p></li>
-</ul>
-</section>
-<section id="securing-credentials" class="slide level2">
-<h2>Securing credentials</h2>
-<ul>
-<li><p>username and password</p></li>
-<li><p>centralized credential server</p></li>
-<li><p>SSO</p></li>
-</ul>
-</section>
-<section id="is-it-accessible" class="slide level2">
-<h2>Is it accessible?</h2>
-<p>RBAC</p>
-</section>
-<section id="lab-activity-1" class="slide level2">
-<h2>Lab Activity:</h2>
+<section id="lab-activity-explore-api-structure" class="slide level2">
+<h2>Lab Activity: Explore API structure</h2>
+<p><br></p>
 <p>🟥 - I need help</p>
-<p>🟨 - I’m still working</p>
 <p>🟩 - I’m done</p>
-<p>Part 2:</p>
+<p><br></p>
+<p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html#part-2-explore-your-api">Lab 3: Part 2</a></p>
 </section>
-<section id="is-it-maintainable" class="slide level2">
-<h2>Is it maintainable</h2>
-<p>git-backed deploymnet</p>
+<section id="lab-activity-explore-plumber" class="slide level2">
+<h2>Lab Activity: Explore Plumber</h2>
+<p><br></p>
+<p>🟥 - I need help</p>
+<p>🟩 - I’m done</p>
+<p><br></p>
+<p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html#part-3-plumber-examples">Lab 3: Part 3</a></p>
 </section>
-<section id="is-it-scalable" class="slide level2">
-<h2>Is it scalable?</h2>
-<p>scaling up vs.&nbsp;scaling out</p>
-<p>connect shiny resource options</p>
+<section id="lab-activity-push-button-deployment" class="slide level2">
+<h2>Lab Activity: Push button deployment</h2>
+<p><br></p>
+<p>🟥 - I need help</p>
+<p>🟩 - I’m done</p>
+<p><br></p>
+<p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html#part-4-push-button-deployment">Lab 3: Part 4</a></p>
 </section>
-<section id="is-your-code-efficient" class="slide level2">
-<h2>Is your code efficient?</h2>
-<ul>
-<li><p>data storage</p></li>
-<li><p>computations</p></li>
-<li><p>caches</p></li>
-</ul>
-</section>
-<section id="is-it-tested" class="slide level2">
-<h2>Is it tested</h2>
-<p>testing as part of CI/CD</p>
-</section>
-<section id="section-2" class="slide level2">
-<h2></h2>
+<section id="lab-activity-access-api-data" class="slide level2">
+<h2>Lab Activity: Access API data</h2>
+<p><br></p>
+<p>🟥 - I need help</p>
+<p>🟩 - I’m done</p>
+<p><br></p>
+<p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html#part-5-programmatically-access-connect">Lab 3: Part 5</a></p>
 
 <div class="footer footer-default">
 <p><a href="https://github.com/posit-conf-2023/DevOps">https://github.com/posit-conf-2023/DevOps</a></p>
