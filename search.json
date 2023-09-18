@@ -672,6 +672,13 @@
     "text": "Modes for running containers\n\n\n\n\n\n\n\n\nMode\nRun command\nUse case\n\n\n\n\nDetached\ndocker run -d\nThis runs the container in the background so the container keeps running until the application process exits, or you stop the container. Detached mode is often used for production purposes.\n\n\nInteractive + terminal\ndocker run -it\nThis runs the container in the foreground so you are unable to access the command prompt. Interactive mode is often used for development and testing.\n\n\nRemove everything once the container is done with its task\ndocker run --rm\nThis mode is used on foreground containers that perform short-term tasks such as tests or database backups. Once it is removed anything you may have downloaded or created in the container is also destroyed."
   },
   {
+    "objectID": "slides/workshop_full_slides.html#run-command",
+    "href": "slides/workshop_full_slides.html#run-command",
+    "title": "DevOps for Data Scientists",
+    "section": "Run Command",
+    "text": "Run Command"
+  },
+  {
     "objectID": "slides/workshop_full_slides.html#lab-activity---running-containers",
     "href": "slides/workshop_full_slides.html#lab-activity---running-containers",
     "title": "DevOps for Data Scientists",
@@ -742,6 +749,13 @@
     "text": "Building Docker Images\n\nImages are build using a Dockerfile or interactively “on-the-fly” for testing"
   },
   {
+    "objectID": "slides/workshop_full_slides.html#build-command",
+    "href": "slides/workshop_full_slides.html#build-command",
+    "title": "DevOps for Data Scientists",
+    "section": "Build Command",
+    "text": "Build Command"
+  },
+  {
     "objectID": "slides/workshop_full_slides.html#lab-activity---commit-and-push-container-to-dockerhub",
     "href": "slides/workshop_full_slides.html#lab-activity---commit-and-push-container-to-dockerhub",
     "title": "DevOps for Data Scientists",
@@ -788,7 +802,7 @@
     "href": "slides/workshop_full_slides.html#production-state",
     "title": "DevOps for Data Scientists",
     "section": "Production “State”",
-    "text": "Production “State”\nQuestions to ask once your content is able to be consumed by your intended audience\n\nWhere is it deployed?\nIs it secure and accessible?\nDoes it scale?\nIs it tested?"
+    "text": "Production “State”\n\nWhat are some questions that we should ask once our code is ready for production?\n\n\nWhere is it deployed?\nIs it secure and accessible?\nDoes it scale?\nIs it tested?"
   },
   {
     "objectID": "slides/workshop_full_slides.html#choosing-the-right-presentation-layer",
@@ -802,7 +816,7 @@
     "href": "slides/workshop_full_slides.html#choosing-a-rest-api",
     "title": "DevOps for Data Scientists",
     "section": "Choosing a REST API",
-    "text": "Choosing a REST API"
+    "text": "Choosing a REST API\n\n\napplication programming interface clients to communicate with a server. Rest API is a kind of web-service which stores and retrieves necessary data. It provides great flexibility to developers since it does not need any dependent code libraries to access the web-services. Amongst the many protocols supported by REST, the most common one is HTTP. When a request is sent from the client using a HTTPRequest, a corresponding response is sent from the server using HTTPResponse."
   },
   {
     "objectID": "slides/workshop_full_slides.html#lab-activity-host-api-on-posit-connect",
@@ -810,6 +824,13 @@
     "title": "DevOps for Data Scientists",
     "section": "Lab Activity: Host API on Posit Connect",
     "text": "Lab Activity: Host API on Posit Connect\n\n🟥 - I need help\n🟩 - I’m done\n\nLab 3: Part 1"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#how-is-it-secured",
+    "href": "slides/workshop_full_slides.html#how-is-it-secured",
+    "title": "DevOps for Data Scientists",
+    "section": "How is it secured?",
+    "text": "How is it secured?"
   },
   {
     "objectID": "slides/workshop_full_slides.html#lab-activity-explore-api-structure",
@@ -826,6 +847,13 @@
     "text": "Lab Activity: Explore Plumber\n\n🟥 - I need help\n🟩 - I’m done\n\nLab 3: Part 3"
   },
   {
+    "objectID": "slides/workshop_full_slides.html#where-is-it-deployed",
+    "href": "slides/workshop_full_slides.html#where-is-it-deployed",
+    "title": "DevOps for Data Scientists",
+    "section": "Where is it deployed?",
+    "text": "Where is it deployed?"
+  },
+  {
     "objectID": "slides/workshop_full_slides.html#lab-activity-push-button-deployment",
     "href": "slides/workshop_full_slides.html#lab-activity-push-button-deployment",
     "title": "DevOps for Data Scientists",
@@ -837,6 +865,13 @@
     "href": "slides/workshop_full_slides.html#lab-activity-access-api-data",
     "title": "DevOps for Data Scientists",
     "section": "Lab Activity: Access API data",
-    "text": "Lab Activity: Access API data\n\n🟥 - I need help\n🟩 - I’m done\n\nLab 3: Part 5\n\n\nhttps://github.com/posit-conf-2023/DevOps"
+    "text": "Lab Activity: Access API data\n\n🟥 - I need help\n🟩 - I’m done\n\nLab 3: Part 5"
+  },
+  {
+    "objectID": "slides/workshop_full_slides.html#thank-you-so-much",
+    "href": "slides/workshop_full_slides.html#thank-you-so-much",
+    "title": "DevOps for Data Scientists",
+    "section": "Thank you so much!!!!",
+    "text": "Thank you so much!!!!\n\n\n\n\nhttps://github.com/posit-conf-2023/DevOps"
   }
 ]

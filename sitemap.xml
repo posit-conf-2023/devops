@@ -2,26 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://posit-conf-2023.github.io/devops/supplemental_materials/linux_exercises_files/linux_exercises.html</loc>
-    <lastmod>2023-09-18T02:38:40.671Z</lastmod>
+    <lastmod>2023-09-18T13:28:08.747Z</lastmod>
   </url>
   <url>
     <loc>https://posit-conf-2023.github.io/devops/index.html</loc>
-    <lastmod>2023-09-18T02:38:30.454Z</lastmod>
+    <lastmod>2023-09-18T13:27:51.430Z</lastmod>
   </url>
   <url>
     <loc>https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html</loc>
-    <lastmod>2023-09-18T02:38:29.809Z</lastmod>
+    <lastmod>2023-09-18T13:27:50.767Z</lastmod>
   </url>
   <url>
     <loc>https://posit-conf-2023.github.io/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html</loc>
-    <lastmod>2023-09-18T02:38:29.291Z</lastmod>
+    <lastmod>2023-09-18T13:27:50.258Z</lastmod>
   </url>
   <url>
     <loc>https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html</loc>
-    <lastmod>2023-09-18T02:38:30.167Z</lastmod>
+    <lastmod>2023-09-18T13:27:51.133Z</lastmod>
   </url>
   <url>
     <loc>https://posit-conf-2023.github.io/devops/slides/workshop_full_slides.html</loc>
-    <lastmod>2023-09-18T02:38:39.419Z</lastmod>
+    <lastmod>2023-09-18T13:28:07.574Z</lastmod>
   </url>
 </urlset>
