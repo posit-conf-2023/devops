@@ -249,7 +249,7 @@ docker container stop nginx1</code></pre>
 <ol type="1">
 <li>Use <code>docker run -it</code> to jump into an ubuntu container.</li>
 </ol>
-<pre><code>docker run -it -d ubuntu
+<pre><code>docker run -it ubuntu
 exit</code></pre>
 <ol start="2" type="1">
 <li>Use <code>docker exec</code> to run commands in a container</li>
@@ -262,7 +262,6 @@ docker exec CONTAINER_ID ls </code></pre>
 <li>Lets run a detached MySQL container and then check out some logs. The database requires a password to work.In production you should never pass credentials directly in your command but we will do it for testing purposes. (The forward slashes below allow you to use a new line for your code)</li>
 </ol>
 <pre><code> docker container run -d --name mydb \
- --name mydb \
  -e MYSQL_ROOT_PASSWORD=my-secret-pw \ 
  mysql
  
@@ -283,7 +282,7 @@ docker inspect  httpd:alpine</code></pre>
 <ol start="3" type="1">
 <li>Map two different host ports to the same application port for the two containers.</li>
 </ol>
-<pre><code>docker run -d -p 81:80 --name httpd-latest httpd:latest
+<pre><code>docker run -d -p 3456:80 --name httpd-latest httpd:latest
 docker run -d -p 80:80 --name httpd-alpine httpd:alpine
 docker ps</code></pre>
 </section>
@@ -446,7 +445,7 @@ shinyApp(ui = ui, server = server)
 # press escape 
 :wq to save 
 
-##docker run -d -p 3838:3838 -v ./apps:/srv/shinyapps my_server # my_server is the name of the docker image that you built</code></pre>
+##docker run -d -p 3838:3838 -v ./apps:/srv/shiny-server my_server # my_server is the name of the docker image that you built</code></pre>
 <ol start="8" type="1">
 <li>Update our Dockerfile</li>
 </ol>
@@ -461,9 +460,15 @@ RUN apt-get update &amp;&amp; apt-get install -y \
     libcurl4-gnutls-dev \
     libssl-dev
 
-RUN R -e "install.packages(('palmerpenguins'), \
-    repos = 'https://packagemanager.posit.co/cran/__linux__/jammy/latest')"
-
+RUN R -e 'install.packages(c(\
+              "shiny", \
+              "palmerpenguins", \
+              "shinydashboard", \
+              "ggplot2" \
+            ), \
+            repos="https://packagemanager.rstudio.com/cran/__linux__/jammy"\
+          )'
+          
 COPY ./apps/* /srv/shiny-server/
 
 CMD ["/usr/bin/shiny-server"]</code></pre>
@@ -472,7 +477,7 @@ CMD ["/usr/bin/shiny-server"]</code></pre>
 </ol>
 <pre><code>docker build -t new_app</code></pre>
 <ol start="10" type="1">
-<li>Run the container</li>
+<li>Run the container. Make sure to stop the previous container first as it was already using the port 3838.</li>
 </ol>
 <pre><code>docker run -d -p 3838:3838 new_app</code></pre>
 

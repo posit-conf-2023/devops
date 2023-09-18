@@ -1654,7 +1654,7 @@ lapply(.libPaths(), list.files)</code></pre>
 <p><br></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">docker</span> pull postgres:12</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="ex">docker</span> pull postgres:latest</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="ex">docker</span> container ls <span class="at">-a</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="ex">docker</span> image ls <span class="at">-a</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-e</span> POSTGRES_PASSWORD=mysecretpassword <span class="at">--name</span> postgres_early imageID</span>
 <span id="cb5-5"><a href="#cb5-5"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-e</span> POSTGRES_PASSWORD=mysecretpassword <span class="at">--name</span> postgres_new imageID</span>
 <span id="cb5-6"><a href="#cb5-6"></a><span class="ex">docker</span> container ls <span class="at">-a</span></span>
@@ -1705,7 +1705,8 @@ docker run --rm -it rocker/r-base</code></pre>
 <section id="example---docker-as-deployment-strategy" class="slide level2">
 <h2>Example - Docker as deployment strategy</h2>
 
-<img data-src="images/dep_strategy.png" width="800" class="r-stretch"></section>
+<img data-src="images/dep_strategy.png" width="800" class="r-stretch"><p>https://github.com/mickwar/ml-deploy</p>
+</section>
 <section id="example---docker-in-ci-pipeline" class="slide level2">
 <h2>Example - Docker in CI pipeline</h2>
 <pre><code>jobs:
@@ -1815,6 +1816,19 @@ docker run -d -P --name nginx1 nginx:alpine
 docker container stop nginx1
 
 docker run --rm debian echo "hello world"</code></pre>
+<aside class="notes">
+<p>Nginx, pronounced like “engine-ex”, is an open-source web server that, since its initial success as a web server, is now also used as a reverse proxy, HTTP cache, and load balancer.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="container-debugging" class="slide level2">
 <h2>Container Debugging</h2>
@@ -1841,8 +1855,8 @@ docker container run -d --name mydb \
 <p><br></p>
 <p><a href="https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html#part-2-debugging-containers">Lab 2: Part 2</a></p>
 </section>
-<section id="port-mapping-with-docker-run--phostcontainer" class="slide level2">
-<h2>Port Mapping with <code>docker run -p``host:container</code></h2>
+<section id="port-mapping-with-docker-run--p-hostcontainer" class="slide level2">
+<h2>Port Mapping with <code>docker run -p host:container</code></h2>
 <p><br></p>
 
 <img data-src="images/port mapping.png" width="600" class="r-stretch"><p><br></p>
@@ -2040,6 +2054,16 @@ curl http://localhost:80</code></pre>
 <h2>Data Science in Production</h2>
 
 <img data-src="images/layers.png" class="r-stretch"></section>
+<section id="production-state" class="slide level2">
+<h2>Production “State”</h2>
+<p>Questions to ask once your content is able to be consumed by your intended audience</p>
+<ul>
+<li><p>Where is it deployed?</p></li>
+<li><p>Is it secure and accessible?</p></li>
+<li><p>Does it scale?</p></li>
+<li><p>Is it tested?</p></li>
+</ul>
+</section>
 <section id="choosing-the-right-presentation-layer" class="slide level2">
 <h2>Choosing the right presentation layer</h2>
 <ul>
@@ -2050,18 +2074,6 @@ curl http://localhost:80</code></pre>
 <h2>Choosing a REST API</h2>
 
 <img data-src="images/rest-api.png" class="r-stretch"></section>
-<section id="production-state" class="slide level2">
-<h2>Production “State”</h2>
-<p>Questions to ask once your content is able to be consumed by your intended audience</p>
-<ul>
-<li><p>Where is it deployed?</p></li>
-<li><p>Is it secure and accessible?</p></li>
-<li><p>Is it maintainable?</p></li>
-<li><p>Does it scale?</p></li>
-<li><p>Is your code efficiently written?</p></li>
-<li><p>Is it tested?</p></li>
-</ul>
-</section>
 <section id="lab-activity-host-api-on-posit-connect" class="slide level2">
 <h2>Lab Activity: Host API on Posit Connect</h2>
 <p><br></p>
