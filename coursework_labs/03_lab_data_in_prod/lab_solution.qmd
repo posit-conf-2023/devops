@@ -1,14 +1,12 @@
 ---
-title: "Lab: Data in Production"
+title: "Lab 3: Data in Production"
 format: html
 editor: visual
 ---
 
-## Goals
-
 ## Setup
 
-To setup your cloud-based development environment create an account using your email at http://rstd.io/class with code `angry-beaver`. Click on the Rstudio [Connect](https://docs.posit.co/connect/user/) widget to start your environment.
+To setup your cloud-based development environment create an account using your email at http://rstd.io/class with code `devops_workshop`. Click on the Rstudio [Connect](https://docs.posit.co/connect/user/) widget to start your environment.
 
 ## Part 1: Host API on Posit Connect
 
@@ -63,7 +61,7 @@ plumb_api(package = "plumberExamples", name = "00-hello") %>% pr_run()
 
 2.  Open a new R script In your workbench console. Add your Connect information:
 
-```
+```         
 # Add server
 rsconnect::addServer(
   url = "https://liberal-bullfinch.74633.fleeting.rstd.io/rsconnect/__api__",
@@ -80,7 +78,7 @@ rsconnect::connectApiUser(
 
 3.  Access your content programmatically in R: - need to add key ias env variable
 
-```
+```         
 library(httr)
 library(tidyr)
 

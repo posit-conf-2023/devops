@@ -4,14 +4,53 @@
 
 ------------------------------------------------------------------------
 
-:spiral_calendar: September 17 and 18, 2023\
-:alarm_clock: 09:00 - 17:00\
-:hotel: ROOM TBD\
-:writing_hand: [pos.it/conf](http://pos.it/conf)
+📅 September 17 and 18, 2023\
+⏰ 09:00 - 17:00\
+💻 <https://posit-conf-2023.github.io/DevOps/>
 
 ------------------------------------------------------------------------
 
 ## Overview
+
+This workshop is intended for data scientists who wish to learn more about the basic principles and tools of DevOps and to get hands-on experience putting DevOps workflows into production.
+
++------------------------------------+------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Section/Time                       | Topics                                               | Labs                                                                                                                                                                                                                                                   |
++====================================+======================================================+========================================================================================================================================================================================================================================================+
+| Part 1                             | Workshop overview                                    | Infrastructure & wifi setup                                                                                                                                                                                                                            |
+|                                    |                                                      |                                                                                                                                                                                                                                                        |
+|                                    | Logistics & setup                                    |                                                                                                                                                                                                                                                        |
+|                                    |                                                      |                                                                                                                                                                                                                                                        |
+|                                    | Introductions                                        |                                                                                                                                                                                                                                                        |
++------------------------------------+------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Part 2: DevOps Principles & Tools  | Introduction to DevOps                               | [Lab #1](https://posit-conf-2023.github.io/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html): Deploy your own Quarto website on Github Pages & Posit Connect using GitHub Actions \|                                                   |
+|                                    |                                                      |                                                                                                                                                                                                                                                        |
+|                                    | Version control & github                             |                                                                                                                                                                                                                                                        |
+|                                    |                                                      |                                                                                                                                                                                                                                                        |
+|                                    | CI/CD                                                |                                                                                                                                                                                                                                                        |
+|                                    |                                                      |                                                                                                                                                                                                                                                        |
+|                                    | Reproducing workflows and environments               |                                                                                                                                                                                                                                                        |
++------------------------------------+------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Part 3: Docker for Data Scientists | How and why data scientists use docker in production | [Lab #2](https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html): Write your own Dockerfile to deploy Open Source Shiny Server on [Docker playground](https://labs.play-with-docker.com/) and host an app on the server |
+|                                    |                                                      |                                                                                                                                                                                                                                                        |
+|                                    | Docker: overview and architecture                    |                                                                                                                                                                                                                                                        |
+|                                    |                                                      |                                                                                                                                                                                                                                                        |
+|                                    | Building docker images and containers                |                                                                                                                                                                                                                                                        |
+|                                    |                                                      |                                                                                                                                                                                                                                                        |
+|                                    | Ports & networking                                   |                                                                                                                                                                                                                                                        |
++------------------------------------+------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Part 4: Data Science in Production | Choosing your deployment method                      | [Lab #3](https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html): Host and secure an API on Posit Connect                                                                                                      |
+|                                    |                                                      |                                                                                                                                                                                                                                                        |
+|                                    | APIs and when to use them                            |                                                                                                                                                                                                                                                        |
+|                                    |                                                      |                                                                                                                                                                                                                                                        |
+|                                    | Just enough auth                                     |                                                                                                                                                                                                                                                        |
+|                                    |                                                      |                                                                                                                                                                                                                                                        |
+|                                    | Logging & metrics & testing                          |                                                                                                                                                                                                                                                        |
++------------------------------------+------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Part 5: Discussion                 | Course feedback                                      | Workshop Survey                                                                                                                                                                                                                                        |
+|                                    |                                                      |                                                                                                                                                                                                                                                        |
+|                                    | Questions for the team                               |                                                                                                                                                                                                                                                        |
++------------------------------------+------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 ## Pre-work
 
@@ -19,21 +58,12 @@
 
 ## Materials
 
--   Slides
--   Code for Slides
--   Lab instructions
--   Lab example code
+-   [Slides](https://posit-conf-2023.github.io/devops/slides/workshop_full_slides.html#/title-slide)
+-   [Code](https://github.com/posit-conf-2023/devops)
+-   [Lab 1](https://posit-conf-2023.github.io/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html)
+-   [Lab 2](https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html)
+-   [Lab 3](https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html)
 
-## Schedule
-
-### Day 1
-
-### Day 2
-
-## Instructor
-
-ADD INSTRUCTOR BIO
-
-------------------------------------------------------------------------
+## 
 
 ![](https://i.creativecommons.org/l/by/4.0/88x31.png) This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

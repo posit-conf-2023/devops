@@ -10,7 +10,7 @@ editor: visual
 
 -   To get comfortable using the terminal for interacting with git and github.
 
--   To understand how to authenticate to github using SSH or HTTPS.
+-   To understand how to authenticate to github using HTTPS.
 
 -   To practice writing and reading a yaml file.
 
@@ -20,7 +20,7 @@ editor: visual
 
 ## Setup
 
-1.  To setup your cloud-based development environment create an account using your email at http://rstd.io/class with code `angry-beaver`. Click on the Rstudio [Workbench](https://docs.posit.co/ide/server-pro/user/) widget to start your environment.
+1.  To setup your cloud-based development environment create an account using your email at <http://rstd.io/class> with code `devops_workshop`. Click on the Rstudio [Workbench](https://docs.posit.co/ide/server-pro/user/) widget to start your environment.
 2.  Click on `+ New Session` to create a new Rstudio Pro session.
 
 ::: callout-note
@@ -331,8 +331,6 @@ jobs:
         uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 1
-        env:
-          RENV_CONFIG_REPOS_OVERRIDE: https://packagemanager.rstudio.com/all/latest
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
@@ -351,7 +349,6 @@ jobs:
         with:
           r-version: 4.2.3
           use-public-rspm: true
-          
       - name: Setup renv and install packages
         uses: r-lib/actions/setup-renv@v2
       - name: Create manifest.json

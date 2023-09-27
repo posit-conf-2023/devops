@@ -3,10 +3,10 @@ title: "DevOps for Data Scientists"
 subtitle: "<br>Wifi: Posit Conf 2023 <br>Password: conf2023"
 title-slide-attributes: 
   data-background-color: white
-  data-background-image: _extensions/positconfslides/assets/backgrounds/toc-light.svg
   data-background-size: contain
 format:
-  positconfslides-revealjs: 
+  revealjs:
+    theme: night 
     chalkboard: true
     slide-number: true
     footer: "[https://github.com/posit-conf-2023/DevOps](https://github.com/posit-conf-2023/DevOps)"
@@ -17,13 +17,17 @@ format:
     highlight-style: a11y
     width: "1600"
     height: "900"
-    filters:
-      - positconfslides
     execute:
       echo: true  
 ---
 
-## Part 1: Introductions, setup, & workshop overview {.content-light}
+## Part 1: Introductions, setup, & workshop overview
+
+<br>
+
+<iframe src="https://giphy.com/embed/xT5LMqaomxCIqZcYEM" width="480" height="366" frameBorder="0" class="giphy-embed" allowFullScreen>
+
+</iframe>
 
 ## Meet your instructors
 
@@ -38,7 +42,7 @@ format:
 
 ## Andrie
 
-![](images/Andrie%20square%20500px.jpg){width="278"}
+![](images/Andrie%20square%20500px.jpg){width="308"}
 
 -   Director of Posit Strategy, former Solutions Engineer
 
@@ -56,7 +60,7 @@ format:
 
 ## Michael
 
-![](images/michaelmayer-scaled.jpg){width="154"}
+![](images/michaelmayer-scaled.jpg){width="260"}
 
 -   Scientist by training turned IT / HPC / Scientific Computing
 :::
@@ -93,8 +97,6 @@ Take 5 minutes and introduce yourself to your neighbors.
 
 ![](images/Screenshot%202023-09-13%20at%201.49.45%20PM.png)
 
-## Logistics & Workshop Setup {.toc-people-dark}
-
 ## 💻 If your WIFI isn't working let us know as soon as possible!
 
 <br>
@@ -111,7 +113,9 @@ Password: `conf2023`
 <https://registry.hub.docker.com/signup>\
 <https://github.com/signup>\
 
-<br> **Optional: (for local development)**\
+<br>
+
+**Optional: (for local development)**\
 <https://docs.docker.com/desktop/>\
 <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>\
 <https://quarto.org/docs/get-started/>\
@@ -121,13 +125,10 @@ Password: `conf2023`
 
 <br>
 
-+---------------------------+--------------------------------------+---------------------------------+
 | Software                  | Link                                 | Credentials                     |
-+===========================+======================================+=================================+
-| Posit Workbench & Connect | <http://pos.it/class>                | Classroom ID: `DevOps_workshop` |
-+---------------------------+--------------------------------------+---------------------------------+
+|---------------------------|--------------------------------------|---------------------------------|
+| Posit Workbench & Connect | <http://pos.it/class>                | Classroom ID: `devops_workshop` |
 | Docker Classroom          | <https://labs.play-with-docker.com/> | Docker Hub credentials          |
-+---------------------------+--------------------------------------+---------------------------------+
 
 ## Documentation & Communication
 
@@ -135,11 +136,11 @@ Password: `conf2023`
 
 All documents including **slides** are available on our website: <https://posit-conf-2023.github.io/DevOps/>
 
-Discord channel - `DevOps-for-data-scientists`
+Discord channel - `devops-for-data-scientists`
 
 <br>
 
-Place a note on the back of your laptop:
+During labs and exercises,please place a post-it note on the back of your laptop for:
 
 🟥 - I need help
 
@@ -149,7 +150,9 @@ Place a note on the back of your laptop:
 
 <br>
 
-📅 September 17 and 18, 2023 ⏰ 09:00am - 5:00pm
+📅 September 17 and 18, 2023
+
+⏰ 09:00am - 5:00pm
 
 <br>
 
@@ -159,7 +162,7 @@ Place a note on the back of your laptop:
 | 12:30 - 1:30pm  | Lunch |
 | 3:00 - 3:30pm   | Break |
 
-## Code of Conduct {.content-light}
+## Code of Conduct
 
 -   Everyone who comes to learn and enjoy the experience should feel welcome at posit::conf. Posit is committed to providing a professional, friendly and safe environment for all participants at its events, regardless of gender, sexual orientation, disability, race, ethnicity, religion, national origin or other protected class.
 
@@ -219,13 +222,6 @@ https://posit.co/code-of-conduct/
 |                                    | Questions for the team                               |                                                                                                                                                               |
 +------------------------------------+------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-## Supplemental Materials
-
--   Linux
--   vim
--   Git
--   Cheat sheets
-
 ## Most important Linux commands {.smaller}
 
 +----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
@@ -254,29 +250,39 @@ https://posit.co/code-of-conduct/
 
 ## What we won't cover
 
+<iframe src="https://giphy.com/embed/26xBziMPJcCmBbpVm" width="300" height="300" frameBorder="0" class="giphy-embed" allowFullScreen>
+
+</iframe>
+
 -   How to become a DevOps engineer
 
 -   Python-based workflows
 
 -   In-depth security and auth practices
 
-<iframe src="https://giphy.com/embed/26xBziMPJcCmBbpVm" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+## Part 2: DevOps Principles & Tools
 
-## Part 2: DevOps Principles & Tools {.content-light}
+<br>
+
+<iframe src="https://giphy.com/embed/l0G18BkChcRRctMZ2" width="480" height="362" frameBorder="0" class="giphy-embed" allowFullScreen>
+
+</iframe>
 
 ## Section Goals
 
--   To understand the main principles of DevOps and how they can improve data science workflows.
+<br>
 
--   To get familiar with the DevOps toolkit.
+-   To understand the main **principles** of DevOps and how they can improve data science workflows.
 
--   To get familiar with how the `renv` package helps create reproducible environments for your R projects.
+-   To get familiar with the DevOps **toolkit**.
 
--   To get comfortable using the terminal for interacting with git and github.
+-   To get familiar with how the **`renv`** package helps create reproducible environments for your R projects.
 
--   To understand how to authenticate to github using SSH or HTTPS.
+-   To get comfortable using the terminal for interacting with **git and github**.
 
--   To practice creating a CI/CD workflow using yaml and Github Actions.
+-   To understand how to **authenticate** to github using SSH or HTTPS.
+
+-   To practice creating a **CI/CD** workflow using yaml and Github Actions.
 
 ## 
 
@@ -294,9 +300,7 @@ Let's get into it. We're at a DevOps workshop - so what is it. This is a best ef
 
 ## But first...a very brief history lesson
 
-![](images/pheonix_project.png){fig-align="left" width="200"}
-
-![](images/devops.jpg){fig-align="right" width="200"}
+![](images/Untitled%20presentation.png)
 
 ::: notes
 Reason for squishy definition is because it developed organically in the 2007-2009, across social media, twitter tag #devops was popular, online communities and became more organized through conferences, workshops, and grassroots attempts at implementation at diff companies. Then was introduced into larger companies like Intel, PayPal, Facebook.
@@ -328,12 +332,9 @@ sounds pretty efficient right -
 
 ## Problems DevOps tries to solve
 
--   Siloed teams
--   Miscommunication
--   Slow & manual release cycles
--   Technical knowledge siloes
--   Incompatible systems or tech stacks
--   Opaque undocumented processes
+<br>
+
+![](images/PROBLEMS.png)
 
 ::: notes
 So this is the idealized example - but what was it like in practice 20 years ago. You want to make the release process as fast as possible but you also want it to be tested and free of bugs. And this introduces a natural conflict between speed and stability
@@ -353,13 +354,25 @@ Problem becomes how do you automate this release process, make it streamlined, l
 
 ## Common DevOps Principles
 
+<br>
+
+<br>
+
 🤲 Collaboration
+
+<br>
 
 🚚 Continuous Integration & Delivery
 
+<br>
+
 🤖 Automation
 
+<br>
+
 📔 Reproducibility
+
+<br>
 
 👨‍🎤 Culture change
 
@@ -379,7 +392,7 @@ The last piece that I find really interesting is the concept of **culture change
 So let me pause - that's a lot - everyone got a bit of a history lesson but as far as i'm aware no one here is a software developer or an IT engineer. So that brings me to this very important question: But
 :::
 
-## Why should we as data scientists care about this?
+## Why should we as data scientists care about this? {style="text-align: center; font-size: 200%; color: #EE6331"}
 
 ::: notes
 lets have a little thought experiment
@@ -393,7 +406,7 @@ lets have a little thought experiment
 :::
 
 ::: {.column width="50%"}
-[Reproducibility]{.fragment fragment-index="2" style="color: blue;"}
+[Reproducibility]{.fragment fragment-index="2" style="color: orange;"}
 :::
 :::
 
@@ -403,7 +416,7 @@ lets have a little thought experiment
 :::
 
 ::: {.column width="50%"}
-[Continuous Integration & Delivery & Collaboration]{.fragment fragment-index="4" style="color: blue;"}
+[Continuous Integration & Delivery & Collaboration]{.fragment fragment-index="4" style="color: orange;"}
 :::
 :::
 
@@ -413,21 +426,19 @@ lets have a little thought experiment
 :::
 
 ::: {.column width="50%"}
-[Culture Change]{.fragment fragment-index="6" style="color: blue;"}
+[Culture Change]{.fragment fragment-index="6" style="color: orange;"}
 :::
 :::
 
-## Why should data scientists/analysts care about DevOps?
+## We should care because ...
+
+<br>
 
 ::: incremental
 -   Data scientists are developers!
-
 -   Data science careers have moved from academic sphere to tech and software but education hasnt always followed
-
 -   Automation, collaboration, testing can dramatically improve data work and improve reproducibility
-
 -   The many hats of a data scientist
-
 -   Improve collaboration & communication with other teams
 :::
 
@@ -438,6 +449,8 @@ DS career paths started in academia - not a lot of best practices are taught
 :::
 
 ## Responsibility of the analyst
+
+![](images/replic_crisis.png)
 
 ::: notes
 I mentioned before that a lot of DS comes from academia and research. So the concept of reproducing your results - especially if those results play a role in how medicines or medical devices are developed - is incredibly important.
@@ -475,6 +488,8 @@ proliferation of tools, source code management, repo management, build tools, da
 
 ## An opinionated take on tools
 
+<br>
+
 -   CI/CD
 -   Environment Management
 -   Version Control & Git workflows
@@ -489,7 +504,7 @@ proliferation of tools, source code management, repo management, build tools, da
 
 ## The CI/CD Pipeline
 
-![](images/cicd.png){fig-align="center"}
+![](images/cicd2.png)
 
 ::: notes
 -   As we discussed before CI/CD is an iterative cycle of small steps to quickly build, test, and deploy your code - this is a critical component of devops.
@@ -507,7 +522,19 @@ we'll talk about some examples of popular CI/CD tools in a bit - Github Actions,
 
 ## Environment Management {.smaller}
 
-exploratory analysis and experiments | as similar to prod as possible | separate from dev and test | | often just your local desktop | unit & integration testing | created using code | | "sandbox" with data that's as close to real as possible | data validation | code promotion process + tests | | | access to R/Python packages | | completely automatic
+<br>
+
++---------------------------------+-------------------------------------------------------------+------------------------------+
+| Development                     | Testing                                                     | Production                   |
++=================================+=============================================================+==============================+
+| -   Exploratory                 | -   as similar to prod as possible                          | -   automatic CD             |
+|                                 |                                                             |                              |
+| -   Often local machine         | -   unit & integration testing                              | -   isolated from dev & test |
+|                                 |                                                             |                              |
+| -   Access to R/Python Packages | -   data validation                                         | -   created with code        |
+|                                 |                                                             |                              |
+|                                 | -   "sandbox" with data that's as close to real as possible |                              |
++---------------------------------+-------------------------------------------------------------+------------------------------+
 
 ::: notes
 unit test - testing individual units of code to make sure it does what you want it to do
@@ -519,7 +546,7 @@ want to be able to reproduce the environments as closely as possible
 
 ## Version Control & Workflows
 
-![](images/Screenshot%202023-08-23%20at%2011.20.04%20AM.png){fig-align="center"}
+![](images/versioncontrol.png)
 
 ::: notes
 Version control is a main tool for Continuous Integration -
@@ -543,13 +570,13 @@ e.g code reviews, process for your team, how to name things, pull requests, merg
 
 🟥 - I need help
 
-🟨 - I'm still working
-
 🟩 - I'm done
 
-Login to pos.it/class with code `devops_workshop`
+<br>
 
-Lab 1 Part 1:
+Login to [pos.it/class](pos.it/class) with code `devops_workshop`
+
+[Lab 1 Part 1](https://posit-conf-2023.github.io/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html#part-1-create-a-local-quarto-website)
 
 ::: notes
 Show how to login to the workshop environment and where the lab is
@@ -559,8 +586,7 @@ Show how to login to the workshop environment and where the lab is
 
 ## Is version control secure?
 
--   Our code is still saved locally
--   How do we make sure that the code we push to Github (or elsewhere) is secure?
+<br> <iframe src="https://giphy.com/embed/l2JdZzcXF8hqpPMpW" width="480" height="366" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 ## A short auth teaser
 
@@ -569,6 +595,10 @@ Show how to login to the workshop environment and where the lab is
 -   Use different security mechanisms
 -   Ports on the host and destination specifies where to direct the traffic
 
+<br>
+
+**HTTPS**
+
 ![](images/Screenshot%202023-09-07%20at%209.28.32%20AM.png)
 
 ::: notes
@@ -576,25 +606,31 @@ Add diagram - http and https two computers with ports
 
 There are lots of diff transfer protocols; what you use depends on what kind data is being transferred and your security requirements. So for example, maybe you're sending plain text or email or a webpage.
 
-Protocols as well as processes or application run on specific ports. A port is a virtual point where network connections start and end. Allow computers to easily differentiate between different kinds of traffic. So for example, Shiny Server runs on port 3838, Workbench runs on ...
+Protocols as well as processes or application run on specific ports. A port is a virtual point where network connections start and end. Allow computers to easily differentiate between different kinds of traffic. So for example, Shiny Server runs on port 3838, Workbench runs on 8787
 
 whether its email, text, files, etc Ports are software-based and managed by a computer's operating system. Ports emails go to a different port than webpages, for instance, even though both reach a computer over the same Internet connection.
 :::
 
 ## Git protocol options
 
-| http    | https    | SSH     |
-|---------|----------|---------|
-| port 80 | port 443 | port 22 |
-
-http - text sent over the internet
-
-https - http encrypted with "SSL/TLS"
-
-SSH - secure shell
+![](images/http-vs-https.png)
 
 ::: notes
+http - 80
+
+https - 443
+
+ssh - 22
+
 we'll be using https - because ... from jenny bryans happy git with R
+
+I find HTTPS easier to get working quickly and **strongly recommend** it when you first start working with Git/GitHub.
+
+HTTPS is what GitHub recommends, presumably for exactly the same reasons.
+
+The "ease of use" argument in favor of HTTPS is especially true for Windows users.
+
+Another advantage of HTTPS is that the PAT we'll set up for that can also be used with GitHub's REST API.
 
 hypertext transfer protocol When a web user wants to load or interact with a web page, their web browser sends an HTTP request to the origin server that hosts the website's files. These requests are essentially lines of text that are sent via the internet.
 
@@ -615,7 +651,11 @@ Where SSH takes the lead is with the authentication factor---the key. The length
 
 ## Reproducing your environment
 
+<br>
+
 What are the layers that need to be reproduced across your dev, test, and prod environments?
+
+<br>
 
 What's your most difficult reproducibility challenge?
 
@@ -635,9 +675,13 @@ What's your most difficult reproducibility challenge?
 
 <br>
 
-**Package** - contains code, functions, data, and documentation. <br>
+**Package** - contains code, functions, data, and documentation.
 
-**Library** - is a directory where packages are installed. <br>
+<br>
+
+**Library** - is a directory where packages are installed.
+
+<br>
 
 **Repository** - a collection of packages. CRAN is a public external repository that is a network of servers that distribute R along with R packages.
 
@@ -663,14 +707,16 @@ repo - others include pypi, bioconducter, private repos
 4.  After this has completed, they can then use [`renv::restore()`](https://rstudio.github.io/renv/reference/restore.html) to restore the project library locally on their machine.
 :::
 
-## Example
+## Example - renv
 
+::: {style="font-size: 100%"}
 ``` {eval="FALSE"}
 # install.packages("renv")
 renv::init()
 renv::snapshot()
 lapply(.libPaths(), list.files)
 ```
+:::
 
 ::: footer
 🔍 Live code
@@ -680,11 +726,11 @@ lapply(.libPaths(), list.files)
 
 🟥 - I need help
 
-🟨 - I'm still working
-
 🟩 - I'm done
 
-Lab 1: Part 2 & 3
+<br>
+
+[Lab 1: Part 2 & 3](https://posit-conf-2023.github.io/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html#part-2-renv-workflow)
 
 ::: notes
 You'll be doing renv in your workbench environment both in your console for r code and in the terminal for git commands you'll also need to log in to your github account where you'll be creating an upstream repository to link with your local code.
@@ -772,9 +818,9 @@ EmpRecord:
 
 🟥 - I need help
 
-🟨 - I'm still working
-
 🟩 - I'm done
+
+<br>
 
 Inspect your \_quarto.yml file and identify what each part of it does using the quarto site.
 
@@ -840,15 +886,15 @@ Workflows can include tests, markdown renders, shell scripts, cron jobs, or depl
 
 [Code](https://posit-conf-2023.github.io/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html#part-4-publish-using-gha)
 
-## Lab Activity
+## Lab Activity - CICD with Github Actions
 
 🟥 - I need help
 
-🟨 - I'm still working
-
 🟩 - I'm done
 
-Part 4 of Lab: Deploy Quarto with GHA including the exercises
+<br>
+
+[Lab 1: Part 4](https://posit-conf-2023.github.io/devops/coursework_labs/01_lab_devops_CICD/Deploy_Quarto_GHA.html#part-4-publish-using-gha)
 
 ::: notes
 we'll be doing a few things - create a gh branch - publish to github - create a gha with a yaml file - create an api key for connect - update yaml file - push everything
@@ -856,7 +902,7 @@ we'll be doing a few things - create a gh branch - publish to github - create a 
 
 ## Logging
 
-log session ➡️ log statement ➡️ log entry
+<br>
 
 ::: columns
 ::: {.column width="50%"}
@@ -897,15 +943,29 @@ types of logs
 
 ## Monitoring
 
-![](images/icons8-prometheus-48.png)
+![](images/icons8-prometheus-48.png){width="100"}
 
-If you want to register metrics from your API or app with Prometheus, there is an official [Prometheus client](https://github.com/prometheus/client_python) in Python and the `{openmetrics}` package in R makes it easy to register metrics from a Plumber API or Shiny app.
+**Prometheus**
 
-![](images/icons8-grafana-48.png)
+-   OS monitoring toolkit
 
-There's a great [Get Started with Grafana and Prometheus](https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/) doc on the Grafana Labs website if you want to actually try it out.
+-   official [Prometheus client](https://github.com/prometheus/client_python) in Python
 
-## Part 3 Goals: Docker for Data Scientists
+-   `{openmetrics}` package to register metrics from a Plumber API or Shiny app.
+
+![](images/icons8-grafana-48.png){width="100"}
+
+**Grafana**
+
+-   GUI for Prometheus
+
+-   [Get Started with Grafana and Prometheus](https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/)
+
+## Part 3: Docker for Data Scientists
+
+<br> <iframe src="https://giphy.com/embed/3orifbpd7ODPyeW5sk" width="480" height="366" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+## Section Goals
 
 -   to understand different docker workflows
 -   to learn common docker syntax for building and running containers
@@ -989,14 +1049,18 @@ containers are very lightweight which makes it really easy and quick to spin the
 Instead, the Docker daemon communicates directly with the host operating system and knows how to ration out resources for the running Docker containers.
 :::
 
-## How can data scientists use docker?
+## How can data scientists use docker? {style="text-align: center; font-size: 200%; color: #EE6331"}
 
 ## Example - testing & versioning
+
+<br>
+
+<br>
 
 ``` bash
 docker pull postgres:12
 docker pull postgres:latest
-docker container ls -a
+docker image ls -a
 docker run -d -e POSTGRES_PASSWORD=mysecretpassword --name postgres_early imageID
 docker run -d -e POSTGRES_PASSWORD=mysecretpassword --name postgres_new imageID
 docker container ls -a
@@ -1020,7 +1084,11 @@ docker pull postgres:latest - notice how some of these layers already exist so i
 
 ## Example - reproduce environments
 
+<br>
+
 https://hub.docker.com/u/rocker
+
+<br>
 
 ```         
 # pull the image
@@ -1032,7 +1100,11 @@ docker run --rm -it rocker/r-base
 
 ## Example - isolate applications
 
+<br>
+
 https://hub.docker.com/u/rstudio
+
+<br>
 
 **DO NOT RUN!**
 
@@ -1046,6 +1118,8 @@ docker run -it --privileged \
 ## Example - Docker as deployment strategy
 
 ![](images/dep_strategy.png){width="800"}
+
+https://github.com/mickwar/ml-deploy
 
 ## Example - Docker in CI pipeline
 
@@ -1088,33 +1162,35 @@ jobs:
 -   **Isolation:** Containers isolate applications and their dependencies, preventing conflicts.
 
 -   **Portability:** Containers can run on any system that supports Docker, reducing "it works on my machine" issues.
-
-## 
 :::
 
 ## Modes for running containers
 
-+------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Mode                                                       | Run command       | Use case                                                                                                                                                                                                           |
-+============================================================+===================+====================================================================================================================================================================================================================+
+|------------------------------------------------------------|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Detached                                                   | `docker run -d`   | This runs the container in the **background** so the container keeps running until the application process exits, or you stop the container. Detached mode is often used for production purposes.                  |
-+------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Interactive + terminal                                     | `docker run -it`  | This runs the container in the **foreground** so you are unable to access the command prompt. Interactive mode is often used for development and testing.                                                          |
-+------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Remove everything once the container is done with its task | `docker run --rm` | This mode is used on foreground containers that perform **short-term tasks** such as tests or database backups. Once it is removed anything you may have downloaded or created in the container is also destroyed. |
-+------------------------------------------------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+## Run Command
+
+![](images/slides%20(1).png)
 
 ## Lab Activity - Running containers
 
-🟥 - I need help
+<br>
 
-🟨 - I'm still working
+🟥 - I need help
 
 🟩 - I'm done
 
-Lab 2: Part 1
+<br>
+
+[Lab 2: Part 1](https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html#part-1-run-commands)
 
 ## Running containers
+
+<br>
 
 ```         
 docker pull ubuntu
@@ -1136,7 +1212,13 @@ docker container stop nginx1
 docker run --rm debian echo "hello world"
 ```
 
+::: notes
+Nginx, pronounced like "engine-ex", is an open-source web server that, since its initial success as a web server, is now also used as a reverse proxy, HTTP cache, and load balancer.
+:::
+
 ## Container Debugging
+
+<br>
 
 ```         
 docker run -it -d ubuntu
@@ -1157,19 +1239,23 @@ docker container run -d --name mydb \
 
 ## Lab Activity - Debugging Containers
 
-🟥 - I need help
+<br>
 
-🟨 - I'm still working
+🟥 - I need help
 
 🟩 - I'm done
 
-Complete Lab 2: Part 2
+<br>
 
-## Port Mapping with `docker run -p`
+[Lab 2: Part 2](https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html#part-2-debugging-containers)
 
-`docker run -p host_port:container_port`
+## Port Mapping with `docker run -p host:container`
+
+<br>
 
 ![](images/port%20mapping.png){width="600"}
+
+<br>
 
 ```         
 docker pull httpd:alpine
@@ -1195,13 +1281,15 @@ curl http://localhost:80
 
 🟥 - I need help
 
-🟨 - I'm still working
-
 🟩 - I'm done
 
-Lab 2: Part 3
+<br>
+
+[Lab 2: Part 3](https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html#part-3-mapping-ports)
 
 ## Persisting data with Docker
+
+<br>
 
 -   State is persistent information that is recorded and recalled later
 
@@ -1215,73 +1303,82 @@ Images are made of a set of read-only layers. When we start a new container, Doc
 So, any file change inside the container creates a working copy in the read-write layer. However, when the container is stopped or deleted, that read-write layer is lost.
 :::
 
-## Options
+## Options {.scrollable}
 
-+-----------------------------+------------------------------------------+-----------------------------------------------------------+
-| Storage Type                | Description                              | Use case                                                  |
-+=============================+==========================================+===========================================================+
-| Volume mount                | Create new volume managed by container   | Need to transfer, share, data between multiple containers |
-+-----------------------------+------------------------------------------+-----------------------------------------------------------+
-| Bind mount                  | Mount location on host to container      |                                                           |
-+-----------------------------+------------------------------------------+-----------------------------------------------------------+
-| External Database           | Container remains stateless;             |                                                           |
-|                             |                                          |                                                           |
-|                             | Container connects to external database  |                                                           |
-+-----------------------------+------------------------------------------+-----------------------------------------------------------+
-| External Shared File System | Shared network file system int the cloud | Managed or multi-cluster deployments                      |
-+-----------------------------+------------------------------------------+-----------------------------------------------------------+
++-----------------------------+-------------------------------------------------------------+-----------------------------------------------------------+
+| Storage Type                | Description                                                 | Use case                                                  |
++=============================+=============================================================+===========================================================+
+| Volume mount                | create new volume managed by Docker CLI                     | Need to transfer, share, data between multiple containers |
+|                             |                                                             |                                                           |
+|                             | dedicated filesystem on the host (/var/lib/ docker/volumes) |                                                           |
++-----------------------------+-------------------------------------------------------------+-----------------------------------------------------------+
+| Bind mount                  | use any available host filesystem                           | Access hidden files                                       |
+|                             |                                                             |                                                           |
+|                             | not managed by Docker CLI                                   |                                                           |
++-----------------------------+-------------------------------------------------------------+-----------------------------------------------------------+
+| tmpfs                       | uses host memory                                            | sensitive data                                            |
+|                             |                                                             |                                                           |
+|                             | not permanent                                               |                                                           |
++-----------------------------+-------------------------------------------------------------+-----------------------------------------------------------+
+| External Database           | container remains stateless;                                | Production workflow                                       |
+|                             |                                                             |                                                           |
+|                             | container connects to external database                     |                                                           |
++-----------------------------+-------------------------------------------------------------+-----------------------------------------------------------+
+| External Shared File System | shared network file system int the cloud (NFS)              | Managed or multi-cluster deployments                      |
+|                             |                                                             |                                                           |
+|                             |                                                             | Don't want to limit storage                               |
++-----------------------------+-------------------------------------------------------------+-----------------------------------------------------------+
 
 ## Lab Activity - Persisting Data
 
-🟥 - I need help
+<br>
 
-🟨 - I'm still working
+🟥 - I need help
 
 🟩 - I'm done
 
-Lab 2: Part 4
+<br>
+
+[Lab 2: Part 4](https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html#part-4-mounting-data)
 
 ## Building Docker Images
 
+<br>
+
 Images are build using a Dockerfile or interactively "on-the-fly" for testing
 
-make this a diagram Step 1: Commit Step 2: Tag Step 3: Push
+![](images/buildimage-02.png)
+
+## Build Command
+
+![](images/slides%20(1)-01.png)
 
 ## Lab Activity - Commit and push container to DockerHub
 
-🟥 - I need help
+<br>
 
-🟨 - I'm still working
+🟥 - I need help
 
 🟩 - I'm done
 
-Complete Lab 2: Part 5
+<br>
+
+[Lab 2: Part 5](https://posit-conf-2023.github.io/devops/coursework_labs/02_lab_docker/Exercises.html#part-5-building-images-interactively)
 
 ## A few Dockerfile Build Commands
 
-+--------------+-------------------------------------------------------------+
-| Command      | Description                                                 |
-+==============+=============================================================+
-| ARG          | Define variables passed at build time                       |
-+--------------+-------------------------------------------------------------+
-| FROM         | Base image                                                  |
-+--------------+-------------------------------------------------------------+
-| ENV          | Define variable                                             |
-+--------------+-------------------------------------------------------------+
-| COPY         | Add local file or directory                                 |
-+--------------+-------------------------------------------------------------+
-| RUN          | Execute commands during build process                       |
-+--------------+-------------------------------------------------------------+
-| CMD          | Execute command when you run container; once per Dockerfile |
-+--------------+-------------------------------------------------------------+
-| ENTRYPOINT   | Execute command to change default entrypoint at runtime     |
-+--------------+-------------------------------------------------------------+
-| USER         | Set username or ID                                          |
-+--------------+-------------------------------------------------------------+
-| VOLUME       | Mount host machine to container                             |
-+--------------+-------------------------------------------------------------+
-| EXPOSE       | Specify port pn which container listens at runtime          |
-+--------------+-------------------------------------------------------------+
+| Command    | Description                                                 |
+|------------|-------------------------------------------------------------|
+| ARG        | Define variables passed at build time                       |
+| FROM       | Base image                                                  |
+| ENV        | Define variable                                             |
+| COPY       | Add local file or directory                                 |
+| RUN        | Execute commands during build process                       |
+| CMD        | Execute command when you run container; once per Dockerfile |
+| ENTRYPOINT | Execute command to change default entrypoint at runtime     |
+| USER       | Set username or ID                                          |
+| VOLUME     | Mount host machine to container                             |
+| EXPOSE     | Specify port pn which container listens at runtime          |
 
 ## Dockerfile Example
 
@@ -1299,102 +1396,110 @@ Complete Lab 2: Part 5
 
 ## Part 4: Data Science in Production
 
-## Data Science in Production {.content-dark}
+<br> <iframe src="https://giphy.com/embed/4oMoIbIQrvCjm" width="480" height="369" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
--   Presentation Layer
+## Data Science in Production
 
--   Processing Layer
-
--   Data store Layer
-
-## Choosing the right presentation layer
-
--   [Alex's flow chart](https://do4ds.com/chapters/sec1/1-2-proj-arch.html)
-
-## Choosing an API
-
-![](images/apis.png)
+![](images/layers.png)
 
 ## Production "State"
 
-Questions to ask once your content is able to be consumed by your intended audience
+<br>
+
+What are some questions that we should ask once our code is ready for production?
+
+<br>
 
 -   Where is it deployed?
 
 -   Is it secure and accessible?
 
--   Is it maintainable?
-
 -   Does it scale?
-
--   Is your code efficiently written?
 
 -   Is it tested?
 
+## Choosing the right presentation layer
+
+-   [Alex's flow chart](https://do4ds.com/chapters/sec1/1-2-proj-arch.html)
+
+## Choosing a REST API
+
+![](images/what_is_rest_api.png)
+
+::: notes
+application programming interface clients to communicate with a server. Rest API is a kind of web-service which stores and retrieves necessary data. It provides great flexibility to developers since it does not need any dependent code libraries to access the web-services. Amongst the many protocols supported by REST, the most common one is HTTP. When a request is sent from the client using a HTTPRequest, a corresponding response is sent from the server using HTTPResponse.
+:::
+
+## Lab Activity: Host API on Posit Connect
+
+<br>
+
+🟥 - I need help
+
+🟩 - I'm done
+
+<br>
+
+[Lab 3: Part 1](https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html#part-1-host-api-on-posit-connect)
+
+## How is it secured?
+
+## Lab Activity: Explore API structure
+
+<br>
+
+🟥 - I need help
+
+🟩 - I'm done
+
+<br>
+
+[Lab 3: Part 2](https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html#part-2-explore-your-api)
+
+![](images/Screenshot%202023-09-18%20at%208.05.26%20AM-02.png)
+
+## Lab Activity: Explore Plumber
+
+<br>
+
+🟥 - I need help
+
+🟩 - I'm done
+
+<br>
+
+[Lab 3: Part 3](https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html#part-3-plumber-examples)
+
 ## Where is it deployed?
 
-list of PaaS / Caas and highlight Connect
+![](images/slides.png)
 
-## Lab Activity:
+## Lab Activity: Push button deployment
 
-🟥 - I need help
-
-🟨 - I'm still working
-
-🟩 - I'm done
-
-Part 1: Host API on Posit Connect
-
-## Is it secure?
-
--   Basic Auth
-
--   API keys
-
--   Token-based
-
-## Securing credentials
-
--   username and password
-
--   centralized credential server
-
--   SSO
-
-## Is it accessible?
-
-RBAC
-
-## Lab Activity:
+<br>
 
 🟥 - I need help
 
-🟨 - I'm still working
+🟩 - I'm done
+
+<br>
+
+[Lab 3: Part 4](https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html#part-4-push-button-deployment)
+
+## Lab Activity: Access API data
+
+<br>
+
+🟥 - I need help
 
 🟩 - I'm done
 
-Part 2:
+<br>
 
-## Is it maintainable
+[Lab 3: Part 5](https://posit-conf-2023.github.io/devops/coursework_labs/03_lab_data_in_prod/lab_solution.html#part-5-programmatically-access-connect)
 
-git-backed deploymnet
+## Thank you so much!!!!
 
-## Is it scalable?
+<iframe src="https://giphy.com/embed/3oriffa6h9StTOq6ly" width="480" height="364" frameBorder="0" class="giphy-embed" allowFullScreen>
 
-scaling up vs. scaling out
-
-connect shiny resource options
-
-## Is your code efficient?
-
--   data storage
-
--   computations
-
--   caches
-
-## Is it tested
-
-testing as part of CI/CD
-
-## 
+</iframe>
